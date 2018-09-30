@@ -36,31 +36,23 @@ public interface VOCategoria
 	/**
 	 * @return El nombre del bebedor
 	 */
-	public String getNombre();
+	public String getNombreCategoria();
 
 	/**
 	 * @return La ciudad del bebedor
 	 */
-	public String getCiudad();
+	public char getPerecedero();
 
 	/**
 	 * @return El presupuesto del bebedor
 	 */
-	public String getPresupuesto();
+	public String getFechaVencimiento();
 
 	/**
 	 * @return La lista de visitasRealizadas por el bebedor 
 	 */
-	public List<Object []> getVisitasRealizadas();
-
-	/**
-	 * @return Las bebidasQueLeGustan al bebedor
-	 */
-	public List<Object[]> getBebidasQueLeGustan();
-
-	/**
-	 * @return Una cadena de caracteres con la información básica del bebedor
-	 */
+	public String getCodigoDeBarrasProducto();
+	
 	@Override
 	public String toString();
 
@@ -69,6 +61,6 @@ public interface VOCategoria
 	 * Además de la información básica, contiene las visitas realizadas (una por línea) y 
 	 * las bebidas que le gustan al bebedor (una por línea)
 	 */
-	public String toStringCompleto ();
+
 
 }

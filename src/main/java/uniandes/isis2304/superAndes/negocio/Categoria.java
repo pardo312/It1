@@ -29,39 +29,16 @@ public class Categoria implements VOCategoria
 	/* ****************************************************************
 	 * 			Atributos
 	 *****************************************************************/
-	/**
-	 * El identificador ÚNICO del bebedor
-	 */
 	private long id;	
 	
-	/**
-	 * El nombreCategoria del bebedor
-	 */
 	private String nombreCategoria;
 	
-	/**
-	 * La perecedero del bebedor
-	 */
-	private String perecedero;
+	private char perecedero;
 	
-	/**
-	 * El fechaVencimiento del bebedor (ALTO, MEDIO, BAJO)
-	 */
 	private String fechaVencimiento;
-	
-	/**
-	 * Las visitas realizadas por el bebedor. 
-	 * Cada visita es una tripleta de objetos [Bar, Timestamp, String], que representan el bar, la fecha 
-	 * y el horario en que el bebedor realizó la visita
-	 */
-	private List<Object []> visitasRealizadas;
 
-	/**
-	 * Las bebidas que le gustan el bebedor. 
-	 * Cada visita es una pareja de objetos [Bebida, String], que representan la bebida y el nombreCategoria del 
-	 * tipo de bebida que le gustan al bebedor 
-	 */
-	private List<Object []> bebidasQueLeGustan;
+	//codigo de barras del producto
+	private String codigoDeBarrasProducto;
 	
 	/* ****************************************************************
 	 * 			Métodos
@@ -73,10 +50,9 @@ public class Categoria implements VOCategoria
 	{
 		this.id = 0;
 		this.nombreCategoria = "";
-		this.perecedero = "";
+		this.perecedero = 0;
 		this.fechaVencimiento = "";
-		visitasRealizadas = new LinkedList<Object []> ();
-		bebidasQueLeGustan = new LinkedList<Object []> ();
+		this.codigoDeBarrasProducto = "";
 	}
 
 	/**
@@ -86,149 +62,79 @@ public class Categoria implements VOCategoria
 	 * @param perecedero - La perecedero del bebedor
 	 * @param fechaVencimiento - El fechaVencimiento del bebedor (ALTO, MEDIO, BAJO)
 	 */
-	public Categoria(long id, String nombreCategoria, String perecedero, String fechaVencimiento) 
+	public Categoria(long id, String nombreCategoria, char perecedero, String fechaVencimiento,String codigoDeBarrasProducto) 
 	{
 		this.id = id;
 		this.nombreCategoria = nombreCategoria;
 		this.perecedero = perecedero;
 		this.fechaVencimiento = fechaVencimiento;
-		
-		// Estos valores no se conocen en el momento de la construcción del bebedor
-		visitasRealizadas = new LinkedList<Object []> ();
-		bebidasQueLeGustan = new LinkedList<Object []> ();
+		this.codigoDeBarrasProducto = codigoDeBarrasProducto;
 	}
 
-	/**
-	 * @return El id del bebedor
-	 */
 	public long getId() 
 	{
 		return id;
 	}
 
-	/**
-	 * @param id - El nuevo id del bebedor
-	 */
 	public void setId(long id) 
 	{
 		this.id = id;
 	}
+	
 
-	/**
-	 * @return El nombreCategoria del bebedor
-	 */
 	public String getNombreCategoria() 
 	{
 		return nombreCategoria;
 	}
 
-	/**
-	 * @param nombreCategoria - El nuevo nombreCategoria del bebedor
-	 */
 	public void setNombreCategoria(String nombreCategoria) 
 	{
 		this.nombreCategoria = nombreCategoria;
 	}
-
-	/**
-	 * @return La perecedero del bebedor
-	 */
-	public String getPerecedero() 
+	
+	
+	public char getPerecedero() 
 	{
 		return perecedero;
 	}
-
-	/**
-	 * @param perecedero - La nueva perecedero del bebedor
-	 */
-	public void setPerecedero(String perecedero) 
+	
+	public void setPerecedero(char perecedero) 
 	{
 		this.perecedero = perecedero;
 	}
-
-	/**
-	 * @return El fechaVencimiento del bebedor
-	 */
+	
+	
 	public String getFechaVencimiento() 
 	{
 		return fechaVencimiento;
 	}
-
-	/**
-	 * @param fechaVencimiento - El nuevo fechaVencimiento del bebedor
-	 */
+	
+	
 	public void setFechaVencimiento(String fechaVencimiento) 
 	{
 		this.fechaVencimiento = fechaVencimiento;
 	}
-
-	/**
-	 * @return La lista de visitasRealizadas por el bebedor 
-	 */
-	public List<Object []> getVisitasRealizadas() 
+	
+	
+	public String getCodigoDeBarrasProducto() 
 	{
-		return visitasRealizadas;
+		return codigoDeBarrasProducto;
 	}
-
-	/**
-	 * @param visitasRealizadas - La nueva lista de visitas del bebedor
-	 */
-	public void setVisitasRealizadas (List<Object []> visitasRealizadas) 
+	
+	public void setCodigoDeBarrasProducto(String codigoDeBarrasProducto) 
 	{
-		this.visitasRealizadas = visitasRealizadas;
+		this.codigoDeBarrasProducto = codigoDeBarrasProducto;
 	}
-
-	/**
-	 * @return Las bebidasQueLeGustan al bebedor
-	 */
-	public List<Object[]> getBebidasQueLeGustan() 
-	{
-		return bebidasQueLeGustan;
-	}
-
-	/**
-	 * @param bebidasQueLeGustan - La nueva lista de bebidas que le gustan al bebedor
-	 */
-	public void setBebidasQueLeGustan(List<Object[]> bebidasQueLeGustan) 
-	{
-		this.bebidasQueLeGustan = bebidasQueLeGustan;
-	}
-
-	/**
-	 * @return Una cadena de caracteres con la información básica del bebedor
-	 */
+	
+	
 	@Override
 	public String toString() 
 	{
-		return "Bebedor [id=" + id + ", nombreCategoria=" + nombreCategoria + ", perecedero=" + perecedero + ", fechaVencimiento=" + fechaVencimiento + "]";
-	}
-
-	/**
-	 * @return Una cadena de caracteres con la información COMPLEtA del bebedor.
-	 * Además de la información básica, contiene las visitas realizadas (una por línea) y 
-	 * las bebidas que le gustan al bebedor (una por línea)
-	 */
-	public String toStringCompleto () 
-	{
-		String resp =  this.toString();
-		resp += "\n --- Visitas realizadas\n";
-		int i = 1;
-		for (Object [] visita : visitasRealizadas)
-		{
-			Bodega bar = (Bodega) visita [0];
-			Timestamp fecha = (Timestamp) visita [1];
-			String horario = (String) visita [2];
-			resp += i++ + ". " + "[" +bar.toString() + ", fecha= " + fecha + ", horario= " + horario + "]\n";
-		}
-		resp += "\n\n --- Bebidas que le gustan\n";
-		i = 1;
-		for (Object [] gusta : bebidasQueLeGustan)
-		{
-			Cliente bebida = (Cliente) gusta [0];
-			String tipoBebida = (String) gusta [1];
-			resp += i++ + ". " + "[" + bebida.toString() + ", Tipo Bebida= " + tipoBebida + "]\n";
-		}
+		String resp = "Categoria [id=" + id + ", nombreCategoria=" + nombreCategoria + ", perecedero=" + perecedero + ", fechaVencimiento=" + fechaVencimiento
+				+ ", codigoDeBarrasProducto=" + codigoDeBarrasProducto + "]";
+		
 		return resp;
+		
 	}
 
 }

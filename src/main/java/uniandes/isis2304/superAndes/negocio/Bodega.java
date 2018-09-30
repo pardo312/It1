@@ -15,6 +15,9 @@
 
 package uniandes.isis2304.superAndes.negocio;
 
+import java.sql.Timestamp;
+import java.util.List;
+
 /**
  * Clase para modelar el concepto BAR del negocio de los Parranderos
  *
@@ -36,6 +39,8 @@ public class Bodega implements VOBodega
 	private String unidadesVolumen;
 	
 	private int idSucursal;
+
+	private List<Object []> tiposDeProductosQueGuardan;
 
 	/* ****************************************************************
 	 * 			Métodos 
@@ -71,73 +76,52 @@ public class Bodega implements VOBodega
 		this.idSucursal = idSucursal;
 	}
 
-    /**
-	 * @return El id del bar
-	 */
+   
 	public long getId() 
 	{
 		return id;
 	}
-	
-	/**
-	 * @param id - El nuevo id del bar
-	 */
+
 	public void setId(long id) 
 	{
 		this.id = id;
 	}
 	
-	/**
-	 * @return el nombre del bar
-	 */
+
 	public float getCapacidadVolumen() 
 	{
 		return capacidadVolumen;
 	}
-	
-	/**
-	 * @param nombre El nuevo nombre del bar
-	 */
+
 	public void setCapacidadVolumen(float capacidadVolumen) 
 	{
 		this.capacidadVolumen = capacidadVolumen;
 	}
 	
-	/**
-	 * @return la ciudad del bar
-	 */
+	
 	public float getCapacidadPeso() 
 	{
 		return capacidadPeso;
 	}
 	
-	/**
-	 * @param ciudad - La nueva ciudad del bar
-	 */
 	public void setCapacidadPeso(float capacidadPeso) 
 	{
 		this.capacidadPeso = capacidadPeso;
 	}
 	
-	/**
-	 * @return El presupuesto del bar
-	 */
+	
 	public String getUnidadesPeso() 
 	{
 		return unidadesPeso;
 	}
 	
-	/**
-	 * @param presupuesto - El nuevo presupuesto del bar (ALTO, MEDIO, BAJOO)
-	 */
+	
 	public void setunidadesPeso(String unidadesPeso) 
 	{
 		this.unidadesPeso = unidadesPeso;
 	}
 	
-	/**
-	 * @return la cantSedes del bar
-	 */
+	
 	public String getUnidadesVolumen() 
 	{
 		return unidadesVolumen;
@@ -159,12 +143,33 @@ public class Bodega implements VOBodega
 		this.idSucursal = idSucursal;
 	}
 	
-	@Override
+	public List<Object []> getTiposDeProductosQueGuardan() 
+	{
+		return tiposDeProductosQueGuardan;
+	}
+
+	public void setTiposDeProductosQueGuardan (List<Object []> tiposDeProductosQueGuardan) 
+	{
+		this.tiposDeProductosQueGuardan = tiposDeProductosQueGuardan;
+	}
 	
+	
+	@Override
 	public String toString() 
 	{
-		return "Bar [id=" + id + ", capacidadVolumen=" + capacidadVolumen + ", capacidadPeso=" + capacidadPeso + ", unidadesPeso=" + unidadesPeso
+		String resp = "Bar [id=" + id + ", capacidadVolumen=" + capacidadVolumen + ", capacidadPeso=" + capacidadPeso + ", unidadesPeso=" + unidadesPeso
 				+ ", unidadesVolumen=" + unidadesVolumen + ", idSucursal=" + idSucursal+ "]";
+		
+		resp += "\n --- Tipos De Productos Que Guardan\n";
+		int i = 1;
+		for (Object [] visita : tiposDeProductosQueGuardan)
+		{
+			TipoProducto tipoProducto = (TipoProducto) visita [0];
+			String nombre = (String) visita [1];
+			resp += i++ + ". " + "[" + tipoProducto.toString() + ", nombre=" + nombre + "]\n";;
+		}
+		return resp;
+		
 	}
 	
 	
