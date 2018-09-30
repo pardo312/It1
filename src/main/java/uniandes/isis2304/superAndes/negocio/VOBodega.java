@@ -26,40 +26,26 @@ public interface VOBodega
 	/* ****************************************************************
 	 * 			Métodos 
 	 *****************************************************************/
-     /**
-	 * @return El id del bar
-	 */
+     
 	public long getId();
 	
-	/**
-	 * @return el nombre del bar
-	 */
+	
 	public float getCapacidadVolumen();
 	
-	/**
-	 * @return la ciudad del bar
-	 */
+	
 	public float getCapacidadPeso();
 	
-	/**
-	 * @return El presupuesto del bar
-	 */
+	
 	public String getUnidadesPeso();
 	
-	/**
-	 * @return la cantSedes del bar
-	 */
+	
 	public String getUnidadesVolumen();
 
-	/**
-	 * @return la cantSedes del bar
-	 */
+	
 	public int getIdSucursal();
 	
 	@Override
-	/**
-	 * @return Una cadena de caracteres con todos los atributos del bar
-	 */
+	
 	public String toString();
 
 }

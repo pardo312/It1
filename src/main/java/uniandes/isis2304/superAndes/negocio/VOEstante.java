@@ -26,19 +26,18 @@ public interface VOEstante
 	/* ****************************************************************
 	 * 			Métodos
 	 *****************************************************************/
-	/**
-	 * @return El idBebedor
-	 */
-	public long getIdBebedor();
 
-	/**
-	 * @return El idBebida
-	 */
-	public long getIdBebida();
+	public long getId();
+
+	public float getCapacidadVolumen();
 	
-	/** 
-	 * @return Una cadena con la información básica
-	 */
+	public float getCapacidadPeso();
+	
+	public String getUnidadesPeso();
+	
+	public String getUnidadesVolumen();
+	
+	public long getIDBodega();
 	@Override
 	public String toString();
 	

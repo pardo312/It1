@@ -31,17 +31,17 @@ public interface VOCliente
 	/**
 	 * @return El nombre de la bebida
 	 */
-	public String getNombre();
+	public String getNITCliente();
 
 	/**
 	 * @return El id del Tipo de Bebida
 	 */
-	public long getIdTipoBebida();
+	public int getPuntosDeCompra();
 
 	/**
 	 * @return El gradoAlcohol de la bebida
 	 */
-	public int getGradoAlcohol();
+	public int getCedulaCliente();
 
 	/**
 	 * @return Una cadena con la información básica de la bebida

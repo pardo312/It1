@@ -15,35 +15,21 @@
 
 package uniandes.isis2304.superAndes.negocio;
 
-/**
- * Clase para modelar el concepto BEBIDA del negocio de los Parranderos
- *
- * @author Germán Bravo
- */
+
 public class Cliente implements VOCliente
 {
 	/* ****************************************************************
 	 * 			Atributos
 	 *****************************************************************/
-	/**
-	 * El identificador ÚNICO de la bebida
-	 */
-	private long id;
+
+	private long id;	
 	
-	/**
-	 * El nombre de la bebida
-	 */
-	private String nombre;
+	private int puntosDeCompra;
 	
-	/**
-	 * El identificador del tipo de bebida de la bebida. Debe existir en la tabla de tipoBebida
-	 */
-	private long idTipoBebida;
+	private int cedulaCliente;
 	
-	/**
-	 * El grado de alcohol de la bebida (Mayor que 0)
-	 */
-	private int gradoAlcohol;
+	private String NITCliente;
+
 
 	/* ****************************************************************
 	 * 			Métodos
@@ -54,97 +40,73 @@ public class Cliente implements VOCliente
 	public Cliente() 
 	{
 		this.id = 0;
-		this.nombre = "";
-		this.idTipoBebida = 0;
-		this.gradoAlcohol = 0;
+		this.puntosDeCompra = 0;
+		this.cedulaCliente = 0;
+		this.NITCliente = "";
 	}
 
-	/**
-	 * Constructor con valores
-	 * @param id - El id de la bebida
-	 * @param nombre - El nombre de la bebida
-	 * @param tipo - El identificador del tipo de bebida
-	 * @param gradoAlcohol - El graddo de alcohol de la bebida (Mayor que 0)
-	 */
-	public Cliente(long id, String nombre, long tipo, int gradoAlcohol) 
+	public Cliente(long id, String NITCliente, int cedulaCliente, int puntosDeCompra) 
 	{
 		this.id = id;
-		this.nombre = nombre;
-		this.idTipoBebida = tipo;
-		this.gradoAlcohol = gradoAlcohol;
+		this.NITCliente = NITCliente;
+		this.cedulaCliente = cedulaCliente;
+		this.puntosDeCompra = puntosDeCompra;
 	}
 
-	/**
-	 * @return El id de la bebida
-	 */
 	public long getId() 
 	{
 		return id;
 	}
 
-	/**
-	 * @param id - El nuevo id de la bebida 
-	 */
 	public void setId(long id) 
 	{
 		this.id = id;
 	}
+	
 
-	/**
-	 * @return El nombre de la bebida
-	 */
-	public String getNombre() 
+	public String getNITCliente() 
 	{
-		return nombre;
+		return NITCliente;
 	}
 
-	/**
-	 * @param nombre - El nuevo nombre de la bebida
-	 */
-	public void setNombre(String nombre) 
+	public void setNITCliente(String NITCliente) 
 	{
-		this.nombre = nombre;
+		this.NITCliente = NITCliente;
 	}
-
-	/**
-	 * @return El id del Tipo de Bebida
-	 */
-	public long getIdTipoBebida() 
+	
+	
+	public int getPuntosDeCompra() 
 	{
-		return idTipoBebida;
+		return puntosDeCompra;
 	}
-
-	/**
-	 * @param tipoBebida El nuevo identificador de tipo de bebida
-	 */
-	public void setIdTipoBebida(long tipoBebida) 
+	
+	public void setPuntosDeCompra(int puntosDeCompra) 
 	{
-		this.idTipoBebida = tipoBebida;
+		this.puntosDeCompra = puntosDeCompra;
 	}
-
-	/**
-	 * @return El gradoAlcohol de la bebida
-	 */
-	public int getGradoAlcohol() 
+	
+	
+	public int getCedulaCliente() 
 	{
-		return gradoAlcohol;
+		return cedulaCliente;
 	}
-
-	/**
-	 * @param gradoAlcohol El nuevo grado de alcohol de la bebida
-	 */
-	public void setGradoAlcohol(int gradoAlcohol) 
+	
+	
+	public void setCedulaCliente(int cedulaCliente) 
 	{
-		this.gradoAlcohol = gradoAlcohol;
+		this.cedulaCliente = cedulaCliente;
 	}
+	
+	
 
-	/**
-	 * @return Una cadena con la información básica de la bebida
-	 */
 	@Override
 	public String toString() 
 	{
-		return "Bebida [id=" + id + ", nombre=" + nombre + ", idTipoBebida=" + idTipoBebida + ", gradoAlcohol=" + gradoAlcohol + "]";
+		String resp = "Categoria [id=" + id + ", puntosDeCompra=" + puntosDeCompra + ", NITCliente=" + NITCliente + ", cedulaCliente=" + cedulaCliente
+				 + "]";
+		
+		return resp;
+		
 	}
 
 }

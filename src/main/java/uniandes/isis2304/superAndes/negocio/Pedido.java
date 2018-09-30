@@ -15,6 +15,8 @@
 
 package uniandes.isis2304.superAndes.negocio;
 
+import java.sql.Date;
+
 /**
  * Clase para modelar la relación SIRVEN del negocio de los Parranderos:
  * Cada objeto de esta clase representa el hecho que un bar sirve una bebida y viceversa.
@@ -30,20 +32,23 @@ public class Pedido implements VOPedido
 	/* ****************************************************************
 	 * 			Atributos
 	 *****************************************************************/
-	/**
-	 * El identificador del bar que sirve la bebida
-	 */
-	private long idBar;
+
+	private long id;
 	
-	/**
-	 * El identificador de la bebida que es servida en el bar
-	 */
-	private long idBebida;
+	private Date fechaEsperada;
+
+	private Date fechaEntrega;
 	
-	/**
-	 * El horario en que sirve la bebida en el bar (DIURNO, NOCTURNO, TODOS)
-	 */
-	private String horario;
+	private String evaluacionCantidad;
+	
+	private String evaluacionCalidad;
+	
+	private float calificacion;
+	
+	private char finalizado;
+	
+	private String NITProveedor;
+	
 
 	/* ****************************************************************
 	 * 			Métodos
@@ -51,11 +56,16 @@ public class Pedido implements VOPedido
 	/**
 	 * Constructor por defecto
 	 */
-	public Pedido () 
+	public Pedido ()
 	{
-		this.idBar = 0;
-		this.idBebida = 0;
-		this.horario = "";
+		this.id = 0;
+	this.fechaEsperada = new Date(0);
+	this.fechaEntrega = new Date(0);
+	this.evaluacionCantidad = "";
+	this.evaluacionCalidad = "";
+	this.calificacion = 0;
+	this.finalizado = 0;
+	this.NITProveedor = "";
 	}
 
 	/**
@@ -64,67 +74,112 @@ public class Pedido implements VOPedido
 	 * @param idBebida - El identificador de la bebida. Debe existir una bebida con dicho identificador
 	 * @param horario - El horario en el que el bar sirve la bebida (DIURNO, NOCTURNO, TODOS)
 	 */
-	public Pedido (long idBar, long idBebida, String horario) 
+	public Pedido ( long id,Date fechaEsperada,	Date fechaEntrega,String evaluacionCantidad,String evaluacionCalidad,float calificacion,char finalizado,String NITProveedor) 
 	{
-		this.idBar = idBar;
-		this.idBebida = idBebida;
-		this.horario = horario;
+		
+
+		this.id = id;
+		this.fechaEsperada = fechaEsperada;
+		this.fechaEntrega = fechaEntrega;
+		this.evaluacionCantidad = evaluacionCantidad;
+		this.evaluacionCalidad = evaluacionCalidad;
+		this.calificacion = calificacion;
+		this.finalizado = finalizado;
+		this.NITProveedor = NITProveedor;
 	}
 
-	/**
-	 * @return El idBar
-	 */
-	public long getIdBar() 
+
+	public long getId() 
 	{
-		return idBar;
+		return id;
 	}
 
-	/**
-	 * @param idBar - El nuevo identificador de bar. Debe existir un bar con dicho identificador
-	 */
-	public void setIdBar(long idBar) 
+	public void setIdBar(long id) 
 	{
-		this.idBar = idBar;
+		this.id = id;
+	}
+	
+	public Date getFechaEsperada() 
+	{
+		return fechaEsperada;
 	}
 
-	/**
-	 * @return El idBebida
-	 */
-	public long getIdBebida() 
+	public void setFechaEsperada(Date fechaEsperada) 
 	{
-		return idBebida;
+		this.fechaEsperada = fechaEsperada;
+	}
+	public Date getFechaEntrega()
+	{
+		return fechaEntrega;
 	}
 
-	/**
-	 * @param idBebida - El nuevo identificador de bebida. Debe existir una bebida con dicho identificador
-	 */
-	public void setIdBebida(long idBebida) 
+	public void setFechaEntrega(Date fechaEntrega) 
 	{
-		this.idBebida = idBebida;
+		this.fechaEntrega = fechaEntrega;
+	}
+	
+	public String getEvaluacionCantidad()
+	{
+		return evaluacionCantidad;
 	}
 
-	/**
-	 * @return El horario en que el bar sirve la bebida
-	 */
-	public String getHorario() 
+	public void setEvaluacionCantidad(String evaluacionCantidad) 
 	{
-		return horario;
+		this.evaluacionCantidad = evaluacionCantidad;
+	}
+	
+	public String getEvaluacionCalidad()
+	{
+		return evaluacionCalidad;
 	}
 
-	/**
-	 * @param horario - El nuevo horario en que el bar sirve la bebida (DIURNO, NOCTURNO, TODOS)
-	 */
-	public void setHorario(String horario) 
+	public void setEvaluacionCalidad(String evaluacionCalidad) 
 	{
-		this.horario = horario;
+		
+		
+		this.evaluacionCalidad = evaluacionCalidad;
+	}
+	
+	public float getCalificacion() 
+	{
+		return calificacion;
 	}
 
-	/** 
-	 * @return Una cadena con la información básica
-	 */
+	public void setCalificacion(float calificacion) 
+	{
+		this.calificacion = calificacion;
+	}
+	public char getFinalizado() 
+	{
+		return finalizado;
+	}
+
+	public void setFinalizado(char finalizado) 
+	{
+		this.finalizado = finalizado;
+	}
+	
+	public String getNITProveedor() 
+	{
+		return NITProveedor;
+	}
+
+	public void setNITProveedor(String NITProveedor) 
+	{
+		this.NITProveedor = NITProveedor;
+	}
+
+	
+
+	
 	@Override
 	public String toString() 
 	{
-		return "Sirven [idBar=" + idBar + ", idBebida=" + idBebida + ", horario=" + horario + "]";
+		return "Sirven [id=" + id + ", fechaEsperada=" + fechaEsperada + ", fechaEntrega=" + fechaEntrega
+				+ ", evaluacionCantidad=" + evaluacionCantidad + ", evaluacionCalidad=" + evaluacionCalidad + 
+				", calificacion=" + calificacion + 
+				", finalizado=" + finalizado + 
+				", NITProveedor=" + NITProveedor +  "]";
 	}
+
 }

@@ -349,21 +349,7 @@ public class SuperAndes
       return voBebedores;
  	}
 
-	/**
-	 * Encuentra un bebedor, su información básica y los bares y las bebidas 
-	 * con las que está directamente relacionado, según su identificador
-	 * @param idBebedor - El identificador del bebedor buscado
-	 * @return Un objeto Bebedor que corresponde con el identificador buscado y lleno con su información básica y 
-	 * 		los bares y bebidas con los que está directamente relacionado<br>
-	 * 			null, si un bebedor con dicho identificador no existe
-	 */
-	public Categoria darBebedorCompleto (long idBebedor)
-	{
-        log.info ("Dar información COMPLETA de un bebedor por id: " + idBebedor);
-        Categoria bebedor = pp.darBebedorCompleto (idBebedor);
-        log.info ("Buscando bebedor por Id: " + bebedor.toStringCompleto() != null ? bebedor : "NO EXISTE");
-        return bebedor;
-	}
+	
 
 	/**
 	 * Encuentra todos los bebedores en SuperAndes

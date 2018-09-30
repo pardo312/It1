@@ -28,29 +28,34 @@ public interface VOProducto
 	/* ****************************************************************
 	 * 			Métodos
 	 *****************************************************************/
-	/**
-	 * @return El idBebedor
-	 */
-	public long getIdBebedor();
+	
+	public String getCodigoDeBarras();
+	
+	public String getNombre();
+	
+	public String getMarca();
+	
+	public float getPrecioUnitario();
+	
+	public String getPresentacion();
+	
+	public float getPrecioPorUnidad();
+	
+	public float getCantidadEnLaPresentacion();
+	
+	public String getUnidadesDeMedida();
 
-	/**
-	 * @return El idBar
-	 */
-	public long getIdBar();
+	public String getEspecificacionesDeEmpacado();
+	
+	public float getNivelDeReorden();
+	
+	public long getIDPedido();
+	
+	public long getIDSucursal();
+	
+	public long getIDBodega();
 
-	/**
-	 * @return La fechaVisita
-	 */
-	public Timestamp getFechaVisita();
-
-	/**
-	 * @return El horario
-	 */
-	public String getHorario();
-
-	/** 
-	 * @return Una cadena con la información básica
-	 */
+	
 	@Override
 	public String toString();
 

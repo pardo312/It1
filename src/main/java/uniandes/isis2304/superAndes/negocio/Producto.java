@@ -32,25 +32,33 @@ public class Producto implements VOProducto
 	/* ****************************************************************
 	 * 			Atributos
 	 *****************************************************************/
-	/**
-	 * El identificador del bebedor que realiza la visita
-	 */
-	private long idBebedor;
+
+	private String codigoDeBarras;
 	
-	/**
-	 * El identificador del bar visitado
-	 */
-	private long idBar;
+	private String nombre;
 	
-	/**
-	 * La fecha de la visita
-	 */
-	private Timestamp fechaVisita;
+	private String marca;
 	
-	/**
-	 * El horario en que se realizó la visita (DIURNO, NOCTURNO, TODOS)
-	 */
-	private String horario;
+	private float precioUnitario;
+	
+	private String presentacion;
+	
+	private float precioPorUnidad;
+	
+	private float cantidadEnLaPresentacion;
+	
+	private String unidadesDeMedida;
+
+	private String especificacionesDeEmpacado;
+	
+	private float nivelDeReorden;
+	
+	private long IDPedido;
+	
+	private long IDSucursal;
+	
+	private long IDBodega;
+	
 
 	/* ****************************************************************
 	 * 			Métodos
@@ -60,10 +68,20 @@ public class Producto implements VOProducto
 	 */
 	public Producto() 
 	{
-		this.idBebedor = 0;
-		this.idBar = 0;
-		this.horario = "";
-		this.fechaVisita = new Timestamp (0);
+		this.codigoDeBarras = "";
+		this.nombre = "";
+		this.marca = "";
+		this.precioUnitario = 0;
+		this.presentacion = "";
+		this.precioPorUnidad = 0;
+		this.cantidadEnLaPresentacion = 0;
+		this.unidadesDeMedida = "";
+		this.especificacionesDeEmpacado ="";
+		this.nivelDeReorden = 0;
+		this.IDPedido = 0;
+		this.IDSucursal = 0;
+		this.IDBodega = 0;
+		
 	}
 
 	/**
@@ -73,85 +91,174 @@ public class Producto implements VOProducto
 	 * @param fechaVisita - La fecha en la cual se realiza la visita
 	 * @param horario - El horario en el que el bebedor vista el bar (DIURNO, NOCTURNO, TODOS)
 	 */
-	public Producto(long idBebedor, long idBar, Timestamp fechaVisita, String horario) 
+	public Producto(String codigoDeBarras, String nombre, String marca, float precioUnitario,
+			String presentacion,float precioPorUnidad,float cantidadEnLaPresentacion,String unidadesDeMedida, String especificacionesDeEmpacado, 
+			float nivelDeReorden,long IDPedido ,long IDSucursal,long IDBodega) 
 	{
-		this.idBebedor = idBebedor;
-		this.idBar = idBar;
-		this.fechaVisita = fechaVisita;
-		this.horario = horario;
+		this.codigoDeBarras = codigoDeBarras;
+		this.nombre =nombre;
+		this.marca = marca;
+		this.precioUnitario =precioUnitario;
+		this.presentacion = presentacion;
+		this.precioPorUnidad = precioPorUnidad;
+		this.cantidadEnLaPresentacion = cantidadEnLaPresentacion;
+		this.unidadesDeMedida = unidadesDeMedida;
+		this.especificacionesDeEmpacado =especificacionesDeEmpacado;
+		this.nivelDeReorden = nivelDeReorden;
+		this.IDPedido =IDPedido;
+		this.IDSucursal =IDSucursal;
+		this.IDBodega = IDBodega;
 	}
 
-	/**
-	 * @return El idBebedor
-	 */
-	public long getIdBebedor() 
+
+	public String getCodigoDeBarras() 
 	{
-		return idBebedor;
+		return codigoDeBarras;
 	}
 
-	/**
-	 * @param idBebedor - El nuevo idBebedor. Debe existir un bebedor con dicho identificador
-	 */
-	public void setIdBebedor(long idBebedor) 
+	public void setCodigoDeBarras(String codigoDeBarras) 
 	{
-		this.idBebedor = idBebedor;
+		this.codigoDeBarras = codigoDeBarras;
 	}
 
-	/**
-	 * @return El idBar
-	 */
-	public long getIdBar() 
+
+	public String getNombre() 
 	{
-		return idBar;
+		return nombre;
 	}
 
-	/**
-	 * @param idBar - El nuevo idBar. Debe exixtir un bar con dicho identificador
-	 */
-	public void setIdBar(long idBar) 
+	public void setNombre(String nombre) 
 	{
-		this.idBar = idBar;
+		this.nombre = nombre;
 	}
 
-	/**
-	 * @return La fechaVisita
-	 */
-	public Timestamp getFechaVisita() 
+
+	public String getMarca() 
 	{
-		return fechaVisita;
+		return marca;
 	}
 
-	/**
-	 * @param fechaVisita - La nueva fecha de visita al bar por el bebedor
-	 */
-	public void setFechaVisita(Timestamp fechaVisita) 
+
+	public void setMarca(String marca) 
 	{
-		this.fechaVisita = fechaVisita;
+		this.marca = marca;
 	}
 
-	/**
-	 * @return El horario
-	 */
-	public String getHorario() 
+	public float getPrecioUnitario() 
 	{
-		return horario;
+		return precioUnitario;
 	}
 
-	/**
-	 * @param horario - El nuevo horario en que se realizó la visita (DIURNO, NOCTURNO, TODOS)
-	 */
-	public void setHorario(String horario) 
+
+	public void setPrecioUnitario(float precioUnitario) 
 	{
-		this.horario = horario;
+		this.precioUnitario = precioUnitario;
+	}
+	
+	public String getPresentacion() 
+	{
+		return presentacion;
 	}
 
-	/** 
-	 * @return Una cadena con la información básica
-	 */
+
+	public void setPresentacion(String presentacion) 
+	{
+		
+		this.presentacion = presentacion;
+	}
+	
+	public float getPrecioPorUnidad() 
+	{
+		return precioPorUnidad;
+	}
+
+
+	public void setPrecioPorUnidad(float precioPorUnidad) 
+	{
+		this.precioPorUnidad = precioPorUnidad;
+	}
+	
+	public float getCantidadEnLaPresentacion() 
+	{
+		return cantidadEnLaPresentacion;
+	}
+
+	public void setCantidadEnLaPresentacion(float cantidadEnLaPresentacion) 
+	{
+		this.cantidadEnLaPresentacion = cantidadEnLaPresentacion;
+	}
+
+	public String getUnidadesDeMedida() 
+	{
+		return unidadesDeMedida;
+	}
+
+
+	public void setUnidadesDeMedida(String unidadesDeMedida) 
+	{		
+		this.unidadesDeMedida = unidadesDeMedida;
+	}
+	
+	public String getEspecificacionesDeEmpacado() 
+	{
+		return especificacionesDeEmpacado;
+	}
+
+	public void setEspecificacionesDeEmpacado(String especificacionesDeEmpacado) 
+	{
+		this.especificacionesDeEmpacado = especificacionesDeEmpacado;
+	}
+	
+	public float getNivelDeReorden() 
+	{
+		return nivelDeReorden;
+	}
+
+	public void setNivelDeReorden(float nivelDeReorden) 
+	{
+		this.nivelDeReorden = nivelDeReorden;
+	}
+	
+	public long getIDPedido() 
+	{
+		return IDPedido;
+	}
+
+	public void setIDPedido(long IDPedido) 
+	{
+		this.IDPedido = IDPedido;
+	}
+	
+	public long getIDSucursal() 
+	{
+		return IDSucursal;
+	}
+
+	public void setIDSucursal(long IDSucursal) 
+	{
+		this.IDSucursal = IDSucursal;
+	}
+	public long getIDBodega() 
+	{
+		return IDBodega;
+	}
+
+	public void setIDBodega(long IDBodega) 
+	{
+		this.IDBodega = IDBodega;
+	}
+
+
 	@Override
 	public String toString() 
 	{
-		return "Visitan [idBebedor=" + idBebedor + ", idBar=" + idBar + ", fechaVisita=" + fechaVisita + ", horario="
-				+ horario + "]";
+		return "Visitan [codigoDeBarras=" + codigoDeBarras + ", nombre=" + nombre + ", marca=" + marca + ", precioUnitario="
+				+ precioUnitario  + ", presentacion=" + presentacion + ", precioPorUnidad=" + precioPorUnidad + ", cantidadEnLaPresentacion=" + cantidadEnLaPresentacion + 
+				", unidadesDeMedida=" + unidadesDeMedida + ", especificacionesDeEmpacado=" + especificacionesDeEmpacado+
+				", nivelDeReorden=" + nivelDeReorden +", IDPedido=" + IDPedido +", IDSucursal=" + IDSucursal +", IDBodega=" + IDBodega +"]";
 	}
+
+	
+
+	
 }

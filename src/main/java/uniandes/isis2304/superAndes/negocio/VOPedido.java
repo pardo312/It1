@@ -15,6 +15,8 @@
 
 package uniandes.isis2304.superAndes.negocio;
 
+import java.sql.Date;
+
 /**
  * Interfaz para los métodos get de SIRVEN.
  * Sirve para proteger la información del negocio de posibles manipulaciones desde la interfaz 
@@ -26,24 +28,25 @@ public interface VOPedido
 	/* ****************************************************************
 	 * 			Métodos
 	 *****************************************************************/
-	/**
-	 * @return El idBar
-	 */
-	public long getIdBar();
+	
+	public long getId();
 
-	/**
-	 * @return El idBebida
-	 */
-	public long getIdBebida();
+	
+	public Date getFechaEsperada();
 
-	/**
-	 * @return El horario en que el bar sirve la bebida
-	 */
-	public String getHorario();
+	
+	public Date getFechaEntrega();
+	
+	public String getEvaluacionCantidad();
+	
+	public String getEvaluacionCalidad();
+	
+	public float getCalificacion();
+	
+	public char getFinalizado();
+	
+	public String getNITProveedor() ;
 
-	/** 
-	 * @return Una cadena con la información básica
-	 */
 	@Override
 	public String toString();
 

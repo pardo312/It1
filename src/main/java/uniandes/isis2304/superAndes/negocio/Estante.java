@@ -15,6 +15,8 @@
 
 package uniandes.isis2304.superAndes.negocio;
 
+import java.util.List;
+
 /**
  * Clase para modelar la relación GUSTAN del negocio de los Parranderos:
  * Cada objeto de esta clase representa el hecho que un bebedor gusta de una bebida y viceversa.
@@ -29,15 +31,26 @@ public class Estante implements VOEstante
 	/* ****************************************************************
 	 * 			Atributos
 	 *****************************************************************/
-	/**
-	 * El identificador del bebedor que gusta de la bebida
-	 */
-	private long idBebedor;
+	
+	
+	private long id;	
 
-	/**
-	 * El identificador de la bebida que gusta al bebedor
-	 */
-	private long idBebida;
+	private float capacidadVolumen;
+
+	private float capacidadPeso;
+	
+	private String unidadesPeso;
+	
+	private String unidadesVolumen;
+	
+	private float nivelAbastecimiento;
+	
+	private long IDBodega;
+	
+//	private List<Object []> tiposDeProductosQueGuardan;
+//	
+//	private List<Object []> productosQueGuardan;
+
 
 	/* ****************************************************************
 	 * 			Métodos
@@ -47,8 +60,13 @@ public class Estante implements VOEstante
 	 */
 	public Estante() 
 	{
-		this.idBebedor = 0;
-		this.idBebida = 0;
+		this.id = 0;
+		this.capacidadVolumen = 0;
+		this.capacidadPeso = 0;
+		this.unidadesPeso = "";
+		this.unidadesVolumen = "";
+		this.nivelAbastecimiento = 0;
+		this.IDBodega = 0;
 	}
 
 	/**
@@ -56,43 +74,101 @@ public class Estante implements VOEstante
 	 * @param idBebedor - El identificador del bebedor. Debe exixtir un bebedor con dicho identificador
 	 * @param idBebida - El identificador de la bebida. Debe existir una bebida con dicho identificador
 	 */
-	public Estante(long idBebedor, long idBebida) 
+	public Estante(long id ,float capacidadVolumen,float capacidadPeso,String unidadesPeso,String unidadesVolumen, float nivelAbastecimiento,long IDBodega) 
 	{
-		this.idBebedor = idBebedor;
-		this.idBebida = idBebida;
+		this.id = id;
+		this.capacidadVolumen =capacidadVolumen;
+		this.capacidadPeso = capacidadPeso;
+		this.unidadesPeso = unidadesPeso;
+		this.unidadesVolumen = unidadesVolumen;
+		this.nivelAbastecimiento = nivelAbastecimiento;
+		this.IDBodega = IDBodega;
 	}
 
-	/**
-	 * @return El idBebedor
-	 */
-	public long getIdBebedor() 
+
+	public long getId() 
 	{
-		return idBebedor;
+		return id;
 	}
 
-	/**
-	 * @param idBebedor - El nuevo idBebedor. Debe existir un bebedor con dicho identificador
-	 */
-	public void setIdBebedor(long idBebedor) 
+	public void setId(long id) 
 	{
-		this.idBebedor = idBebedor;
+		this.id = id;
 	}
 
-	/**
-	 * @return El idBebida
-	 */
-	public long getIdBebida() 
+	public float getCapacidadVolumen() 
 	{
-		return idBebida;
+		return capacidadVolumen;
 	}
 
-	/**
-	 * @param idBebida - El nuevo identificador de bebida. Debe existir una bebida con dicho identificador
-	 */
-	public void setIdBebida(long idBebida) 
+	public void setCapacidadVolumen(float capacidadVolumen) 
 	{
-		this.idBebida = idBebida;
+		this.capacidadVolumen = capacidadVolumen;
 	}
+	
+	
+	public float getCapacidadPeso() 
+	{
+		return capacidadPeso;
+	}
+	
+	public void setCapacidadPeso(float capacidadPeso) 
+	{
+		this.capacidadPeso = capacidadPeso;
+	}
+	
+	
+	public String getUnidadesPeso() 
+	{
+		return unidadesPeso;
+	}
+	
+	
+	public void setunidadesPeso(String unidadesPeso) 
+	{
+		this.unidadesPeso = unidadesPeso;
+	}
+	
+	
+	public String getUnidadesVolumen() 
+	{
+		return unidadesVolumen;
+	}
+	
+	public void setUnidadesVolumen(String unidadesVolumen) 
+	{
+		this.unidadesVolumen = unidadesVolumen;
+	}
+
+	public long getIDBodega() 
+	{
+		return IDBodega;
+	}
+
+	public void setIDBodega(long IDBodega) 
+	{
+		this.IDBodega = IDBodega;
+	}
+	
+//	public List<Object []> getTiposDeProductosQueGuardan() 
+//	{
+//		return tiposDeProductosQueGuardan;
+//	}
+//
+//	public void setTiposDeProductosQueGuardan (List<Object []> tiposDeProductosQueGuardan) 
+//	{
+//		this.tiposDeProductosQueGuardan = tiposDeProductosQueGuardan;
+//	}
+//	
+//	public List<Object []> getProductosQueGuardan() 
+//	{
+//		return this.productosQueGuardan;
+//	}
+//
+//	public void setProductosQueGuardan (List<Object []> productosQueGuardan) 
+//	{
+//		this.productosQueGuardan = productosQueGuardan;
+//	}
 	
 	/** 
 	 * @return Una cadena con la información básica
@@ -100,7 +176,42 @@ public class Estante implements VOEstante
 	@Override
 	public String toString() 
 	{
-		return "Gustan [idBebedor=" + idBebedor + ", idBebida=" + idBebida + "]";
+		String resp = "Estante [id=" + id + ", capacidadVolumen=" + capacidadVolumen + ", capacidadPeso=" + capacidadPeso + ", unidadesPeso=" + unidadesPeso
+				+ ", unidadesVolumen=" + unidadesVolumen + ", IDBodega=" + IDBodega+ "]";
+		
+//		resp += "\n --- Tipos De Productos Que Guardan\n";
+//		int i = 1;
+//		for (Object [] visita : tiposDeProductosQueGuardan)
+//		{
+//			TipoProducto tipoProducto = (TipoProducto) visita [0];
+//			String nombre = (String) visita [1];
+//			resp += i++ + ". " + "[" + tipoProducto.toString() + ", nombre=" + nombre + "]\n";;
+//		}
+		
+//		resp += "\n --- Tipos De Productos Que Guardan\n";
+//		int i = 1;
+//		for (Object [] visita : productosQueGuardan)
+//		{
+//			Producto tipoProducto = (Producto) visita [0];
+//			String nombre = (String) visita [1];
+//			String marca = (String) visita [2];
+//			float precioUnitario = (float) visita [3];
+//			String presentacion = (String) visita [4];
+//			float precioPorUnidad = (float) visita [5];
+//			float cantidadEnLaPresentacion = (float) visita [6];
+//			String unidadesDeMedida = (String) visita [7];
+//			String especificacionesDeEmpacado = (String) visita [8];
+//			float nivelDeReorden = (float) visita [9];
+//			long IDPedido = (long) visita [10];
+//			long IDSucursal = (long) visita [11];
+//			long IDBodega = (long) visita [12];
+//			resp += i++ + ". " + "[" + tipoProducto.toString() + ", nombre=" + nombre + "]\n";;
+//		}
+		
+
+		
+		
+		return resp;
 	}
 	
 }

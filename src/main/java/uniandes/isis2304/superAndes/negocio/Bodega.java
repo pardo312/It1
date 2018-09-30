@@ -40,7 +40,7 @@ public class Bodega implements VOBodega
 	
 	private int idSucursal;
 
-	private List<Object []> tiposDeProductosQueGuardan;
+//	private List<Object []> tiposDeProductosQueGuardan;
 
 	/* ****************************************************************
 	 * 			Métodos 
@@ -143,31 +143,31 @@ public class Bodega implements VOBodega
 		this.idSucursal = idSucursal;
 	}
 	
-	public List<Object []> getTiposDeProductosQueGuardan() 
-	{
-		return tiposDeProductosQueGuardan;
-	}
-
-	public void setTiposDeProductosQueGuardan (List<Object []> tiposDeProductosQueGuardan) 
-	{
-		this.tiposDeProductosQueGuardan = tiposDeProductosQueGuardan;
-	}
+//	public List<Object []> getTiposDeProductosQueGuardan() 
+//	{
+//		return tiposDeProductosQueGuardan;
+//	}
+//
+//	public void setTiposDeProductosQueGuardan (List<Object []> tiposDeProductosQueGuardan) 
+//	{
+//		this.tiposDeProductosQueGuardan = tiposDeProductosQueGuardan;
+//	}
 	
 	
 	@Override
 	public String toString() 
 	{
-		String resp = "Bar [id=" + id + ", capacidadVolumen=" + capacidadVolumen + ", capacidadPeso=" + capacidadPeso + ", unidadesPeso=" + unidadesPeso
+		String resp = "Bodega [id=" + id + ", capacidadVolumen=" + capacidadVolumen + ", capacidadPeso=" + capacidadPeso + ", unidadesPeso=" + unidadesPeso
 				+ ", unidadesVolumen=" + unidadesVolumen + ", idSucursal=" + idSucursal+ "]";
 		
-		resp += "\n --- Tipos De Productos Que Guardan\n";
-		int i = 1;
-		for (Object [] visita : tiposDeProductosQueGuardan)
-		{
-			TipoProducto tipoProducto = (TipoProducto) visita [0];
-			String nombre = (String) visita [1];
-			resp += i++ + ". " + "[" + tipoProducto.toString() + ", nombre=" + nombre + "]\n";;
-		}
+//		resp += "\n --- Tipos De Productos Que Guardan\n";
+//		int i = 1;
+//		for (Object [] visita : tiposDeProductosQueGuardan)
+//		{
+//			TipoProducto tipoProducto = (TipoProducto) visita [0];
+//			String nombre = (String) visita [1];
+//			resp += i++ + ". " + "[" + tipoProducto.toString() + ", nombre=" + nombre + "]\n";;
+//		}
 		return resp;
 		
 	}
