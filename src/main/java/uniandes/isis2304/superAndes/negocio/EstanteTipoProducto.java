@@ -15,7 +15,6 @@
 
 package uniandes.isis2304.superAndes.negocio;
 
-import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -23,79 +22,62 @@ import java.util.List;
  * Clase para modelar el concepto BAR del negocio de los Parranderos
  *
  */
-public class Factura implements VOFactura
+public class EstanteTipoProducto implements VOEstanteTipoProducto
 {
 	/* ****************************************************************
 	 * 			Atributos
 	 *****************************************************************/
 
 
-//
-//numeroFactura varchar(50) Primary Key ,
-//fecha DATE
-////);
+	private long IDEstante;
 	
-	private String numeroFactura;
-	
-	private Date fecha;
+	private String nombreTipo;
+
 
 	
-
-//	private List<Object []> tiposDeProductosQueGuardan;
-
 	/* ****************************************************************
 	 * 			Métodos 
 	 *****************************************************************/
  
-	public Factura() 
+	public EstanteTipoProducto() 
     {
-    	this.numeroFactura = "";
-		this.fecha = new Date(0);
-		
-
+    	this.IDEstante = 0;
+		this.nombreTipo = "";
 	}
 
 
-    public Factura(  String numeroFactura,
-	
-	 Date fecha)
+    public EstanteTipoProducto( long IDBodega, String nombreTipo)
 	 
     {
-    	this.numeroFactura = numeroFactura;
-		this.fecha = fecha;
-
+    	this.IDEstante =IDBodega;
+		this.nombreTipo = nombreTipo;
 	}
 
    
-	public String getNumeroFactura() 
+    public long getIDEstante() 
 	{
-		return numeroFactura;
+		return IDEstante;
 	}
 
-	public void setNumeroFactura(String numeroFactura) 
+	public void setIDEstante(long IDEstante) 
 	{
-		this.numeroFactura = numeroFactura;
+		this.IDEstante = IDEstante;
 	}
 	
+	public String getNombreTipo() 
+	{
+		return nombreTipo;
+	}
 
-	public Date getfecha() 
+	public void setNombreTipo(String nombreTipo) 
 	{
-		return fecha;
+		this.nombreTipo = nombreTipo;
 	}
-
-	public void setfecha(Date fecha) 
-	{
-		this.fecha = fecha;
-	}
-	
-	
-	
-	
+		
 	@Override
 	public String toString() 
 	{
-		String resp = "Factura [numeroFactura=" + numeroFactura + ", fecha=" + fecha 
-				+ "]";
+		String resp = "EstanteTipoProducto [IDEstante=" + IDEstante + ", nombreTipo=" + nombreTipo + "]";
 
 		return resp;
 		

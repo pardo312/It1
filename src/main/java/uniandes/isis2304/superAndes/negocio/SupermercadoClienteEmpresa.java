@@ -15,90 +15,67 @@
 
 package uniandes.isis2304.superAndes.negocio;
 
-import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.List;
 
-/**
- * Clase para modelar el concepto BAR del negocio de los Parranderos
- *
- */
-public class Factura implements VOFactura
+
+public class SupermercadoClienteEmpresa implements VOSupermercadoClienteEmpresa
 {
 	/* ****************************************************************
 	 * 			Atributos
 	 *****************************************************************/
+		
 
+	private long NITSupermercado;
+	
+	private String NITCliente;
 
-//
-//numeroFactura varchar(50) Primary Key ,
-//fecha DATE
-////);
-	
-	private String numeroFactura;
-	
-	private Date fecha;
 
 	
-
-//	private List<Object []> tiposDeProductosQueGuardan;
-
 	/* ****************************************************************
 	 * 			Métodos 
 	 *****************************************************************/
  
-	public Factura() 
+	public SupermercadoClienteEmpresa() 
     {
-    	this.numeroFactura = "";
-		this.fecha = new Date(0);
-		
-
+    	this.NITSupermercado = 0;
+		this.NITCliente = "";
 	}
 
 
-    public Factura(  String numeroFactura,
-	
-	 Date fecha)
+    public SupermercadoClienteEmpresa( long NITSupermercado, String NITCliente)
 	 
     {
-    	this.numeroFactura = numeroFactura;
-		this.fecha = fecha;
-
+    	this.NITSupermercado =NITSupermercado;
+		this.NITCliente = NITCliente;
 	}
 
    
-	public String getNumeroFactura() 
+    public long getNITSupermercado() 
 	{
-		return numeroFactura;
+		return NITSupermercado;
 	}
 
-	public void setNumeroFactura(String numeroFactura) 
+	public void setNITSupermercado(long NITSupermercado) 
 	{
-		this.numeroFactura = numeroFactura;
+		this.NITSupermercado = NITSupermercado;
 	}
 	
+	public String getNITCliente() 
+	{
+		return NITCliente;
+	}
 
-	public Date getfecha() 
+	public void setNITCliente(String NITCliente) 
 	{
-		return fecha;
+		this.NITCliente = NITCliente;
 	}
-
-	public void setfecha(Date fecha) 
-	{
-		this.fecha = fecha;
-	}
-	
-	
-	
-	
+		
 	@Override
 	public String toString() 
 	{
-		String resp = "Factura [numeroFactura=" + numeroFactura + ", fecha=" + fecha 
-				+ "]";
-
-		return resp;
-		
+		String resp = "SupermercadoClienteEmpresa [NITSupermercado=" + NITSupermercado + ", NITCliente=" + NITCliente + "]";
+		return resp;	
 	}
 	
 

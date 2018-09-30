@@ -15,90 +15,67 @@
 
 package uniandes.isis2304.superAndes.negocio;
 
-import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.List;
 
-/**
- * Clase para modelar el concepto BAR del negocio de los Parranderos
- *
- */
-public class Factura implements VOFactura
+
+public class SucursalProveedor implements VOSucursalProveedor
 {
 	/* ****************************************************************
 	 * 			Atributos
 	 *****************************************************************/
-
-
-//
-//numeroFactura varchar(50) Primary Key ,
-//fecha DATE
-////);
-	
-	private String numeroFactura;
-	
-	private Date fecha;
-
 	
 
-//	private List<Object []> tiposDeProductosQueGuardan;
+	private long IDSucursal;
+	
+	private String NITProveedor;
 
+
+	
 	/* ****************************************************************
 	 * 			Métodos 
 	 *****************************************************************/
  
-	public Factura() 
+	public SucursalProveedor() 
     {
-    	this.numeroFactura = "";
-		this.fecha = new Date(0);
-		
-
+    	this.IDSucursal = 0;
+		this.NITProveedor = "";
 	}
 
 
-    public Factura(  String numeroFactura,
-	
-	 Date fecha)
+    public SucursalProveedor( long IDSucursal, String NITProveedor)
 	 
     {
-    	this.numeroFactura = numeroFactura;
-		this.fecha = fecha;
-
+    	this.IDSucursal =IDSucursal;
+		this.NITProveedor = NITProveedor;
 	}
 
    
-	public String getNumeroFactura() 
+    public long getIDSucursal() 
 	{
-		return numeroFactura;
+		return IDSucursal;
 	}
 
-	public void setNumeroFactura(String numeroFactura) 
+	public void setIDSucursal(long IDSucursal) 
 	{
-		this.numeroFactura = numeroFactura;
+		this.IDSucursal = IDSucursal;
 	}
 	
+	public String getNITProveedor() 
+	{
+		return NITProveedor;
+	}
 
-	public Date getfecha() 
+	public void setNITProveedor(String NITProveedor) 
 	{
-		return fecha;
+		this.NITProveedor = NITProveedor;
 	}
-
-	public void setfecha(Date fecha) 
-	{
-		this.fecha = fecha;
-	}
-	
-	
-	
-	
+		
 	@Override
 	public String toString() 
 	{
-		String resp = "Factura [numeroFactura=" + numeroFactura + ", fecha=" + fecha 
-				+ "]";
-
-		return resp;
-		
+		String resp = "SucursalProducto [IDSucursal=" + IDSucursal + ", NITProveedor=" + NITProveedor + "]";
+		return resp;	
 	}
 	
 

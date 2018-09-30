@@ -15,7 +15,6 @@
 
 package uniandes.isis2304.superAndes.negocio;
 
-import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -23,51 +22,39 @@ import java.util.List;
  * Clase para modelar el concepto BAR del negocio de los Parranderos
  *
  */
-public class Factura implements VOFactura
+public class FacturaProducto implements VOFacturaProducto
 {
 	/* ****************************************************************
 	 * 			Atributos
 	 *****************************************************************/
 
 
-//
-//numeroFactura varchar(50) Primary Key ,
-//fecha DATE
-////);
-	
 	private String numeroFactura;
 	
-	private Date fecha;
+	private String codigoDeBarrasProducto;
+
 
 	
-
-//	private List<Object []> tiposDeProductosQueGuardan;
-
 	/* ****************************************************************
 	 * 			Métodos 
 	 *****************************************************************/
  
-	public Factura() 
+	public FacturaProducto() 
     {
     	this.numeroFactura = "";
-		this.fecha = new Date(0);
-		
-
+		this.codigoDeBarrasProducto = "";
 	}
 
 
-    public Factura(  String numeroFactura,
-	
-	 Date fecha)
+    public FacturaProducto( String numeroFactura, String codigoDeBarrasProducto)
 	 
     {
-    	this.numeroFactura = numeroFactura;
-		this.fecha = fecha;
-
+    	this.numeroFactura =numeroFactura;
+		this.codigoDeBarrasProducto = codigoDeBarrasProducto;
 	}
 
    
-	public String getNumeroFactura() 
+    public String getNumeroFactura() 
 	{
 		return numeroFactura;
 	}
@@ -77,25 +64,20 @@ public class Factura implements VOFactura
 		this.numeroFactura = numeroFactura;
 	}
 	
-
-	public Date getfecha() 
+	public String getCodigoDeBarrasProducto() 
 	{
-		return fecha;
+		return codigoDeBarrasProducto;
 	}
 
-	public void setfecha(Date fecha) 
+	public void setCodigoDeBarrasProducto(String codigoDeBarrasProducto) 
 	{
-		this.fecha = fecha;
+		this.codigoDeBarrasProducto = codigoDeBarrasProducto;
 	}
-	
-	
-	
-	
+		
 	@Override
 	public String toString() 
 	{
-		String resp = "Factura [numeroFactura=" + numeroFactura + ", fecha=" + fecha 
-				+ "]";
+		String resp = "FacturaProducto [numeroFactura=" + numeroFactura + ", codigoDeBarrasProducto=" + codigoDeBarrasProducto + "]";
 
 		return resp;
 		

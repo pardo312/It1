@@ -15,7 +15,6 @@
 
 package uniandes.isis2304.superAndes.negocio;
 
-import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -23,82 +22,63 @@ import java.util.List;
  * Clase para modelar el concepto BAR del negocio de los Parranderos
  *
  */
-public class Factura implements VOFactura
+public class BodegaProducto implements VOBodegaProducto
 {
 	/* ****************************************************************
 	 * 			Atributos
 	 *****************************************************************/
 
 
-//
-//numeroFactura varchar(50) Primary Key ,
-//fecha DATE
-////);
+	private long IDBodega;
 	
-	private String numeroFactura;
-	
-	private Date fecha;
+	private String codigoDeBarrasProducto;
+
 
 	
-
-//	private List<Object []> tiposDeProductosQueGuardan;
-
 	/* ****************************************************************
 	 * 			Métodos 
 	 *****************************************************************/
  
-	public Factura() 
+	public BodegaProducto() 
     {
-    	this.numeroFactura = "";
-		this.fecha = new Date(0);
-		
-
+    	this.IDBodega = 0;
+		this.codigoDeBarrasProducto = "";
 	}
 
 
-    public Factura(  String numeroFactura,
-	
-	 Date fecha)
+    public BodegaProducto( long IDBodega, String codigoDeBarrasProducto)
 	 
     {
-    	this.numeroFactura = numeroFactura;
-		this.fecha = fecha;
-
+    	this.IDBodega =IDBodega;
+		this.codigoDeBarrasProducto = codigoDeBarrasProducto;
 	}
 
    
-	public String getNumeroFactura() 
+    public long getIDBodega() 
 	{
-		return numeroFactura;
+		return IDBodega;
 	}
 
-	public void setNumeroFactura(String numeroFactura) 
+	public void setIDBodega(long IDBodega) 
 	{
-		this.numeroFactura = numeroFactura;
+		this.IDBodega = IDBodega;
 	}
 	
+	public String getCodigoDeBarrasProducto() 
+	{
+		return codigoDeBarrasProducto;
+	}
 
-	public Date getfecha() 
+	public void setCodigoDeBarrasProducto(String codigoDeBarrasProducto) 
 	{
-		return fecha;
+		this.codigoDeBarrasProducto = codigoDeBarrasProducto;
 	}
-
-	public void setfecha(Date fecha) 
-	{
-		this.fecha = fecha;
-	}
-	
-	
-	
-	
+		
 	@Override
 	public String toString() 
 	{
-		String resp = "Factura [numeroFactura=" + numeroFactura + ", fecha=" + fecha 
-				+ "]";
-
-		return resp;
-		
+		String resp = "BodegaProducto [IDBodega=" + IDBodega + ", codigoDeBarrasProducto=" + codigoDeBarrasProducto + "]";
+		return resp;	
 	}
 	
 

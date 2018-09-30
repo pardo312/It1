@@ -15,7 +15,6 @@
 
 package uniandes.isis2304.superAndes.negocio;
 
-import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -23,51 +22,39 @@ import java.util.List;
  * Clase para modelar el concepto BAR del negocio de los Parranderos
  *
  */
-public class Factura implements VOFactura
+public class ClienteFactura implements VOClienteFactura
 {
 	/* ****************************************************************
 	 * 			Atributos
 	 *****************************************************************/
 
 
-//
-//numeroFactura varchar(50) Primary Key ,
-//fecha DATE
-////);
-	
 	private String numeroFactura;
 	
-	private Date fecha;
+	private long IDCliente;
+
 
 	
-
-//	private List<Object []> tiposDeProductosQueGuardan;
-
 	/* ****************************************************************
 	 * 			Métodos 
 	 *****************************************************************/
  
-	public Factura() 
+	public ClienteFactura() 
     {
     	this.numeroFactura = "";
-		this.fecha = new Date(0);
-		
-
+		this.IDCliente = 0;
 	}
 
 
-    public Factura(  String numeroFactura,
-	
-	 Date fecha)
+    public ClienteFactura( String numeroFactura, long IDCliente)
 	 
     {
-    	this.numeroFactura = numeroFactura;
-		this.fecha = fecha;
-
+    	this.numeroFactura =numeroFactura;
+		this.IDCliente = IDCliente;
 	}
 
    
-	public String getNumeroFactura() 
+    public String getNumeroFactura() 
 	{
 		return numeroFactura;
 	}
@@ -77,25 +64,20 @@ public class Factura implements VOFactura
 		this.numeroFactura = numeroFactura;
 	}
 	
-
-	public Date getfecha() 
+	public long getIDCliente() 
 	{
-		return fecha;
+		return IDCliente;
 	}
 
-	public void setfecha(Date fecha) 
+	public void setIDCliente(long IDCliente) 
 	{
-		this.fecha = fecha;
+		this.IDCliente = IDCliente;
 	}
-	
-	
-	
-	
+		
 	@Override
 	public String toString() 
 	{
-		String resp = "Factura [numeroFactura=" + numeroFactura + ", fecha=" + fecha 
-				+ "]";
+		String resp = "ClienteFactura [IDCliente=" + IDCliente + ", numeroFactura=" + numeroFactura + "]";
 
 		return resp;
 		
