@@ -118,7 +118,7 @@ public class Promocion implements VOPromocion
 	@Override
 	public String toString() 
 	{
-		String resp = "Bodega [id=" + id + ", descripcion=" + descripcion + ", precioPromocion=" + precioPromocion + ", IDEstante=" + IDEstante
+		String resp = "Promocion [id=" + id + ", descripcion=" + descripcion + ", precioPromocion=" + precioPromocion + ", IDEstante=" + IDEstante
 				+ "]";
 
 		return resp;

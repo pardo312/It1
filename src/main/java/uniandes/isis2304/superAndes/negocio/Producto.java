@@ -252,7 +252,7 @@ public class Producto implements VOProducto
 	@Override
 	public String toString() 
 	{
-		return "Visitan [codigoDeBarras=" + codigoDeBarras + ", nombre=" + nombre + ", marca=" + marca + ", precioUnitario="
+		return "Producto [codigoDeBarras=" + codigoDeBarras + ", nombre=" + nombre + ", marca=" + marca + ", precioUnitario="
 				+ precioUnitario  + ", presentacion=" + presentacion + ", precioPorUnidad=" + precioPorUnidad + ", cantidadEnLaPresentacion=" + cantidadEnLaPresentacion + 
 				", unidadesDeMedida=" + unidadesDeMedida + ", especificacionesDeEmpacado=" + especificacionesDeEmpacado+
 				", nivelDeReorden=" + nivelDeReorden +", IDPedido=" + IDPedido +", IDSucursal=" + IDSucursal +", IDBodega=" + IDBodega +"]";

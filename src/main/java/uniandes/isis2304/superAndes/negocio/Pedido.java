@@ -175,7 +175,7 @@ public class Pedido implements VOPedido
 	@Override
 	public String toString() 
 	{
-		return "Sirven [id=" + id + ", fechaEsperada=" + fechaEsperada + ", fechaEntrega=" + fechaEntrega
+		return "Pedido [id=" + id + ", fechaEsperada=" + fechaEsperada + ", fechaEntrega=" + fechaEntrega
 				+ ", evaluacionCantidad=" + evaluacionCantidad + ", evaluacionCalidad=" + evaluacionCalidad + 
 				", calificacion=" + calificacion + 
 				", finalizado=" + finalizado + 

@@ -102,7 +102,7 @@ public class Cliente implements VOCliente
 	@Override
 	public String toString() 
 	{
-		String resp = "Categoria [id=" + id + ", puntosDeCompra=" + puntosDeCompra + ", NITCliente=" + NITCliente + ", cedulaCliente=" + cedulaCliente
+		String resp = "Cliente [id=" + id + ", puntosDeCompra=" + puntosDeCompra + ", NITCliente=" + NITCliente + ", cedulaCliente=" + cedulaCliente
 				 + "]";
 		
 		return resp;

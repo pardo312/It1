@@ -15,91 +15,71 @@
 
 package uniandes.isis2304.superAndes.negocio;
 
-import java.sql.Date;
-import java.sql.Timestamp;
-import java.util.List;
 
-/**
- * Clase para modelar el concepto BAR del negocio de los Parranderos
- *
- */
-public class Factura implements VOFactura
+public class ClienteEmpresa implements VOClienteEmpresa
 {
 	/* ****************************************************************
 	 * 			Atributos
 	 *****************************************************************/
 
-
-//
-//numeroFactura varchar(50) Primary Key ,
-//fecha DATE
-////);
 	
-	private String numeroFactura;
+	private int NIT;
 	
-	private Date fecha;
-
+	private String direccion;
 	
 
-//	private List<Object []> tiposDeProductosQueGuardan;
 
 	/* ****************************************************************
-	 * 			Métodos 
+	 * 			Métodos
 	 *****************************************************************/
- 
-	public Factura() 
-    {
-    	this.numeroFactura = "";
-		this.fecha = new Date(0);
+	/**
+	 * Constructor por defecto
+	 */
+	public ClienteEmpresa() 
+	{
+		this.NIT = 0;
+		this.direccion = "";
 		
-
 	}
 
-
-    public Factura(  String numeroFactura,
+	public ClienteEmpresa(  int NIT,
 	
-	 Date fecha)
-	 
-    {
-    	this.numeroFactura = numeroFactura;
-		this.fecha = fecha;
-
-	}
-
-   
-	public String getNumeroFactura() 
+	 String direccion
+	) 
 	{
-		return numeroFactura;
+		this.NIT = NIT;
+		this.direccion = direccion;
 	}
 
-	public void setId(String numeroFactura) 
+	public int getNIT() 
 	{
-		this.numeroFactura = numeroFactura;
+		return NIT;
+	}
+
+	public void setNIT(int NIT) 
+	{
+		this.NIT = NIT;
 	}
 	
 
-	public Date getfecha() 
+	public String getDireccion() 
 	{
-		return fecha;
+		return direccion;
 	}
 
-	public void setfecha(Date fecha) 
+	public void setDireccion(String direccion) 
 	{
-		this.fecha = fecha;
-	}
-	
-	
-	
-	
+		this.direccion = direccion;
+	}	
+
 	@Override
 	public String toString() 
 	{
-		String resp = "Factura [numeroFactura=" + numeroFactura + ", fecha=" + fecha 
-				+ "]";
-
+		String resp = "ClienteEmpresa [ NIT=" + NIT + ", direccion=" + direccion 
+				 + "]";
+		
 		return resp;
 		
 	}
-	
 
 }

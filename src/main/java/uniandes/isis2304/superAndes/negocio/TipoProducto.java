@@ -114,7 +114,7 @@ public class TipoProducto implements VOTipoProducto
 	@Override
 	public String toString() 
 	{
-		return "TipoBebida [id=" + id + ", nombre=" + nombre +", metodoAlmacenamiento=" + metodoAlmacenamiento + ", IDCategoria=" + IDCategoria +  "]";
+		return "TipoProducto [id=" + id + ", nombre=" + nombre +", metodoAlmacenamiento=" + metodoAlmacenamiento + ", IDCategoria=" + IDCategoria +  "]";
 	}
 
 	/**

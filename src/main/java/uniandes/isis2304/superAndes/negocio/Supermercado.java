@@ -123,7 +123,7 @@ public class Supermercado implements VOSupermercado
 	@Override
 	public String toString() 
 	{
-		String resp = "Sucursal  [NITSupermercado=" + NITSupermercado + ", nombre=" + nombre + ", correoElectronico=" + correoElectronico + 
+		String resp = "Supermercado  [NITSupermercado=" + NITSupermercado + ", nombre=" + nombre + ", correoElectronico=" + correoElectronico + 
 				", direccion=" + direccion + 
 				 "]";
 
