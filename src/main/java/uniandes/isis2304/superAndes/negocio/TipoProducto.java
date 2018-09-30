@@ -25,15 +25,15 @@ public class TipoProducto implements VOTipoProducto
 	/* ****************************************************************
 	 * 			Atributos
 	 *****************************************************************/
-	/**
-	 * El identificador del tipo de bebida
-	 */
+	
 	private long id;
 
-	/**
-	 * El nombre del tipo de bebida
-	 */
 	private String nombre;
+	
+	private String  metodoAlmacenamiento;
+	
+	private long IDCategoria;
+	
 
 	/* ****************************************************************
 	 * 			Métodos
@@ -44,7 +44,9 @@ public class TipoProducto implements VOTipoProducto
 	public TipoProducto() 
 	{
 		this.id = 0;
-		this.nombre = "Default";
+		this.nombre = "";
+		this.metodoAlmacenamiento = "";
+		this.IDCategoria = 0;
 	}
 
 	/**
@@ -65,14 +67,12 @@ public class TipoProducto implements VOTipoProducto
 	{
 		return id;
 	}
-
-	/**
-	 * @param id - El nuevo id del tipo de bebida
-	 */
 	public void setId(long id) 
 	{
 		this.id = id;
 	}
+	
+	
 
 	/**
 	 * @return El nombre del tipo de bebida
@@ -90,14 +90,31 @@ public class TipoProducto implements VOTipoProducto
 		this.nombre = nombre;
 	}
 
+	public String getMetodoAlmacenamiento() 
+	{
+		return metodoAlmacenamiento;
+	}
 
-	/**
-	 * @return Una cadena de caracteres con la información del tipo de bebida
-	 */
+	public void setMetodoAlmacenamiento(String metodoAlmacenamiento) 
+	{
+		this.metodoAlmacenamiento = metodoAlmacenamiento;
+	}
+	
+	public long getIDCategoria() 
+	{
+		return IDCategoria;
+	}
+	public void setIDCategoria(long IDCategoria) 
+	{
+		this.IDCategoria = IDCategoria;
+	}
+	
+
+	
 	@Override
 	public String toString() 
 	{
-		return "TipoBebida [id=" + id + ", nombre=" + nombre + "]";
+		return "TipoBebida [id=" + id + ", nombre=" + nombre +", metodoAlmacenamiento=" + metodoAlmacenamiento + ", IDCategoria=" + IDCategoria +  "]";
 	}
 
 	/**

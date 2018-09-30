@@ -15,42 +15,31 @@
 
 package uniandes.isis2304.superAndes.negocio;
 
+import java.sql.Date;
+
 /**
- * Interfaz para los métodos get de TIPOBEBIDA.
+ * Interfaz para los métodos get de BAR.
  * Sirve para proteger la información del negocio de posibles manipulaciones desde la interfaz 
  * 
  * @author Germán Bravo
  */
-public interface VOTipoProducto 
+public interface VOFactura 
 {
 	/* ****************************************************************
-	 * 			Métodos
+	 * 			Métodos 
 	 *****************************************************************/
-	/**
-	 * @return El id del tipo de bebida
-	 */
-	public long getId();
-
-	/**
-	 * @return El nombre del tipo de bebida
-	 */
-	public String getNombre();
+     
+	public String getNumeroFactura()  ;
 	
-	public String getMetodoAlmacenamiento() ;
 	
-	public long getIDCategoria();
+	public Date getfecha() ;
+	
+	
 
-	/**
-	 * @return Una cadena de caracteres con la información del tipo de bebida
-	 */
+	
+	
 	@Override
-	public String toString(); 
+	
+	public String toString();
 
-	/**
-	 * Define la igualdad dos Tipos de bebida
-	 * @param tb - El tipo de bebida a comparar
-	 * @return true si tienen el mismo identificador y el mismo nombre
-	 */
-	@Override
-	public boolean equals (Object tb); 
 }
