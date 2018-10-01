@@ -36,7 +36,9 @@ public class Promocion implements VOPromocion
 	private String precioPromocion;
 	
 	private long idSucursal;
-//	private List<Object []> tiposDeProductosQueGuardan;
+	
+	
+//	private List<Object []> ProductosQueOfrecen;
 
 	/* ****************************************************************
 	 * 			Métodos 

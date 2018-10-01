@@ -27,7 +27,7 @@ public interface VOProveedor
 	 * 			Métodos 
 	 *****************************************************************/
      
-	public String getNIT()  ;
+	public long getNIT()  ;
 	
 	
 	public String getNombre() ;

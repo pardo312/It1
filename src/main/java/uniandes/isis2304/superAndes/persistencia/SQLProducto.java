@@ -28,7 +28,7 @@ import uniandes.isis2304.superAndes.negocio.Pedido;
  * 
  * @author Germán Bravo
  */
-class SQLSirven 
+class SQLProducto 
 {
 	/* ****************************************************************
 	 * 			Constantes
@@ -54,7 +54,7 @@ class SQLSirven
 	 * Constructor
 	 * @param pp - El Manejador de persistencia de la aplicación
 	 */
-	public SQLSirven (PersistenciaSuperAndes pp)
+	public SQLProducto (PersistenciaSuperAndes pp)
 	{
 		this.pp = pp;
 	}
@@ -67,54 +67,41 @@ class SQLSirven
 	 * @param horario - El horario en que el bar sirve la bebida (DIURNO, NOCTURNO, TDOOS)
 	 * @return EL número de tuplas insertadas
 	 */
-	public long adicionarSirven (PersistenceManager pm, long idBar, long idBebida, String horario) 
+	public long registrarProducto (PersistenceManager pm,
+			String codigoDeBarras,
+			
+			 String nombre,
+			
+			 String marca,
+			
+			 float precioUnitario,
+			
+			 String presentacion,
+			
+			 float precioPorUnidad,
+			
+			 float cantidadEnLaPresentacion,
+			
+			 String unidadesDeMedida,
+
+			 String especificacionesDeEmpacado,
+			
+			 float nivelDeReorden,
+			
+			 long IDPedido,
+			
+			 long IDSucursal,
+			
+			 long IDContenedor) 
 	{
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaSirven () + "(idbar, idbebida, horario) values (?, ?, ?)");
-        q.setParameters(idBar, idBebida, horario);
+        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaProducto () +
+        		"(codigoDeBarras,nombre,marca,precioUnitario,presentacion,precioPorUnidad,cantidadEnLaPresentacion,unidadesDeMedida,especificacionesDeEmpacado,nivelDeReorden,IDPedido, IDSucursal, IDContenedor) values (?,?,?,?,?,?,?,?,?,?,?,?,?)");
+        q.setParameters(codigoDeBarras,nombre,
+        		marca,precioUnitario,presentacion,precioPorUnidad,cantidadEnLaPresentacion,
+        		unidadesDeMedida,especificacionesDeEmpacado,nivelDeReorden,
+        		 IDPedido, IDSucursal, IDContenedor);
         return (long)q.executeUnique();            
 	}
 
-	/**
-	 * Crea y ejecuta la sentencia SQL para eliminar UN SIRVEN de la base de datos de Parranderos, por sus identificador
-	 * @param pm - El manejador de persistencia
-	 * @param idBar - El identificador del bar
-	 * @param idBebida - El identificador de la bebida
-	 * @return EL número de tuplas eliminadas
-	 */
-	public long eliminarSirven (PersistenceManager pm, long idBar, long idBebida) 
-	{
-        Query q = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaSirven () + " WHERE idbar = ? AND idbebida = ?");
-        q.setParameters(idBar, idBebida);
-        return (long) q.executeUnique();            
-	}
-
-	/**
-	 * Crea y ejecuta la sentencia SQL para encontrar la información de los SIRVEN de la 
-	 * base de datos de Parranderos
-	 * @param pm - El manejador de persistencia
-	 * @return Una lista de objetos SIRVEN
-	 */
-	public List<Pedido> darSirven (PersistenceManager pm)
-	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaSirven ());
-		q.setResultClass(Pedido.class);
-		return (List<Pedido>) q.execute();
-	}
- 
-	/**
-	 * Crea y ejecuta la sentencia SQL para encontrar el identificador y el número de bebidas que sirven los bares de la 
-	 * base de datos de Parranderos
-	 * @param pm - El manejador de persistencia
-	 * @return Una lista de parejas de objetos, el primer elemento de cada pareja representa el identificador de un bar,
-	 * 	el segundo elemento representa el número de bebidas que sirve (Una bebida que se sirve en dos horarios cuenta dos veces)
-	 */
-	public List<Object []> darBaresYCantidadBebidasSirven (PersistenceManager pm)
-	{
-        String sql = "SELECT idBar, count (*) as numBebidas";
-        sql += " FROM " + pp.darTablaSirven ();
-       	sql	+= " GROUP BY idBar";
-		Query q = pm.newQuery(SQL, sql);
-		return q.executeList();
-	}
 
 }

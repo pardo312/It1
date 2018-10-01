@@ -15,20 +15,21 @@
 
 package uniandes.isis2304.superAndes.persistencia;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
-import uniandes.isis2304.superAndes.negocio.Estante;
+import uniandes.isis2304.superAndes.negocio.Categoria;
 
 /**
- * Clase que encapsula los métodos que hacen acceso a la base de datos para el concepto GUSTAN de Parranderos
+ * Clase que encapsula los métodos que hacen acceso a la base de datos para el concepto BEBEDOR de Parranderos
  * Nótese que es una clase que es sólo conocida en el paquete de persistencia
  * 
  * @author Germán Bravo
  */
-class SQLGustan 
+class SQLCliente 
 {
 	/* ****************************************************************
 	 * 			Constantes
@@ -54,51 +55,33 @@ class SQLGustan
 	 * Constructor
 	 * @param pp - El Manejador de persistencia de la aplicación
 	 */
-	public SQLGustan (PersistenciaSuperAndes pp)
+	public SQLCliente (PersistenciaSuperAndes pp)
 	{
 		this.pp = pp;
 	}
 	
 	/**
-	 * Crea y ejecuta la sentencia SQL para adicionar un GUSTAN a la base de datos de Parranderos
+	 * Crea y ejecuta la sentencia SQL para adicionar un BEBEDOR a la base de datos de Parranderos
 	 * @param pm - El manejador de persistencia
 	 * @param idBebedor - El identificador del bebedor
-	 * @param idBebida - El identificador de la bebida
+	 * @param nombre - El nombre del bebedor
+	 * @param ciudad - La ciudad del bebedor
+	 * @param presupuesto - El presupuesto del bebedor (ALTO, MEDIO, BAJO)
 	 * @return EL número de tuplas insertadas
 	 */
-	public long adicionarGustan(PersistenceManager pm, long idBebedor, long idBebida) 
+	public long registrarCliente (PersistenceManager pm,long id,
+			
+			 int puntosDeCompra,
+			
+			 long cedulaCliente,
+			
+			 String NITCliente) 
 	{
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaGustan () + "(idbebedor, idbebida) values (?, ?)");
-        q.setParameters(idBebedor, idBebida);
+        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaCliente () + "(id,puntosDeCompra,cedulaCliente,NITCliente) values (?, ?, ?, ?)");
+        q.setParameters( id, puntosDeCompra, cedulaCliente,  NITCliente);
         return (long) q.executeUnique();
 	}
 
-	/**
-	 * Crea y ejecuta la sentencia SQL para eliminar UN GUSTAN de la base de datos de Parranderos, por sus identificador
-	 * @param pm - El manejador de persistencia
-	 * @param idBebedor - El identificador del bebedor
-	 * @param idBebida - El identificador de la bebida
-	 * @return EL número de tuplas eliminadas
-	 */
-	public long eliminarGustan (PersistenceManager pm, long idBebedor, long idBebida)
-	{
-        Query q = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaGustan () + " WHERE idbebedor = ? AND idbebida = ?");
-        q.setParameters(idBebedor, idBebida);
-        return (long) q.executeUnique();
-	}
-
-	/**
-	 * Crea y ejecuta la sentencia SQL para encontrar la información de los GUSTAN de la 
-	 * base de datos de Parranderos
-	 * @param pm - El manejador de persistencia
-	 * @return Una lista de objetos GUSTAN
-	 */
-	public List<Estante> darGustan (PersistenceManager pm)
-	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaGustan ());
-		q.setResultClass(Estante.class);
-		List<Estante> resp = (List<Estante>) q.execute();
-		return resp;
-	}
+	
 
 }

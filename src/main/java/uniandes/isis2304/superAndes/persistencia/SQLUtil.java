@@ -19,7 +19,7 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
 /**
- * Clase que encapsula los métodos que hacen acceso a la base de datos para el concepto BAR de SuperAndes
+ * Clase que encapsula los métodos que hacen acceso a la base de datos para el concepto  de SuperAndes
  * Nótese que es una clase que es sólo conocida en el paquete de persistencia
  * 
  * @author Germán Bravo
@@ -72,28 +72,28 @@ class SQLUtil
 	/**
 	 * Crea y ejecuta las sentencias SQL para cada tabla de la base de datos - EL ORDEN ES IMPORTANTE 
 	 * @param pm - El manejador de persistencia
-	 * @return Un arreglo con 7 números que indican el número de tuplas borradas en las tablas GUSTAN, SIRVEN, VISITAN, BEBIDA,
-	 * TIPOBEBIDA, BEBEDOR y BAR, respectivamente
+	 * @return Un arreglo con 7 números que indican el número de tuplas borradas en las tablas Proveedor, Sucursal, Promociones, Producto,
+	 * Cliente, Categoria y , respectivamente
 	 */
 	public long [] limpiarSuperAndes (PersistenceManager pm)
 	{
-        Query qGustan = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaGustan ());          
-        Query qSirven = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaSirven ());
-        Query qVisitan = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaVisitan ());
-        Query qBebida = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaBebida ());
-        Query qTipoBebida = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaTipoProducto ());
-        Query qBebedor = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaBebedor ());
-        Query qBar = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaBar ());
+        Query qProveedor = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaProveedor ());          
+        Query qSucursal = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaSucursal ());
+        Query qPromociones = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaPromociones ());
+        Query qProducto = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaProducto ());
+        Query qCliente = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaCliente ());
+        Query qCategoria = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaCategoria ());
+        
 
-        long gustanEliminados = (long) qGustan.executeUnique ();
-        long sirvenEliminados = (long) qSirven.executeUnique ();
-        long visitanEliminadas = (long) qVisitan.executeUnique ();
-        long bebidasEliminadas = (long) qBebida.executeUnique ();
-        long tiposBebidaEliminados = (long) qTipoBebida.executeUnique ();
-        long bebedoresEliminados = (long) qBebedor.executeUnique ();
-        long baresEliminados = (long) qBar.executeUnique ();
-        return new long[] {gustanEliminados, sirvenEliminados, visitanEliminadas, bebidasEliminadas, 
-        		tiposBebidaEliminados, bebedoresEliminados, baresEliminados};
+        long ProveedorEliminados = (long) qProveedor.executeUnique ();
+        long SucursalEliminados = (long) qSucursal.executeUnique ();
+        long PromocionesEliminadas = (long) qPromociones.executeUnique ();
+        long ProductosEliminadas = (long) qProducto.executeUnique ();
+        long tiposProductoEliminados = (long) qCliente.executeUnique ();
+        long CategoriaesEliminados = (long) qCategoria.executeUnique ();
+       
+        return new long[] {ProveedorEliminados, SucursalEliminados, PromocionesEliminadas, ProductosEliminadas, 
+        		tiposProductoEliminados, CategoriaesEliminados};
 	}
 
 }

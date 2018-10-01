@@ -28,7 +28,7 @@ public class Proveedor implements VOProveedor
 	 * 			Atributos
 	 *****************************************************************/
 
-	private String NIT;
+	private long NIT;
 	
 	private String nombre;
 
@@ -40,28 +40,28 @@ public class Proveedor implements VOProveedor
  
 	public Proveedor() 
     {
-    	this.NIT = "";
+    	this.NIT = 0;
 		this.nombre = "";
 
 
 	}
 
 
-    public Proveedor( String NIT, String nombre)
+    public Proveedor( long NIT, String nombre)
 	 
     {
-    	this.NIT = "";
-		this.nombre = "";
+    	this.NIT =NIT;
+		this.nombre = nombre;
 
 	}
 
    
-	public String getNIT() 
+	public long getNIT() 
 	{
 		return NIT;
 	}
 
-	public void setNIT(String NIT) 
+	public void setNIT(long NIT) 
 	{
 		this.NIT = NIT;
 	}

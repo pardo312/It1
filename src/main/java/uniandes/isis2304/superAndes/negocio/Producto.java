@@ -60,6 +60,8 @@ public class Producto implements VOProducto
 	private long IDContenedor;
 	
 
+	
+
 	/* ****************************************************************
 	 * 			Métodos
 	 *****************************************************************/

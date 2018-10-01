@@ -33,6 +33,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 
 import uniandes.isis2304.superAndes.negocio.SuperAndes;
+import uniandes.isis2304.superAndes.negocio.VOProveedor;
 import uniandes.isis2304.superAndes.negocio.VOTipoProducto;
 
 
@@ -227,20 +228,20 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
      * Adiciona un tipo de producto con la información dada por el usuario
      * Se crea una nueva tupla de tipoProducto en la base de datos, si un tipo de producto con ese nombre no existía
      */
-    public void adicionarTipoProducto( )
+    public void adicionarTipoBebida( )
     {
     	try 
     	{
-    		String nombreTipo = JOptionPane.showInputDialog (this, "Nombre del tipo de producto?", "Adicionar tipo de producto", JOptionPane.QUESTION_MESSAGE);
-    		if (nombreTipo != null)
+    		String nombre = JOptionPane.showInputDialog (this, "Nombre del proveedor?", "Registrar Proveedor", JOptionPane.QUESTION_MESSAGE);
+    		if (nombre != null)
     		{
-        		VOTipoProducto tb = superAndes.adicionarTipoProducto (nombreTipo);
+        		VOProveedor tb = superAndes.registrarProveedor(nombre) ;
         		if (tb == null)
         		{
-        			throw new Exception ("No se pudo crear un tipo de producto con nombre: " + nombreTipo);
+        			throw new Exception ("No se pudo crear un proveedor con nombre: " + nombre);
         		}
-        		String resultado = "En adicionarTipoProducto\n\n";
-        		resultado += "Tipo de producto adicionado exitosamente: " + tb;
+        		String resultado = "En adicionarPorveedor\n\n";
+        		resultado += "proveedor adicionado exitosamente: " + tb;
     			resultado += "\n Operación terminada";
     			panelDatos.actualizarInterfaz(resultado);
     		}
@@ -257,96 +258,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 		}
     }
 
-    /**
-     * Consulta en la base de datos los tipos de producto existentes y los muestra en el panel de datos de la aplicación
-     */
-    public void listarTipoProducto( )
-    {
-    	try 
-    	{
-			List <VOTipoProducto> lista = superAndes.darVOTiposProducto();
-
-			String resultado = "En listarTipoProducto";
-			resultado +=  "\n" + listarTiposProducto (lista);
-			panelDatos.actualizarInterfaz(resultado);
-			resultado += "\n Operación terminada";
-		} 
-    	catch (Exception e) 
-    	{
-//			e.printStackTrace();
-			String resultado = generarMensajeError(e);
-			panelDatos.actualizarInterfaz(resultado);
-		}
-    }
-
-    /**
-     * Borra de la base de datos el tipo de producto con el identificador dado po el usuario
-     * Cuando dicho tipo de producto no existe, se indica que se borraron 0 registros de la base de datos
-     */
-    public void eliminarTipoProductoPorId( )
-    {
-    	try 
-    	{
-    		String idTipoStr = JOptionPane.showInputDialog (this, "Id del tipo de producto?", "Borrar tipo de producto por Id", JOptionPane.QUESTION_MESSAGE);
-    		if (idTipoStr != null)
-    		{
-    			long idTipo = Long.valueOf (idTipoStr);
-    			long tbEliminados = superAndes.eliminarTipoProductoPorId (idTipo);
-
-    			String resultado = "En eliminar TipoProducto\n\n";
-    			resultado += tbEliminados + " Tipos de producto eliminados\n";
-    			resultado += "\n Operación terminada";
-    			panelDatos.actualizarInterfaz(resultado);
-    		}
-    		else
-    		{
-    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
-    		}
-		} 
-    	catch (Exception e) 
-    	{
-//			e.printStackTrace();
-			String resultado = generarMensajeError(e);
-			panelDatos.actualizarInterfaz(resultado);
-		}
-    }
-
-    /**
-     * Busca el tipo de producto con el nombre indicado por el usuario y lo muestra en el panel de datos
-     */
-    public void buscarTipoProductoPorNombre( )
-    {
-    	try 
-    	{
-    		String nombreTb = JOptionPane.showInputDialog (this, "Nombre del tipo de producto?", "Buscar tipo de producto por nombre", JOptionPane.QUESTION_MESSAGE);
-    		if (nombreTb != null)
-    		{
-    			VOTipoProducto tipoProducto = superAndes.darTipoProductoPorNombre (nombreTb);
-    			String resultado = "En buscar Tipo Producto por nombre\n\n";
-    			if (tipoProducto != null)
-    			{
-        			resultado += "El tipo de producto es: " + tipoProducto;
-    			}
-    			else
-    			{
-        			resultado += "Un tipo de producto con nombre: " + nombreTb + " NO EXISTE\n";    				
-    			}
-    			resultado += "\n Operación terminada";
-    			panelDatos.actualizarInterfaz(resultado);
-    		}
-    		else
-    		{
-    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
-    		}
-		} 
-    	catch (Exception e) 
-    	{
-//			e.printStackTrace();
-			String resultado = generarMensajeError(e);
-			panelDatos.actualizarInterfaz(resultado);
-		}
-    }
-
+    
 
 	/* ****************************************************************
 	 * 			Métodos administrativos
