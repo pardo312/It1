@@ -15,69 +15,71 @@
 
 package uniandes.isis2304.superAndes.negocio;
 
-import java.sql.Timestamp;
-import java.util.List;
+
+
 
 /**
  * Clase para modelar el concepto BAR del negocio de los Parranderos
  *
  */
-public class ClienteFactura implements VOClienteFactura
+public class Descuentodelxporciento implements VODescuentodelxporciento
 {
 	/* ****************************************************************
 	 * 			Atributos
 	 *****************************************************************/
 
-
-	private String numeroFactura;
 	
-	private long IDCliente;
-
-
+	private long id;
+	
+	private float porcentaje;
+	
 	
 	/* ****************************************************************
 	 * 			Métodos 
 	 *****************************************************************/
  
-	public ClienteFactura() 
+	public Descuentodelxporciento() 
     {
-    	this.numeroFactura = "";
-		this.IDCliente = 0;
+    	this.id = 0;
+		this.porcentaje = 0;
+	
 	}
 
 
-    public ClienteFactura( String numeroFactura, long IDCliente)
+    public Descuentodelxporciento( long id, int porcentaje)
 	 
     {
-    	this.numeroFactura =numeroFactura;
-		this.IDCliente = IDCliente;
+    	this.id = id;
+    	this.porcentaje = porcentaje;
 	}
 
    
-    public String getNumeroFactura() 
+	public long getId() 
 	{
-		return numeroFactura;
+		return id;
 	}
 
-	public void setNumeroFactura(String numeroFactura) 
+	public void setId(long id) 
 	{
-		this.numeroFactura = numeroFactura;
+		this.id = id;
 	}
 	
-	public long getIDCliente() 
+
+	public float getPorcentaje() 
 	{
-		return IDCliente;
+		return porcentaje;
 	}
 
-	public void setIDCliente(long IDCliente) 
+	public void setPorcentaje(float porcentaje) 
 	{
-		this.IDCliente = IDCliente;
+		this.porcentaje = porcentaje;
 	}
-		
+	
 	@Override
 	public String toString() 
 	{
-		String resp = "ClienteFactura [IDCliente=" + IDCliente + ", numeroFactura=" + numeroFactura + "]";
+		String resp = "Descuentodelxporciento [id=" + id + ", porcentaje=" + porcentaje + 
+				"]";
 
 		return resp;
 		

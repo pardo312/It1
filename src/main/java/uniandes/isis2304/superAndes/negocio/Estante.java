@@ -35,17 +35,10 @@ public class Estante implements VOEstante
 	
 	private long id;	
 
-	private float capacidadVolumen;
-
-	private float capacidadPeso;
-	
-	private String unidadesPeso;
-	
-	private String unidadesVolumen;
 	
 	private float nivelAbastecimiento;
 	
-	private long IDBodega;
+	private long idSucursal;
 	
 //	private List<Object []> tiposDeProductosQueGuardan;
 //	
@@ -61,12 +54,9 @@ public class Estante implements VOEstante
 	public Estante() 
 	{
 		this.id = 0;
-		this.capacidadVolumen = 0;
-		this.capacidadPeso = 0;
-		this.unidadesPeso = "";
-		this.unidadesVolumen = "";
+		
 		this.nivelAbastecimiento = 0;
-		this.IDBodega = 0;
+		this.idSucursal = 0;
 	}
 
 	/**
@@ -74,15 +64,12 @@ public class Estante implements VOEstante
 	 * @param idBebedor - El identificador del bebedor. Debe exixtir un bebedor con dicho identificador
 	 * @param idBebida - El identificador de la bebida. Debe existir una bebida con dicho identificador
 	 */
-	public Estante(long id ,float capacidadVolumen,float capacidadPeso,String unidadesPeso,String unidadesVolumen, float nivelAbastecimiento,long IDBodega) 
+	public Estante(long id ,float nivelAbastecimiento,long idSucursal) 
 	{
 		this.id = id;
-		this.capacidadVolumen =capacidadVolumen;
-		this.capacidadPeso = capacidadPeso;
-		this.unidadesPeso = unidadesPeso;
-		this.unidadesVolumen = unidadesVolumen;
+		
 		this.nivelAbastecimiento = nivelAbastecimiento;
-		this.IDBodega = IDBodega;
+		this.idSucursal = idSucursal;
 	}
 
 
@@ -96,58 +83,25 @@ public class Estante implements VOEstante
 		this.id = id;
 	}
 
-	public float getCapacidadVolumen() 
+	public float getNivelAbastecimiento() 
 	{
-		return capacidadVolumen;
+		return nivelAbastecimiento;
 	}
 
-	public void setCapacidadVolumen(float capacidadVolumen) 
+	public void setNnivelAbastecimiento(float nivelAbastecimiento) 
 	{
-		this.capacidadVolumen = capacidadVolumen;
-	}
-	
-	
-	public float getCapacidadPeso() 
-	{
-		return capacidadPeso;
-	}
-	
-	public void setCapacidadPeso(float capacidadPeso) 
-	{
-		this.capacidadPeso = capacidadPeso;
-	}
-	
-	
-	public String getUnidadesPeso() 
-	{
-		return unidadesPeso;
-	}
-	
-	
-	public void setunidadesPeso(String unidadesPeso) 
-	{
-		this.unidadesPeso = unidadesPeso;
-	}
-	
-	
-	public String getUnidadesVolumen() 
-	{
-		return unidadesVolumen;
-	}
-	
-	public void setUnidadesVolumen(String unidadesVolumen) 
-	{
-		this.unidadesVolumen = unidadesVolumen;
+		this.nivelAbastecimiento = nivelAbastecimiento;
 	}
 
-	public long getIDBodega() 
+
+	public long getIdSucursal() 
 	{
-		return IDBodega;
+		return idSucursal;
 	}
 
-	public void setIDBodega(long IDBodega) 
+	public void setIdSucursal(long idSucursal) 
 	{
-		this.IDBodega = IDBodega;
+		this.idSucursal = idSucursal;
 	}
 	
 //	public List<Object []> getTiposDeProductosQueGuardan() 
@@ -176,8 +130,7 @@ public class Estante implements VOEstante
 	@Override
 	public String toString() 
 	{
-		String resp = "Estante [id=" + id + ", capacidadVolumen=" + capacidadVolumen + ", capacidadPeso=" + capacidadPeso + ", unidadesPeso=" + unidadesPeso
-				+ ", unidadesVolumen=" + unidadesVolumen + ", IDBodega=" + IDBodega+ "]";
+		String resp = "Estante [id=" + id + ", idSucursal=" + idSucursal+ "]";
 		
 //		resp += "\n --- Tipos De Productos Que Guardan\n";
 //		int i = 1;
@@ -213,5 +166,7 @@ public class Estante implements VOEstante
 		
 		return resp;
 	}
+
+	
 	
 }

@@ -33,6 +33,7 @@ public class TipoProducto implements VOTipoProducto
 	private String  metodoAlmacenamiento;
 	
 	private long IDCategoria;
+	private long IDContenedor;
 	
 
 	/* ****************************************************************
@@ -47,6 +48,7 @@ public class TipoProducto implements VOTipoProducto
 		this.nombre = "";
 		this.metodoAlmacenamiento = "";
 		this.IDCategoria = 0;
+		this.IDCategoria = 0;
 	}
 
 	/**
@@ -54,10 +56,13 @@ public class TipoProducto implements VOTipoProducto
 	 * @param id - El identificador del tipo de bebida
 	 * @param nombre - El nombre del tipo de bebida
 	 */
-	public TipoProducto(long id, String nombre) 
+	public TipoProducto(long id, String nombre,long IDCategoria,
+	 long IDContenedor) 
 	{
 		this.id = id;
 		this.nombre = nombre;
+		this.IDCategoria =IDCategoria;
+		this.IDContenedor = IDContenedor;
 	}
 
 	/**
@@ -109,18 +114,27 @@ public class TipoProducto implements VOTipoProducto
 		this.IDCategoria = IDCategoria;
 	}
 	
+	public long getIDContenedor() 
+	{
+		return IDContenedor;
+	}
+	public void setIDContenedor(long IDContenedor) 
+	{
+		this.IDContenedor = IDContenedor;
+	}
+	
 
 	
 	@Override
 	public String toString() 
 	{
-		return "TipoProducto [id=" + id + ", nombre=" + nombre +", metodoAlmacenamiento=" + metodoAlmacenamiento + ", IDCategoria=" + IDCategoria +  "]";
+		return "TipoProducto [id=" + id + ", nombre=" + nombre +
+				", metodoAlmacenamiento=" + metodoAlmacenamiento + 
+				", IDCategoria=" + IDCategoria +
+				", IDContenedor=" + IDContenedor +"]";
 	}
 
-	/**
-	 * @param tipo - El TipoBebida a comparar
-	 * @return True si tienen el mismo nombre
-	 */
+
 	public boolean equals(Object tipo) 
 	{
 		TipoProducto tb = (TipoProducto) tipo;

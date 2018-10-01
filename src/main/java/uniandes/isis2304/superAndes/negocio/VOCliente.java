@@ -41,7 +41,7 @@ public interface VOCliente
 	/**
 	 * @return El gradoAlcohol de la bebida
 	 */
-	public int getCedulaCliente();
+	public long getCedulaCliente();
 
 	/**
 	 * @return Una cadena con la información básica de la bebida

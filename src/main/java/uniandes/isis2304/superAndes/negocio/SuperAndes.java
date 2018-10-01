@@ -79,12 +79,7 @@ public class SuperAndes
 	/* ****************************************************************
 	 * 			Métodos para manejar los TIPOS DE BEBIDA
 	 *****************************************************************/
-	/**
-	 * Adiciona de manera persistente un tipo de bebida 
-	 * Adiciona entradas al log de la aplicación
-	 * @param nombre - El nombre del tipo de bebida
-	 * @return El objeto TipoProducto adicionado. null si ocurre alguna Excepción
-	 */
+
 	public TipoProducto adicionarTipoProducto (String nombre)
 	{
         log.info ("Adicionando Tipo de bebida: " + nombre);
@@ -94,11 +89,7 @@ public class SuperAndes
 	}
 	
 	/**
-	 * Elimina un tipo de bebida por su nombre
-	 * Adiciona entradas al log de la aplicación
-	 * @param nombre - El nombre del tipo de bebida a eliminar
-	 * @return El número de tuplas eliminadas
-	 */
+
 	public long eliminarTipoProductoPorNombre (String nombre)
 	{
 		log.info ("Eliminando Tipo de bebida por nombre: " + nombre);
@@ -107,12 +98,7 @@ public class SuperAndes
         return resp;
 	}
 	
-	/**
-	 * Elimina un tipo de bebida por su identificador
-	 * Adiciona entradas al log de la aplicación
-	 * @param idTipoProducto - El id del tipo de bebida a eliminar
-	 * @return El número de tuplas eliminadas
-	 */
+
 	public long eliminarTipoProductoPorId (long idTipoProducto)
 	{
 		log.info ("Eliminando Tipo de bebida por id: " + idTipoProducto);
@@ -259,14 +245,7 @@ public class SuperAndes
 	 * 			Métodos para manejar los BEBEDORES
 	 *****************************************************************/
 
-	/**
-	 * Adiciona de manera persistente un bebedor 
-	 * Adiciona entradas al log de la aplicación
-	 * @param nombre - El nombre del bebedor
-	 * @param presupuesto - El presupuesto del bebedor (ALTO, MEDIO, BAJO)
-	 * @param ciudad - La ciudad del bebedor
-	 * @return El objeto BEBEDOR adicionado. null si ocurre alguna Excepción
-	 */
+	
 	public Categoria adicionarBebedor (String nombre, String presupuesto, String ciudad)
 	{
         log.info ("Adicionando bebedor: " + nombre);
@@ -518,10 +497,10 @@ public class SuperAndes
 	 * Adiciona entradas al log de la aplicación
 	 * @return Una lista de objetos Bar con todos las bares que conoce la aplicación, llenos con su información básica
 	 */
-	public List<VOBodega> darVOBares ()
+	public List<VOContenedor> darVOBares ()
 	{
 		log.info ("Generando los VO de Bares");
-		List<VOBodega> voBares = new LinkedList<VOBodega> ();
+		List<VOContenedor> voBares = new LinkedList<VOContenedor> ();
 		for (Bodega bar: pp.darBares ())
 		{
 			voBares.add (bar);

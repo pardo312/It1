@@ -38,6 +38,10 @@ public class Factura implements VOFactura
 	private String numeroFactura;
 	
 	private Date fecha;
+	
+	private long idCliente;
+	
+	
 
 	
 
@@ -51,18 +55,19 @@ public class Factura implements VOFactura
     {
     	this.numeroFactura = "";
 		this.fecha = new Date(0);
-		
+		this.idCliente = 0;
 
 	}
 
 
     public Factura(  String numeroFactura,
 	
-	 Date fecha)
+	 Date fecha, long idCliente)
 	 
     {
     	this.numeroFactura = numeroFactura;
 		this.fecha = fecha;
+		this.idCliente = idCliente;
 
 	}
 
@@ -86,6 +91,16 @@ public class Factura implements VOFactura
 	public void setfecha(Date fecha) 
 	{
 		this.fecha = fecha;
+	}
+	
+	public long getIDCliente() 
+	{
+		return idCliente;
+	}
+
+	public void setIDCliente(long idCliente) 
+	{
+		this.idCliente = idCliente;
 	}
 	
 	

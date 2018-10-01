@@ -39,6 +39,8 @@ public interface VOTipoProducto
 	public String getMetodoAlmacenamiento() ;
 	
 	public long getIDCategoria();
+	
+	public long getIDContenedor();
 
 	/**
 	 * @return Una cadena de caracteres con la información del tipo de bebida

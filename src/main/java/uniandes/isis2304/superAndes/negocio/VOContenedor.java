@@ -21,17 +21,28 @@ package uniandes.isis2304.superAndes.negocio;
  * 
  * @author Germán Bravo
  */
-public interface VOBodegaTipoProducto 
+public interface VOContenedor 
 {
 	/* ****************************************************************
 	 * 			Métodos 
 	 *****************************************************************/
      
-	 public long getIDBodega();
+	public long getId();
 	
 	
-	 public String getNombreTipo();
+	public float getCapacidadVolumen();
 	
+	
+	public float getCapacidadPeso();
+	
+	
+	public String getUnidadesPeso();
+	
+	
+	public String getUnidadesVolumen();
+
+	
+	public long getIdBodegaSucursal();
 	
 	@Override
 	

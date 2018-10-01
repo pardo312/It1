@@ -26,7 +26,7 @@ public class Cliente implements VOCliente
 	
 	private int puntosDeCompra;
 	
-	private int cedulaCliente;
+	private long cedulaCliente;
 	
 	private String NITCliente;
 
@@ -86,13 +86,13 @@ public class Cliente implements VOCliente
 	}
 	
 	
-	public int getCedulaCliente() 
+	public long getCedulaCliente() 
 	{
 		return cedulaCliente;
 	}
 	
 	
-	public void setCedulaCliente(int cedulaCliente) 
+	public void setCedulaCliente(long cedulaCliente) 
 	{
 		this.cedulaCliente = cedulaCliente;
 	}

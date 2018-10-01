@@ -34,7 +34,7 @@ public interface VOFactura
 	
 	public Date getfecha() ;
 	
-	
+	public long getIDCliente();
 
 	
 	

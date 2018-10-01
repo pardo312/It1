@@ -49,7 +49,7 @@ import com.google.gson.stream.JsonReader;
 
 import uniandes.isis2304.superAndes.interfazApp.PanelDatos;
 import uniandes.isis2304.superAndes.negocio.SuperAndes;
-import uniandes.isis2304.superAndes.negocio.VOBodega;
+import uniandes.isis2304.superAndes.negocio.VOContenedor;
 import uniandes.isis2304.superAndes.negocio.VOCategoria;
 import uniandes.isis2304.superAndes.negocio.VOCliente;
 import uniandes.isis2304.superAndes.negocio.VOEstante;
@@ -456,12 +456,12 @@ public class InterfazSuperAndesDemo extends JFrame implements ActionListener
 			VOCliente bebida1 = superAndes.adicionarBebida("120", tipoProducto.getId (), 10);
 			VOCliente bebida2 = superAndes.adicionarBebida("Gato Negro", tipoProducto.getId (), 11);
 			VOCliente bebida3 = superAndes.adicionarBebida("Don Pedro", tipoProducto.getId (), 12);
-			VOBodega bar1 = superAndes.adicionarBar ("Los Amigos", "Bogotá", "Bajo", 2);
+			VOContenedor bar1 = superAndes.adicionarBar ("Los Amigos", "Bogotá", "Bajo", 2);
 			superAndes.adicionarSirven (bar1.getId (), bebida1.getId (), "diurno");
 			
 			List <VOTipoProducto> listaTiposProducto = superAndes.darVOTiposProducto();
 			List <VOCliente> listaBebidas1 = superAndes.darVOBebidas();
-			List <VOBodega> bares = superAndes.darVOBares ();
+			List <VOContenedor> bares = superAndes.darVOBares ();
 			List <VOPedido> sirven = superAndes.darVOSirven ();
 			long noServidasEliminadas = superAndes.eliminarBebidasNoServidas();
 			List <VOCliente> listaBebidas2 = superAndes.darVOBebidas();
@@ -522,9 +522,9 @@ public class InterfazSuperAndesDemo extends JFrame implements ActionListener
 		{
     		// Ejecución de la demo y recolección de los resultados
 			// ATENCIÓN: En una aplicación real, los datos JAMÁS están en el código
-			VOBodega bar1 = superAndes.adicionarBar ("Los Amigos", "Bogotá", "Bajo", 2);
+			VOContenedor bar1 = superAndes.adicionarBar ("Los Amigos", "Bogotá", "Bajo", 2);
 			
-			List <VOBodega> lista = superAndes.darVOBares ();
+			List <VOContenedor> lista = superAndes.darVOBares ();
 			
 			long baresEliminados = superAndes.eliminarBarPorNombre("Los Amigos");
 			
@@ -577,10 +577,10 @@ public class InterfazSuperAndesDemo extends JFrame implements ActionListener
 			VOCliente bebida3 = superAndes.adicionarBebida ("122", tipoProducto.getId (), 10);
 			VOCliente bebida4 = superAndes.adicionarBebida ("123", tipoProducto.getId (), 10);
 			VOCliente bebida5 = superAndes.adicionarBebida ("124", tipoProducto.getId (), 10);
-			VOBodega bar1 = superAndes.adicionarBar ("Los Amigos1", "Bogotá", "Bajo", 2);
-			VOBodega bar2 = superAndes.adicionarBar ("Los Amigos2", "Bogotá", "Bajo", 3);
-			VOBodega bar3 = superAndes.adicionarBar ("Los Amigos3", "Bogotá", "Bajo", 4);
-			VOBodega bar4 = superAndes.adicionarBar ("Los Amigos4", "Medellín", "Bajo", 5);
+			VOContenedor bar1 = superAndes.adicionarBar ("Los Amigos1", "Bogotá", "Bajo", 2);
+			VOContenedor bar2 = superAndes.adicionarBar ("Los Amigos2", "Bogotá", "Bajo", 3);
+			VOContenedor bar3 = superAndes.adicionarBar ("Los Amigos3", "Bogotá", "Bajo", 4);
+			VOContenedor bar4 = superAndes.adicionarBar ("Los Amigos4", "Medellín", "Bajo", 5);
 			superAndes.adicionarSirven (bar1.getId (), bebida1.getId (), "diurno");
 			superAndes.adicionarSirven (bar1.getId (), bebida2.getId (), "diurno");
 			superAndes.adicionarSirven (bar2.getId (), bebida1.getId (), "diurno");
@@ -594,7 +594,7 @@ public class InterfazSuperAndesDemo extends JFrame implements ActionListener
 			
 			List <VOTipoProducto> listaTiposProducto = superAndes.darVOTiposProducto ();
 			List <VOCliente> listaBebidas = superAndes.darVOBebidas ();
-			List <VOBodega> listaBares = superAndes.darVOBares ();
+			List <VOContenedor> listaBares = superAndes.darVOBares ();
 			List <VOPedido> listaSirven = superAndes.darVOSirven ();
 
 			List <long []> listaByB = superAndes.darBaresYCantidadBebidasSirven();
@@ -665,14 +665,14 @@ public class InterfazSuperAndesDemo extends JFrame implements ActionListener
 		{
     		// Ejecución de la demo y recolección de los resultados
 			// ATENCIÓN: En una aplicación real, los datos JAMÁS están en el código
-			VOBodega bar1 = superAndes.adicionarBar ("Los Amigos1", "Bogotá", "Bajo", 2);
-			VOBodega bar2 = superAndes.adicionarBar ("Los Amigos2", "Bogotá", "Bajo", 3);
-			VOBodega bar3 = superAndes.adicionarBar ("Los Amigos3", "Bogotá", "Bajo", 4);
-			VOBodega bar4 = superAndes.adicionarBar ("Los Amigos4", "Medellín", "Bajo", 5);
-			List <VOBodega> listaBares = superAndes.darVOBares ();
+			VOContenedor bar1 = superAndes.adicionarBar ("Los Amigos1", "Bogotá", "Bajo", 2);
+			VOContenedor bar2 = superAndes.adicionarBar ("Los Amigos2", "Bogotá", "Bajo", 3);
+			VOContenedor bar3 = superAndes.adicionarBar ("Los Amigos3", "Bogotá", "Bajo", 4);
+			VOContenedor bar4 = superAndes.adicionarBar ("Los Amigos4", "Medellín", "Bajo", 5);
+			List <VOContenedor> listaBares = superAndes.darVOBares ();
 			
 			long baresModificados = superAndes.aumentarSedesBaresCiudad("Bogotá");
-			List <VOBodega> listaBares2 = superAndes.darVOBares ();
+			List <VOContenedor> listaBares2 = superAndes.darVOBares ();
 
 			long baresEliminados = superAndes.eliminarBarPorId (bar1.getId ());
 			baresEliminados += superAndes.eliminarBarPorId (bar2.getId ());
@@ -788,7 +788,7 @@ public class InterfazSuperAndesDemo extends JFrame implements ActionListener
 				errorTipoProducto = true;
 			}
 			VOCliente bebida1 = superAndes.adicionarBebida ("120", tipoProducto.getId (), 10);
-			VOBodega bar1 = superAndes.adicionarBar ("Los Amigos", "Bogotá", "Bajo", 2);
+			VOContenedor bar1 = superAndes.adicionarBar ("Los Amigos", "Bogotá", "Bajo", 2);
 			VOCategoria bdor1 = superAndes.adicionarBebedor ("Pepito", "Bogotá", "Alto");
 			
 			superAndes.adicionarVisitan (bdor1.getId (), bar1.getId (), new Timestamp (System.currentTimeMillis()), "diurno");
@@ -798,7 +798,7 @@ public class InterfazSuperAndesDemo extends JFrame implements ActionListener
 
 			List <VOTipoProducto> listaTipos = superAndes.darVOTiposProducto();
 			List <VOCliente> listaBebidas = superAndes.darVOBebidas();
-			List <VOBodega> listaBares = superAndes.darVOBares ();
+			List <VOContenedor> listaBares = superAndes.darVOBares ();
 			List <VOCategoria> bebedores = superAndes.darVOBebedores();
 			List <VOEstante> listaGustan = superAndes.darVOGustan();
 			List <VOProducto> listaVisitan = superAndes.darVOVisitan();
@@ -868,7 +868,7 @@ public class InterfazSuperAndesDemo extends JFrame implements ActionListener
     		// Ejecución de la demo y recolección de los resultados.
 			// ATENCIÓN: En una aplicación real, los datos JAMÁS están en el código
 			VOCategoria bdor1 = superAndes.adicionarBebedor ("Pepito", "Bogotá", "Alto");
-			VOBodega bar1 = superAndes.adicionarBar ("Los Amigos", "Bogotá", "Bajo", 2);
+			VOContenedor bar1 = superAndes.adicionarBar ("Los Amigos", "Bogotá", "Bajo", 2);
 			boolean errorTipoProducto = false;
 			VOTipoProducto tipoProducto = superAndes.adicionarTipoProducto ("Vino tinto");
 			if (tipoProducto == null)
@@ -885,7 +885,7 @@ public class InterfazSuperAndesDemo extends JFrame implements ActionListener
 
 			List <VOTipoProducto> listaTipos = superAndes.darVOTiposProducto();
 			List <VOCliente> listaBebidas = superAndes.darVOBebidas();
-			List <VOBodega> listaBares = superAndes.darVOBares ();
+			List <VOContenedor> listaBares = superAndes.darVOBares ();
 			List <VOCategoria> bebedores = superAndes.darVOBebedores();
 			List <VOEstante> listaGustan = superAndes.darVOGustan();
 			List <VOProducto> listaVisitan = superAndes.darVOVisitan();
@@ -963,7 +963,7 @@ public class InterfazSuperAndesDemo extends JFrame implements ActionListener
     		// Ejecución de la demo y recolección de los resultados.
 			// ATENCIÓN: En una aplicación real, los datos JAMÁS están en el código
 			VOCategoria bdor1 = superAndes.adicionarBebedor ("Pepito", "Bogotá", "Alto");
-			VOBodega bar1 = superAndes.adicionarBar ("Los Amigos", "Bogotá", "Bajo", 2);
+			VOContenedor bar1 = superAndes.adicionarBar ("Los Amigos", "Bogotá", "Bajo", 2);
 			boolean errorTipoProducto = false;
 			VOTipoProducto tipoProducto = superAndes.adicionarTipoProducto ("Vino tinto");
 			if (tipoProducto == null)
@@ -980,7 +980,7 @@ public class InterfazSuperAndesDemo extends JFrame implements ActionListener
 
 			List <VOTipoProducto> listaTipos = superAndes.darVOTiposProducto();
 			List <VOCliente> listaBebidas = superAndes.darVOBebidas();
-			List <VOBodega> listaBares = superAndes.darVOBares ();
+			List <VOContenedor> listaBares = superAndes.darVOBares ();
 			List <VOCategoria> bebedores = superAndes.darVOBebedores();
 			List <VOEstante> listaGustan = superAndes.darVOGustan();
 			List <VOProducto> listaVisitan = superAndes.darVOVisitan();
@@ -1093,10 +1093,10 @@ public class InterfazSuperAndesDemo extends JFrame implements ActionListener
 		{
     		// Ejecución de la demo y recolección de los resultados
 			// ATENCIÓN: En una aplicación real, los datos JAMÁS están en el código
-			VOBodega bar1 = superAndes.adicionarBar ("Los Amigos1", "Bogotá", "Bajo", 2);
-			VOBodega bar2 = superAndes.adicionarBar ("Los Amigos2", "Bogotá", "Bajo", 3);
-			VOBodega bar3 = superAndes.adicionarBar ("Los Amigos3", "Bogotá", "Bajo", 4);
-			VOBodega bar4 = superAndes.adicionarBar ("Los Amigos4", "Medellín", "Bajo", 5);
+			VOContenedor bar1 = superAndes.adicionarBar ("Los Amigos1", "Bogotá", "Bajo", 2);
+			VOContenedor bar2 = superAndes.adicionarBar ("Los Amigos2", "Bogotá", "Bajo", 3);
+			VOContenedor bar3 = superAndes.adicionarBar ("Los Amigos3", "Bogotá", "Bajo", 4);
+			VOContenedor bar4 = superAndes.adicionarBar ("Los Amigos4", "Medellín", "Bajo", 5);
 			VOCategoria bdor1 = superAndes.adicionarBebedor ("Pepito", "Bogotá", "Alto");
 			VOCategoria bdor2 = superAndes.adicionarBebedor ("Juanito", "Bogotá", "Alto");
 			VOCategoria bdor3 = superAndes.adicionarBebedor ("Carlitos", "Medellín", "Alto");
@@ -1109,7 +1109,7 @@ public class InterfazSuperAndesDemo extends JFrame implements ActionListener
 			superAndes.adicionarVisitan (bdor2.getId (), bar3.getId (), new Timestamp (System.currentTimeMillis()), "diurno");
 			superAndes.adicionarVisitan (bdor2.getId (), bar4.getId (), new Timestamp (System.currentTimeMillis()), "diurno");
 
-			List<VOBodega> bares = superAndes.darVOBares();
+			List<VOContenedor> bares = superAndes.darVOBares();
 			List<VOCategoria> bebedores = superAndes.darVOBebedores();
 			List<VOProducto> visitan = superAndes.darVOVisitan ();
 			List<Object []> bebedoresYNumVisitas = superAndes.darBebedoresYNumVisitasRealizadas ();
@@ -1164,10 +1164,10 @@ public class InterfazSuperAndesDemo extends JFrame implements ActionListener
 		{
     		// Ejecución de la demo y recolección de los resultados
 			// ATENCIÓN: En una aplicación real, los datos JAMÁS están en el código
-			VOBodega bar1 = superAndes.adicionarBar ("Los Amigos1", "Bogotá", "Bajo", 2);
-			VOBodega bar2 = superAndes.adicionarBar ("Los Amigos2", "Bogotá", "Bajo", 3);
-			VOBodega bar3 = superAndes.adicionarBar ("Los Amigos3", "Bogotá", "Bajo", 4);
-			VOBodega bar4 = superAndes.adicionarBar ("Los Amigos4", "Medellín", "Bajo", 5);
+			VOContenedor bar1 = superAndes.adicionarBar ("Los Amigos1", "Bogotá", "Bajo", 2);
+			VOContenedor bar2 = superAndes.adicionarBar ("Los Amigos2", "Bogotá", "Bajo", 3);
+			VOContenedor bar3 = superAndes.adicionarBar ("Los Amigos3", "Bogotá", "Bajo", 4);
+			VOContenedor bar4 = superAndes.adicionarBar ("Los Amigos4", "Medellín", "Bajo", 5);
 			VOCategoria bdor1 = superAndes.adicionarBebedor ("Pepito", "Bogotá", "Alto");
 			VOCategoria bdor2 = superAndes.adicionarBebedor ("Juanito", "Medellín", "Alto");
 			VOCategoria bdor3 = superAndes.adicionarBebedor ("Pedrito", "Medellín", "Alto");
@@ -1177,7 +1177,7 @@ public class InterfazSuperAndesDemo extends JFrame implements ActionListener
 			superAndes.adicionarVisitan (bdor2.getId (), bar3.getId (), new Timestamp (System.currentTimeMillis()), "diurno");
 			superAndes.adicionarVisitan (bdor1.getId (), bar4.getId (), new Timestamp (System.currentTimeMillis()), "diurno");
 
-			List<VOBodega> bares = superAndes.darVOBares();
+			List<VOContenedor> bares = superAndes.darVOBares();
 			List<VOCategoria> bebedores = superAndes.darVOBebedores();
 			List<VOProducto> visitan = superAndes.darVOVisitan ();
 			long bebedoresBogota = superAndes.darCantidadBebedoresCiudadVisitanBares ("Bogotá");
@@ -1313,12 +1313,12 @@ public class InterfazSuperAndesDemo extends JFrame implements ActionListener
 				errorTipoProducto = true;
 			}
 			VOCliente bebida1 = superAndes.adicionarBebida ("120", tipoProducto.getId (), 10);
-			VOBodega bar1 = superAndes.adicionarBar ("Los Amigos1", "Bogotá", "Bajo", 2);
+			VOContenedor bar1 = superAndes.adicionarBar ("Los Amigos1", "Bogotá", "Bajo", 2);
 			superAndes.adicionarSirven (bar1.getId (), bebida1.getId (), "diurno");
 
 			List <VOTipoProducto> listaTiposProducto = superAndes.darVOTiposProducto ();
 			List <VOCliente> listaBebidas = superAndes.darVOBebidas ();
-			List <VOBodega> listaBares = superAndes.darVOBares ();
+			List <VOContenedor> listaBares = superAndes.darVOBares ();
 			List <VOPedido> listaSirven = superAndes.darVOSirven();
 			
 			long sirvenEliminados = superAndes.eliminarSirven (bar1.getId (), bebida1.getId ());
@@ -1375,11 +1375,11 @@ public class InterfazSuperAndesDemo extends JFrame implements ActionListener
 		{
     		// Ejecución de la demo y recolección de los resultados
 			// ATENCIÓN: En una aplicación real, los datos JAMÁS están en el código
-			VOBodega bar1 = superAndes.adicionarBar ("Los Amigos1", "Bogotá", "Bajo", 2);
+			VOContenedor bar1 = superAndes.adicionarBar ("Los Amigos1", "Bogotá", "Bajo", 2);
 			VOCategoria bdor1 = superAndes.adicionarBebedor ("Pepito", "Bogotá", "Alto");
 			superAndes.adicionarVisitan (bdor1.getId (), bar1.getId (), new Timestamp (System.currentTimeMillis()), "diurno");
 
-			List <VOBodega> listaBares = superAndes.darVOBares ();
+			List <VOContenedor> listaBares = superAndes.darVOBares ();
 			List <VOCategoria> listaBebedores = superAndes.darVOBebedores ();
 			List <VOProducto> listaVisitan = superAndes.darVOVisitan();
 			long visitanEliminados = superAndes.eliminarVisitan (bdor1.getId (), bar1.getId ());
@@ -1621,11 +1621,11 @@ public class InterfazSuperAndesDemo extends JFrame implements ActionListener
      * @param lista - La lista con los bares
      * @return La cadena con una líea para cada bar recibido
      */
-    private String listarBares (List<VOBodega> lista) 
+    private String listarBares (List<VOContenedor> lista) 
     {
     	String resp = "Los bares existentes son:\n";
     	int i = 1;
-        for (VOBodega bar : lista)
+        for (VOContenedor bar : lista)
         {
         	resp += i++ + ". " + bar.toString() + "\n";
         }

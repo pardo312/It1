@@ -21,16 +21,20 @@ package uniandes.isis2304.superAndes.negocio;
  * 
  * @author Germán Bravo
  */
-public interface VOEstanteProducto 
+public interface VOPaguexcantidadllevey 
 {
 	/* ****************************************************************
 	 * 			Métodos 
 	 *****************************************************************/
      
-	public long getIDEstante() ;
+	public long getId() ;
 	
 	
-	 public String getCodigoDeBarrasProducto();
+	public int getX() ;
+	
+	
+	public int getY() ;
+	
 	
 	
 	@Override

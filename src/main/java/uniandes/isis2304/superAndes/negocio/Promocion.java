@@ -28,12 +28,6 @@ public class Promocion implements VOPromocion
 	 * 			Atributos
 	 *****************************************************************/
 
-//	ID int Primary Key ,
-//	descripcion varchar(10),
-//	precioPromocion VARCHAR(10),
-//	--LLave Foranea de Estante
-//	IDEstante int,
-//	FOREIGN KEY (IDEstante) REFERENCES Estante(ID)
 	
 	private long id;
 	
@@ -41,9 +35,7 @@ public class Promocion implements VOPromocion
 
 	private String precioPromocion;
 	
-	private long IDEstante;
-	
-
+	private long idSucursal;
 //	private List<Object []> tiposDeProductosQueGuardan;
 
 	/* ****************************************************************
@@ -55,18 +47,18 @@ public class Promocion implements VOPromocion
     	this.id = 0;
 		this.descripcion = "";
 		this.precioPromocion = "";
-		this.IDEstante = 0;
+		this.idSucursal = 0;
 
 	}
 
 
-    public Promocion( long id, String descripcion,String precioPromocion, int IDEstante)
+    public Promocion( long id, String descripcion,String precioPromocion, long idSucursal)
 	 
     {
     	this.id = id;
 		this.descripcion = descripcion;
 		this.precioPromocion = precioPromocion;
-		this.IDEstante = IDEstante;
+		this.idSucursal = idSucursal;
 
 	}
 
@@ -104,21 +96,21 @@ public class Promocion implements VOPromocion
 	}
 	
 	
-	public long getIDEstante() 
+	public long getIdSucursal() 
 	{
-		return IDEstante;
+		return idSucursal;
 	}
 	
 	
-	public void setIDEstante(long IDEstante) 
+	public void setIdSucursal(long idSucursal) 
 	{
-		this.IDEstante = IDEstante;
+		this.idSucursal = idSucursal;
 	}
 	
 	@Override
 	public String toString() 
 	{
-		String resp = "Promocion [id=" + id + ", descripcion=" + descripcion + ", precioPromocion=" + precioPromocion + ", IDEstante=" + IDEstante
+		String resp = "Promocion [id=" + id + ", descripcion=" + descripcion + ", precioPromocion=" + precioPromocion + ", idSucursal=" + idSucursal
 				+ "]";
 
 		return resp;

@@ -15,70 +15,94 @@
 
 package uniandes.isis2304.superAndes.negocio;
 
-import java.sql.Timestamp;
-import java.util.List;
+
+
 
 /**
  * Clase para modelar el concepto BAR del negocio de los Parranderos
  *
  */
-public class ProductoCategoria implements VOProductoCategoria
+public class Paguexunidadesllevey implements VOPaguexunidadesllevey
 {
 	/* ****************************************************************
 	 * 			Atributos
 	 *****************************************************************/
 
-
-	private long IDCategoria;
 	
-	private String codigoDeBarrasProducto;
+	private long id;
+	
+	private int x;
 
-
+	private int y;
+	
 	
 	/* ****************************************************************
 	 * 			Métodos 
 	 *****************************************************************/
  
-	public ProductoCategoria() 
+	public Paguexunidadesllevey() 
     {
-    	this.IDCategoria = 0;
-		this.codigoDeBarrasProducto = "";
+    	this.id = 0;
+		this.x = 0;
+		this.y = 0;
+
+
 	}
 
 
-    public ProductoCategoria( long IDCategoria, String codigoDeBarrasProducto)
+    public Paguexunidadesllevey( long id, int x,int y)
 	 
     {
-    	this.IDCategoria =IDCategoria;
-		this.codigoDeBarrasProducto = codigoDeBarrasProducto;
+    	this.id = id;
+    	this.x = x;
+		this.y = y;
+
 	}
 
    
-    public long getIDCategoria() 
+	public long getId() 
 	{
-		return IDCategoria;
+		return id;
 	}
 
-	public void setIDCategoria(long IDCategoria) 
+	public void setId(long id) 
 	{
-		this.IDCategoria = IDCategoria;
+		this.id = id;
 	}
 	
-	public String getCodigoDeBarrasProducto() 
+
+	public int getX() 
 	{
-		return codigoDeBarrasProducto;
+		return x;
 	}
 
-	public void setCodigoDeBarrasProducto(String codigoDeBarrasProducto) 
+	public void setX(int x) 
 	{
-		this.codigoDeBarrasProducto = codigoDeBarrasProducto;
+		this.x = x;
 	}
-		
+	
+	
+	public int getY() 
+	{
+		return y;
+	}
+	
+	public void setY(int y) 
+	{
+		this.y = y;
+	}
+	
+	
+
+	
 	@Override
 	public String toString() 
 	{
-		String resp = "CategoriaProducto [IDCategoria=" + IDCategoria + ", codigoDeBarrasProducto=" + codigoDeBarrasProducto + "]";
-		return resp;	
+		String resp = "Paguexunidadesllevey [id=" + id + ", x=" + x + ", y=" + y + 
+				"]";
+
+		return resp;
+		
 	}
 	
 

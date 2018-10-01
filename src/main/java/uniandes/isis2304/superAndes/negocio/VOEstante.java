@@ -29,15 +29,9 @@ public interface VOEstante
 
 	public long getId();
 
-	public float getCapacidadVolumen();
+	public float getNivelAbastecimiento();
 	
-	public float getCapacidadPeso();
-	
-	public String getUnidadesPeso();
-	
-	public String getUnidadesVolumen();
-	
-	public long getIDBodega();
+	public long getIdSucursal();
 	@Override
 	public String toString();
 	

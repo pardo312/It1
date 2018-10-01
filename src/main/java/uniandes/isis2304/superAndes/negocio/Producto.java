@@ -57,7 +57,7 @@ public class Producto implements VOProducto
 	
 	private long IDSucursal;
 	
-	private long IDBodega;
+	private long IDContenedor;
 	
 
 	/* ****************************************************************
@@ -80,7 +80,7 @@ public class Producto implements VOProducto
 		this.nivelDeReorden = 0;
 		this.IDPedido = 0;
 		this.IDSucursal = 0;
-		this.IDBodega = 0;
+		this.IDContenedor = 0;
 		
 	}
 
@@ -107,7 +107,7 @@ public class Producto implements VOProducto
 		this.nivelDeReorden = nivelDeReorden;
 		this.IDPedido =IDPedido;
 		this.IDSucursal =IDSucursal;
-		this.IDBodega = IDBodega;
+		this.IDContenedor = IDBodega;
 	}
 
 
@@ -238,14 +238,14 @@ public class Producto implements VOProducto
 	{
 		this.IDSucursal = IDSucursal;
 	}
-	public long getIDBodega() 
+	public long getIDContenedor() 
 	{
-		return IDBodega;
+		return IDContenedor;
 	}
 
-	public void setIDBodega(long IDBodega) 
+	public void setIDContenedor(long IDContenedor) 
 	{
-		this.IDBodega = IDBodega;
+		this.IDContenedor = IDContenedor;
 	}
 
 
@@ -255,7 +255,7 @@ public class Producto implements VOProducto
 		return "Producto [codigoDeBarras=" + codigoDeBarras + ", nombre=" + nombre + ", marca=" + marca + ", precioUnitario="
 				+ precioUnitario  + ", presentacion=" + presentacion + ", precioPorUnidad=" + precioPorUnidad + ", cantidadEnLaPresentacion=" + cantidadEnLaPresentacion + 
 				", unidadesDeMedida=" + unidadesDeMedida + ", especificacionesDeEmpacado=" + especificacionesDeEmpacado+
-				", nivelDeReorden=" + nivelDeReorden +", IDPedido=" + IDPedido +", IDSucursal=" + IDSucursal +", IDBodega=" + IDBodega +"]";
+				", nivelDeReorden=" + nivelDeReorden +", IDPedido=" + IDPedido +", IDSucursal=" + IDSucursal +", IDBodega=" + IDContenedor +"]";
 	}
 
 	

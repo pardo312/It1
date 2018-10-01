@@ -15,70 +15,74 @@
 
 package uniandes.isis2304.superAndes.negocio;
 
-import java.sql.Timestamp;
-import java.util.List;
+
+
 
 /**
  * Clase para modelar el concepto BAR del negocio de los Parranderos
  *
  */
-public class BodegaProducto implements VOBodegaProducto
+public class Pague1llevesegundoaxporciento implements VOPague1llevesegundoaxporciento
 {
 	/* ****************************************************************
 	 * 			Atributos
 	 *****************************************************************/
 
-
-	private long IDBodega;
 	
-	private String codigoDeBarrasProducto;
-
-
+	private long id;
+	
+	private float porcentaje;
+	
 	
 	/* ****************************************************************
 	 * 			Métodos 
 	 *****************************************************************/
  
-	public BodegaProducto() 
+	public Pague1llevesegundoaxporciento() 
     {
-    	this.IDBodega = 0;
-		this.codigoDeBarrasProducto = "";
+    	this.id = 0;
+		this.porcentaje = 0;
+	
 	}
 
 
-    public BodegaProducto( long IDBodega, String codigoDeBarrasProducto)
+    public Pague1llevesegundoaxporciento( long id, int porcentaje)
 	 
     {
-    	this.IDBodega =IDBodega;
-		this.codigoDeBarrasProducto = codigoDeBarrasProducto;
+    	this.id = id;
+    	this.porcentaje = porcentaje;
 	}
 
    
-    public long getIDBodega() 
+	public long getId() 
 	{
-		return IDBodega;
+		return id;
 	}
 
-	public void setIDBodega(long IDBodega) 
+	public void setId(long id) 
 	{
-		this.IDBodega = IDBodega;
+		this.id = id;
 	}
 	
-	public String getCodigoDeBarrasProducto() 
+
+	public float getPorcentaje() 
 	{
-		return codigoDeBarrasProducto;
+		return porcentaje;
 	}
 
-	public void setCodigoDeBarrasProducto(String codigoDeBarrasProducto) 
+	public void setPorcentaje(float porcentaje) 
 	{
-		this.codigoDeBarrasProducto = codigoDeBarrasProducto;
+		this.porcentaje = porcentaje;
 	}
-		
+	
 	@Override
 	public String toString() 
 	{
-		String resp = "BodegaProducto [IDBodega=" + IDBodega + ", codigoDeBarrasProducto=" + codigoDeBarrasProducto + "]";
-		return resp;	
+		String resp = "Pague1llevesegundoaxporciento [id=" + id + ", porcentaje=" + porcentaje + 
+				"]";
+
+		return resp;
+		
 	}
 	
 

@@ -21,16 +21,17 @@ package uniandes.isis2304.superAndes.negocio;
  * 
  * @author Germán Bravo
  */
-public interface VOBodegaProducto 
+public interface VODescuentodelxporciento 
 {
 	/* ****************************************************************
 	 * 			Métodos 
 	 *****************************************************************/
      
-	public long getIDBodega() ;
+	public long getId() ;
 	
 	
-	 public String getCodigoDeBarrasProducto();
+	public float getPorcentaje();
+	
 	
 	
 	@Override

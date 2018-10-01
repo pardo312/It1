@@ -22,7 +22,7 @@ import java.util.List;
  * Clase para modelar el concepto BAR del negocio de los Parranderos
  *
  */
-public class Bodega implements VOBodega
+public class Contenedor implements VOContenedor
 {
 	/* ****************************************************************
 	 * 			Atributos
@@ -38,7 +38,7 @@ public class Bodega implements VOBodega
 	
 	private String unidadesVolumen;
 	
-	private int idSucursal;
+	private long idBodegaSucursal;
 
 //	private List<Object []> tiposDeProductosQueGuardan;
 
@@ -48,14 +48,14 @@ public class Bodega implements VOBodega
     /**
      * Constructor por defecto
      */
-	public Bodega() 
+	public Contenedor() 
     {
     	this.id = 0;
 		this.capacidadVolumen = 0;
 		this.capacidadPeso = 0;
 		this.unidadesPeso = "";
 		this.unidadesVolumen = "";
-		this.idSucursal = 0;
+		this.idBodegaSucursal = 0;
 	}
 
 	/**
@@ -66,14 +66,14 @@ public class Bodega implements VOBodega
 	 * @param presupuesto - El presupuesto del bar (ALTO, MEDIO, BAJO)
 	 * @param cantSedes - Las sedes del bar (Mayor que 0)
 	 */
-    public Bodega(long id, float capacidadVolumen, float capacidadPeso, String unidadesPeso, String unidadesVolumen, int idSucursal) 
+    public Contenedor(long id, float capacidadVolumen, float capacidadPeso, String unidadesPeso, String unidadesVolumen, long idBodegaSucursal) 
     {
     	this.id = id;
 		this.capacidadVolumen = capacidadVolumen;
 		this.capacidadPeso = capacidadPeso;
 		this.unidadesPeso = unidadesPeso;
 		this.unidadesVolumen = unidadesVolumen;
-		this.idSucursal = idSucursal;
+		this.idBodegaSucursal = idBodegaSucursal;
 	}
 
    
@@ -132,15 +132,15 @@ public class Bodega implements VOBodega
 		this.unidadesVolumen = unidadesVolumen;
 	}
 	
-	public int getIdSucursal() 
+	public long getIdBodegaSucursal() 
 	{
-		return idSucursal;
+		return idBodegaSucursal;
 	}
 	
 	
-	public void setIdSucursal(int idSucursal) 
+	public void setIdBodegaSucursal(long idBodegaSucursal) 
 	{
-		this.idSucursal = idSucursal;
+		this.idBodegaSucursal = idBodegaSucursal;
 	}
 	
 //	public List<Object []> getTiposDeProductosQueGuardan() 
@@ -157,8 +157,8 @@ public class Bodega implements VOBodega
 	@Override
 	public String toString() 
 	{
-		String resp = "Bodega [id=" + id + ", capacidadVolumen=" + capacidadVolumen + ", capacidadPeso=" + capacidadPeso + ", unidadesPeso=" + unidadesPeso
-				+ ", unidadesVolumen=" + unidadesVolumen + ", idSucursal=" + idSucursal+ "]";
+		String resp = "Contenedor [id=" + id + ", capacidadVolumen=" + capacidadVolumen + ", capacidadPeso=" + capacidadPeso + ", unidadesPeso=" + unidadesPeso
+				+ ", unidadesVolumen=" + unidadesVolumen + ", idBodegaSucursal=" + idBodegaSucursal+ "]";
 		
 //		resp += "\n --- Tipos De Productos Que Guardan\n";
 //		int i = 1;

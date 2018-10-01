@@ -36,7 +36,7 @@ public interface VOPromocion
 	public String getPrecioPromocion() ;
 	
 	
-	public long getIDEstante() ;
+	public long getIdSucursal() ;
 	
 	
 	@Override

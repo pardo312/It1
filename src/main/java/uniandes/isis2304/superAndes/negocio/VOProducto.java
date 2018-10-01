@@ -53,7 +53,7 @@ public interface VOProducto
 	
 	public long getIDSucursal();
 	
-	public long getIDBodega();
+	public long getIDContenedor();
 
 	
 	@Override
