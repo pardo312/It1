@@ -15,6 +15,7 @@
 
 package uniandes.isis2304.superAndes.negocio;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.LinkedList;
 import java.util.List;
@@ -85,43 +86,87 @@ public class SuperAndes
         log.info ("Adicionando el proveedor: " + proveedor);
         return proveedor;
 	}
+	
+	public List<VOProveedor> darVOProveedor ()
+	{
+		log.info ("Generando los VO de Proveedor");        
+        List<VOProveedor> voTipos = new LinkedList<VOProveedor> ();
+        for (Proveedor tb : pp.darProveedores ())
+        {
+        	voTipos.add (tb);
+        }
+        log.info ("Generando los VO de Tipos de bebida: " + voTipos.size() + " existentes");
+        return voTipos;
+	}
 
 //	//Metodos de Productos
-//	public Producto adicionarProducto (String codigoDeBarras,
-//			
-//			 String nombre,
-//			
-//			 String marca,
-//			
-//			 float precioUnitario,
-//			
-//			 String presentacion,
-//			
-//			 float precioPorUnidad,
-//			
-//			 float cantidadEnLaPresentacion,
-//			
-//			 String unidadesDeMedida,
-//
-//			 String especificacionesDeEmpacado,
-//			
-//			 float nivelDeReorden,
-//			
-//			 long IDPedido,
-//			
-//			 long IDSucursal,
-//			
-//			 long IDContenedor)
-//	{
-//        log.info ("Adicionando el Producto: " + nombre);
-//        Producto Producto = pp.adicionarProducto (codigoDeBarras,nombre,
-//marca,precioUnitario,presentacion,precioPorUnidad,cantidadEnLaPresentacion,
-//unidadesDeMedida,especificacionesDeEmpacado,nivelDeReorden,
-// IDPedido, IDSucursal, IDContenedor);		
-//        log.info ("Adicionando el Producto: " + Producto);
-//        return Producto;
-//	}
+	public Producto registrarProducto (String codigoDeBarras,
+			
+			 String nombre,
+			
+			 String marca,
+			
+			 float precioUnitario,
+			
+			 String presentacion,
+			
+			 float precioPorUnidad,
+			
+			 float cantidadEnLaPresentacion,
+			
+			 String unidadesDeMedida,
 
+			 String especificacionesDeEmpacado,
+			
+			 float nivelDeReorden,
+			
+			 long IDPedido,
+			
+			 long IDSucursal,
+			
+			 long IDContenedor,
+			 int EnStock)
+	{
+        log.info ("Adicionando el Producto: " + nombre);
+        Producto Producto = pp.registrarProducto (codigoDeBarras,nombre,
+marca,precioUnitario,presentacion,precioPorUnidad,cantidadEnLaPresentacion,
+unidadesDeMedida,especificacionesDeEmpacado,nivelDeReorden,
+ IDPedido, IDSucursal, IDContenedor,EnStock);		
+        log.info ("Adicionando el Producto: " + Producto);
+        return Producto;
+	}
+
+	//Metodos Categoria
+	
+	public List<VOCategoria> darVOCategoria ()
+	{
+		log.info ("Generando los VO de Categoria");        
+        List<VOCategoria> voTipos = new LinkedList<VOCategoria> ();
+        for (Categoria tb : pp.darCategorias ())
+        {
+        	voTipos.add (tb);
+        }
+        log.info ("Generando los VO de Categorias: " + voTipos.size() + " existentes");
+        return voTipos;
+	}
+	
+	
+	public Categoria registrarCategoria (String nombreCategoria, char perecedero, String codigoDeBarras)
+	{
+        log.info ("Adicionando la categoria: " + nombreCategoria);
+        Categoria categoria = pp.registrarCategoria (nombreCategoria,perecedero,codigoDeBarras);		
+        log.info ("Adicionando la categoria : " + categoria);
+        return categoria;
+	}
+	
+	public TipoProducto registrarTipo(String nombreTipo, String metodoAlmac, long idCategoria, long idContenedor) {
+		 log.info ("Adicionando el tipo de producto: " + nombreTipo);
+	        TipoProducto tipoProd = pp.registrarTipoProducto (nombreTipo,metodoAlmac,idCategoria,idContenedor);		
+	        log.info ("Adicionando el tipo de producto : " + tipoProd);
+	        return tipoProd;
+	}
+	
+	
 //	//Metodos de cliente
 //	
 //	public Cliente adicionarCliente (long id,
@@ -202,4 +247,6 @@ public class SuperAndes
         log.info ("Limpiando la BD de SuperAndes: Listo!");
         return borrrados;
 	}
+
+	
 }

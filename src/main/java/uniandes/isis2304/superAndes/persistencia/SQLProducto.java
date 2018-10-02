@@ -92,16 +92,19 @@ class SQLProducto
 			
 			 long IDSucursal,
 			
-			 long IDContenedor) 
+			 long IDContenedor,
+			 int EnStock) 
 	{
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaProducto () +
-        		"(codigoDeBarras,nombre,marca,precioUnitario,presentacion,precioPorUnidad,cantidadEnLaPresentacion,unidadesDeMedida,especificacionesDeEmpacado,nivelDeReorden,IDPedido, IDSucursal, IDContenedor) values (?,?,?,?,?,?,?,?,?,?,?,?,?)");
+        Query q = pm.newQuery(SQL, "INSERT INTO " +"PRODUCTO"+
+        		"(codigoDeBarras,nombre,marca,precioUnitario,presentacion,precioPorUnidad,cantidadEnLaPresentacion,unidadDeMedida,especificacionesDeEmpacado,nivelDeReorden,IDPedido, IDSucursal, IDContenedor, EnStock) values ("+codigoDeBarras+ ",'"+nombre+"','"+marca+"',"+precioUnitario+",'"+presentacion+"',"+precioPorUnidad+","+cantidadEnLaPresentacion+",'"+unidadesDeMedida+"','"+especificacionesDeEmpacado+"',"+nivelDeReorden+","+ IDPedido    +","+IDSucursal+","+ IDContenedor +","+ EnStock +")");
         q.setParameters(codigoDeBarras,nombre,
         		marca,precioUnitario,presentacion,precioPorUnidad,cantidadEnLaPresentacion,
         		unidadesDeMedida,especificacionesDeEmpacado,nivelDeReorden,
-        		 IDPedido, IDSucursal, IDContenedor);
+        		 IDPedido, IDSucursal, IDContenedor,EnStock);
         return (long)q.executeUnique();            
 	}
+	
+	
 
 
 }

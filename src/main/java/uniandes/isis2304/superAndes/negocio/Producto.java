@@ -59,6 +59,8 @@ public class Producto implements VOProducto
 	
 	private long IDContenedor;
 	
+	private int EnStock;
+	
 
 	
 
@@ -83,7 +85,7 @@ public class Producto implements VOProducto
 		this.IDPedido = 0;
 		this.IDSucursal = 0;
 		this.IDContenedor = 0;
-		
+		this.EnStock = 0;
 	}
 
 	/**
@@ -95,7 +97,7 @@ public class Producto implements VOProducto
 	 */
 	public Producto(String codigoDeBarras, String nombre, String marca, float precioUnitario,
 			String presentacion,float precioPorUnidad,float cantidadEnLaPresentacion,String unidadesDeMedida, String especificacionesDeEmpacado, 
-			float nivelDeReorden,long IDPedido ,long IDSucursal,long IDBodega) 
+			float nivelDeReorden,long IDPedido ,long IDSucursal,long IDBodega,int EnStock) 
 	{
 		this.codigoDeBarras = codigoDeBarras;
 		this.nombre =nombre;
@@ -110,6 +112,7 @@ public class Producto implements VOProducto
 		this.IDPedido =IDPedido;
 		this.IDSucursal =IDSucursal;
 		this.IDContenedor = IDBodega;
+		this.EnStock = EnStock;
 	}
 
 
@@ -249,6 +252,15 @@ public class Producto implements VOProducto
 	{
 		this.IDContenedor = IDContenedor;
 	}
+	public int getEnStock() 
+	{
+		return EnStock;
+	}
+
+	public void setEnStock(int EnStock) 
+	{
+		this.EnStock = EnStock;
+	}
 
 
 	@Override
@@ -257,7 +269,7 @@ public class Producto implements VOProducto
 		return "Producto [codigoDeBarras=" + codigoDeBarras + ", nombre=" + nombre + ", marca=" + marca + ", precioUnitario="
 				+ precioUnitario  + ", presentacion=" + presentacion + ", precioPorUnidad=" + precioPorUnidad + ", cantidadEnLaPresentacion=" + cantidadEnLaPresentacion + 
 				", unidadesDeMedida=" + unidadesDeMedida + ", especificacionesDeEmpacado=" + especificacionesDeEmpacado+
-				", nivelDeReorden=" + nivelDeReorden +", IDPedido=" + IDPedido +", IDSucursal=" + IDSucursal +", IDBodega=" + IDContenedor +"]";
+				", nivelDeReorden=" + nivelDeReorden +", IDPedido=" + IDPedido +", IDSucursal=" + IDSucursal +", IDContenedor=" + IDContenedor +", EnStock=" + EnStock +"]";
 	}
 
 	

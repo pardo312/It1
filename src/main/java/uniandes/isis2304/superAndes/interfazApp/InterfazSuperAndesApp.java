@@ -12,6 +12,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.jdo.JDODataStoreException;
@@ -25,6 +27,7 @@ import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -33,6 +36,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 
 import uniandes.isis2304.superAndes.negocio.SuperAndes;
+import uniandes.isis2304.superAndes.negocio.VOCategoria;
+import uniandes.isis2304.superAndes.negocio.VOProducto;
 import uniandes.isis2304.superAndes.negocio.VOProveedor;
 import uniandes.isis2304.superAndes.negocio.VOTipoProducto;
 
@@ -228,10 +233,11 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
      * Adiciona un tipo de producto con la información dada por el usuario
      * Se crea una nueva tupla de tipoProducto en la base de datos, si un tipo de producto con ese nombre no existía
      */
-    public void adicionarTipoBebida( )
+    public void registrarProveedor( )
     {
     	try 
     	{
+    		
     		String nombre = JOptionPane.showInputDialog (this, "Nombre del proveedor?", "Registrar Proveedor", JOptionPane.QUESTION_MESSAGE);
     		if (nombre != null)
     		{
@@ -240,7 +246,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
         		{
         			throw new Exception ("No se pudo crear un proveedor con nombre: " + nombre);
         		}
-        		String resultado = "En adicionarPorveedor\n\n";
+        		String resultado = "En adicionarProveedor\n\n";
         		resultado += "proveedor adicionado exitosamente: " + tb;
     			resultado += "\n Operación terminada";
     			panelDatos.actualizarInterfaz(resultado);
@@ -257,8 +263,180 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 			panelDatos.actualizarInterfaz(resultado);
 		}
     }
+    
+    public void listarProveedor( )
+    {
+    	try 
+    	{
+			List <VOProveedor> lista = superAndes.darVOProveedor();
+
+			String resultado = "En listaProveedor";
+			resultado +=  "\n" + listarProveedores(lista);
+			panelDatos.actualizarInterfaz(resultado);
+			resultado += "\n Operación terminada";
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+
+    private String listarProveedores(List<VOProveedor> lista) 
+    {
+    	String resp = "Los Proveedores existentes son:\n";
+    	int i = 1;
+        for (VOProveedor tb : lista)
+        {
+        	resp += i++ + ". " + tb.toString() + "\n";
+        }
+        return resp;
+	}
+    
+    //Metodos De Producto
+    
+    //TODO
+    public void registrarProducto( )
+    {
+    	try 
+    	{
+    		
+    	    
+    		String codigoDeBarras = JOptionPane.showInputDialog (this, "Codigo de barras del Producto?", "Registrar Producto", JOptionPane.QUESTION_MESSAGE);
+    		String nombre = JOptionPane.showInputDialog (this, "Nombre del Producto?", "Registrar Producto", JOptionPane.QUESTION_MESSAGE);
+    		String marca = JOptionPane.showInputDialog (this, "Marca del Producto?", "Registrar Producto", JOptionPane.QUESTION_MESSAGE);
+    		float precioUnitario = Float.parseFloat(JOptionPane.showInputDialog (this, "Precio Unitario del Producto?", "Registrar Producto", JOptionPane.QUESTION_MESSAGE));
+    		String presentacion = JOptionPane.showInputDialog (this, "Presentacion del Producto?", "Registrar Producto", JOptionPane.QUESTION_MESSAGE);
+    		float precioPorUnidad = Float.parseFloat(JOptionPane.showInputDialog (this, "Precio Por Unidad del Producto?", "Registrar Producto", JOptionPane.QUESTION_MESSAGE));
+    		float cantidadEnLaPresentacion = Float.parseFloat(JOptionPane.showInputDialog (this, "Cantidad de producto En La Presentacion del Producto?", "Registrar Producto", JOptionPane.QUESTION_MESSAGE));
+    		String unidadesDeMedida = JOptionPane.showInputDialog (this, "Unidades De Medida del Producto?", "Registrar Producto", JOptionPane.QUESTION_MESSAGE);
+    		String especificacionesDeEmpacado = JOptionPane.showInputDialog (this, "Especificaciones De Empacado del Producto?", "Registrar Producto", JOptionPane.QUESTION_MESSAGE);
+    		long IDPedido = Long.parseLong(JOptionPane.showInputDialog (this, "ID del Pedido relacionado con este Producto(Si no tiene ninguno coloque 0)?", "Registrar Producto", JOptionPane.QUESTION_MESSAGE));
+    		long IDSucursal = Long.parseLong(JOptionPane.showInputDialog (this, "ID de la sucursal relacionada con este Producto(Si no tiene ninguno deje el campo vacio)?", "Registrar Producto", JOptionPane.QUESTION_MESSAGE));
+    		long IDContenedor = Long.parseLong(JOptionPane.showInputDialog (this, "ID de la Contenedor relacionada con este Producto(Si no tiene ninguno deje el campo vacio)?", "Registrar Producto", JOptionPane.QUESTION_MESSAGE));
+    		int enStock = Integer.parseInt(JOptionPane.showInputDialog (this, "Producto en stock?", "Registrar Producto", JOptionPane.QUESTION_MESSAGE));
+    		float nivelDeReorden = enStock/100;
+    		
+    		
+    	    
+    		if (nombre != null && codigoDeBarras != null && marca != null && presentacion != null  && unidadesDeMedida!= null && especificacionesDeEmpacado != null )
+    		{ 
+   			
+        		VOProducto tb = superAndes.registrarProducto(codigoDeBarras,nombre,marca,precioUnitario,presentacion, precioPorUnidad,cantidadEnLaPresentacion,unidadesDeMedida,especificacionesDeEmpacado,nivelDeReorden, IDPedido, IDSucursal, IDContenedor,enStock) ;
+        		
+        		if (tb == null)
+        		{
+        			throw new Exception ("No se pudo crear un producto : " + nombre);
+        		}
+        		String resultado = "En adicionarProducto\n\n";
+        		resultado += "Producto adicionado exitosamente: " + tb;
+    			resultado += "\n Operación terminada";
+    			panelDatos.actualizarInterfaz(resultado);
+    		}
+    		else
+    		{
+    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+    		}
+    		String numCat = "si";
+    		while(numCat == "si")
+    		{
+    			
+        		String nombreCategoria = JOptionPane.showInputDialog (this, "Categoria a la que pertenece el producto?", "Registrar Producto", JOptionPane.QUESTION_MESSAGE);
+        		String perecedero1 = (JOptionPane.showInputDialog (this, "Es la categoria perecedera?", "Registrar Producto", JOptionPane.QUESTION_MESSAGE));
+        	    char perecedero =perecedero1.charAt(0);
+        		long tp = registrarCategoria( nombreCategoria,  perecedero,  codigoDeBarras );
+        		String numTip = "si";
+        		while(numTip == "si")
+        		{
+        			String nombreTipo  = JOptionPane.showInputDialog (this, "nombre del Tipo de producto?", "Registrar Producto", JOptionPane.QUESTION_MESSAGE);
+            		String metodoAlmac = (JOptionPane.showInputDialog (this, "metodo de almacenamiento?", "Registrar Producto", JOptionPane.QUESTION_MESSAGE));
+            		long idCategoria = tp;
+            	    long idContenedor = 0;
+            	    registrarTipoProducto( nombreTipo,  metodoAlmac,  idCategoria,idContenedor );
+        			numTip = JOptionPane.showInputDialog (this, "Quiere añadir un tipo de producto(mas) a esta categoria = (si o no)", "Registrar Producto", JOptionPane.QUESTION_MESSAGE);
+        		}
+        		numCat = JOptionPane.showInputDialog (this, "Quiere añadir una categoria(mas) = (si o no)", "Registrar Producto", JOptionPane.QUESTION_MESSAGE);
+          	   
+    		}
+		} 
+    	catch (Exception e) 
+    	{
+    		
+    		e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
 
     
+    public long registrarCategoria(String nombreCategoria, char perecedero, String codigoDeBarras )
+    {
+    	VOCategoria tb = superAndes.registrarCategoria(nombreCategoria,perecedero,codigoDeBarras) ;
+    	try 
+    	{
+    		
+        		
+        		if (tb == null)
+        		{
+        			throw new Exception ("No se pudo crear una Categoria con nombre: " + nombreCategoria);
+        		}
+        		String resultado = "Categoria adicionada exitosamente: " + tb;
+    			resultado += "\n Operación terminada";
+    			panelDatos.actualizarInterfaz(resultado);
+    			
+    		
+    		
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+		return tb.getId();
+    }
+    public void registrarTipoProducto(String nombreTipo, String metodoAlmac, long idCategoria, long idContenedor )
+    {
+    	VOTipoProducto tb = superAndes.registrarTipo(nombreTipo,metodoAlmac,idCategoria,idContenedor) ;
+    	try 
+    	{
+    		
+        		
+        		if (tb == null)
+        		{
+        			throw new Exception ("No se pudo crear un tipo con nombre: " + nombreTipo);
+        		}
+        		String resultado = "Categoria adicionada exitosamente: " + tb;
+    			resultado += "\n Operación terminada";
+    			panelDatos.actualizarInterfaz(resultado);
+    			
+    		
+    		
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+		
+    }
+ 
+//    public boolean existeCategoriaConNombre(String nombre)
+//    {
+//    	boolean r = false;
+//    	List <VOCategoria> lista = superAndes.darVOCategoria();
+//        for (VOCategoria tb : lista)
+//        {
+//        	
+//        	if(tb.getNombreCategoria().equals(nombre))
+//        	{
+//        		r = true;
+//        	}
+//        }
+//        return r;
+//    }
 
 	/* ****************************************************************
 	 * 			Métodos administrativos
@@ -346,7 +524,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 	 */
 	public void mostrarPresentacionGeneral ()
 	{
-		mostrarArchivo ("data/00-ST-ParranderosJDO.pdf");
+		mostrarArchivo ("data/00-ST-SuperAndesJDO.pdf");
 	}
 	
 	/**
@@ -354,7 +532,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 	 */
 	public void mostrarModeloConceptual ()
 	{
-		mostrarArchivo ("data/Modelo Conceptual Parranderos.pdf");
+		mostrarArchivo ("data/Modelo Conceptual SuperAndes.pdf");
 	}
 	
 	/**
@@ -526,7 +704,8 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
     {
         try
         {
-        	
+        	String log4jConfPath = "./src/main/resources/log4j.properties";
+        	PropertyConfigurator.configure(log4jConfPath);
             // Unifica la interfaz para Mac y para Windows.
             UIManager.setLookAndFeel( UIManager.getCrossPlatformLookAndFeelClassName( ) );
             InterfazSuperAndesApp interfaz = new InterfazSuperAndesApp( );

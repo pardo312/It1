@@ -29,7 +29,7 @@ public interface VOTipoProducto
 	/**
 	 * @return El id del tipo de bebida
 	 */
-	public long getId();
+
 
 	/**
 	 * @return El nombre del tipo de bebida

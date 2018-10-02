@@ -21,6 +21,7 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
 import uniandes.isis2304.superAndes.negocio.Cliente;
+import uniandes.isis2304.superAndes.negocio.Proveedor;
 import uniandes.isis2304.superAndes.negocio.TipoProducto;
 
 /**
@@ -66,6 +67,13 @@ class SQLProveedor
         Query q = pm.newQuery(SQL, "INSERT INTO " + "PROVEEDOR" + "(NIT, nombre) values ("+NIT+",'"+ nombre+"')");
         q.setParameters(NIT, nombre);
         return (long) q.executeUnique();            
+	}
+	
+	public List<Proveedor> darProveedores (PersistenceManager pm)
+	{
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + "PROVEEDOR");
+		q.setResultClass(Proveedor.class);
+		return (List<Proveedor>) q.executeList();
 	}
 
 	

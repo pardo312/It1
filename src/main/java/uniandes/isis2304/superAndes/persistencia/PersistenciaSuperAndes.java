@@ -4,6 +4,7 @@ package uniandes.isis2304.superAndes.persistencia;
 
 
 import java.math.BigDecimal;
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.LinkedList;
 import java.util.List;
@@ -18,7 +19,6 @@ import org.apache.log4j.Logger;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-
 
 import uniandes.isis2304.superAndes.negocio.Categoria;
 import uniandes.isis2304.superAndes.negocio.Cliente;
@@ -97,6 +97,8 @@ public class PersistenciaSuperAndes
 	 * Atributo para el acceso a la tabla SIRVEN de la base de datos
 	 */
 	private SQLProducto sqlProducto;
+	
+	private SQLTipoProducto sqlTipoProducto;
 	
 
 
@@ -305,7 +307,7 @@ public class PersistenciaSuperAndes
 	}
 
 	/* ****************************************************************
-	 * 			Métodos para manejar los TIPOS DE BEBIDA
+	 * 			Métodos para manejar los proveedores
 	 *****************************************************************/
 
 	
@@ -340,7 +342,17 @@ public class PersistenciaSuperAndes
         }
 	}
 	
+	public List<Proveedor> darProveedores ()
+	{
+		return sqlProveedor.darProveedores (pmf.getPersistenceManager());
+	}
 	
+	//metodos Categoria
+	
+	public List<Categoria> darCategorias ()
+	{
+		return sqlCategoria.darCategorias(pmf.getPersistenceManager());
+	}
 
 	
 	public long [] limpiarSuperAndes ()
@@ -370,6 +382,129 @@ public class PersistenciaSuperAndes
             pm.close();
         }
 		
+	}
+	//Metodos Producto
+	
+	public Producto registrarProducto(String codigoDeBarras,
+			
+			 String nombre,
+			
+			 String marca,
+			
+			 float precioUnitario,
+			
+			 String presentacion,
+			
+			 float precioPorUnidad,
+			
+			 float cantidadEnLaPresentacion,
+			
+			 String unidadesDeMedida,
+
+			 String especificacionesDeEmpacado,
+			
+			 float nivelDeReorden,
+			
+			 long IDPedido,
+			
+			 long IDSucursal,
+			
+			 long IDContenedor,
+			 int EnStock)
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            
+            long tuplasInsertadas = sqlProducto.registrarProducto(pm,codigoDeBarras ,nombre,
+            		marca,precioUnitario,presentacion,precioPorUnidad,cantidadEnLaPresentacion,
+            		unidadesDeMedida,especificacionesDeEmpacado,nivelDeReorden,
+            		 IDPedido, IDSucursal, IDContenedor, EnStock);
+            tx.commit();
+            
+            log.trace ("Inserción de Producto: " + nombre + ": " + tuplasInsertadas + " tuplas insertadas");
+            
+            return new Producto(codigoDeBarras ,nombre,
+            		marca,precioUnitario,presentacion,precioPorUnidad,cantidadEnLaPresentacion,
+            		unidadesDeMedida,especificacionesDeEmpacado,nivelDeReorden,
+            		 IDPedido, IDSucursal, IDContenedor,EnStock);
+        }
+        catch (Exception e)
+        {
+       	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	
+	public Categoria registrarCategoria (String nombreCategoria, char perecedero, String codigoDeBarras)
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long id = nextval ();
+            long tuplasInsertadas = sqlCategoria.registrarCategoria(pm,id, nombreCategoria,perecedero,codigoDeBarras);
+            tx.commit();
+            
+            log.trace ("Inserción de Categoria: " + nombreCategoria + ": " + tuplasInsertadas + " tuplas insertadas");
+            
+            return new Categoria(id, nombreCategoria,perecedero,codigoDeBarras);
+        }
+        catch (Exception e)
+        {
+       	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+
+	public TipoProducto registrarTipoProducto(String nombreTipo, String metodoAlmac, long idCategoria, long idContenedor) {
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long tuplasInsertadas = sqlTipoProducto.registrarTipoProducto(pm, nombreTipo,metodoAlmac,idCategoria,idContenedor);
+            tx.commit();
+            
+            log.trace ("Inserción de Tipo Producto: " + nombreTipo + ": " + tuplasInsertadas + " tuplas insertadas");
+            
+            return new TipoProducto(nombreTipo,metodoAlmac,idCategoria,idContenedor);
+        }
+        catch (Exception e)
+        {
+       	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
 	}
 	
 

@@ -26,7 +26,7 @@ public class TipoProducto implements VOTipoProducto
 	 * 			Atributos
 	 *****************************************************************/
 	
-	private long id;
+	
 
 	private String nombre;
 	
@@ -44,7 +44,7 @@ public class TipoProducto implements VOTipoProducto
 	 */
 	public TipoProducto() 
 	{
-		this.id = 0;
+
 		this.nombre = "";
 		this.metodoAlmacenamiento = "";
 		this.IDCategoria = 0;
@@ -56,26 +56,17 @@ public class TipoProducto implements VOTipoProducto
 	 * @param id - El identificador del tipo de bebida
 	 * @param nombre - El nombre del tipo de bebida
 	 */
-	public TipoProducto(long id, String nombre,long IDCategoria,
+	public TipoProducto( String nombre,String metodoAlmacenamiento,long IDCategoria,
 	 long IDContenedor) 
 	{
-		this.id = id;
+		
 		this.nombre = nombre;
 		this.IDCategoria =IDCategoria;
 		this.IDContenedor = IDContenedor;
+		this.metodoAlmacenamiento = metodoAlmacenamiento;
 	}
 
-	/**
-	 * @return El id del tipo de bebida
-	 */
-	public long getId() 
-	{
-		return id;
-	}
-	public void setId(long id) 
-	{
-		this.id = id;
-	}
+
 	
 	
 
@@ -128,17 +119,10 @@ public class TipoProducto implements VOTipoProducto
 	@Override
 	public String toString() 
 	{
-		return "TipoProducto [id=" + id + ", nombre=" + nombre +
+		return "TipoProducto ["+"nombre=" + nombre +
 				", metodoAlmacenamiento=" + metodoAlmacenamiento + 
 				", IDCategoria=" + IDCategoria +
 				", IDContenedor=" + IDContenedor +"]";
-	}
-
-
-	public boolean equals(Object tipo) 
-	{
-		TipoProducto tb = (TipoProducto) tipo;
-		return id == tb.id && nombre.equalsIgnoreCase (tb.nombre);
 	}
 
 }

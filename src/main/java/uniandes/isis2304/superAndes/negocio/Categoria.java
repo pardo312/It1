@@ -15,6 +15,7 @@
 
 package uniandes.isis2304.superAndes.negocio;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.LinkedList;
 import java.util.List;
@@ -35,7 +36,7 @@ public class Categoria implements VOCategoria
 	
 	private char perecedero;
 	
-	private String fechaVencimiento;
+
 
 	//codigo de barras del producto
 	private String codigoDeBarrasProducto;
@@ -51,7 +52,6 @@ public class Categoria implements VOCategoria
 		this.id = 0;
 		this.nombreCategoria = "";
 		this.perecedero = 0;
-		this.fechaVencimiento = "";
 		this.codigoDeBarrasProducto = "";
 	}
 
@@ -62,12 +62,11 @@ public class Categoria implements VOCategoria
 	 * @param perecedero - La perecedero del bebedor
 	 * @param fechaVencimiento - El fechaVencimiento del bebedor (ALTO, MEDIO, BAJO)
 	 */
-	public Categoria(long id, String nombreCategoria, char perecedero, String fechaVencimiento,String codigoDeBarrasProducto) 
+	public Categoria(long id, String nombreCategoria, char perecedero,String codigoDeBarrasProducto) 
 	{
 		this.id = id;
 		this.nombreCategoria = nombreCategoria;
 		this.perecedero = perecedero;
-		this.fechaVencimiento = fechaVencimiento;
 		this.codigoDeBarrasProducto = codigoDeBarrasProducto;
 	}
 
@@ -104,18 +103,6 @@ public class Categoria implements VOCategoria
 	}
 	
 	
-	public String getFechaVencimiento() 
-	{
-		return fechaVencimiento;
-	}
-	
-	
-	public void setFechaVencimiento(String fechaVencimiento) 
-	{
-		this.fechaVencimiento = fechaVencimiento;
-	}
-	
-	
 	public String getCodigoDeBarrasProducto() 
 	{
 		return codigoDeBarrasProducto;
@@ -130,8 +117,7 @@ public class Categoria implements VOCategoria
 	@Override
 	public String toString() 
 	{
-		String resp = "Categoria [id=" + id + ", nombreCategoria=" + nombreCategoria + ", perecedero=" + perecedero + ", fechaVencimiento=" + fechaVencimiento
-				+ ", codigoDeBarrasProducto=" + codigoDeBarrasProducto + "]";
+		String resp = "Categoria [id=" + id + ", nombreCategoria=" + nombreCategoria + ", perecedero=" + perecedero + ", codigoDeBarrasProducto=" + codigoDeBarrasProducto + "]";
 		
 		return resp;
 		

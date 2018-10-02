@@ -15,6 +15,7 @@
 
 package uniandes.isis2304.superAndes.negocio;
 
+import java.sql.Date;
 import java.util.List;
 
 /**
@@ -43,10 +44,7 @@ public interface VOCategoria
 	 */
 	public char getPerecedero();
 
-	/**
-	 * @return El presupuesto del bebedor
-	 */
-	public String getFechaVencimiento();
+
 
 	/**
 	 * @return La lista de visitasRealizadas por el bebedor 

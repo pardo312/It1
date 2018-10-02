@@ -96,7 +96,7 @@ public class TipoBebidaTest
 			fail (msg);
 		}
 		
-		// Ahora si se pueden probar las operaciones
+//		 Ahora si se pueden probar las operaciones
 //    	try
 //		{
 //			// Lectura de los tipos de bebida con la tabla vacía
@@ -140,7 +140,7 @@ public class TipoBebidaTest
 //			System.out.println (msg);
 //
 //    		fail ("Error en las pruebas sobre la tabla TipoBebida");
-//		}
+////		}
 //		finally
 //		{
 //			parranderos.limpiarParranderos ();

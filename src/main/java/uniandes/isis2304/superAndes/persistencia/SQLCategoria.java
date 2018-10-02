@@ -15,10 +15,14 @@
 
 package uniandes.isis2304.superAndes.persistencia;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
+
+import uniandes.isis2304.superAndes.negocio.Categoria;
+import uniandes.isis2304.superAndes.negocio.Proveedor;
 
 
 /**
@@ -64,24 +68,20 @@ class SQLCategoria
 			 String nombreCategoria,
 			
 			 char perecedero,
-			
-			 String fechaVencimiento,
 
 			
 			 String codigoDeBarrasProducto) 
 	{
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaCategoria () + "( id,nombreCategoria,perecedero,fechaVencimiento,codigoDeBarrasProducto) values (?, ?, ?, ?, ?)");
-        q.setParameters( id,	
-        		
-        		  nombreCategoria,
-        		
-        		  perecedero,
-        		
-        		  fechaVencimiento,
-
-        		
-        		  codigoDeBarrasProducto);
+        Query q = pm.newQuery(SQL, "INSERT INTO " + "CATEGORIA" + "( id,nombreCategoria,perecedero,codigoDeBarrasProducto) values ("+id+",'"+nombreCategoria+"',"+perecedero+",'"+ codigoDeBarrasProducto + "')");                          
+        
         return (long) q.executeUnique();
+	}
+	
+	public List<Categoria> darCategorias (PersistenceManager pm)
+	{
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + "CATEGORIA");
+		q.setResultClass(Categoria.class);
+		return (List<Categoria>) q.executeList();
 	}
 
 	
