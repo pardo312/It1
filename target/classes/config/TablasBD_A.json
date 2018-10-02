@@ -1,15 +1,32 @@
 {
-	"title": "Nombres de las tablas de Parranderos Uniandes para la aplicación A",
-	"unidadPersistencia": "Parranderos",
+	"title": "Nombres de las tablas de SuperAndes Uniandes para la aplicación A",
+	"unidadPersistencia": "SuperAndes",
 	"tablas":
 	[
-		"Parranderos_sequence",
-		"A_TIPOBEBIDA",
-		"A_BEBIDA",
-		"A_BAR",
-		"A_BEBEDOR",
-		"A_GUSTAN",
-		"A_SIRVEN",
-		"A_VISITAN"
+		"SuperAndes_sequence",
+		"PROVEEDOR",
+		"CLIENTE",
+		"CLIENTEEMPRESA",
+		"CLIENTENATURAL",
+		"CONTENEDOR",
+		"DESCUENTODELXPORCIENTO",
+		"ESTANTE",
+		"FACTURA",
+		"FACTURAPRODUCTO",
+		"PAGUE1LLEVESEGUNDOAXPORCIENTO",
+		"PAGUEXCANTIDADLLEVEY",
+		"PAGUEXUNIDADESLLEVEY",
+		"PEDIDO",
+		"PRODUCTO",
+		"PRODUCTOPROVEEDOR",
+		"PROMOCION",
+		"CATEGORIA",
+		"SUCURSAL",
+		"SUCURSALPROVEEDOR",
+		"SUPERANDES",
+		"SUPERMERCADO",
+		"SUPERMERCADOCLIENTE",
+		"TIPOPRODUCTO",
+		
 	]
 }

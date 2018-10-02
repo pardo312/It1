@@ -61,5 +61,10 @@ class SQLPromociones
         return (long) q.executeUnique();            
 	}
 
+	public long eliminarPromocion(PersistenceManager pm, long id) {
+		 Query q = pm.newQuery(SQL, "DELETE FROM " + "PROMOCION "+ "WHERE ID = "+id);
+	        return (long) q.executeUnique();  
+	}
+
 	
 }

@@ -1,4 +1,0 @@
-11:27:03,394 (main) INFO  [uniandes.isis2304.parranderos.test.TipoBebidaTest] - Probando la restricción de UNICIDAD del nombre del tipo de bebida
-11:27:03,519 (main) INFO  [uniandes.isis2304.parranderos.test.TipoBebidaTest] - Se encontró un archivo de configuración de tablas válido
-11:27:05,472 (main) INFO  [uniandes.isis2304.parranderos.test.TipoBebidaTest] - Probando las operaciones CRD sobre TipoBebida
-11:27:05,472 (main) INFO  [uniandes.isis2304.parranderos.test.TipoBebidaTest] - Se encontró un archivo de configuración de tablas válido

@@ -424,7 +424,11 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 		}
 		
     }
- 
+    /* ****************************************************************
+	 * 			Requerimiento 6
+	 *****************************************************************/
+    
+    
     /* ****************************************************************
 	 * 			Requerimiento 7
 	 *****************************************************************/
@@ -467,12 +471,8 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
         		}
         		String resultado = "Promocion adicionada exitosamente: " + tb;
     			resultado += "\n Operación terminada";
-    			panelDatos.actualizarInterfaz(resultado);
-    			
-    			
-    		}
-    				
-        		
+    			panelDatos.actualizarInterfaz(resultado);  			
+    		}     		
     	} 
         catch (Exception e) 
         {
@@ -482,8 +482,36 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
     	}
     }
     
-    
-    
+    /* ****************************************************************
+   	 * 			Requerimiento 9
+   	 *****************************************************************/
+    public void eliminarPromocion( )
+    {
+	    	try 
+	    
+		{
+			String idPromocionStr = JOptionPane.showInputDialog (this, "Id de la promocion?", "Borrar Promocion", JOptionPane.QUESTION_MESSAGE);
+			if (idPromocionStr != null)
+			{
+				long idPromocion = Long.valueOf (idPromocionStr);
+				superAndes.eliminarPromocion (idPromocion);
+	
+				String resultado = "Promocion eliminada con exito\n\n";
+				
+				panelDatos.actualizarInterfaz(resultado);
+			}
+			else
+			{
+				panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+			}
+		} 
+		catch (Exception e) 
+		{
+	//		e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
     
 	/* ****************************************************************
 	 * 			Métodos administrativos

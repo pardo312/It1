@@ -31,6 +31,12 @@
 					"label": "Registrar Promocion",
 					"event": "registrarPromocion"
 				}
+				,
+				{
+					
+					"label": "Eliminar Promocion",
+					"event": "eliminarPromocion"
+				}
 				
 				
 			]

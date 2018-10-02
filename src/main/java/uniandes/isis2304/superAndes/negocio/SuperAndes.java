@@ -193,16 +193,26 @@ unidadesDeMedida,especificacionesDeEmpacado,nivelDeReorden,
 		 if(p == 2)
 		 {
 			 VODescuentodelxporciento promocion = pp.registrarPromocionDDX (porcentaje);	
-			 log.info ("Adicionando el tipo de producto : " + promocion);
+			 log.info ("Adicionando la promocion  : " + promocion);
 		        return promocion;
 		 }
 		 else
 		 {
 			 Pague1llevesegundoaxporciento promocion = pp.registrarPromocionP1L2AX (porcentaje);	
-			 log.info ("Adicionando el tipo de producto : " + promocion);
+			 log.info ("Adicionando la promocion : " + promocion);
 		        return promocion;
 		 }
 	}
+	
+
+	public void eliminarPromocion(long idPromocion) {
+		log.info ("Eliminando la promocion: " + idPromocion);
+        pp.eliminarPromocion (idPromocion);		
+        log.info ("Eliminando la promocion ");
+      
+	}
+
+	
 	//Limpiar SuperAndes
 	public long [] limpiarSuperAndes ()
 	{

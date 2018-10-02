@@ -32,6 +32,7 @@ import uniandes.isis2304.superAndes.negocio.TipoProducto;
 import uniandes.isis2304.superAndes.negocio.VODescuentodelxporciento;
 import uniandes.isis2304.superAndes.negocio.VOPaguexunidadesllevey;
 import uniandes.isis2304.superAndes.negocio.Producto;
+import uniandes.isis2304.superAndes.negocio.Promocion;
 import uniandes.isis2304.superAndes.negocio.Proveedor;
 
 
@@ -103,6 +104,8 @@ public class PersistenciaSuperAndes
 	 * Atributo para el acceso a la tabla SIRVEN de la base de datos
 	 */
 	private SQLProducto sqlProducto;
+	
+	private SQLPromociones sqlPromocion;
 	
 	private SQLTipoProducto sqlTipoProducto;
 	
@@ -227,7 +230,8 @@ public class PersistenciaSuperAndes
 		sqlCliente = new SQLCliente(this);
 		sqlSucursal = new SQLSucursal(this);
 		sqlProducto = new SQLProducto (this);	
-		sqlTipoProducto = new SQLTipoProducto (this);		
+		sqlTipoProducto = new SQLTipoProducto (this);	
+		sqlPromocion = new SQLPromociones(this);
 		sqlPromocionPorcentaje = new SQLPromocionPorcentaje(this);
 		sqlPromocionUnidadProducto = new SQLPromocionUnidadProducto(this);
 		sqlUtil = new SQLUtil(this);
@@ -622,7 +626,34 @@ public class PersistenciaSuperAndes
 	}
 	
 
-	
+	public void eliminarPromocion(long idPromocion) {
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long id = nextval ();
+            long tuplasInsertadas = sqlPromocion.eliminarPromocion(pm,id);
+            tx.commit();
+            
+            log.trace ("Inserción de Promocion " + id +": " + tuplasInsertadas + " tuplas insertadas");
+            
+        }
+        catch (Exception e)
+        {
+       	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
 	
 	/* ****************************************************************
 	 * 			Limpiar Super Andes
@@ -657,6 +688,8 @@ public class PersistenciaSuperAndes
         }
 		
 	}
+
+	
 
 	
 	
