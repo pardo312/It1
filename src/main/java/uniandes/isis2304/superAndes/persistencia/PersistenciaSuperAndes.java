@@ -22,9 +22,15 @@ import com.google.gson.JsonObject;
 
 import uniandes.isis2304.superAndes.negocio.Categoria;
 import uniandes.isis2304.superAndes.negocio.Cliente;
+import uniandes.isis2304.superAndes.negocio.Descuentodelxporciento;
 import uniandes.isis2304.superAndes.negocio.Estante;
+import uniandes.isis2304.superAndes.negocio.Pague1llevesegundoaxporciento;
+import uniandes.isis2304.superAndes.negocio.Paguexcantidadllevey;
+import uniandes.isis2304.superAndes.negocio.Paguexunidadesllevey;
 import uniandes.isis2304.superAndes.negocio.Pedido;
 import uniandes.isis2304.superAndes.negocio.TipoProducto;
+import uniandes.isis2304.superAndes.negocio.VODescuentodelxporciento;
+import uniandes.isis2304.superAndes.negocio.VOPaguexunidadesllevey;
 import uniandes.isis2304.superAndes.negocio.Producto;
 import uniandes.isis2304.superAndes.negocio.Proveedor;
 
@@ -100,8 +106,10 @@ public class PersistenciaSuperAndes
 	
 	private SQLTipoProducto sqlTipoProducto;
 	
+	private SQLPromocionPorcentaje sqlPromocionPorcentaje;
 
-
+	
+	private SQLPromocionUnidadProducto sqlPromocionUnidadProducto;
 	
 	/* ****************************************************************
 	 * 			Métodos del MANEJADOR DE PERSISTENCIA
@@ -218,10 +226,13 @@ public class PersistenciaSuperAndes
 		sqlCategoria = new SQLCategoria(this);
 		sqlCliente = new SQLCliente(this);
 		sqlSucursal = new SQLSucursal(this);
-		sqlProducto = new SQLProducto (this);		
+		sqlProducto = new SQLProducto (this);	
+		sqlTipoProducto = new SQLTipoProducto (this);		
+		sqlPromocionPorcentaje = new SQLPromocionPorcentaje(this);
+		sqlPromocionUnidadProducto = new SQLPromocionUnidadProducto(this);
 		sqlUtil = new SQLUtil(this);
 	}
-
+	
 	/**
 	 * @return La cadena de caracteres con el nombre del secuenciador de parranderos
 	 */
@@ -307,7 +318,7 @@ public class PersistenciaSuperAndes
 	}
 
 	/* ****************************************************************
-	 * 			Métodos para manejar los proveedores
+	 * 			Requerimiento 1
 	 *****************************************************************/
 
 	
@@ -347,43 +358,10 @@ public class PersistenciaSuperAndes
 		return sqlProveedor.darProveedores (pmf.getPersistenceManager());
 	}
 	
-	//metodos Categoria
 	
-	public List<Categoria> darCategorias ()
-	{
-		return sqlCategoria.darCategorias(pmf.getPersistenceManager());
-	}
-
-	
-	public long [] limpiarSuperAndes ()
-	{
-		PersistenceManager pm = pmf.getPersistenceManager();
-        Transaction tx=pm.currentTransaction();
-        try
-        {
-            tx.begin();
-            long [] resp = sqlUtil.limpiarSuperAndes (pm);
-            tx.commit ();
-            log.info ("Borrada la base de datos");
-            return resp;
-        }
-        catch (Exception e)
-        {
-//        	e.printStackTrace();
-        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
-        	return new long[] {-1, -1, -1, -1, -1, -1, -1};
-        }
-        finally
-        {
-            if (tx.isActive())
-            {
-                tx.rollback();
-            }
-            pm.close();
-        }
-		
-	}
-	//Metodos Producto
+	/* ****************************************************************
+	 * 			Requerimiento 2
+	 *****************************************************************/
 	
 	public Producto registrarProducto(String codigoDeBarras,
 			
@@ -506,6 +484,182 @@ public class PersistenciaSuperAndes
             pm.close();
         }
 	}
+	
+	public List<Categoria> darCategorias ()
+	{
+		return sqlCategoria.darCategorias(pmf.getPersistenceManager());
+	}
+
+	
+	
+	
+	/* ****************************************************************
+	 * 			Requerimiento 6
+	 *****************************************************************/
+	
+	
+	public VODescuentodelxporciento registrarPromocionDDX(int porcentaje) {
+		
+        PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long id = nextval ();
+            long tuplasInsertadas = sqlPromocionPorcentaje.registrarPromocionDDX(pm,id,porcentaje);
+            tx.commit();
+            
+            log.trace ("Inserción de Promocion " + id +": " + tuplasInsertadas + " tuplas insertadas");
+            
+            return new Descuentodelxporciento(id, porcentaje);
+        }
+        catch (Exception e)
+        {
+       	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	
+	//---------------------------------------------------------------------------------------------------
+	public Pague1llevesegundoaxporciento registrarPromocionP1L2AX(int porcentaje) {
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long id = nextval ();
+            long tuplasInsertadas = sqlPromocionPorcentaje.registrarPromocionP1L2AX(pm,id,porcentaje);
+            tx.commit();
+            
+            log.trace ("Inserción de Promocion " + id +": " + tuplasInsertadas + " tuplas insertadas");
+            
+            return new Pague1llevesegundoaxporciento(id, porcentaje);
+        }
+        catch (Exception e)
+        {
+       	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+
+//---------------------------------------------------------------------------------------------------
+	public Paguexcantidadllevey registrarPromocionPXCLY(int x, int y) {
+		
+        PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long id = nextval ();
+            long tuplasInsertadas = sqlPromocionUnidadProducto.registrarPromocionPXCLY(pm,id,x,y);
+            tx.commit();
+            
+            log.trace ("Inserción de Promocion " + id +": " + tuplasInsertadas + " tuplas insertadas");
+            
+            return new Paguexcantidadllevey(id, x,y);
+        }
+        catch (Exception e)
+        {
+       	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	public Paguexunidadesllevey registrarPromocionPXULY(int x, int y) {
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long id = nextval ();
+            long tuplasInsertadas = sqlPromocionUnidadProducto.registrarPromocionPXULY(pm,id,x,y);
+            tx.commit();
+            
+            log.trace ("Inserción de Promocion " + id +": " + tuplasInsertadas + " tuplas insertadas");
+            
+            return new Paguexunidadesllevey(id, x,y);
+        }
+        catch (Exception e)
+        {
+       	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	
+
+	
+	
+	/* ****************************************************************
+	 * 			Limpiar Super Andes
+	 *****************************************************************/
+	
+	
+	public long [] limpiarSuperAndes ()
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long [] resp = sqlUtil.limpiarSuperAndes (pm);
+            tx.commit ();
+            log.info ("Borrada la base de datos");
+            return resp;
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return new long[] {-1, -1, -1, -1, -1, -1, -1};
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+		
+	}
+
+	
+	
 	
 
  }

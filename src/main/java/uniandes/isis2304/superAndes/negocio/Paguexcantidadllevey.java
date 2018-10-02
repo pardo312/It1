@@ -22,7 +22,7 @@ package uniandes.isis2304.superAndes.negocio;
  * Clase para modelar el concepto BAR del negocio de los Parranderos
  *
  */
-public class Paguexcantidadllevey implements VOPaguexcantidadllevey
+public class Paguexcantidadllevey implements VOPaguexunidadesllevey
 {
 	/* ****************************************************************
 	 * 			Atributos

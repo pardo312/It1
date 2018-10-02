@@ -167,78 +167,42 @@ unidadesDeMedida,especificacionesDeEmpacado,nivelDeReorden,
 	}
 	
 	
-//	//Metodos de cliente
-//	
-//	public Cliente adicionarCliente (long id,
-//			
-//			 int puntosDeCompra,
-//			
-//			 long cedulaCliente,
-//			
-//			 String NITCliente)
-//	{
-//        log.info ("Adicionando el Cliente: " + id);
-//        Cliente Cliente = pp.adicionarCliente ( id,puntosDeCompra,
-//        		cedulaCliente, NITCliente);		
-//        log.info ("Adicionando el Cliente: " + Cliente);
-//        return Cliente;
-//	}
-
-//	//Metodos de Sucursal
-//	
-//	public Sucursal adicionarSucursal ( String nombre,
-//			
-//			 String ciudad,
-//			
-//			 String direccion,
-//			
-//			 String segmentacionDeMercado,
-//			
-//			 String tamanioInstalacion,
-//			
-//			 long NITSupermercado)
-//	{
-//        log.info ("Adicionando el Sucursal: " + nombre);
-//        Sucursal Sucursal = pp.adicionarSucursal (id,
-//        		
-//        		  nombre,
-//        		
-//        		  ciudad,
-//        		
-//        		  direccion,
-//        		
-//        		  segmentacionDeMercado,
-//        		
-//        		  tamanioInstalacion,
-//        		
-//        		  NITSupermercado
-//        		);		
-//        log.info ("Adicionando el Sucursal: " + Sucursal);
-//        return Sucursal;
-//	}
-	//Metodos Promocion
 	
-//	public Promocion adicionarPromocion (
-//			
-//			 String descripcion,
-//
-//			 String precioPromocion,
-//			
-//			 long idSucursal)
-//	{
-//        log.info ("Adicionando la Promocion: " + descripcion);
-//        Promocion Promocion = pp.adicionarPromocion (
-//        		
-//        		  descripcion,
-//
-//        		  precioPromocion,
-//        		
-//        		  idSucursal);		
-//        log.info ("Adicionando la Promocion: " + Promocion);
-//        return Promocion;
-//	}
-//	
-	
+	public VOPaguexunidadesllevey registrarPromocionCantidad(int x, int y, int p) {
+		 log.info ("Adicionando la promocion ");
+		 
+		 if(p == 1)
+		 {
+			 Paguexunidadesllevey promocion = pp.registrarPromocionPXULY (x,y);	
+			 log.info ("Adicionando el tipo de producto : " + promocion);
+		        return promocion;
+		 }
+		 else
+		 {
+			 Paguexcantidadllevey promocion = pp.registrarPromocionPXCLY (x,y);	
+			 log.info ("Adicionando el tipo de producto : " + promocion);
+		        return promocion;
+		 }
+		 	
+	       
+			
+	}
+	public VODescuentodelxporciento registrarPromocionPorcentaje(int porcentaje, int p) {
+		log.info ("Adicionando la promocion ");
+		 
+		 if(p == 2)
+		 {
+			 VODescuentodelxporciento promocion = pp.registrarPromocionDDX (porcentaje);	
+			 log.info ("Adicionando el tipo de producto : " + promocion);
+		        return promocion;
+		 }
+		 else
+		 {
+			 Pague1llevesegundoaxporciento promocion = pp.registrarPromocionP1L2AX (porcentaje);	
+			 log.info ("Adicionando el tipo de producto : " + promocion);
+		        return promocion;
+		 }
+	}
 	//Limpiar SuperAndes
 	public long [] limpiarSuperAndes ()
 	{
@@ -247,6 +211,12 @@ unidadesDeMedida,especificacionesDeEmpacado,nivelDeReorden,
         log.info ("Limpiando la BD de SuperAndes: Listo!");
         return borrrados;
 	}
+
+	
+
+	
+
+	
 
 	
 }

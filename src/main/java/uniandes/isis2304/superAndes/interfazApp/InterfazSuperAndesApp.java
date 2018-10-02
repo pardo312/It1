@@ -37,7 +37,10 @@ import com.google.gson.stream.JsonReader;
 
 import uniandes.isis2304.superAndes.negocio.SuperAndes;
 import uniandes.isis2304.superAndes.negocio.VOCategoria;
+import uniandes.isis2304.superAndes.negocio.VODescuentodelxporciento;
+import uniandes.isis2304.superAndes.negocio.VOPaguexunidadesllevey;
 import uniandes.isis2304.superAndes.negocio.VOProducto;
+import uniandes.isis2304.superAndes.negocio.VOPromocion;
 import uniandes.isis2304.superAndes.negocio.VOProveedor;
 import uniandes.isis2304.superAndes.negocio.VOTipoProducto;
 
@@ -227,12 +230,9 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
     }
     
 	/* ****************************************************************
-	 * 			CRUD de TipoProducto
+	 * 			Requerimiento 1
 	 *****************************************************************/
-    /**
-     * Adiciona un tipo de producto con la información dada por el usuario
-     * Se crea una nueva tupla de tipoProducto en la base de datos, si un tipo de producto con ese nombre no existía
-     */
+
     public void registrarProveedor( )
     {
     	try 
@@ -294,7 +294,9 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
         return resp;
 	}
     
-    //Metodos De Producto
+    /* ****************************************************************
+	 * 			Requerimiento 2
+	 *****************************************************************/
     
     //TODO
     public void registrarProducto( )
@@ -423,21 +425,66 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 		
     }
  
-//    public boolean existeCategoriaConNombre(String nombre)
-//    {
-//    	boolean r = false;
-//    	List <VOCategoria> lista = superAndes.darVOCategoria();
-//        for (VOCategoria tb : lista)
-//        {
-//        	
-//        	if(tb.getNombreCategoria().equals(nombre))
-//        	{
-//        		r = true;
-//        	}
-//        }
-//        return r;
-//    }
-
+    /* ****************************************************************
+	 * 			Requerimiento 7
+	 *****************************************************************/
+    
+    public void registrarPromocion( )
+    {
+    	try 
+    	{
+    		
+    	    int p = Integer.parseInt(JOptionPane.showInputDialog (this, "Indique el numero del tipo de promocion que desea agregar:"
+    	    		+ "\n (1)Pague x unidades lleve y"
+    	    		+ "\n (2)Descuento del x porciento"
+    	    		+ "\n (3)Pague x cantidad lleve y"
+    	    		+ "\n (4)Pague 1 lleve segundo a x porciento"
+    	    		+ "\n (5)Paquete de productos por un precio menor", "Registrar Promocion", JOptionPane.QUESTION_MESSAGE));
+    	    
+    		if(p == 1 || p == 3)
+    		{
+    			int x= Integer.parseInt(JOptionPane.showInputDialog (this, "Ingese la cantidad de unidades/productos a pagar", "Registrar Promocion", JOptionPane.QUESTION_MESSAGE));
+    			int y= Integer.parseInt(JOptionPane.showInputDialog (this, "Ingese la cantidad de unidades/productos a recibir", "Registrar Promocion", JOptionPane.QUESTION_MESSAGE));
+    			VOPaguexunidadesllevey tb =superAndes.registrarPromocionCantidad(x,y,p) ;
+    					
+    					if (tb == null)
+                		{
+                			throw new Exception ("No se pudo crear Promocion");
+                		}
+                		String resultado = "Promocion adicionada exitosamente: " + tb;
+            			resultado += "\n Operación terminada";
+            			panelDatos.actualizarInterfaz(resultado);
+    		}
+    		else if(p == 2 || p == 4)
+    		{
+    			
+    			int porcentaje = Integer.parseInt(JOptionPane.showInputDialog (this, "Ingrese el porcentaje(Solo el numero)", "Registrar Promocion", JOptionPane.QUESTION_MESSAGE));
+    			
+    			VODescuentodelxporciento tb =superAndes.registrarPromocionPorcentaje(porcentaje, p) ;	
+    			if (tb == null)
+        		{
+        			throw new Exception ("No se pudo crear promocion");
+        		}
+        		String resultado = "Promocion adicionada exitosamente: " + tb;
+    			resultado += "\n Operación terminada";
+    			panelDatos.actualizarInterfaz(resultado);
+    			
+    			
+    		}
+    				
+        		
+    	} 
+        catch (Exception e) 
+        {
+//    			e.printStackTrace();
+    			String resultado = generarMensajeError(e);
+    			panelDatos.actualizarInterfaz(resultado);
+    	}
+    }
+    
+    
+    
+    
 	/* ****************************************************************
 	 * 			Métodos administrativos
 	 *****************************************************************/

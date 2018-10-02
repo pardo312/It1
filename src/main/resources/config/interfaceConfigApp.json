@@ -22,8 +22,14 @@
 				,
 				{
 					
-					"label": "registrar Producto",
+					"label": "Registrar Producto",
 					"event": "registrarProducto"
+				}
+				,
+				{
+					
+					"label": "Registrar Promocion",
+					"event": "registrarPromocion"
 				}
 				
 				
