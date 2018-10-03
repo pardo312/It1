@@ -5,74 +5,88 @@
 	"bannerPath": "./src/main/resources/config/logo.png",
 	"menuBar":
 	[
-		{ "menuTitle": "Requerimientos",
+		{ "menuTitle": "Registrar",
 		  "options":
 			[
 				{
-					
 					"label": "Registrar Un Proveedor",
 					"event": "registrarProveedor"
 				},
 				{
-					
-					"label": "Listar Proveedores",
-					"event": "listarProveedor"
-				}
-				
-				,
-				{
-					
 					"label": "Registrar Producto",
 					"event": "registrarProducto"
-				}
-				,
-				
-				{
-					
-					"label": "Registrar Estante A una Sucursal",
-					"event": "registrarEstanteASucursal"
 				},
 				{
-					
+					"label": "Registrar Estante A una Sucursal",
+					"event": "registrarEstanteASucursal"
+				}
+				,
+				{
 					"label": "Registrar Promocion",
 					"event": "registrarPromocion"
 				}
 				,
 				{
 					
-					"label": "Eliminar Promocion",
-					"event": "eliminarPromocion"
-				},
-				{
-					
 					"label": "Registrar Cliente",
 					"event": "registrarCliente"
+				}
+				,
+				{
+					
+					"label": "Registrar Venta de producto",
+					"event": "registrarVentaDeProducto"
+				}
+			]
+		},
+		{ "menuTitle": "RFC",
+		  "options":
+			[
+				{
+					
+					"label": "RFC1",
+					"event": "Consulta1" 
 				},
 				{
 					
-					"label": "Registrar Sucursal",
-					"event": "registrarSucursal"
+					"label": "RFC2",
+					"event": "Consulta2"
 				}
 				,
 				{
 					
-					"label": "Registrar Contenedor",
-					"event": "registrarContenedor"
+					"label": "RFC3",
+					"event": "Consulta3" 
 				}
 				,
 				{
 					
-					"label": "Consulta1",
-					"event": "Consulta1" 
+					"label": "RFC4",
+					"event": "Consulta4" 
 				}
+			]
+		},		
+		{ "menuTitle": "Otros",
+		  "options":
+			[
 				
-				
+				{
+					"label": "Listar Proveedores",
+					"event": "listarProveedor"
+				},
+				{
+					
+					"label": "Eliminar Promocion",
+					"event": "eliminarPromocion"
+				}
 				
 			]
-		}
-			
-			
+		}		
+				
 		
 	]
+	
+	
+		
 }
 	

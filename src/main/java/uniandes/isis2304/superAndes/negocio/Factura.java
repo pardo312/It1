@@ -23,7 +23,7 @@ import java.util.List;
  * Clase para modelar el concepto BAR del negocio de los Parranderos
  *
  */
-public class Factura implements VOFactura
+public class Factura 
 {
 	/* ****************************************************************
 	 * 			Atributos
@@ -37,7 +37,7 @@ public class Factura implements VOFactura
 	
 	private String numeroFactura;
 	
-	private Date fecha;
+	private java.util.Date fecha;
 	
 	private long idCliente;
 	
@@ -62,11 +62,11 @@ public class Factura implements VOFactura
 
     public Factura(  String numeroFactura,
 	
-	 Date fecha, long idCliente)
+	 java.util.Date fecha2, long idCliente)
 	 
     {
     	this.numeroFactura = numeroFactura;
-		this.fecha = fecha;
+		this.fecha = fecha2;
 		this.idCliente = idCliente;
 
 	}
@@ -83,7 +83,7 @@ public class Factura implements VOFactura
 	}
 	
 
-	public Date getfecha() 
+	public java.util.Date getfecha() 
 	{
 		return fecha;
 	}

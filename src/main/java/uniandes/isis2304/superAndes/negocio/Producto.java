@@ -27,7 +27,7 @@ import java.sql.Timestamp;
  * 
  * @author Germán Bravo
  */
-public class Producto implements VOProducto
+public class Producto 
 {
 	/* ****************************************************************
 	 * 			Atributos
@@ -47,7 +47,7 @@ public class Producto implements VOProducto
 	
 	private float cantidadEnLaPresentacion;
 	
-	private String unidadesDeMedida;
+	private String unidadDeMedida;
 
 	private String especificacionesDeEmpacado;
 	
@@ -79,7 +79,7 @@ public class Producto implements VOProducto
 		this.presentacion = "";
 		this.precioPorUnidad = 0;
 		this.cantidadEnLaPresentacion = 0;
-		this.unidadesDeMedida = "";
+		this.unidadDeMedida = "";
 		this.especificacionesDeEmpacado ="";
 		this.nivelDeReorden = 0;
 		this.IDPedido = 0;
@@ -107,7 +107,7 @@ public class Producto implements VOProducto
 		this.presentacion = presentacion;
 		this.precioPorUnidad = precioPorUnidad;
 		this.cantidadEnLaPresentacion = cantidadEnLaPresentacion;
-		this.unidadesDeMedida = unidadesDeMedida;
+		this.unidadDeMedida = unidadesDeMedida;
 		this.especificacionesDeEmpacado =especificacionesDeEmpacado;
 		this.nivelDeReorden = nivelDeReorden;
 		this.IDPedido =IDPedido;
@@ -195,15 +195,15 @@ public class Producto implements VOProducto
 		this.cantidadEnLaPresentacion = cantidadEnLaPresentacion;
 	}
 
-	public String getUnidadesDeMedida() 
+	public String getUnidadDeMedida() 
 	{
-		return unidadesDeMedida;
+		return unidadDeMedida;
 	}
 
 
-	public void setUnidadesDeMedida(String unidadesDeMedida) 
+	public void setUnidadDeMedida(String unidadDeMedida) 
 	{		
-		this.unidadesDeMedida = unidadesDeMedida;
+		this.unidadDeMedida = unidadDeMedida;
 	}
 	
 	public String getEspecificacionesDeEmpacado() 
@@ -279,7 +279,7 @@ public class Producto implements VOProducto
 	{
 		return "Producto [codigoDeBarras=" + codigoDeBarras + ", nombre=" + nombre + ", marca=" + marca + ", precioUnitario="
 				+ precioUnitario  + ", presentacion=" + presentacion + ", precioPorUnidad=" + precioPorUnidad + ", cantidadEnLaPresentacion=" + cantidadEnLaPresentacion + 
-				", unidadesDeMedida=" + unidadesDeMedida + ", especificacionesDeEmpacado=" + especificacionesDeEmpacado+
+				", unidadDeMedida=" + unidadDeMedida + ", especificacionesDeEmpacado=" + especificacionesDeEmpacado+
 				", nivelDeReorden=" + nivelDeReorden +", IDPedido=" + IDPedido +", IDSucursal=" + IDSucursal +", IDContenedor=" + IDContenedor +", EnStock=" + EnStock +", IDPromocion=" + IDPromocion+"]";
 	}
 

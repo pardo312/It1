@@ -295,11 +295,60 @@ public class SuperAndes
 		log.info ("Eliminando la promocion ");
 
 	}
+	
+	
+	public Factura registrarFactura(String numeroDeFactura, java.util.Date fecha, long idCliente) {
+		log.info ("Adicionando la factura: " + numeroDeFactura);
+		Factura factura = pp.registrarFactura (numeroDeFactura,fecha,idCliente);		
+		log.info ("Adicionando la factura:  " + factura);
+		return factura;
+	}
+	
+	public FacturaProducto registrarFacturaProd(String numeroDeFactura, String codigoDeBarras) {
+		log.info ("Adicionando la factura: " + numeroDeFactura);
+		FacturaProducto factura = pp.registrarFacturaProd (numeroDeFactura,codigoDeBarras);		
+		log.info ("Adicionando la factura:  " + factura);
+		return factura;
+	}
+
+	
 	public List<uniandes.isis2304.superAndes.negocio.Consulta1> consulta1()
 	{
 		log.info ("Generando consulta");        
         List<Consulta1> voProd = new LinkedList<Consulta1> ();
         for (Consulta1 tb : pp.Consulta1())
+        {
+        	voProd.add (tb);
+        }
+        log.info ("Generando Consulta: " + voProd.size() + " existentes");
+        return voProd;
+	}
+	public List<uniandes.isis2304.superAndes.negocio.Consulta2> consulta2()
+	{
+		log.info ("Generando consulta");        
+        List<Consulta2> voProd = new LinkedList<Consulta2> ();
+        for (Consulta2 tb : pp.Consulta2())
+        {
+        	voProd.add (tb);
+        }
+        log.info ("Generando Consulta: " + voProd.size() + " existentes");
+        return voProd;
+	}
+	public List<uniandes.isis2304.superAndes.negocio.Consulta3> consulta3() {
+		log.info ("Generando consulta");        
+        List<Consulta3> voProd = new LinkedList<Consulta3> ();
+        for (Consulta3 tb : pp.Consulta3())
+        {
+        	voProd.add (tb);
+        }
+        log.info ("Generando Consulta: " + voProd.size() + " existentes");
+        return voProd;
+	}
+	
+	public List<Producto> consulta4(String r) {
+		log.info ("Generando consulta");        
+        List<Producto> voProd = new LinkedList<Producto> ();
+        for (Producto tb : pp.Consulta4(r))
         {
         	voProd.add (tb);
         }
@@ -315,6 +364,13 @@ public class SuperAndes
 		log.info ("Limpiando la BD de SuperAndes: Listo!");
 		return borrrados;
 	}
+
+	
+	
+
+	
+
+	
 
 
 

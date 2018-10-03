@@ -36,6 +36,8 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 
+import uniandes.isis2304.superAndes.negocio.Factura;
+import uniandes.isis2304.superAndes.negocio.FacturaProducto;
 import uniandes.isis2304.superAndes.negocio.Producto;
 import uniandes.isis2304.superAndes.negocio.SuperAndes;
 import uniandes.isis2304.superAndes.negocio.VOCategoria;
@@ -353,7 +355,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
     		if (nombre != null && codigoDeBarras != null && marca != null && presentacion != null  && unidadesDeMedida!= null && especificacionesDeEmpacado != null )
     		{ 
    			
-        		VOProducto tb = superAndes.registrarProducto(codigoDeBarras,nombre,marca,precioUnitario,presentacion, precioPorUnidad,cantidadEnLaPresentacion,unidadesDeMedida,especificacionesDeEmpacado,nivelDeReorden, IDPedido, IDSucursal, IDContenedor,enStock) ;
+        		Producto tb = superAndes.registrarProducto(codigoDeBarras,nombre,marca,precioUnitario,presentacion, precioPorUnidad,cantidadEnLaPresentacion,unidadesDeMedida,especificacionesDeEmpacado,nivelDeReorden, IDPedido, IDSucursal, IDContenedor,enStock) ;
         		
         		if (tb == null)
         		{
@@ -743,8 +745,8 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
     		long idEstante = Long.parseLong(JOptionPane.showInputDialog (this, "Id del estante?", "Registrar Proveedor", JOptionPane.QUESTION_MESSAGE));
     		
     		List<Producto> prodTots = listarProducto();
-    		List<VOProducto> prodDeEstante = new LinkedList<VOProducto>();
-    		for (VOProducto tb : prodTots)
+    		List<Producto> prodDeEstante = new LinkedList<Producto>();
+    		for (Producto tb : prodTots)
             {
             	if(tb.getIDContenedor() == idEstante)
             	{
@@ -862,8 +864,60 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 			panelDatos.actualizarInterfaz(resultado);
 		}
     }
+    
     /* ****************************************************************
-   	 * 			Requerimiento 9
+   	 * 			Requerimiento 11
+   	 *****************************************************************/
+    
+    public void registrarVentaDeProducto( )
+    {
+    	try 
+    	{
+    		
+    		
+    		String numeroDeFactura = JOptionPane.showInputDialog (this, "Numero de la factura?", "Registrar Factura", JOptionPane.QUESTION_MESSAGE);
+    		java.util.Date fecha =  (java.util.Date) new SimpleDateFormat("dd/MM/yyyy").parse(JOptionPane.showInputDialog (this, "fecha de la factura? (DD/MM/YYYY)", "Registrar Pedido", JOptionPane.QUESTION_MESSAGE));   		long idCliente = Long.parseLong(JOptionPane.showInputDialog (this, "ID del cliente asociado?", "Registrar Factura", JOptionPane.QUESTION_MESSAGE));
+    		String codigoDeBarras = JOptionPane.showInputDialog (this, "Codigo de barras de producto ?", "Registrar Factura", JOptionPane.QUESTION_MESSAGE);
+  			int numProd = Integer.parseInt(JOptionPane.showInputDialog (this, "Numero de productos ?", "Registrar Factura", JOptionPane.QUESTION_MESSAGE));
+        	
+    		Factura tb = superAndes.registrarFactura(numeroDeFactura,fecha,idCliente) ;
+    		for (int i = 1; i<numProd;i++)
+            {
+    		
+    			
+    			FacturaProducto fp = superAndes.registrarFacturaProd(numeroDeFactura,codigoDeBarras) ;
+            		if (fp == null)
+            		{
+            			throw new Exception ("No se pudo crear factura con numero: " + numeroDeFactura);
+            		}
+            		String resultado = "En adicionarProveedor\n\n";
+            		resultado += "proveedor adicionado exitosamente: " + tb;
+        			resultado += "\n Operación terminada";
+        			panelDatos.actualizarInterfaz(resultado);
+        		
+        		
+            }
+    		if (tb == null)
+        		{
+    			throw new Exception ("No se pudo crear factura con numero: " + numeroDeFactura);
+        		}
+    		String resultado = "En adicionarProveedor\n\n";
+   		resultado += "proveedor adicionado exitosamente: " + tb;
+		resultado += "\n Operación terminada";
+		panelDatos.actualizarInterfaz(resultado);
+    		
+    		
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+    
+    /* ****************************************************************
+   	 * 			Consulta 1
    	 *****************************************************************/
     public void Consulta1( )
     {
@@ -871,7 +925,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
     	{
 			List <uniandes.isis2304.superAndes.negocio.Consulta1> lista = superAndes.consulta1();
 
-			String resultado = "En listaProveedor";
+			String resultado = "En Consulta1";
 			resultado +=  "\n" + listarConsulta1(lista);
 			panelDatos.actualizarInterfaz(resultado);
 			resultado += "\n Operación terminada";
@@ -886,7 +940,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
     
     private String listarConsulta1(List<uniandes.isis2304.superAndes.negocio.Consulta1> lista) 
     {
-    	String resp = "Los Proveedores existentes son:\n";
+    	String resp = "Resultado Consulta 1:\n";
     	int i = 1;
         for (uniandes.isis2304.superAndes.negocio.Consulta1 tb : lista)
         {
@@ -894,7 +948,175 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
         }
         return resp;
 	}
+    /* ****************************************************************
+   	 * 			Consulta 2
+   	 *****************************************************************/
+    public void Consulta2( )
+    {
+    	try 
+    	{
+			List <uniandes.isis2304.superAndes.negocio.Consulta2> lista = superAndes.consulta2();
+
+			String resultado = "Resultado Consulta 2";
+			resultado +=  "\n" + listarConsulta2(lista);
+			panelDatos.actualizarInterfaz(resultado);
+			resultado += "\n Operación terminada";
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
     
+    private String listarConsulta2(List<uniandes.isis2304.superAndes.negocio.Consulta2> lista) 
+    {
+    	String resp = "Resultado Consulta 2:\n";
+    	int i = 1;
+        for (uniandes.isis2304.superAndes.negocio.Consulta2 tb : lista)
+        {
+        	resp += i++ + ". " + tb.toString() + "\n";
+        }
+        return resp;
+	}
+    /* ****************************************************************
+   	 * 			Consulta 3
+   	 *****************************************************************/
+    public void Consulta3( )
+    {
+    	try 
+    	{
+			List <uniandes.isis2304.superAndes.negocio.Consulta3> lista = superAndes.consulta3();
+
+			String resultado = "En listaProveedor";
+			resultado +=  "\n" + listarConsulta3(lista);
+			panelDatos.actualizarInterfaz(resultado);
+			resultado += "\n Operación terminada";
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+    
+    private String listarConsulta3(List<uniandes.isis2304.superAndes.negocio.Consulta3> lista) 
+    {
+    	String resp = "Resultado Consulta 3:\n";
+    	int i = 1;
+        for (uniandes.isis2304.superAndes.negocio.Consulta3 tb : lista)
+        {
+        	resp += i++ + ". " + tb.toString() + "\n";
+        }
+        return resp;
+	}
+    /* ****************************************************************
+   	 * 			Consulta 4
+   	 *****************************************************************/
+    
+    public void Consulta4( )
+    {
+    	try 
+    	{
+    		
+    		JOptionPane.showMessageDialog(this, "A continuacion ponga los valores por los cuales quiere buscar el producto, si no quiere buscar por ese valor coloque 0");
+    		String codigoDeBarras = JOptionPane.showInputDialog (this, "Codigo de barras del Producto?", "Registrar Producto", JOptionPane.QUESTION_MESSAGE);
+    		String nombre =JOptionPane.showInputDialog (this, "Nombre del Producto?", "Registrar Producto", JOptionPane.QUESTION_MESSAGE);
+    		String marca =JOptionPane.showInputDialog (this, "Marca del Producto?", "Registrar Producto", JOptionPane.QUESTION_MESSAGE);
+    		float precioUnitario =Float.parseFloat(JOptionPane.showInputDialog (this, "Precio Unitario del Producto?", "Registrar Producto", JOptionPane.QUESTION_MESSAGE));
+    		String presentacion =JOptionPane.showInputDialog (this, "Presentacion del Producto?", "Registrar Producto", JOptionPane.QUESTION_MESSAGE);
+    		float precioPorUnidad =Float.parseFloat(JOptionPane.showInputDialog (this, "Precio Por Unidad del Producto?", "Registrar Producto", JOptionPane.QUESTION_MESSAGE));
+    		float cantidadEnLaPresentacion =Float.parseFloat(JOptionPane.showInputDialog (this, "Cantidad de producto En La Presentacion del Producto?", "Registrar Producto", JOptionPane.QUESTION_MESSAGE));
+    		String unidadesDeMedida =JOptionPane.showInputDialog (this, "Unidades De Medida del Producto?", "Registrar Producto", JOptionPane.QUESTION_MESSAGE);
+    		String especificacionesDeEmpacado =JOptionPane.showInputDialog (this, "Especificaciones De Empacado del Producto?", "Registrar Producto", JOptionPane.QUESTION_MESSAGE);
+    		long IDPedido =Long.parseLong(JOptionPane.showInputDialog (this, "ID del Pedido relacionado con este Producto?", "Registrar Producto", JOptionPane.QUESTION_MESSAGE));
+    		long IDSucursal =Long.parseLong(JOptionPane.showInputDialog (this, "ID de la sucursal relacionada con este Producto?", "Registrar Producto", JOptionPane.QUESTION_MESSAGE));
+    		long IDContenedor =Long.parseLong(JOptionPane.showInputDialog (this, "ID de la Contenedor relacionada con este Producto?", "Registrar Producto", JOptionPane.QUESTION_MESSAGE));
+    		int enStock =Integer.parseInt(JOptionPane.showInputDialog (this, "Producto en stock?", "Registrar Producto", JOptionPane.QUESTION_MESSAGE));
+    		float nivelDeReorden = enStock/100;
+    		
+    		String r="WHERE ";
+    		
+    		if(!(codigoDeBarras.equals("0")))
+    		{
+    			r +="CodigoDeBarras = '"+codigoDeBarras+ "' ";
+    		}
+    		if(!nombre.equals("0"))
+    		{
+    			r +="nombre = '"+nombre + "' ";
+    		}
+    		if(!marca.equals("0"))
+    		{
+    			r +="marca = '"+marca+ "' ";
+    		}
+    		if(precioUnitario != 0)
+    		{
+    			r +="precioUnitario = "+precioUnitario+ " ";
+    		}
+    		if(!presentacion.equals("0"))
+    		{
+    			r +="presentacion = '"+presentacion+ "' ";
+    		}
+    		if(precioPorUnidad != 0)
+    		{
+    			r +="precioPorUnidad = "+precioPorUnidad+ " ";
+    		}
+    		if(cantidadEnLaPresentacion != 0)
+    		{
+    			r +="cantidadEnLaPresentacion = "+cantidadEnLaPresentacion+ " ";
+    		}
+    		if(!unidadesDeMedida.equals("0"))
+    		{
+    			r +="unidadesDeMedida = '"+unidadesDeMedida+ "' ";
+    		}
+    		if(!especificacionesDeEmpacado.equals("0"))
+    		{
+    			r +="especificacionesDeEmpacado = '"+especificacionesDeEmpacado+ "' ";
+    		}
+    		if(IDPedido != 0)
+    		{
+    			r +="IDPedido = "+IDPedido+ " ";
+    		}
+    		if(IDSucursal != 0)
+    		{
+    			r +="IDSucursal = "+IDSucursal+ " ";
+    		}
+    		if(IDContenedor != 0)
+    		{
+    			r +="IDContenedor = "+IDContenedor+ " ";
+    		}
+    		if(enStock != 0)
+    		{
+    			r +="enStock = "+enStock +" nivelDeReorden = " +nivelDeReorden+ " ";
+    		}
+    		
+    		List <Producto> lista = superAndes.consulta4(r);
+
+			String resultado = "En listaProveedor";
+			resultado +=  "\n" + listarConsulta4(lista);
+			panelDatos.actualizarInterfaz(resultado);
+			resultado += "\n Operación terminada";
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+    
+    private String listarConsulta4(List<Producto> lista) 
+    {
+    	String resp = "Resultado Consulta 3:\n";
+    	int i = 1;
+        for (Producto tb : lista)
+        {
+        	resp += i++ + ". " + tb.toString() + "\n";
+        }
+        return resp;
+	}
 	/* ****************************************************************
 	 * 			Métodos administrativos
 	 *****************************************************************/
