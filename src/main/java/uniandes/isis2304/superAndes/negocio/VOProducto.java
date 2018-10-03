@@ -55,6 +55,7 @@ public interface VOProducto
 	
 	public long getIDContenedor();
 
+	public long getIDPromocion();
 	
 	@Override
 	public String toString();

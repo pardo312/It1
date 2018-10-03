@@ -114,6 +114,9 @@ public class PersistenciaSuperAndes
 	
 	private SQLPromocionUnidadProducto sqlPromocionUnidadProducto;
 	
+	private SQLEstante sqlEstante;
+	
+	
 	/* ****************************************************************
 	 * 			Métodos del MANEJADOR DE PERSISTENCIA
 	 *****************************************************************/
@@ -228,6 +231,7 @@ public class PersistenciaSuperAndes
 		sqlProveedor = new SQLProveedor(this);
 		sqlCategoria = new SQLCategoria(this);
 		sqlCliente = new SQLCliente(this);
+		sqlEstante = new SQLEstante(this);
 		sqlSucursal = new SQLSucursal(this);
 		sqlProducto = new SQLProducto (this);	
 		sqlTipoProducto = new SQLTipoProducto (this);	
@@ -361,7 +365,12 @@ public class PersistenciaSuperAndes
 	{
 		return sqlProveedor.darProveedores (pmf.getPersistenceManager());
 	}
-	
+	public List<Producto> darProductos() {
+
+		
+		return sqlProducto.darProductos(pmf.getPersistenceManager());
+}
+
 	
 	/* ****************************************************************
 	 * 			Requerimiento 2
@@ -392,7 +401,8 @@ public class PersistenciaSuperAndes
 			 long IDSucursal,
 			
 			 long IDContenedor,
-			 int EnStock)
+			 int EnStock,
+			 long IDPromocion)
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
@@ -403,7 +413,7 @@ public class PersistenciaSuperAndes
             long tuplasInsertadas = sqlProducto.registrarProducto(pm,codigoDeBarras ,nombre,
             		marca,precioUnitario,presentacion,precioPorUnidad,cantidadEnLaPresentacion,
             		unidadesDeMedida,especificacionesDeEmpacado,nivelDeReorden,
-            		 IDPedido, IDSucursal, IDContenedor, EnStock);
+            		 IDPedido, IDSucursal, IDContenedor, EnStock,IDPromocion);
             tx.commit();
             
             log.trace ("Inserción de Producto: " + nombre + ": " + tuplasInsertadas + " tuplas insertadas");
@@ -411,7 +421,7 @@ public class PersistenciaSuperAndes
             return new Producto(codigoDeBarras ,nombre,
             		marca,precioUnitario,presentacion,precioPorUnidad,cantidadEnLaPresentacion,
             		unidadesDeMedida,especificacionesDeEmpacado,nivelDeReorden,
-            		 IDPedido, IDSucursal, IDContenedor,EnStock);
+            		 IDPedido, IDSucursal, IDContenedor,EnStock,IDPromocion);
         }
         catch (Exception e)
         {
@@ -428,6 +438,9 @@ public class PersistenciaSuperAndes
             pm.close();
         }
 	}
+	
+	
+
 	
 	public Categoria registrarCategoria (String nombreCategoria, char perecedero, String codigoDeBarras)
 	{
@@ -547,6 +560,38 @@ public class PersistenciaSuperAndes
             log.trace ("Inserción de Promocion " + id +": " + tuplasInsertadas + " tuplas insertadas");
             
             return new Pague1llevesegundoaxporciento(id, porcentaje);
+        }
+        catch (Exception e)
+        {
+       	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+//------------------------------
+	
+
+	public Estante registrarEstante(long idEstante, float nivelReabastecimiento, long idSucursal) {
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+          
+            long tuplasInsertadas = sqlEstante.registrarEstante(pm, idEstante, nivelReabastecimiento,idSucursal);
+            tx.commit();
+            
+            log.trace ("Inserción de estante: " + idEstante + ": " + tuplasInsertadas + " tuplas insertadas");
+            
+            return new Estante(idEstante, nivelReabastecimiento,idSucursal);
         }
         catch (Exception e)
         {
@@ -689,6 +734,7 @@ public class PersistenciaSuperAndes
 		
 	}
 
+	
 	
 
 	

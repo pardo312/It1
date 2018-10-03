@@ -61,7 +61,7 @@ public class Producto implements VOProducto
 	
 	private int EnStock;
 	
-
+	private long IDPromocion;
 	
 
 	/* ****************************************************************
@@ -86,6 +86,7 @@ public class Producto implements VOProducto
 		this.IDSucursal = 0;
 		this.IDContenedor = 0;
 		this.EnStock = 0;
+		this.IDPromocion = 0;
 	}
 
 	/**
@@ -97,7 +98,7 @@ public class Producto implements VOProducto
 	 */
 	public Producto(String codigoDeBarras, String nombre, String marca, float precioUnitario,
 			String presentacion,float precioPorUnidad,float cantidadEnLaPresentacion,String unidadesDeMedida, String especificacionesDeEmpacado, 
-			float nivelDeReorden,long IDPedido ,long IDSucursal,long IDBodega,int EnStock) 
+			float nivelDeReorden,long IDPedido ,long IDSucursal,long IDBodega,int EnStock, long IDPromocion) 
 	{
 		this.codigoDeBarras = codigoDeBarras;
 		this.nombre =nombre;
@@ -113,6 +114,7 @@ public class Producto implements VOProducto
 		this.IDSucursal =IDSucursal;
 		this.IDContenedor = IDBodega;
 		this.EnStock = EnStock;
+		this.IDPromocion = IDPromocion;
 	}
 
 
@@ -261,7 +263,16 @@ public class Producto implements VOProducto
 	{
 		this.EnStock = EnStock;
 	}
+	public long getIDPromocion() 
+	{
+		return IDPromocion;
+	}
 
+	public void setIDPromocion(long IDPromocion) 
+	{
+		this.IDPromocion = IDPromocion;
+	}
+	
 
 	@Override
 	public String toString() 
@@ -269,7 +280,7 @@ public class Producto implements VOProducto
 		return "Producto [codigoDeBarras=" + codigoDeBarras + ", nombre=" + nombre + ", marca=" + marca + ", precioUnitario="
 				+ precioUnitario  + ", presentacion=" + presentacion + ", precioPorUnidad=" + precioPorUnidad + ", cantidadEnLaPresentacion=" + cantidadEnLaPresentacion + 
 				", unidadesDeMedida=" + unidadesDeMedida + ", especificacionesDeEmpacado=" + especificacionesDeEmpacado+
-				", nivelDeReorden=" + nivelDeReorden +", IDPedido=" + IDPedido +", IDSucursal=" + IDSucursal +", IDContenedor=" + IDContenedor +", EnStock=" + EnStock +"]";
+				", nivelDeReorden=" + nivelDeReorden +", IDPedido=" + IDPedido +", IDSucursal=" + IDSucursal +", IDContenedor=" + IDContenedor +", EnStock=" + EnStock +", IDPromocion=" + IDPromocion+"]";
 	}
 
 	

@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.jdo.JDODataStoreException;
@@ -35,9 +36,11 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 
+import uniandes.isis2304.superAndes.negocio.Producto;
 import uniandes.isis2304.superAndes.negocio.SuperAndes;
 import uniandes.isis2304.superAndes.negocio.VOCategoria;
 import uniandes.isis2304.superAndes.negocio.VODescuentodelxporciento;
+import uniandes.isis2304.superAndes.negocio.VOEstante;
 import uniandes.isis2304.superAndes.negocio.VOPaguexunidadesllevey;
 import uniandes.isis2304.superAndes.negocio.VOProducto;
 import uniandes.isis2304.superAndes.negocio.VOPromocion;
@@ -282,7 +285,25 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 			panelDatos.actualizarInterfaz(resultado);
 		}
     }
+    public List<Producto> listarProducto()
+    {
+    	try 
+    	{
+			List <Producto> lista = superAndes.darVOProducto();
+			
+			return lista;
+			
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
 
+			return null;
+		}
+    }
+    
     private String listarProveedores(List<VOProveedor> lista) 
     {
     	String resp = "Los Proveedores existentes son:\n";
@@ -294,11 +315,13 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
         return resp;
 	}
     
+    
     /* ****************************************************************
 	 * 			Requerimiento 2
 	 *****************************************************************/
     
-    //TODO
+    //codigo de barras mayor a 30, ids menores a 20
+    
     public void registrarProducto( )
     {
     	try 
@@ -422,12 +445,64 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 			String resultado = generarMensajeError(e);
 			panelDatos.actualizarInterfaz(resultado);
 		}
+    	
+    
 		
     }
+	
+	
+
+    
     /* ****************************************************************
 	 * 			Requerimiento 6
 	 *****************************************************************/
     
+    //Estante mayor a 30, sucursal menor a 20
+    
+    public void registrarEstanteASucursal( )
+    {
+    	try 
+    	{
+    		
+    		//Nivel reabastecimiento
+    		long idEstante = Long.parseLong(JOptionPane.showInputDialog (this, "Id del estante?", "Registrar Proveedor", JOptionPane.QUESTION_MESSAGE));
+    		
+    		List<Producto> prodTots = listarProducto();
+    		List<VOProducto> prodDeEstante = new LinkedList<VOProducto>();
+    		for (VOProducto tb : prodTots)
+            {
+            	if(tb.getIDContenedor() == idEstante)
+            	{
+            		prodDeEstante.add(tb);
+            	}
+            }
+    		float nivelReabastecimiento = prodDeEstante.size( );
+    		if(nivelReabastecimiento == 0)
+    		{
+    			panelDatos.actualizarInterfaz("Nivel de reabastecimiento es 0, porfavor traiga productos de bodega");
+    		}
+            //Fin nivel abastecimiento
+    		System.out.println(nivelReabastecimiento);
+    		long idSucursal = Long.parseLong(JOptionPane.showInputDialog (this, "Sucursal a la cual se asociara el estante?", "Registrar Proveedor", JOptionPane.QUESTION_MESSAGE));
+    		
+        		VOEstante tb = superAndes.registrarEstante(idEstante,nivelReabastecimiento,idSucursal) ;
+        		if (tb == null)
+        		{
+        			throw new Exception ("No se pudo crear estante con id: " + idEstante);
+        		}
+        		String resultado = "En adicionarEstante\n\n";
+        		resultado += "Estante adicionado exitosamente: " + tb;
+    			resultado += "\n Operación terminada";
+    			panelDatos.actualizarInterfaz(resultado);
+    		
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
     
     /* ****************************************************************
 	 * 			Requerimiento 7
@@ -593,6 +668,8 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 			panelDatos.actualizarInterfaz(resultado);
 		}
 	}
+	
+	
 	
 	/**
 	 * Muestra la presentación general del proyecto

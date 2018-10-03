@@ -26,6 +26,12 @@
 					"event": "registrarProducto"
 				}
 				,
+				
+				{
+					
+					"label": "Registrar Estante A una Sucursal",
+					"event": "registrarEstanteASucursal"
+				},
 				{
 					
 					"label": "Registrar Promocion",
@@ -37,6 +43,7 @@
 					"label": "Eliminar Promocion",
 					"event": "eliminarPromocion"
 				}
+				
 				
 				
 			]

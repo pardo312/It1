@@ -95,10 +95,23 @@ public class SuperAndes
         {
         	voTipos.add (tb);
         }
-        log.info ("Generando los VO de Tipos de bebida: " + voTipos.size() + " existentes");
+        log.info ("Generando los VO de Proveedor: " + voTipos.size() + " existentes");
         return voTipos;
 	}
 
+	
+	public List<Producto> darVOProducto() {
+		log.info ("Generando los VO de Producto");        
+        List<Producto> voProd = new LinkedList<Producto> ();
+        for (Producto tb : pp.darProductos ())
+        {
+        	voProd.add (tb);
+        }
+        log.info ("Generando los VO de Productos: " + voProd.size() + " existentes");
+        return voProd;
+	}
+	
+	
 //	//Metodos de Productos
 	public Producto registrarProducto (String codigoDeBarras,
 			
@@ -131,10 +144,11 @@ public class SuperAndes
         Producto Producto = pp.registrarProducto (codigoDeBarras,nombre,
 marca,precioUnitario,presentacion,precioPorUnidad,cantidadEnLaPresentacion,
 unidadesDeMedida,especificacionesDeEmpacado,nivelDeReorden,
- IDPedido, IDSucursal, IDContenedor,EnStock);		
+ IDPedido, IDSucursal, IDContenedor,EnStock,0);		
         log.info ("Adicionando el Producto: " + Producto);
         return Producto;
 	}
+
 
 	//Metodos Categoria
 	
@@ -165,7 +179,14 @@ unidadesDeMedida,especificacionesDeEmpacado,nivelDeReorden,
 	        log.info ("Adicionando el tipo de producto : " + tipoProd);
 	        return tipoProd;
 	}
+	//Fin producto
 	
+	public VOEstante registrarEstante(long idEstante, float nivelReabastecimiento, long idSucursal) {
+		log.info ("Adicionando el Estante: " + idEstante);
+        Estante estante = pp.registrarEstante (idEstante,nivelReabastecimiento,idSucursal);		
+        log.info ("Adicionando el proveedor: " + estante);
+        return estante;
+	}
 	
 	
 	public VOPaguexunidadesllevey registrarPromocionCantidad(int x, int y, int p) {
@@ -221,6 +242,10 @@ unidadesDeMedida,especificacionesDeEmpacado,nivelDeReorden,
         log.info ("Limpiando la BD de SuperAndes: Listo!");
         return borrrados;
 	}
+
+
+
+	
 
 	
 

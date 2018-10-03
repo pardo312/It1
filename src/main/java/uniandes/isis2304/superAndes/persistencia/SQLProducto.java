@@ -21,6 +21,8 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
 import uniandes.isis2304.superAndes.negocio.Pedido;
+import uniandes.isis2304.superAndes.negocio.Producto;
+import uniandes.isis2304.superAndes.negocio.Proveedor;
 
 /**
  * Clase que encapsula los métodos que hacen acceso a la base de datos para el concepto SIRVEN de Parranderos
@@ -62,6 +64,7 @@ class SQLProducto
 	/**
 	 * Crea y ejecuta la sentencia SQL para adicionar un SIRVEN a la base de datos de Parranderos
 	 * @param pm - El manejador de persistencia
+	 * @param iDPromocion 
 	 * @param idBar - El identificador del bar
 	 * @param idBebida - El identificador de la bebida
 	 * @param horario - El horario en que el bar sirve la bebida (DIURNO, NOCTURNO, TDOOS)
@@ -93,15 +96,23 @@ class SQLProducto
 			 long IDSucursal,
 			
 			 long IDContenedor,
-			 int EnStock) 
+			 int EnStock, long iDPromocion) 
 	{
         Query q = pm.newQuery(SQL, "INSERT INTO " +"PRODUCTO"+
-        		"(codigoDeBarras,nombre,marca,precioUnitario,presentacion,precioPorUnidad,cantidadEnLaPresentacion,unidadDeMedida,especificacionesDeEmpacado,nivelDeReorden,IDPedido, IDSucursal, IDContenedor, EnStock) values ("+codigoDeBarras+ ",'"+nombre+"','"+marca+"',"+precioUnitario+",'"+presentacion+"',"+precioPorUnidad+","+cantidadEnLaPresentacion+",'"+unidadesDeMedida+"','"+especificacionesDeEmpacado+"',"+nivelDeReorden+","+ IDPedido    +","+IDSucursal+","+ IDContenedor +","+ EnStock +")");
+        		"(codigoDeBarras,nombre,marca,precioUnitario,presentacion,precioPorUnidad,cantidadEnLaPresentacion,unidadDeMedida,especificacionesDeEmpacado,nivelDeReorden,IDPedido, IDSucursal, IDContenedor, EnStock,IDPromocion) values ("+codigoDeBarras+ ",'"+nombre+"','"+marca+"',"+precioUnitario+",'"+presentacion+"',"+precioPorUnidad+","+cantidadEnLaPresentacion+",'"+unidadesDeMedida+"','"+especificacionesDeEmpacado+"',"+nivelDeReorden+","+ IDPedido    +","+IDSucursal+","+ IDContenedor +","+ EnStock +","+ iDPromocion +")");
         q.setParameters(codigoDeBarras,nombre,
         		marca,precioUnitario,presentacion,precioPorUnidad,cantidadEnLaPresentacion,
         		unidadesDeMedida,especificacionesDeEmpacado,nivelDeReorden,
-        		 IDPedido, IDSucursal, IDContenedor,EnStock);
+        		 IDPedido, IDSucursal, IDContenedor,EnStock,iDPromocion);
         return (long)q.executeUnique();            
+	}
+	
+	public List<Producto> darProductos (PersistenceManager pm)
+	{
+		Query q = pm.newQuery(SQL, "SELECT IDCONTENEDOR FROM " + "PRODUCTO");
+		q.setResultClass(Producto.class);		
+		return  (List<Producto>)q.executeList() ;
+		
 	}
 	
 	
