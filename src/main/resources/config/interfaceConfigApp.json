@@ -53,6 +53,12 @@
 					"label": "Registrar Sucursal",
 					"event": "registrarSucursal"
 				}
+				,
+				{
+					
+					"label": "Registrar Contenedor",
+					"event": "registrarContenedor"
+				}
 				
 				
 				

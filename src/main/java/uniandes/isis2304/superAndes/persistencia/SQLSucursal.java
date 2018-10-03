@@ -61,6 +61,7 @@ class SQLSucursal
         q.setParameters( id, nombre, ciudad,direccion,segmentacionDeMercado, tamanioInstalacion,NITSupermercado);
         return (long) q.executeUnique();
 	}
+
 	/**
 	 * lista de todos los clientes
 	 * @param pm
@@ -72,6 +73,8 @@ class SQLSucursal
 		q.setResultClass(Proveedor.class);
 		return (List<Sucursal>) q.executeList();
 	}
+
+
 	
 
 }

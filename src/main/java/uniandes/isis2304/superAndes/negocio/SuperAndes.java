@@ -218,6 +218,14 @@ public class SuperAndes
 		log.info ("Adicionando la sucursal: " + nombre);
 		return sucursal;
 	}
+	public Contenedor registrarContenedor(int id, int capacidadVolumen,
+			int capacidadPeso, String unidadesPeso, String unidadesVolumen,
+			int idBodegaSucursal) {
+		log.info ("Adicionando el contenedor: " + id);
+		Contenedor contenedor = pp.registrarContenedor(id, capacidadVolumen, capacidadPeso, unidadesPeso, unidadesVolumen, idBodegaSucursal);		
+		log.info ("Adicionando el contenedor: " + id);
+		return contenedor;
+	}
 
 
 	public Categoria registrarCategoria (String nombreCategoria, char perecedero, String codigoDeBarras)
@@ -297,6 +305,7 @@ public class SuperAndes
 		log.info ("Limpiando la BD de SuperAndes: Listo!");
 		return borrrados;
 	}
+
 
 
 

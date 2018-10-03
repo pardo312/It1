@@ -42,6 +42,7 @@ import uniandes.isis2304.superAndes.negocio.VOCategoria;
 import uniandes.isis2304.superAndes.negocio.VOCliente;
 import uniandes.isis2304.superAndes.negocio.VOClienteEmpresa;
 import uniandes.isis2304.superAndes.negocio.VOClienteNatural;
+import uniandes.isis2304.superAndes.negocio.VOContenedor;
 import uniandes.isis2304.superAndes.negocio.VODescuentodelxporciento;
 import uniandes.isis2304.superAndes.negocio.VOEstante;
 import uniandes.isis2304.superAndes.negocio.VOPaguexunidadesllevey;
@@ -568,6 +569,11 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 		}
 	}
 
+	
+	/* ****************************************************************
+	 * 			RF4
+	 *****************************************************************/
+
 	public void registrarSucursal( )
 	{
 		try 
@@ -604,7 +610,45 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 			panelDatos.actualizarInterfaz(resultado);
 		}
 	}
-
+	/* ****************************************************************
+	 * 			RF5
+	 *****************************************************************/
+	public void registrarContenedor( )
+	{
+		try 
+		{
+			int id = Integer.parseInt(JOptionPane.showInputDialog (this, "id del contenedor?", "Registrar Contenedor", JOptionPane.QUESTION_MESSAGE));
+			int capacidadPeso = Integer.parseInt(JOptionPane.showInputDialog (this, "capacidad peso del contenedor?", "Registrar Contenedor", JOptionPane.QUESTION_MESSAGE));
+			int capacidadVolumen = Integer.parseInt(JOptionPane.showInputDialog (this, "capacidad Volumen del Contenedor", "Registrar Contenedor", JOptionPane.QUESTION_MESSAGE));
+			String unidadesPeso = JOptionPane.showInputDialog (this, "unidades peso?", "Registrar Contenedor", JOptionPane.QUESTION_MESSAGE);
+			String unidadesVolumen = JOptionPane.showInputDialog (this, "unidades volumen?", "Registrar Contenedor", JOptionPane.QUESTION_MESSAGE);
+			int idBodegaSucursal = Integer.parseInt(JOptionPane.showInputDialog (this, "id de la sucursal asociada?", "Registrar Contenedor", JOptionPane.QUESTION_MESSAGE));
+					
+			if ( unidadesPeso != null && unidadesVolumen != null) {
+			
+				VOContenedor tb = superAndes.registrarContenedor(id, capacidadVolumen, capacidadPeso, unidadesPeso, unidadesVolumen,idBodegaSucursal);
+			if (tb == null)
+			{
+				throw new Exception ("No se pudo crear el contenedor de id: " + id);
+			}
+			String resultado = "En adicionarContenedor\n\n";
+			resultado += "contenedor adicionada exitosamente: " + tb;
+			resultado += "\n Operación terminada";
+			panelDatos.actualizarInterfaz(resultado);
+			}
+			else
+			{
+				panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+			}
+		} 
+		catch (Exception e) 
+		{
+			//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+	}
+	
 	
 
 	public void listarCliente( )

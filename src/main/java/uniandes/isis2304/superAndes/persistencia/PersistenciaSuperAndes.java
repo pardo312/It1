@@ -25,6 +25,7 @@ import uniandes.isis2304.superAndes.negocio.Categoria;
 import uniandes.isis2304.superAndes.negocio.Cliente;
 import uniandes.isis2304.superAndes.negocio.ClienteEmpresa;
 import uniandes.isis2304.superAndes.negocio.ClienteNatural;
+import uniandes.isis2304.superAndes.negocio.Contenedor;
 import uniandes.isis2304.superAndes.negocio.Descuentodelxporciento;
 import uniandes.isis2304.superAndes.negocio.Estante;
 import uniandes.isis2304.superAndes.negocio.Pague1llevesegundoaxporciento;
@@ -112,6 +113,13 @@ public class PersistenciaSuperAndes
 	 * Atributo para el acceso a la tabla SUCURSAL de la base de datos
 	 */
 	private SQLSucursal sqlSucursal;
+	
+	/**
+	 * atributo para al acceso de la tabla contenedor 
+	 */
+	private SQLContenedor sqlContenedor;
+	
+	
 	/**
 	 * Atributo para el acceso a la tabla SIRVEN de la base de datos
 	 */
@@ -245,6 +253,7 @@ public class PersistenciaSuperAndes
 		sqlCliente = new SQLCliente(this);
 		sqlClienteEmpresa= new SQLClienteEmpresa(this);
 		sqlClienteNatural = new SQLClienteNatural(this);
+		sqlContenedor = new SQLContenedor(this);
 		sqlEstante = new SQLEstante(this);
 		sqlSucursal = new SQLSucursal(this);
 		sqlProducto = new SQLProducto (this);	
@@ -703,7 +712,39 @@ public class PersistenciaSuperAndes
 			pm.close();
 		}
 	}
+	public Contenedor registrarContenedor(int id, int capacidadVolumen,
+			int capacidadPeso, String unidadesPeso, String unidadesVolumen,
+			int idBodegaSucursal) {PersistenceManager pm = pmf.getPersistenceManager();
+			Transaction tx=pm.currentTransaction();
+			try
+			{
+				tx.begin();
+				long ido = nextval ();
+				long tuplasInsertadas = sqlContenedor.adicionarContenedor(pm, (int) ido, capacidadVolumen, capacidadPeso, unidadesPeso, unidadesVolumen, idBodegaSucursal);
+				tx.commit();
 
+				log.trace ("Inserción del contenedor " + id + ": " + tuplasInsertadas + " tuplas insertadas");
+
+				return new Contenedor(id,capacidadVolumen,capacidadPeso,unidadesPeso,unidadesVolumen,idBodegaSucursal);
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+				log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+				return null;
+			}
+			finally
+			{
+				if (tx.isActive())
+				{
+					tx.rollback();
+				}
+				pm.close();
+			}
+	}
+
+	
+	
 	
 	
 	public List<Sucursal> darSucursal ()
@@ -937,8 +978,7 @@ public class PersistenciaSuperAndes
 		
 	}
 
-	
-	
+
 
 	
 	
