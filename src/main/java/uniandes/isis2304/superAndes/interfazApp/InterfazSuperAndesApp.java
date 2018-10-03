@@ -464,7 +464,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 		try 
 		{
 
-			String tipoCliente = JOptionPane.showInputDialog (this, "Tipo Cliente? 1= natural, 2=empresa, key=generico ", "Registrar Cliente", JOptionPane.QUESTION_MESSAGE);
+			String tipoCliente = JOptionPane.showInputDialog (this, "Tipo Cliente? 1= natural, 2=empresa ", "Registrar Cliente", JOptionPane.QUESTION_MESSAGE);
 			
 			if (tipoCliente.equalsIgnoreCase("1"))
 			{ registrarClienteNatural();
