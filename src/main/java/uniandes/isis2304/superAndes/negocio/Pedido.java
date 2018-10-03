@@ -15,7 +15,7 @@
 
 package uniandes.isis2304.superAndes.negocio;
 
-import java.sql.Date;
+import java.util.Date;
 
 /**
  * Clase para modelar la relación SIRVEN del negocio de los Parranderos:
@@ -33,7 +33,7 @@ public class Pedido implements VOPedido
 	 * 			Atributos
 	 *****************************************************************/
 
-	private long id;
+	private int id;
 	
 	private Date fechaEsperada;
 
@@ -43,11 +43,11 @@ public class Pedido implements VOPedido
 	
 	private String evaluacionCalidad;
 	
-	private float calificacion;
+	private int calificacion;
 	
-	private char finalizado;
+	private int finalizado;
 	
-	private String NITProveedor;
+	private int NITProveedor;
 	
 
 	/* ****************************************************************
@@ -59,28 +59,33 @@ public class Pedido implements VOPedido
 	public Pedido ()
 	{
 		this.id = 0;
-	this.fechaEsperada = new Date(0);
+	this.fechaEsperada = new java.util.Date(0);
 	this.fechaEntrega = new Date(0);
 	this.evaluacionCantidad = "";
 	this.evaluacionCalidad = "";
 	this.calificacion = 0;
 	this.finalizado = 0;
-	this.NITProveedor = "";
+	this.NITProveedor = 0;
 	}
 
 	/**
-	 * Constructor con valores
-	 * @param idBar - El identificador del bar. Debe exixtir un bar con dicho identificador
-	 * @param idBebida - El identificador de la bebida. Debe existir una bebida con dicho identificador
-	 * @param horario - El horario en el que el bar sirve la bebida (DIURNO, NOCTURNO, TODOS)
+	 * 
+	 * @param id2
+	 * @param fechaEsperada2
+	 * @param fechaEntrega2
+	 * @param evaluacionCantidad
+	 * @param evaluacionCalidad
+	 * @param calificacion
+	 * @param finalizado
+	 * @param NITProveedor
 	 */
-	public Pedido ( long id,Date fechaEsperada,	Date fechaEntrega,String evaluacionCantidad,String evaluacionCalidad,float calificacion,char finalizado,String NITProveedor) 
+	public Pedido ( int id2,java.util.Date fechaEsperada2,	java.util.Date fechaEntrega2,String evaluacionCantidad,String evaluacionCalidad,int calificacion, int finalizado, int NITProveedor) 
 	{
 		
 
-		this.id = id;
-		this.fechaEsperada = fechaEsperada;
-		this.fechaEntrega = fechaEntrega;
+		this.id = id2;
+		this.fechaEsperada = fechaEsperada2;
+		this.fechaEntrega = fechaEntrega2;
 		this.evaluacionCantidad = evaluacionCantidad;
 		this.evaluacionCalidad = evaluacionCalidad;
 		this.calificacion = calificacion;
@@ -89,12 +94,12 @@ public class Pedido implements VOPedido
 	}
 
 
-	public long getId() 
+	public int getId() 
 	{
 		return id;
 	}
 
-	public void setIdBar(long id) 
+	public void setIdBar(int id) 
 	{
 		this.id = id;
 	}
@@ -140,16 +145,16 @@ public class Pedido implements VOPedido
 		this.evaluacionCalidad = evaluacionCalidad;
 	}
 	
-	public float getCalificacion() 
+	public int getCalificacion() 
 	{
 		return calificacion;
 	}
 
-	public void setCalificacion(float calificacion) 
+	public void setCalificacion(int calificacion) 
 	{
 		this.calificacion = calificacion;
 	}
-	public char getFinalizado() 
+	public int getFinalizado() 
 	{
 		return finalizado;
 	}
@@ -159,12 +164,12 @@ public class Pedido implements VOPedido
 		this.finalizado = finalizado;
 	}
 	
-	public String getNITProveedor() 
+	public int getNITProveedor() 
 	{
 		return NITProveedor;
 	}
 
-	public void setNITProveedor(String NITProveedor) 
+	public void setNITProveedor(int NITProveedor) 
 	{
 		this.NITProveedor = NITProveedor;
 	}

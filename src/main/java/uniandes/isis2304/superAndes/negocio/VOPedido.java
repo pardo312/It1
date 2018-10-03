@@ -29,23 +29,23 @@ public interface VOPedido
 	 * 			Métodos
 	 *****************************************************************/
 	
-	public long getId();
+	public int getId();
 
 	
-	public Date getFechaEsperada();
+	public java.util.Date getFechaEsperada();
 
 	
-	public Date getFechaEntrega();
+	public java.util.Date getFechaEntrega();
 	
 	public String getEvaluacionCantidad();
 	
 	public String getEvaluacionCalidad();
 	
-	public float getCalificacion();
+	public int getCalificacion();
 	
-	public char getFinalizado();
+	public int getFinalizado();
 	
-	public String getNITProveedor() ;
+	public int getNITProveedor() ;
 
 	@Override
 	public String toString();

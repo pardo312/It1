@@ -61,9 +61,15 @@
 				},
 				{
 					
+					"label": "Registrar Pedido",
+					"event": "registrarPedido"
+				},
+				{
+					
 					"label": "RFC2",
 					"event": "Consulta2"
 				}
+			
 				
 				
 				

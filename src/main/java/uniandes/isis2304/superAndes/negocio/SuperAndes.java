@@ -226,7 +226,20 @@ public class SuperAndes
 		log.info ("Adicionando el contenedor: " + id);
 		return contenedor;
 	}
-
+	public Pedido registrarPedido(int id,java.util.Date fechaEsperada,java.util.Date fechaEntrega,String evaluacionCantidad, String evaluacionCalidad,int calificacion,int finalizado, int NITProveedor)
+	{
+		log.info ("Adicionando el pedido: " + id);
+		Pedido pedido = pp.registrarPedido(id, fechaEsperada, fechaEntrega, evaluacionCantidad, evaluacionCalidad, calificacion, finalizado, NITProveedor);		
+		log.info ("Adicionando el pedido: " + id);
+		return pedido;
+	}
+	public Pedido actualizarPedido(int id,java.util.Date fechaEsperada,java.util.Date fechaEntrega,String evaluacionCantidad, String evaluacionCalidad,int calificacion,int finalizado, int NITProveedor)
+	{
+		log.info ("Actualizando el pedido: " + id);
+		Pedido pedido = pp.registrarPedido(id, fechaEsperada, fechaEntrega, evaluacionCantidad, evaluacionCalidad, calificacion, finalizado, NITProveedor);		
+		log.info ("Actualizando el pedido: " + id);
+		return pedido;
+	}
 
 	public Categoria registrarCategoria (String nombreCategoria, char perecedero, String codigoDeBarras)
 	{
