@@ -42,6 +42,16 @@
 					
 					"label": "Eliminar Promocion",
 					"event": "eliminarPromocion"
+				},
+				{
+					
+					"label": "Registrar Cliente",
+					"event": "registrarCliente"
+				},
+				{
+					
+					"label": "Registrar Sucursal",
+					"event": "registrarSucursal"
 				}
 				
 				

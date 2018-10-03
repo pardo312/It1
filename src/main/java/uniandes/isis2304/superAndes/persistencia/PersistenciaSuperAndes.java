@@ -16,18 +16,22 @@ import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Transaction;
 
 import org.apache.log4j.Logger;
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import uniandes.isis2304.superAndes.negocio.Categoria;
 import uniandes.isis2304.superAndes.negocio.Cliente;
+import uniandes.isis2304.superAndes.negocio.ClienteEmpresa;
+import uniandes.isis2304.superAndes.negocio.ClienteNatural;
 import uniandes.isis2304.superAndes.negocio.Descuentodelxporciento;
 import uniandes.isis2304.superAndes.negocio.Estante;
 import uniandes.isis2304.superAndes.negocio.Pague1llevesegundoaxporciento;
 import uniandes.isis2304.superAndes.negocio.Paguexcantidadllevey;
 import uniandes.isis2304.superAndes.negocio.Paguexunidadesllevey;
 import uniandes.isis2304.superAndes.negocio.Pedido;
+import uniandes.isis2304.superAndes.negocio.Sucursal;
 import uniandes.isis2304.superAndes.negocio.TipoProducto;
 import uniandes.isis2304.superAndes.negocio.VODescuentodelxporciento;
 import uniandes.isis2304.superAndes.negocio.VOPaguexunidadesllevey;
@@ -91,15 +95,23 @@ public class PersistenciaSuperAndes
 	private SQLCategoria sqlCategoria;
 	
 	/**
-	 * Atributo para el acceso a la tabla BEBIDA de la base de datos
+	 * Atributo para el acceso a la tabla CLIENTE de la base de datos
 	 */
 	private SQLCliente sqlCliente;
-	
 	/**
-	 * Atributo para el acceso a la tabla GUSTAN de la base de datos
+	 * Atributo para el acceso a la tabla CLIENTENATURAL de la base de datos
+	 */
+	private SQLClienteNatural sqlClienteNatural;
+	/**
+	 * Atributo para el acceso a la tabla CLIENTEEMPRESA de la base de datos
+	 */
+	private SQLClienteEmpresa sqlClienteEmpresa;
+
+
+	/**
+	 * Atributo para el acceso a la tabla SUCURSAL de la base de datos
 	 */
 	private SQLSucursal sqlSucursal;
-	
 	/**
 	 * Atributo para el acceso a la tabla SIRVEN de la base de datos
 	 */
@@ -231,6 +243,8 @@ public class PersistenciaSuperAndes
 		sqlProveedor = new SQLProveedor(this);
 		sqlCategoria = new SQLCategoria(this);
 		sqlCliente = new SQLCliente(this);
+		sqlClienteEmpresa= new SQLClienteEmpresa(this);
+		sqlClienteNatural = new SQLClienteNatural(this);
 		sqlEstante = new SQLEstante(this);
 		sqlSucursal = new SQLSucursal(this);
 		sqlProducto = new SQLProducto (this);	
@@ -281,12 +295,31 @@ public class PersistenciaSuperAndes
 	}
 
 	/**
+	 * da la tabla cliente empresa
+	 * @return
+	 */
+	public String darTablaClienteEmpresa()
+	{
+		return tablas.get(3);
+	}
+
+	/**
+	 * da la tabla cliente natural
+	 * @return
+	 */
+	public String darTablaClienteNatural()
+	{
+		return tablas.get(4);
+	}
+
+	/**
 	 * @return La cadena de caracteres con el nombre de la tabla de Gustan de parranderos
 	 */
 	public String darTablaSucursal ()
 	{
 		return tablas.get (18);
 	}
+
 
 	/**
 	 * @return La cadena de caracteres con el nombre de la tabla de Sirven de parranderos
@@ -508,6 +541,176 @@ public class PersistenciaSuperAndes
 	}
 
 	
+	/* ****************************************************************
+	 * 			RF3 clientes 
+	 *****************************************************************/
+
+
+	public Cliente registrarCliente ( int idCliente, int puntosDeCompra,  String nitCliente, int cedulaCliente)
+	{
+
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		try
+		{
+			tx.begin();
+			
+			long tuplasInsertadas = sqlCliente.registrarCliente(pm, idCliente, puntosDeCompra, nitCliente, cedulaCliente );
+			tx.commit();
+
+			log.trace ("Inserción de cliente: " + cedulaCliente + ": " + tuplasInsertadas + " tuplas insertadas");
+
+			return new Cliente(idCliente,puntosDeCompra,nitCliente,cedulaCliente);
+
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+
+			return null;
+		}
+		finally
+		{
+			if (tx.isActive())
+			{
+				tx.rollback();
+			}
+			pm.close();	
+
+			darClientes();
+		}
+	}
+
+
+
+	public ClienteNatural registrarClienteNatural ( int cedula, String nombre, String email)
+	{
+
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		try
+		{
+			tx.begin();
+
+			long tuplasInsertadas = sqlClienteNatural.registrarClienteNatural(pm, cedula, email, nombre);
+			tx.commit();
+
+			log.trace ("Inserción de cliente natural " + nombre + ": " + tuplasInsertadas + " tuplas insertadas");
+
+			return new ClienteNatural(cedula, nombre,email);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			return null;
+		}
+		finally
+		{
+			if (tx.isActive())
+			{
+				tx.rollback();
+			}
+			pm.close();
+
+			darClientesNaturales();
+
+		}
+
+	}
+
+	public ClienteEmpresa registrarClienteEmpresa ( String NIT, String direccion)
+	{
+
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		try
+		{
+			tx.begin();
+			long tuplasInsertadas = sqlClienteEmpresa.registrarClienteEmpresa(pm, NIT, direccion);
+			tx.commit();
+
+			log.trace ("Inserción de cliente empresa " + NIT + ": " + tuplasInsertadas + " tuplas insertadas");
+
+			return new ClienteEmpresa(NIT,direccion);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			return null;
+		}
+		finally
+		{
+			if (tx.isActive())
+			{
+				tx.rollback();
+			}
+			pm.close();
+
+			darClientesEmpresa();
+		}
+
+	}
+
+
+
+	public List<Cliente> darClientes ()
+	{
+		return sqlCliente.darClientes(pmf.getPersistenceManager());
+	}
+	public List<ClienteNatural> darClientesNaturales ()
+	{
+		return sqlClienteNatural.darClientesNaturales(pmf.getPersistenceManager());
+	}
+	public List<ClienteEmpresa> darClientesEmpresa ()
+	{
+		return sqlClienteEmpresa.darClientesEmpresa(pmf.getPersistenceManager());
+	}
+
+	/* ****************************************************************
+	 * 			RF4
+	 *****************************************************************/
+
+	public Sucursal registrarSucursal(int id, String nombre, String ciudad, String direccion, String segmentacionDeMercado, String tamanioInstalacion, int NITSupermercado)
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		try
+		{
+			tx.begin();
+			long ido = nextval ();
+			long tuplasInsertadas = sqlSucursal.adicionarSucursal(pm, (int) ido, nombre, ciudad, direccion, segmentacionDeMercado, tamanioInstalacion, NITSupermercado);
+			tx.commit();
+
+			log.trace ("Inserción de sucursal " + nombre + ": " + tuplasInsertadas + " tuplas insertadas");
+
+			return new Sucursal(id,nombre,ciudad,direccion,segmentacionDeMercado,tamanioInstalacion, NITSupermercado);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			return null;
+		}
+		finally
+		{
+			if (tx.isActive())
+			{
+				tx.rollback();
+			}
+			pm.close();
+		}
+	}
+
+	
+	
+	public List<Sucursal> darSucursal ()
+	{
+		return sqlSucursal.darSucursales(pmf.getPersistenceManager());
+	}
+
 	
 	
 	/* ****************************************************************

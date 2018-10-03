@@ -39,12 +39,16 @@ import com.google.gson.stream.JsonReader;
 import uniandes.isis2304.superAndes.negocio.Producto;
 import uniandes.isis2304.superAndes.negocio.SuperAndes;
 import uniandes.isis2304.superAndes.negocio.VOCategoria;
+import uniandes.isis2304.superAndes.negocio.VOCliente;
+import uniandes.isis2304.superAndes.negocio.VOClienteEmpresa;
+import uniandes.isis2304.superAndes.negocio.VOClienteNatural;
 import uniandes.isis2304.superAndes.negocio.VODescuentodelxporciento;
 import uniandes.isis2304.superAndes.negocio.VOEstante;
 import uniandes.isis2304.superAndes.negocio.VOPaguexunidadesllevey;
 import uniandes.isis2304.superAndes.negocio.VOProducto;
 import uniandes.isis2304.superAndes.negocio.VOPromocion;
 import uniandes.isis2304.superAndes.negocio.VOProveedor;
+import uniandes.isis2304.superAndes.negocio.VOSucursal;
 import uniandes.isis2304.superAndes.negocio.VOTipoProducto;
 
 
@@ -449,7 +453,240 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
     
 		
     }
+
+	/* ****************************************************************
+	 * 			RF3
+	 *****************************************************************/
+
+	public void registrarCliente( )
+	{
+		try 
+		{
+
+			String tipoCliente = JOptionPane.showInputDialog (this, "Tipo Cliente? 1= natural, 2=empresa, key=generico ", "Registrar Cliente", JOptionPane.QUESTION_MESSAGE);
+			
+			if (tipoCliente.equalsIgnoreCase("1"))
+			{ registrarClienteNatural();
+			}
+			else if (tipoCliente.equalsIgnoreCase("2"))
+			{
+				registrarClienteEmpresarial();
+			}
+			else if (tipoCliente != null)
+			{
+				int idCliente = Integer.parseInt(JOptionPane.showInputDialog (this, "id del cliente?", "Registrar Cliente", JOptionPane.QUESTION_MESSAGE));
+				int puntosDeCompra = Integer.parseInt(JOptionPane.showInputDialog (this, "Puntos de compra?", "Registrar Cliente", JOptionPane.QUESTION_MESSAGE));
+				String nitCliente = JOptionPane.showInputDialog (this, "nit del cliente?", "Registrar Cliente", JOptionPane.QUESTION_MESSAGE);
+				int cedulaCliente = Integer.parseInt(JOptionPane.showInputDialog (this, "cedula cliente?", "Registrar Cliente", JOptionPane.QUESTION_MESSAGE));
+
+				VOCliente tb = superAndes.registrarCliente(idCliente, puntosDeCompra, nitCliente, cedulaCliente);
+				if (tb == null)
+				{
+					throw new Exception ("No se pudo crear un cliente con cedula: " + cedulaCliente);
+				}
+				String resultado = "En adicionarCliente\n\n";
+				resultado += "cliente adicionado exitosamente: " + tb;
+				resultado += "\n Operación terminada";
+				panelDatos.actualizarInterfaz(resultado);
+			}
+			else
+			{
+				panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+			}
+		} 
+		catch (Exception e) 
+		{
+			//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+	}
+
+	public void registrarClienteNatural( )
+	{
+		try 
+		{
+			int cedula = Integer.parseInt(JOptionPane.showInputDialog (this, "cedula del cliente?", "Registrar Cliente", JOptionPane.QUESTION_MESSAGE));
+			String nombre = JOptionPane.showInputDialog (this, "nombre del cliente?", "Registrar Cliente", JOptionPane.QUESTION_MESSAGE);
+			String email = JOptionPane.showInputDialog (this, "email del cliente?", "Registrar Cliente", JOptionPane.QUESTION_MESSAGE);
+			
+			if ( nombre != null && email != null) {
+			
+			VOClienteNatural tb = superAndes.registrarClienteNatural(cedula, nombre, email);
+			if (tb == null)
+			{
+				throw new Exception ("No se pudo crear un cliente natural con nombre: " + cedula);
+			}
+			String resultado = "En adicionarClienteNatural\n\n";
+			resultado += "cliente natural adicionado exitosamente: " + tb;
+			resultado += "\n Operación terminada";
+			panelDatos.actualizarInterfaz(resultado);
+			}
+			else
+			{
+				panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+			}
+		} 
+		catch (Exception e) 
+		{
+			//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+	}
+
+	public void registrarClienteEmpresarial( )
+	{
+		try 
+		{
+
+			String NIT = JOptionPane.showInputDialog (this, "NIT del cliente?", "Registrar Cliente", JOptionPane.QUESTION_MESSAGE);
+			String direccion = JOptionPane.showInputDialog (this, "direccion del cliente?", "Registrar Cliente", JOptionPane.QUESTION_MESSAGE);
+			
+			if ( NIT != null && direccion != null) {
+			
+			VOClienteEmpresa tb = superAndes.registrarClienteEmpresa(NIT, direccion);
+			if (tb == null)
+			{
+				throw new Exception ("No se pudo crear un cliente empresarial con nombre: " + NIT);
+			}
+			String resultado = "En adicionarClienteEmpresarial\n\n";
+			resultado += "cliente empresarial adicionado exitosamente: " + tb;
+			resultado += "\n Operación terminada";
+			panelDatos.actualizarInterfaz(resultado);
+			}
+			else
+			{
+				panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+			}
+		} 
+		catch (Exception e) 
+		{
+			//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+	}
+
+	public void registrarSucursal( )
+	{
+		try 
+		{
+			int id = Integer.parseInt(JOptionPane.showInputDialog (this, "id de la sucursal?", "Registrar Sucursal", JOptionPane.QUESTION_MESSAGE));
+			String nombre = JOptionPane.showInputDialog (this, "nombre de la sucursal", "Registrar Sucursal", JOptionPane.QUESTION_MESSAGE);
+			String ciudad = JOptionPane.showInputDialog (this, "ciudad de la sucursal?", "Registrar Sucursal", JOptionPane.QUESTION_MESSAGE);
+			String direccion = JOptionPane.showInputDialog (this, "direccion de la sucursal?", "Registrar Sucursal", JOptionPane.QUESTION_MESSAGE);
+			String segmentacionDeMercado = JOptionPane.showInputDialog (this, "segmentacion de mercado de la sucursal?", "Registrar Sucursal", JOptionPane.QUESTION_MESSAGE);
+			String tamanioInstalacion = JOptionPane.showInputDialog (this, "tamaño de la sucursal?", JOptionPane.QUESTION_MESSAGE);
+			int NITSupermercado = Integer.parseInt(JOptionPane.showInputDialog (this, "nit del supermercado al que pertenece?", "Registrar Sucursal", JOptionPane.QUESTION_MESSAGE));
+			
+			if ( nombre != null && ciudad != null&& direccion != null&& segmentacionDeMercado != null&& tamanioInstalacion != null) {
+			
+			VOSucursal tb = superAndes.registrarSucursal(id, nombre, ciudad, direccion, segmentacionDeMercado, tamanioInstalacion, NITSupermercado);
+			if (tb == null)
+			{
+				throw new Exception ("No se pudo crear una sucursal de nombre: " + nombre);
+			}
+			String resultado = "En adicionarSucursal\n\n";
+			resultado += "sucursal adicionada exitosamente: " + tb;
+			resultado += "\n Operación terminada";
+			panelDatos.actualizarInterfaz(resultado);
+			}
+			else
+			{
+				panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+			}
+		} 
+		catch (Exception e) 
+		{
+			//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+	}
+
 	
+
+	public void listarCliente( )
+	{
+		try 
+		{
+			List <VOCliente> lista = superAndes.darVOCliente();
+
+			String resultado = "En listaProveedor";
+			resultado +=  "\n" + listarClientes(lista);
+			panelDatos.actualizarInterfaz(resultado);
+			resultado += "\n Operación terminada";
+		} 
+		catch (Exception e) 
+		{
+			//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+	}
+
+	public void listarSucursal( )
+	{
+		try 
+		{
+			List <VOSucursal> lista = superAndes.darVOSucursal();
+
+			String resultado = "En listaProveedor";
+			resultado +=  "\n" + listarSucursales(lista);
+			panelDatos.actualizarInterfaz(resultado);
+			resultado += "\n Operación terminada";
+		} 
+		catch (Exception e) 
+		{
+			//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+	}
+	
+	private String listarSucursales(List<VOSucursal> lista) 
+	{
+		String resp = "Las sucursales existentes son:\n";
+		int i = 1;
+		for (VOSucursal tb : lista)
+		{
+			resp += i++ + ". " + tb.toString() + "\n";
+		}
+		return resp;
+	}
+
+	private String listarClientes(List<VOCliente> lista) 
+	{
+		String resp = "Los Clientes existentes son:\n";
+		int i = 1;
+		for (VOCliente tb : lista)
+		{
+			resp += i++ + ". " + tb.toString() + "\n";
+		}
+		return resp;
+	}
+	private String listarClientesNaturales(List<VOClienteNatural> lista) 
+	{
+		String resp = "Los Proveedores existentes son:\n";
+		int i = 1;
+		for (VOClienteNatural tb : lista)
+		{
+			resp += i++ + ". " + tb.toString() + "\n";
+		}
+		return resp;
+	} 
+	private String listarClientesEmpresa(List<VOClienteEmpresa> lista) 
+	{
+		String resp = "Los Proveedores existentes son:\n";
+		int i = 1;
+		for (VOClienteEmpresa tb : lista)
+		{
+			resp += i++ + ". " + tb.toString() + "\n";
+		}
+		return resp;
+	}
+
 	
 
     

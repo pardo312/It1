@@ -1,17 +1,4 @@
-/**~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * Universidad	de	los	Andes	(Bogotá	- Colombia)
- * Departamento	de	Ingeniería	de	Sistemas	y	Computación
- * Licenciado	bajo	el	esquema	Academic Free License versión 2.1
- * 		
- * Curso: isis2304 - Sistemas Transaccionales
- * Proyecto: Parranderos Uniandes
- * @version 1.0
- * @author Germán Bravo
- * Julio de 2018
- * 
- * Revisado por: Claudia Jiménez, Christian Ariza
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- */
+
 
 package uniandes.isis2304.superAndes.negocio;
 
@@ -22,7 +9,7 @@ public class Cliente implements VOCliente
 	 * 			Atributos
 	 *****************************************************************/
 
-	private long id;	
+	private long idCliente;	
 	
 	private int puntosDeCompra;
 	
@@ -36,18 +23,22 @@ public class Cliente implements VOCliente
 	 *****************************************************************/
 	/**
 	 * Constructor por defecto
+	 * @param cedulaCliente2 
+	 * @param nitCliente2 
+	 * @param puntosDeCompra2 
+	 * @param idCliente 
 	 */
-	public Cliente() 
+	public Cliente(int idCliente, int puntosDeCompra, String nitCliente, int cedulaCliente) 
 	{
-		this.id = 0;
+		this.idCliente = 0;
 		this.puntosDeCompra = 0;
 		this.cedulaCliente = 0;
 		this.NITCliente = "";
 	}
 
-	public Cliente(long id, String NITCliente, int cedulaCliente, int puntosDeCompra) 
+	public Cliente(long idCliente, String NITCliente, int cedulaCliente, int puntosDeCompra) 
 	{
-		this.id = id;
+		this.idCliente = idCliente;
 		this.NITCliente = NITCliente;
 		this.cedulaCliente = cedulaCliente;
 		this.puntosDeCompra = puntosDeCompra;
@@ -55,12 +46,12 @@ public class Cliente implements VOCliente
 
 	public long getId() 
 	{
-		return id;
+		return idCliente;
 	}
 
 	public void setId(long id) 
 	{
-		this.id = id;
+		this.idCliente = id;
 	}
 	
 
@@ -102,7 +93,7 @@ public class Cliente implements VOCliente
 	@Override
 	public String toString() 
 	{
-		String resp = "Cliente [id=" + id + ", puntosDeCompra=" + puntosDeCompra + ", NITCliente=" + NITCliente + ", cedulaCliente=" + cedulaCliente
+		String resp = "Cliente [id=" + idCliente + ", puntosDeCompra=" + puntosDeCompra + ", NITCliente=" + NITCliente + ", cedulaCliente=" + cedulaCliente
 				 + "]";
 		
 		return resp;

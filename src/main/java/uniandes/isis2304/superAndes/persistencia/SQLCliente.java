@@ -1,18 +1,3 @@
-/**~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * Universidad	de	los	Andes	(Bogotá	- Colombia)
- * Departamento	de	Ingeniería	de	Sistemas	y	Computación
- * Licenciado	bajo	el	esquema	Academic Free License versión 2.1
- * 		
- * Curso: isis2304 - Sistemas Transaccionales
- * Proyecto: Parranderos Uniandes
- * @version 1.0
- * @author Germán Bravo
- * Julio de 2018
- * 
- * Revisado por: Claudia Jiménez, Christian Ariza
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- */
-
 package uniandes.isis2304.superAndes.persistencia;
 
 import java.math.BigDecimal;
@@ -22,6 +7,8 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
 import uniandes.isis2304.superAndes.negocio.Categoria;
+import uniandes.isis2304.superAndes.negocio.Cliente;
+import uniandes.isis2304.superAndes.negocio.Proveedor;
 
 /**
  * Clase que encapsula los métodos que hacen acceso a la base de datos para el concepto BEBEDOR de Parranderos
@@ -69,19 +56,30 @@ class SQLCliente
 	 * @param presupuesto - El presupuesto del bebedor (ALTO, MEDIO, BAJO)
 	 * @return EL número de tuplas insertadas
 	 */
-	public long registrarCliente (PersistenceManager pm,long id,
-			
-			 int puntosDeCompra,
-			
-			 long cedulaCliente,
-			
-			 String NITCliente) 
+	public long registrarCliente (PersistenceManager pm,int idCliente, int puntosDeCompra,String NITCliente,int cedulaCliente) 
 	{
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaCliente () + "(id,puntosDeCompra,cedulaCliente,NITCliente) values (?, ?, ?, ?)");
-        q.setParameters( id, puntosDeCompra, cedulaCliente,  NITCliente);
+		Query s = pm.newQuery(SQL, "INSERT INTO " + "CLIENTEEMPRESA" + "(NIT,DIRECCION) values ('00022', 'direccion 22' )");
+		s.executeUnique();
+		
+		Query r = pm.newQuery(SQL, "INSERT INTO " + "CLIENTENATURAL" + "(CEDULA, NOMBRE, EMAIL)VALUES (1020,'JUAN PEREZ','CLIENTE21@CORREO.COM')");
+		r.executeUnique();
+        
+		Query q = pm.newQuery(SQL, "INSERT INTO " + "CLIENTE" + "(idCliente,puntosDeCompra,NITCliente,cedulaCliente) values ("+idCliente+", "+puntosDeCompra+", "+NITCliente+", "+cedulaCliente+" )");
+        q.setParameters( idCliente, puntosDeCompra, NITCliente,cedulaCliente);
         return (long) q.executeUnique();
 	}
 
+	/**
+	 * lista de todos los clientes
+	 * @param pm
+	 * @return la lista de todos los clientes
+	 */
+	public List<Cliente> darClientes (PersistenceManager pm)
+	{
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + "CLIENTE");
+		q.setResultClass(Proveedor.class);
+		return (List<Cliente>) q.executeList();
+	}
 	
 
 }
