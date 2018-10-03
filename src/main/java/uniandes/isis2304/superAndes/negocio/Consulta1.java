@@ -32,7 +32,7 @@ public class Consulta1 implements VOConsulta1
 	
 	private String nombre;
 
-	private long dineroRecolectado;
+	private float dineroRecolectado;
 	
 	/* ****************************************************************
 	 * 			Métodos 
@@ -44,7 +44,7 @@ public class Consulta1 implements VOConsulta1
         this.dineroRecolectado = 0;
 	}
 
-	public Consulta1(String nombre, long dineroRecolectado) {
+	public Consulta1(String nombre, float dineroRecolectado) {
         this.nombre = nombre;
         this.dineroRecolectado = dineroRecolectado;
     }
@@ -58,10 +58,10 @@ public class Consulta1 implements VOConsulta1
         this.nombre = nombre;
     }
 
-    public long getPrecio() {
+    public float getDineroRecolectado() {
         return dineroRecolectado;
     }
-   public void setPrecio(long dineroRecolectado) {
+   public void setDineroRecolectado(float dineroRecolectado) {
         this.dineroRecolectado = dineroRecolectado;
     }
 	

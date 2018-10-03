@@ -472,9 +472,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 			else if (tipoCliente.equalsIgnoreCase("2"))
 			{
 				registrarClienteEmpresarial();
-			}
-			else if (tipoCliente != null)
-			{
+			} else {
 				int idCliente = Integer.parseInt(JOptionPane.showInputDialog (this, "id del cliente?", "Registrar Cliente", JOptionPane.QUESTION_MESSAGE));
 				int puntosDeCompra = Integer.parseInt(JOptionPane.showInputDialog (this, "Puntos de compra?", "Registrar Cliente", JOptionPane.QUESTION_MESSAGE));
 				String nitCliente = JOptionPane.showInputDialog (this, "nit del cliente?", "Registrar Cliente", JOptionPane.QUESTION_MESSAGE);
@@ -489,10 +487,6 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 				resultado += "cliente adicionado exitosamente: " + tb;
 				resultado += "\n Operación terminada";
 				panelDatos.actualizarInterfaz(resultado);
-			}
-			else
-			{
-				panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
 			}
 		} 
 		catch (Exception e) 
@@ -868,9 +862,9 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 			panelDatos.actualizarInterfaz(resultado);
 		}
     }
-    /**
-     * RFC1
-     */
+    /* ****************************************************************
+   	 * 			Requerimiento 9
+   	 *****************************************************************/
     public void Consulta1( )
     {
     	try 

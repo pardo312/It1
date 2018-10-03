@@ -63,18 +63,12 @@ class SQLRFC1
 	}
 
 
-	public long registrarProveedor(PersistenceManager pm, long NIT, String nombre) 
-	{
-		Query q = pm.newQuery(SQL, "INSERT INTO " + "PROVEEDOR" + "(NIT, nombre) values ("+NIT+",'"+ nombre+"')");
-		q.setParameters(NIT, nombre);
-		return (long) q.executeUnique();            
-	}
 
 	public List<Consulta1> consulta1(PersistenceManager pm)
 	{
-		Query q = pm.newQuery(SQL,"SELECT SUCU.NOMBRE ,sum(produ.PRECIOUNITARIO) AS DINERORECOLECTADO from producto produ, factura fac, FACTURAPRODUCTO facpro, SUCURSAL SUCU where produ.codigodebarras = facpro.CODIGODEBARRASPRODUCTO and fac.NUMEROFACTURA = facpro.NUMEROFACTURA  AND  (fac.FECHA between TO_DATE('2017-06-05', 'YYYY-MM-DD')  AND TO_DATE('2020-06-05', 'YYYY-MM-DD') OR fac.FECHA between TO_DATE('2018-01-01', 'YYYY-MM-DD') and CURRENT_TIMESTAMP ) AND produ.IDSUCURSAL = SUCU.ID group by SUCU.NOMBRE ORDER BY DINERORECOLECTADO DESC , SUCU.NOMBRE ASC ");
-		q.setResultClass(Consulta1.class);
-		List<Consulta1> w = (List<Consulta1>) q.executeList();
+		Query q = pm.newQuery(SQL,"SELECT nombre,DineroRecolectado FROM (SELECT SUCU.NOMBRE ,sum(produ.PRECIOUNITARIO) AS DINERORECOLECTADO from producto produ, factura fac, FACTURAPRODUCTO facpro, SUCURSAL SUCU where produ.codigodebarras = facpro.CODIGODEBARRASPRODUCTO and fac.NUMEROFACTURA = facpro.NUMEROFACTURA  AND  (fac.FECHA between TO_DATE('2017-06-05', 'YYYY-MM-DD')  AND TO_DATE('2020-06-05', 'YYYY-MM-DD') OR fac.FECHA between TO_DATE('2018-01-01', 'YYYY-MM-DD') and CURRENT_TIMESTAMP ) AND produ.IDSUCURSAL = SUCU.ID group by SUCU.NOMBRE ORDER BY DINERORECOLECTADO DESC , SUCU.NOMBRE ASC) ");
+		
+		List<Consulta1> w = (List<Consulta1>) q.executeResultList(Consulta1.class);
 		return w;
 	}
 

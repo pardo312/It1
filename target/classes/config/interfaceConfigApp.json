@@ -59,6 +59,12 @@
 					"label": "Registrar Contenedor",
 					"event": "registrarContenedor"
 				}
+				,
+				{
+					
+					"label": "Consulta1",
+					"event": "Consulta1" 
+				}
 				
 				
 				

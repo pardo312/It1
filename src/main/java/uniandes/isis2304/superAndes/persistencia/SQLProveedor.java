@@ -73,7 +73,8 @@ class SQLProveedor
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + "PROVEEDOR");
 		q.setResultClass(Proveedor.class);
-		return (List<Proveedor>) q.executeList();
+		List<Proveedor> w = (List<Proveedor>) q.executeList();
+		return w;
 	}
 
 	

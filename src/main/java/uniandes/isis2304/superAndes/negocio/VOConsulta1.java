@@ -15,6 +15,7 @@
 
 package uniandes.isis2304.superAndes.negocio;
 
+import java.math.BigInteger;
 
 public interface VOConsulta1 
 {
@@ -25,7 +26,7 @@ public interface VOConsulta1
 	 public String getNombre() ;
 	
 	
-	 public long getPrecio() ;
+	 public float getDineroRecolectado();
 	
 	
 	
