@@ -63,12 +63,6 @@ class SQLRFC1
 	}
 
 
-	public long registrarProveedor(PersistenceManager pm, long NIT, String nombre) 
-	{
-		Query q = pm.newQuery(SQL, "INSERT INTO " + "PROVEEDOR" + "(NIT, nombre) values ("+NIT+",'"+ nombre+"')");
-		q.setParameters(NIT, nombre);
-		return (long) q.executeUnique();            
-	}
 
 	public List<Consulta1> consulta1(PersistenceManager pm)
 	{

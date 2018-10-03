@@ -58,7 +58,13 @@
 					
 					"label": "Registrar Contenedor",
 					"event": "registrarContenedor"
+				},
+				{
+					
+					"label": "RFC2",
+					"event": "Consulta2"
 				}
+				
 				
 				
 				

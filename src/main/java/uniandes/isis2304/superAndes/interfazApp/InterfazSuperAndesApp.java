@@ -900,6 +900,38 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
         }
         return resp;
 	}
+    /**
+     * RFC2
+     */
+    public void Consulta2( )
+    {
+    	try 
+    	{
+			List <uniandes.isis2304.superAndes.negocio.Consulta2> lista = superAndes.consulta2();
+
+			String resultado = "En listaProveedor";
+			resultado +=  "\n" + listarConsulta2(lista);
+			panelDatos.actualizarInterfaz(resultado);
+			resultado += "\n Operación terminada";
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+    
+    private String listarConsulta2(List<uniandes.isis2304.superAndes.negocio.Consulta2> lista) 
+    {
+    	String resp = "Las 20 promociones mas populares son:\n";
+    	int i = 1;
+        for (uniandes.isis2304.superAndes.negocio.Consulta2 tb : lista)
+        {
+        	resp += i++ + ". " + tb.toString() + "\n";
+        }
+        return resp;
+	}
     
 	/* ****************************************************************
 	 * 			Métodos administrativos

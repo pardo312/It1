@@ -306,6 +306,17 @@ public class SuperAndes
         log.info ("Generando Consulta: " + voProd.size() + " existentes");
         return voProd;
 	}
+	public List<uniandes.isis2304.superAndes.negocio.Consulta2> consulta2()
+	{
+		log.info ("Generando consulta");        
+        List<Consulta2> voProd = new LinkedList<Consulta2> ();
+        for (Consulta2 tb : pp.Consulta2())
+        {
+        	voProd.add (tb);
+        }
+        log.info ("Generando Consulta: " + voProd.size() + " existentes");
+        return voProd;
+	}
 
 	//Limpiar SuperAndes
 	public long [] limpiarSuperAndes ()
