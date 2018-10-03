@@ -739,3 +739,15 @@ ORA-00001: restricción única (ISIS2304B231820.SYS_C00409113) violada
 11:51:36,809 (main) INFO  [uniandes.isis2304.superAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
 11:52:33,513 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el contenedor: 54
 11:52:33,763 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el contenedor: 54
+11:56:37,827 (main) INFO  [uniandes.isis2304.superAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+11:56:37,827 (main) INFO  [uniandes.isis2304.superAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+11:56:37,843 (main) INFO  [uniandes.isis2304.superAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+11:56:44,258 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Proveedor
+11:56:44,500 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Proveedor: 22 existentes
+12:00:15,953 (main) INFO  [uniandes.isis2304.superAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+12:00:15,953 (main) INFO  [uniandes.isis2304.superAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+12:00:15,953 (main) INFO  [uniandes.isis2304.superAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+12:00:37,627 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Producto
+12:00:38,322 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Productos: 22 existentes
+12:00:41,484 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el Estante: 31
+12:00:41,595 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el proveedor: Estante [id=31, idSucursal=14]

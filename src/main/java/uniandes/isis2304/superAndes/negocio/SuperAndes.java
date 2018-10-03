@@ -295,7 +295,17 @@ public class SuperAndes
 		log.info ("Eliminando la promocion ");
 
 	}
-
+	public List<uniandes.isis2304.superAndes.negocio.Consulta1> consulta1()
+	{
+		log.info ("Generando consulta");        
+        List<Consulta1> voProd = new LinkedList<Consulta1> ();
+        for (Consulta1 tb : pp.Consulta1())
+        {
+        	voProd.add (tb);
+        }
+        log.info ("Generando Consulta: " + voProd.size() + " existentes");
+        return voProd;
+	}
 
 	//Limpiar SuperAndes
 	public long [] limpiarSuperAndes ()

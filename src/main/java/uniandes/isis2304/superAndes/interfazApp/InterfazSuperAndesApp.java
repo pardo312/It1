@@ -868,6 +868,38 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 			panelDatos.actualizarInterfaz(resultado);
 		}
     }
+    /**
+     * RFC1
+     */
+    public void Consulta1( )
+    {
+    	try 
+    	{
+			List <uniandes.isis2304.superAndes.negocio.Consulta1> lista = superAndes.consulta1();
+
+			String resultado = "En listaProveedor";
+			resultado +=  "\n" + listarConsulta1(lista);
+			panelDatos.actualizarInterfaz(resultado);
+			resultado += "\n Operación terminada";
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+    
+    private String listarConsulta1(List<uniandes.isis2304.superAndes.negocio.Consulta1> lista) 
+    {
+    	String resp = "Los Proveedores existentes son:\n";
+    	int i = 1;
+        for (uniandes.isis2304.superAndes.negocio.Consulta1 tb : lista)
+        {
+        	resp += i++ + ". " + tb.toString() + "\n";
+        }
+        return resp;
+	}
     
 	/* ****************************************************************
 	 * 			Métodos administrativos

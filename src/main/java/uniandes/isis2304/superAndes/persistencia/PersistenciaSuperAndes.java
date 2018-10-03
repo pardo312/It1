@@ -136,6 +136,7 @@ public class PersistenciaSuperAndes
 	
 	private SQLEstante sqlEstante;
 	
+	private SQLRFC1 sqlRFC1;
 	
 	/* ****************************************************************
 	 * 			Métodos del MANEJADOR DE PERSISTENCIA
@@ -262,6 +263,7 @@ public class PersistenciaSuperAndes
 		sqlPromocionPorcentaje = new SQLPromocionPorcentaje(this);
 		sqlPromocionUnidadProducto = new SQLPromocionUnidadProducto(this);
 		sqlUtil = new SQLUtil(this);
+		sqlRFC1 = new SQLRFC1(this);
 	}
 	
 	/**
@@ -943,6 +945,13 @@ public class PersistenciaSuperAndes
             pm.close();
         }
 	}
+	
+	
+	public List<uniandes.isis2304.superAndes.negocio.Consulta1> Consulta1() {
+		
+		return sqlRFC1.consulta1(pmf.getPersistenceManager());
+	
+}
 	
 	/* ****************************************************************
 	 * 			Limpiar Super Andes
