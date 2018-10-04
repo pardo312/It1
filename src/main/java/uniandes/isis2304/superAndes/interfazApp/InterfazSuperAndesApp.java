@@ -1,7 +1,7 @@
 
 package uniandes.isis2304.superAndes.interfazApp;
 
-import java.awt.BorderLayout;
+import java.awt.BorderLayout; 
 import java.awt.Color;
 import java.awt.Desktop;
 import java.awt.event.ActionEvent;
@@ -12,10 +12,10 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Date;
 
 import javax.jdo.JDODataStoreException;
 import javax.swing.ImageIcon;
@@ -48,12 +48,12 @@ import uniandes.isis2304.superAndes.negocio.VOContenedor;
 import uniandes.isis2304.superAndes.negocio.VODescuentodelxporciento;
 import uniandes.isis2304.superAndes.negocio.VOEstante;
 import uniandes.isis2304.superAndes.negocio.VOPaguexunidadesllevey;
+import uniandes.isis2304.superAndes.negocio.VOPedido;
 import uniandes.isis2304.superAndes.negocio.VOProducto;
 import uniandes.isis2304.superAndes.negocio.VOPromocion;
 import uniandes.isis2304.superAndes.negocio.VOProveedor;
 import uniandes.isis2304.superAndes.negocio.VOSucursal;
 import uniandes.isis2304.superAndes.negocio.VOTipoProducto;
-
 
 
 @SuppressWarnings("serial")
@@ -108,6 +108,11 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
      * Menú de la aplicación
      */
     private JMenuBar menuBar;
+    
+    /**
+     * Producto
+     */
+    private Producto producto;
 
 	/* ****************************************************************
 	 * 			Métodos
@@ -311,6 +316,24 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 		}
     }
     
+    public Producto buscarPorCodigoDeBarras(String codigo)
+    {
+    	Producto produ = null;
+    	List <Producto> lista = listarProducto();
+    
+    		for (int i = 0; i < lista.size(); i++) {
+    			String codigoProducto = lista.get(i).getCodigoDeBarras();
+    			if( codigoProducto.equals(codigo))
+    			{
+    				produ = lista.get(i);
+    			}		
+			}
+    	
+    	
+    	return produ;
+    	
+    }
+    
     private String listarProveedores(List<VOProveedor> lista) 
     {
     	String resp = "Los Proveedores existentes son:\n";
@@ -321,6 +344,17 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
         }
         return resp;
 	}
+    private String listarProducto(List<VOProducto> lista) 
+    {
+    	String resp = "Los Proveedores existentes son:\n";
+    	int i = 1;
+        for (VOProducto tb : lista)
+        {
+        	resp += i++ + ". " + tb.toString() + "\n";
+        }
+        return resp;
+	}
+    
     
     
     /* ****************************************************************
@@ -384,7 +418,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
         			String nombreTipo  = JOptionPane.showInputDialog (this, "nombre del Tipo de producto?", "Registrar Producto", JOptionPane.QUESTION_MESSAGE);
             		String metodoAlmac = (JOptionPane.showInputDialog (this, "metodo de almacenamiento?", "Registrar Producto", JOptionPane.QUESTION_MESSAGE));
             		long idCategoria = tp;
-            	    long idContenedor = 0;
+            	    long idContenedor = 2;
             	    registrarTipoProducto( nombreTipo,  metodoAlmac,  idCategoria,idContenedor );
         			numTip = JOptionPane.showInputDialog (this, "Quiere añadir un tipo de producto(mas) a esta categoria = (si o no)", "Registrar Producto", JOptionPane.QUESTION_MESSAGE);
         		}
@@ -460,7 +494,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 	/* ****************************************************************
 	 * 			RF3
 	 *****************************************************************/
-
+    // la cedulo no tiene que estar
 	public void registrarCliente( )
 	{
 		try 
@@ -795,7 +829,8 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
     	    		+ "\n (2)Descuento del x porciento"
     	    		+ "\n (3)Pague x cantidad lleve y"
     	    		+ "\n (4)Pague 1 lleve segundo a x porciento"
-    	    		+ "\n (5)Paquete de productos por un precio menor", "Registrar Promocion", JOptionPane.QUESTION_MESSAGE));
+    	    		//+ "\n (5)Paquete de productos por un precio menor", "Registrar Promocion"
+    	    		, JOptionPane.QUESTION_MESSAGE));
     	    
     		if(p == 1 || p == 3)
     		{
@@ -835,7 +870,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
     }
     
     /* ****************************************************************
-   	 * 			Requerimiento 9
+   	 * 			Requerimiento 8
    	 *****************************************************************/
     public void eliminarPromocion( )
     {
@@ -864,6 +899,102 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 			panelDatos.actualizarInterfaz(resultado);
 		}
     }
+
+    /* ****************************************************************
+   	 * 			RF9
+   	 *****************************************************************/
+   	public void registrarPedido( )
+   	{
+   		
+   		
+   		try 
+   		{
+   			JOptionPane.showMessageDialog(this, "Recuerda que para hacer un pedido debes conocer el codigo de barras del producto");
+   			String codigoDeBarras = JOptionPane.showInputDialog (this, "codigo de barras del producto?", "Registrar Pedido", JOptionPane.QUESTION_MESSAGE);
+   			int id = Integer.parseInt(JOptionPane.showInputDialog (this, "id del pedido?", "Registrar Pedido", JOptionPane.QUESTION_MESSAGE));
+   			java.util.Date fechaEsperada =  (java.util.Date) new SimpleDateFormat("dd/MM/yyyy").parse(JOptionPane.showInputDialog (this, "fecha esperada de entrega? (DD/MM/YYYY)", "Registrar Pedido", JOptionPane.QUESTION_MESSAGE));
+   			java.util.Date  fechaEntrega = (java.util.Date) new SimpleDateFormat("dd/MM/yyyy").parse ("00/00/00");// (java.util.Date ) new SimpleDateFormat("dd/MM/yyyy").parse(JOptionPane.showInputDialog (this, "fecha de entrega? (DD/MM/YYYY)", "Registrar Pedido", JOptionPane.QUESTION_MESSAGE));
+   			String evaluacionCantidad = JOptionPane.showInputDialog (this, "evaluacion cantidad?", "Registrar Pedido", JOptionPane.QUESTION_MESSAGE);
+   			String evaluacionCalidad = JOptionPane.showInputDialog (this, "evaluacion calidad ?", "Registrar Pedido", JOptionPane.QUESTION_MESSAGE);
+   			int calificacion = Integer.parseInt(JOptionPane.showInputDialog (this, "calificacion del pedido?", "Registrar Pedido", JOptionPane.QUESTION_MESSAGE));
+   			int finalizado = 0 ;//Integer.parseInt(JOptionPane.showInputDialog (this, "se ha finalizado el pedido?", "Registrar Pedido", JOptionPane.QUESTION_MESSAGE));
+   			int NITProveedor = Integer.parseInt(JOptionPane.showInputDialog (this, "NIT del proveedor?", "Registrar Pedido", JOptionPane.QUESTION_MESSAGE));
+   					
+   			if ( evaluacionCalidad != null && evaluacionCantidad != null) {
+   			
+   				Producto producto = buscarPorCodigoDeBarras(codigoDeBarras);
+   				
+   				VOPedido tb = superAndes.registrarPedido(id, fechaEsperada, fechaEntrega, evaluacionCantidad, evaluacionCalidad,calificacion,finalizado,NITProveedor);
+   			//	VOProducto produ = superAndes.registrarProducto(codigoDeBarras, producto.getNombre(), producto.getMarca(), producto.getPrecioUnitario(), producto.getPresentacion(), producto.getPrecioPorUnidad(), producto.getCantidadEnLaPresentacion(), producto.getUnidadesDeMedida(), producto.getEspecificacionesDeEmpacado(), producto.getNivelDeReorden(), id, producto.getIDSucursal(), producto.getIDContenedor(), producto.getEnStock());
+   				
+   				
+   				if (tb == null)
+   			{
+   				throw new Exception ("No se pudo crear el pedido de id: " + id);
+   			}
+   			String resultado = "En adicionarPedido\n\n";
+   			resultado += "pedido adicionada exitosamente: " + tb;
+   	//		resultado += "producto adicionada exitosamente: " + produ;
+   			resultado += "\n Operación terminada";
+   			panelDatos.actualizarInterfaz(resultado);
+   			}
+   			else
+   			{
+   				panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+   			}
+   		} 
+   		catch (Exception e) 
+   		{
+   			//			e.printStackTrace();
+   			String resultado = generarMensajeError(e);
+   			panelDatos.actualizarInterfaz(resultado);
+   		}
+   	}
+   	 /* ****************************************************************
+   		 * 			RF10
+   		 *****************************************************************/
+   		public void finalizarPedido( )
+   		{
+   			
+   			
+   			try 
+   			{
+   				int id = Integer.parseInt(JOptionPane.showInputDialog (this, "id del pedido que llegó?", "Finalizar Pedido", JOptionPane.QUESTION_MESSAGE));
+   				java.util.Date fechaEsperada =  (java.util.Date) new SimpleDateFormat("dd/MM/yyyy").parse(JOptionPane.showInputDialog (this, "fecha en la que esperabas el pedido? (DD/MM/YYYY)", "Finalizar Pedido", JOptionPane.QUESTION_MESSAGE));
+   				java.util.Date  fechaEntrega =  (java.util.Date ) new SimpleDateFormat("dd/MM/yyyy").parse(JOptionPane.showInputDialog (this, "fecha en la que te entregaron? (DD/MM/YYYY)", "Finalizar Pedido", JOptionPane.QUESTION_MESSAGE));
+   				String evaluacionCantidad = JOptionPane.showInputDialog (this, "evaluacion cantidad?", "Registrar Pedido", JOptionPane.QUESTION_MESSAGE);
+   				String evaluacionCalidad = JOptionPane.showInputDialog (this, "evaluacion calidad ?", "Registrar Pedido", JOptionPane.QUESTION_MESSAGE);
+   				int calificacion = Integer.parseInt(JOptionPane.showInputDialog (this, "calificacion del pedido?", "Registrar Pedido", JOptionPane.QUESTION_MESSAGE));
+   				int finalizado = 0; //Integer.parseInt(JOptionPane.showInputDialog (this, "se ha finalizado el pedido?", "Registrar Contenedor", JOptionPane.QUESTION_MESSAGE));
+   				int NITProveedor = Integer.parseInt(JOptionPane.showInputDialog (this, "NIT del proveedor que te atendio?", "Finalizar Pedido", JOptionPane.QUESTION_MESSAGE));
+   						
+   				if ( evaluacionCalidad != null && evaluacionCantidad != null) {
+   				
+   				
+   					VOPedido tb = superAndes.actualizarPedido(id, fechaEsperada, fechaEntrega, evaluacionCantidad, evaluacionCalidad,calificacion,finalizado,NITProveedor);
+   					
+   					if (tb == null)
+   				{
+   					throw new Exception ("No se pudo crear el pedido de id: " + id);
+   				}
+   				String resultado = "En adicionarPedido\n\n";
+   				resultado += "pedido adicionada exitosamente: " + tb;
+   		//		resultado += "producto adicionada exitosamente: " + produ;
+   				resultado += "\n Operación terminada";
+   				panelDatos.actualizarInterfaz(resultado);
+   				}
+   				else
+   				{
+   					panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+   				}
+   			} 
+   			catch (Exception e) 
+   			{
+   				//			e.printStackTrace();
+   				String resultado = generarMensajeError(e);
+   				panelDatos.actualizarInterfaz(resultado);
+   			}
+   		}
     
     /* ****************************************************************
    	 * 			Requerimiento 11
@@ -875,7 +1006,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
     	{
     		
     		
-    		String numeroDeFactura = JOptionPane.showInputDialog (this, "Numero de la factura?", "Registrar Factura", JOptionPane.QUESTION_MESSAGE);
+    		String numeroDeFactura = JOptionPane.showInputDialog (this, "Numero de la factura(nuevo)?", "Registrar Factura", JOptionPane.QUESTION_MESSAGE);
     		java.util.Date fecha =  (java.util.Date) new SimpleDateFormat("dd/MM/yyyy").parse(JOptionPane.showInputDialog (this, "fecha de la factura? (DD/MM/YYYY)", "Registrar Pedido", JOptionPane.QUESTION_MESSAGE));   		long idCliente = Long.parseLong(JOptionPane.showInputDialog (this, "ID del cliente asociado?", "Registrar Factura", JOptionPane.QUESTION_MESSAGE));
     		String codigoDeBarras = JOptionPane.showInputDialog (this, "Codigo de barras de producto ?", "Registrar Factura", JOptionPane.QUESTION_MESSAGE);
   			int numProd = Integer.parseInt(JOptionPane.showInputDialog (this, "Numero de productos ?", "Registrar Factura", JOptionPane.QUESTION_MESSAGE));
@@ -919,6 +1050,15 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
     /* ****************************************************************
    	 * 			Consulta 1
    	 *****************************************************************/
+
+   
+	    
+	
+    
+    /**
+     * RFC1
+     */
+
     public void Consulta1( )
     {
     	try 

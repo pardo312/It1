@@ -121,6 +121,11 @@ public class PersistenciaSuperAndes
 	 */
 	private SQLContenedor sqlContenedor;
 
+	/**
+	 * atributo para al acceso de la tabla pedido 
+	 */
+	private SQLPedido sqlPedido;
+
 
 	/**
 	 * Atributo para el acceso a la tabla SIRVEN de la base de datos
@@ -139,7 +144,7 @@ public class PersistenciaSuperAndes
 	private SQLEstante sqlEstante;
 
 	private SQLRFC1 sqlRFC1;
-	
+
 	private SQLRFC2 sqlRFC2;
 
 	private SQLRFC3 sqlRFC3;
@@ -264,6 +269,7 @@ public class PersistenciaSuperAndes
 		sqlClienteEmpresa= new SQLClienteEmpresa(this);
 		sqlClienteNatural = new SQLClienteNatural(this);
 		sqlContenedor = new SQLContenedor(this);
+		sqlPedido = new SQLPedido(this);
 		sqlEstante = new SQLEstante(this);
 		sqlSucursal = new SQLSucursal(this);
 		sqlProducto = new SQLProducto (this);	
@@ -819,6 +825,67 @@ public class PersistenciaSuperAndes
 		}
 	}
 
+	public Pedido registrarPedido(int id, java.util.Date fechaEsperada,java.util.Date fechaEntrega, String evaluacionCantidad, String evaluacionCalidad,int calificacion, int finalizado, int NITProveedor) 
+	{PersistenceManager pm = pmf.getPersistenceManager();
+	Transaction tx=pm.currentTransaction();
+	try
+	{
+		tx.begin();
+		long ido = nextval ();
+		long tuplasInsertadas = sqlPedido.registrarPedido(pm, (int) ido, fechaEsperada, fechaEntrega, evaluacionCantidad, evaluacionCalidad, calificacion,finalizado,NITProveedor);
+		tx.commit();
+
+		log.trace ("Inserción del contenedor " + id + ": " + tuplasInsertadas + " tuplas insertadas");
+
+		return new Pedido(id,fechaEsperada,fechaEntrega,evaluacionCantidad,evaluacionCalidad,calificacion, finalizado,NITProveedor);
+	}
+	catch (Exception e)
+	{
+		e.printStackTrace();
+		log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+		return null;
+	}
+	finally
+	{
+		if (tx.isActive())
+		{
+			tx.rollback();
+		}
+		pm.close();
+	}
+	}
+	
+	public Pedido actualizarPedido(int id, java.util.Date fechaEsperada,java.util.Date fechaEntrega, String evaluacionCantidad, String evaluacionCalidad,int calificacion, int finalizado, int NITProveedor) 
+	{PersistenceManager pm = pmf.getPersistenceManager();
+	Transaction tx=pm.currentTransaction();
+	try
+	{
+		tx.begin();
+		long ido = nextval ();
+		long tuplasInsertadas = sqlPedido.registrarPedido(pm, (int) ido, fechaEsperada, fechaEntrega, evaluacionCantidad, evaluacionCalidad, calificacion,finalizado,NITProveedor);
+		tx.commit();
+
+		log.trace ("Inserción del contenedor " + id + ": " + tuplasInsertadas + " tuplas insertadas");
+
+		return new Pedido(id,fechaEsperada,fechaEntrega,evaluacionCantidad,evaluacionCalidad,calificacion, finalizado,NITProveedor);
+	}
+	catch (Exception e)
+	{
+		e.printStackTrace();
+		log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+		return null;
+	}
+	finally
+	{
+		if (tx.isActive())
+		{
+			tx.rollback();
+		}
+		pm.close();
+	}
+	}
+
+
 
 
 
@@ -1079,6 +1146,7 @@ public class PersistenciaSuperAndes
 	
 
 	
+
 
 
 

@@ -47,7 +47,7 @@ public class SQLTipoProducto
 			
 			 long idContenedor) 
 	{
-        Query q = pm.newQuery(SQL, "INSERT INTO " +"TIPOPRODUCTO" + "( nombreTipo,metodoAlmac,idCategoria,idContenedor) values ('"+nombreTipo+"','"+metodoAlmac+"',"+idCategoria+","+idContenedor+")"                                                                      );
+        Query q = pm.newQuery(SQL, "INSERT INTO " +"TIPOPRODUCTO" + "( nombreTipo,metodoAlmacenamiento,idCategoria,idContenedor) values ('"+nombreTipo+"','"+metodoAlmac+"',"+idCategoria+","+idContenedor+")"                                                                      );
        
         return (long) q.executeUnique();
 	}

@@ -17,6 +17,21 @@
 					"event": "registrarProducto"
 				},
 				{
+					
+					"label": "Registrar Cliente",
+					"event": "registrarCliente"
+				}
+				,
+				{
+					"label": "Registrar Sucursal",
+					"event": "registrarSucursal"
+				}
+				,
+				{
+					"label": "Registrar Bodega A una Sucursal",
+					"event": "registrarContenedor"
+				},
+				{
 					"label": "Registrar Estante A una Sucursal",
 					"event": "registrarEstanteASucursal"
 				}
@@ -28,10 +43,14 @@
 				,
 				{
 					
-					"label": "Registrar Cliente",
-					"event": "registrarCliente"
-				}
-				,
+					"label": "Registrar Pedido de un producto",
+					"event": "registrarPedido"
+				},
+				{
+					
+					"label": "Registrar	Llegada de un producto",
+					"event": "registrarPedido"
+				},
 				{
 					
 					"label": "Registrar Venta de producto",

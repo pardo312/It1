@@ -1,6 +1,7 @@
 package uniandes.isis2304.superAndes.persistencia;
 
 import java.math.BigDecimal;
+import java.sql.Date;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
@@ -46,7 +47,7 @@ class SQLPedido
 	{
 		this.pp = pp;
 	}
-	
+
 	/**
 	 * Crea y ejecuta la sentencia SQL para adicionar un BEBEDOR a la base de datos de Parranderos
 	 * @param pm - El manejador de persistencia
@@ -56,17 +57,36 @@ class SQLPedido
 	 * @param presupuesto - El presupuesto del bebedor (ALTO, MEDIO, BAJO)
 	 * @return EL número de tuplas insertadas
 	 */
-	public long registrarCliente (PersistenceManager pm,int idCliente, int puntosDeCompra,String NITCliente,int cedulaCliente) 
+	public long registrarPedido (PersistenceManager pm,int id, java.util.Date fechaEsperada,java.util.Date fechaEntrega,String evaluacionCantidad, String evaluacionCalidad, int calificacion, int finalizado,int NITProveedor) 
 	{
-		Query s = pm.newQuery(SQL, "INSERT INTO " + "CLIENTEEMPRESA" + "(NIT,DIRECCION) values ('00022', 'direccion 22' )");
-		s.executeUnique();
+		java.sql.Date fecha1 = convertUtilToSql(fechaEsperada);
+		java.sql.Date fecha2 = convertUtilToSql(fechaEntrega);
+
+		Query q = pm.newQuery(SQL, "INSERT INTO " + "PEDIDO" + "(id,fechaEsperada,fechaEntrega,evaluacionCantidad,evaluacionCalidad,calificacion,finalizado,NITProveedor) values ("+id+", TO_DATE('"+fecha1+"', 'YYYY/MM/DD'), TO_DATE('"+fecha2+"', 'YYYY/MM/DD'), '"+evaluacionCantidad+"', '"+evaluacionCalidad+"', "+calificacion+", "+finalizado+", "+NITProveedor+" )");
+		q.setParameters( id, fechaEsperada, fechaEntrega,evaluacionCantidad,evaluacionCalidad,calificacion, finalizado,NITProveedor);
+		return (long) q.executeUnique();
 		
-		Query r = pm.newQuery(SQL, "INSERT INTO " + "CLIENTENATURAL" + "(CEDULA, NOMBRE, EMAIL)VALUES (1020,'JUAN PEREZ','CLIENTE21@CORREO.COM')");
-		r.executeUnique();
-        
-		Query q = pm.newQuery(SQL, "INSERT INTO " + "CLIENTE" + "(idCliente,puntosDeCompra,NITCliente,cedulaCliente) values ("+idCliente+", "+puntosDeCompra+", "+NITCliente+", "+cedulaCliente+" )");
-        q.setParameters( idCliente, puntosDeCompra, NITCliente,cedulaCliente);
-        return (long) q.executeUnique();
+
+	}
+	
+	public long actualizarPedido (PersistenceManager pm,int id, java.util.Date fechaEsperada,java.util.Date fechaEntrega,String evaluacionCantidad, String evaluacionCalidad, int calificacion, int finalizado,int NITProveedor) 
+	{
+		java.sql.Date fecha1 = convertUtilToSql(fechaEsperada);
+		java.sql.Date fecha2 = convertUtilToSql(fechaEntrega);
+
+		Query q = pm.newQuery(SQL, "Update PEDIDO Set FINALIZADO = 1, CALIFICACION = valor_campo2 WHERE ID = ID " + "PEDIDO" + "(id,fechaEsperada,fechaEntrega,evaluacionCantidad,evaluacionCalidad,calificacion,finalizado,NITProveedor) values ("+id+", TO_DATE('"+fecha1+"', 'YYYY/MM/DD'), TO_DATE('"+fecha2+"', 'YYYY/MM/DD'), '"+evaluacionCantidad+"', '"+evaluacionCalidad+"', "+calificacion+", "+finalizado+", "+NITProveedor+" )");
+		q.setParameters( id, fechaEsperada, fechaEntrega,evaluacionCantidad,evaluacionCalidad,calificacion, finalizado,NITProveedor);
+		return (long) q.executeUnique();
+		
+
+	}
+
+	private static java.sql.Date convertUtilToSql(java.util.Date fecha) {
+
+		java.sql.Date sDate = new java.sql.Date(fecha.getTime());
+
+		return sDate;
+
 	}
 
 	/**
@@ -74,12 +94,12 @@ class SQLPedido
 	 * @param pm
 	 * @return la lista de todos los clientes
 	 */
-	public List<Cliente> darClientes (PersistenceManager pm)
+	public List<Cliente> darPedidos (PersistenceManager pm)
 	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + "CLIENTE");
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + "PEDIDO");
 		q.setResultClass(Proveedor.class);
 		return (List<Cliente>) q.executeList();
 	}
-	
+
 
 }

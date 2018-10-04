@@ -1,17 +1,3 @@
-/**~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * Universidad	de	los	Andes	(Bogotá	- Colombia)
- * Departamento	de	Ingeniería	de	Sistemas	y	Computación
- * Licenciado	bajo	el	esquema	Academic Free License versión 2.1
- * 		
- * Curso: isis2304 - Sistemas Transaccionales
- * Proyecto: Parranderos Uniandes
- * @version 1.0
- * @author Germán Bravo
- * Julio de 2018
- * 
- * Revisado por: Claudia Jiménez, Christian Ariza
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- */
 
 package uniandes.isis2304.superAndes.negocio;
 
@@ -34,35 +20,36 @@ public class Producto
 	 *****************************************************************/
 
 	private String codigoDeBarras;
-	
+
 	private String nombre;
-	
+
 	private String marca;
-	
+
 	private float precioUnitario;
-	
+
 	private String presentacion;
-	
+
 	private float precioPorUnidad;
-	
+
 	private float cantidadEnLaPresentacion;
+
 	
 	private String unidadDeMedida;
 
 	private String especificacionesDeEmpacado;
-	
+
 	private float nivelDeReorden;
-	
+
 	private long IDPedido;
-	
+
 	private long IDSucursal;
-	
+
 	private long IDContenedor;
-	
+
 	private int EnStock;
-	
+
 	private long IDPromocion;
-	
+
 
 	/* ****************************************************************
 	 * 			Métodos
@@ -128,6 +115,7 @@ public class Producto
 		this.codigoDeBarras = codigoDeBarras;
 	}
 
+	
 
 	public String getNombre() 
 	{
@@ -161,7 +149,7 @@ public class Producto
 	{
 		this.precioUnitario = precioUnitario;
 	}
-	
+
 	public String getPresentacion() 
 	{
 		return presentacion;
@@ -170,10 +158,10 @@ public class Producto
 
 	public void setPresentacion(String presentacion) 
 	{
-		
+
 		this.presentacion = presentacion;
 	}
-	
+
 	public float getPrecioPorUnidad() 
 	{
 		return precioPorUnidad;
@@ -184,7 +172,7 @@ public class Producto
 	{
 		this.precioPorUnidad = precioPorUnidad;
 	}
-	
+
 	public float getCantidadEnLaPresentacion() 
 	{
 		return cantidadEnLaPresentacion;
@@ -205,7 +193,7 @@ public class Producto
 	{		
 		this.unidadDeMedida = unidadDeMedida;
 	}
-	
+
 	public String getEspecificacionesDeEmpacado() 
 	{
 		return especificacionesDeEmpacado;
@@ -215,7 +203,7 @@ public class Producto
 	{
 		this.especificacionesDeEmpacado = especificacionesDeEmpacado;
 	}
-	
+
 	public float getNivelDeReorden() 
 	{
 		return nivelDeReorden;
@@ -225,7 +213,7 @@ public class Producto
 	{
 		this.nivelDeReorden = nivelDeReorden;
 	}
-	
+
 	public long getIDPedido() 
 	{
 		return IDPedido;
@@ -235,7 +223,7 @@ public class Producto
 	{
 		this.IDPedido = IDPedido;
 	}
-	
+
 	public long getIDSucursal() 
 	{
 		return IDSucursal;
@@ -272,7 +260,7 @@ public class Producto
 	{
 		this.IDPromocion = IDPromocion;
 	}
-	
+
 
 	@Override
 	public String toString() 
@@ -283,7 +271,7 @@ public class Producto
 				", nivelDeReorden=" + nivelDeReorden +", IDPedido=" + IDPedido +", IDSucursal=" + IDSucursal +", IDContenedor=" + IDContenedor +", EnStock=" + EnStock +", IDPromocion=" + IDPromocion+"]";
 	}
 
-	
 
-	
+
+
 }

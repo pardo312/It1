@@ -66,18 +66,18 @@ class SQLPromocionPorcentaje
 	
 	public long registrarPromocionP1L2AX(PersistenceManager pm, long id, int porcentaje) 
 	{
-		Query s = pm.newQuery(SQL,"INSERT INTO " + "PROMOCION" + "( id,descripcion, preciopromocion,IDEstante) values ("+id+","+"'PromocionPXULY'"+","+"'0'"+","+"1"+")"         );
+		Query s = pm.newQuery(SQL,"INSERT INTO " + "PROMOCION" + "( id,descripcion, preciopromocion,IDSucursal) values ("+id+","+"'PromocionPXULY'"+","+"'0'"+","+"1"+")"         );
 		s.executeUnique();
-		 Query q = pm.newQuery(SQL,s+ "INSERT INTO " + "Pague1llevesegundoaxporciento" + "( id,PORCENTAJE) values ("+id+","+porcentaje+")");                          
+		 Query q = pm.newQuery(SQL, "INSERT INTO " + "Pague1llevesegundoaxporciento" + "( id,PORCENTAJE) values ("+id+","+porcentaje+")");                          
 		   
 		   return (long) q.executeUnique();
 	}
 	
 	public long registrarPromocionDDX(PersistenceManager pm, long id, int porcentaje) 
 	{
-		Query s = pm.newQuery(SQL,"INSERT INTO " + "PROMOCION" + "( id,descripcion, preciopromocion,IDEstante) values ("+id+","+"'PromocionPXULY'"+","+"'0'"+","+"1"+")"         );
+		Query s = pm.newQuery(SQL,"INSERT INTO " + "PROMOCION" + "( id,descripcion, preciopromocion,IDSucursal) values ("+id+","+"'PromocionPXULY'"+","+"'0'"+","+"1"+")"         );
 		s.executeUnique();
-		 Query q = pm.newQuery(SQL,s+
+		 Query q = pm.newQuery(SQL,
 				 "INSERT INTO " + "Descuentodelxporciento" + "( id,PORCENTAJE) values ("+id+","+porcentaje+")");                          
 		   
 		   return (long) q.executeUnique();
