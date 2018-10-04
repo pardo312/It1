@@ -74,7 +74,7 @@ class SQLPedido
 		java.sql.Date fecha1 = convertUtilToSql(fechaEsperada);
 		java.sql.Date fecha2 = convertUtilToSql(fechaEntrega);
 
-		Query q = pm.newQuery(SQL, "Update PEDIDO Set FINALIZADO = 1, CALIFICACION = valor_campo2 WHERE ID = ID " + "PEDIDO" + "(id,fechaEsperada,fechaEntrega,evaluacionCantidad,evaluacionCalidad,calificacion,finalizado,NITProveedor) values ("+id+", TO_DATE('"+fecha1+"', 'YYYY/MM/DD'), TO_DATE('"+fecha2+"', 'YYYY/MM/DD'), '"+evaluacionCantidad+"', '"+evaluacionCalidad+"', "+calificacion+", "+finalizado+", "+NITProveedor+" )");
+		Query q = pm.newQuery(SQL, "Update PEDIDO Set FINALIZADO = 1,evaluacionCalidad = "+evaluacionCalidad+",evaluacionCantidad = "+evaluacionCantidad+", CALIFICACION = "+calificacion+" ,fechaEntrega ="+fecha2+" WHERE ID ="+ id );
 		q.setParameters( id, fechaEsperada, fechaEntrega,evaluacionCantidad,evaluacionCalidad,calificacion, finalizado,NITProveedor);
 		return (long) q.executeUnique();
 		

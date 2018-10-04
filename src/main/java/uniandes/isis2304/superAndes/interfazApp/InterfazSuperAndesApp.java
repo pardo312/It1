@@ -977,8 +977,8 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
    				{
    					throw new Exception ("No se pudo crear el pedido de id: " + id);
    				}
-   				String resultado = "En adicionarPedido\n\n";
-   				resultado += "pedido adicionada exitosamente: " + tb;
+   				String resultado = "En EntegarPedido\n\n";
+   				resultado += "pedido entregado exitosamente: " + tb;
    		//		resultado += "producto adicionada exitosamente: " + produ;
    				resultado += "\n Operación terminada";
    				panelDatos.actualizarInterfaz(resultado);
