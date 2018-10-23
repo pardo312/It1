@@ -49,7 +49,7 @@
 				{
 					
 					"label": "Registrar	Llegada de un producto",
-					"event": "registrarPedido"
+					"event": "finalizarPedido"
 				},
 				{
 					

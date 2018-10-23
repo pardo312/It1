@@ -911,12 +911,12 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
    		{
    			JOptionPane.showMessageDialog(this, "Recuerda que para hacer un pedido debes conocer el codigo de barras del producto");
    			String codigoDeBarras = JOptionPane.showInputDialog (this, "codigo de barras del producto?", "Registrar Pedido", JOptionPane.QUESTION_MESSAGE);
-   			int id = Integer.parseInt(JOptionPane.showInputDialog (this, "id del pedido?", "Registrar Pedido", JOptionPane.QUESTION_MESSAGE));
+   			int id = 0;
    			java.util.Date fechaEsperada =  (java.util.Date) new SimpleDateFormat("dd/MM/yyyy").parse(JOptionPane.showInputDialog (this, "fecha esperada de entrega? (DD/MM/YYYY)", "Registrar Pedido", JOptionPane.QUESTION_MESSAGE));
-   			java.util.Date  fechaEntrega = (java.util.Date) new SimpleDateFormat("dd/MM/yyyy").parse ("00/00/00");// (java.util.Date ) new SimpleDateFormat("dd/MM/yyyy").parse(JOptionPane.showInputDialog (this, "fecha de entrega? (DD/MM/YYYY)", "Registrar Pedido", JOptionPane.QUESTION_MESSAGE));
-   			String evaluacionCantidad = JOptionPane.showInputDialog (this, "evaluacion cantidad?", "Registrar Pedido", JOptionPane.QUESTION_MESSAGE);
-   			String evaluacionCalidad = JOptionPane.showInputDialog (this, "evaluacion calidad ?", "Registrar Pedido", JOptionPane.QUESTION_MESSAGE);
-   			int calificacion = Integer.parseInt(JOptionPane.showInputDialog (this, "calificacion del pedido?", "Registrar Pedido", JOptionPane.QUESTION_MESSAGE));
+   			java.util.Date  fechaEntrega = new Date( 0/1/0001);
+   			String evaluacionCantidad = "0";
+   			String evaluacionCalidad = "0";
+   			int calificacion = 0;
    			int finalizado = 0 ;//Integer.parseInt(JOptionPane.showInputDialog (this, "se ha finalizado el pedido?", "Registrar Pedido", JOptionPane.QUESTION_MESSAGE));
    			int NITProveedor = Integer.parseInt(JOptionPane.showInputDialog (this, "NIT del proveedor?", "Registrar Pedido", JOptionPane.QUESTION_MESSAGE));
    					
@@ -960,13 +960,13 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
    			try 
    			{
    				int id = Integer.parseInt(JOptionPane.showInputDialog (this, "id del pedido que llegó?", "Finalizar Pedido", JOptionPane.QUESTION_MESSAGE));
-   				java.util.Date fechaEsperada =  (java.util.Date) new SimpleDateFormat("dd/MM/yyyy").parse(JOptionPane.showInputDialog (this, "fecha en la que esperabas el pedido? (DD/MM/YYYY)", "Finalizar Pedido", JOptionPane.QUESTION_MESSAGE));
+   				java.util.Date fechaEsperada = new Date( 0/1/0001);
    				java.util.Date  fechaEntrega =  (java.util.Date ) new SimpleDateFormat("dd/MM/yyyy").parse(JOptionPane.showInputDialog (this, "fecha en la que te entregaron? (DD/MM/YYYY)", "Finalizar Pedido", JOptionPane.QUESTION_MESSAGE));
    				String evaluacionCantidad = JOptionPane.showInputDialog (this, "evaluacion cantidad?", "Registrar Pedido", JOptionPane.QUESTION_MESSAGE);
    				String evaluacionCalidad = JOptionPane.showInputDialog (this, "evaluacion calidad ?", "Registrar Pedido", JOptionPane.QUESTION_MESSAGE);
    				int calificacion = Integer.parseInt(JOptionPane.showInputDialog (this, "calificacion del pedido?", "Registrar Pedido", JOptionPane.QUESTION_MESSAGE));
    				int finalizado = 0; //Integer.parseInt(JOptionPane.showInputDialog (this, "se ha finalizado el pedido?", "Registrar Contenedor", JOptionPane.QUESTION_MESSAGE));
-   				int NITProveedor = Integer.parseInt(JOptionPane.showInputDialog (this, "NIT del proveedor que te atendio?", "Finalizar Pedido", JOptionPane.QUESTION_MESSAGE));
+   				int NITProveedor =0;
    						
    				if ( evaluacionCalidad != null && evaluacionCantidad != null) {
    				

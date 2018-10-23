@@ -236,7 +236,7 @@ public class SuperAndes
 	public Pedido actualizarPedido(int id,java.util.Date fechaEsperada,java.util.Date fechaEntrega,String evaluacionCantidad, String evaluacionCalidad,int calificacion,int finalizado, int NITProveedor)
 	{
 		log.info ("Actualizando el pedido: " + id);
-		Pedido pedido = pp.registrarPedido(id, fechaEsperada, fechaEntrega, evaluacionCantidad, evaluacionCalidad, calificacion, finalizado, NITProveedor);		
+		Pedido pedido = pp.actualizarPedido(id, fechaEsperada, fechaEntrega, evaluacionCantidad, evaluacionCalidad, calificacion, finalizado, NITProveedor);		
 		log.info ("Actualizando el pedido: " + id);
 		return pedido;
 	}

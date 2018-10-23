@@ -861,8 +861,7 @@ public class PersistenciaSuperAndes
 	try
 	{
 		tx.begin();
-		long ido = nextval ();
-		long tuplasInsertadas = sqlPedido.registrarPedido(pm, (int) ido, fechaEsperada, fechaEntrega, evaluacionCantidad, evaluacionCalidad, calificacion,finalizado,NITProveedor);
+		long tuplasInsertadas = sqlPedido.actualizarPedido(pm,id , fechaEsperada, fechaEntrega, evaluacionCantidad, evaluacionCalidad, calificacion,finalizado,NITProveedor);
 		tx.commit();
 
 		log.trace ("Inserción del contenedor " + id + ": " + tuplasInsertadas + " tuplas insertadas");
