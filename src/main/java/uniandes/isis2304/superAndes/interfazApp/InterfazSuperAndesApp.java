@@ -1048,6 +1048,44 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
     }
     
     /* ****************************************************************
+   	 * 			Requerimiento 12
+   	 *****************************************************************/
+ 
+    public void registrarCarritoACliente( )
+	{
+		try 
+		{
+			JOptionPane.showMessageDialog(this, "Recuerda que para pedir un carrito debes ser un cliente registrado");
+			String NIT = JOptionPane.showInputDialog (this, "NIT del cliente si es empresarial? 0 de lo contrario", "Solicitar Carrito", JOptionPane.QUESTION_MESSAGE);
+			String cedula = JOptionPane.showInputDialog (this, "cedula del cliente si es natural? 0 de lo contrario", "Solicitar Carrito", JOptionPane.QUESTION_MESSAGE);
+			
+			if ( NIT.equalsIgnoreCase("0")) {
+			
+			VOClienteEmpresa tb = superAndes.registrarClienteEmpresa(NIT, cedula);
+			if (tb == null)
+			{
+				throw new Exception ("No se pudo crear un cliente empresarial con nombre: " + NIT);
+			}
+			String resultado = "En adicionarClienteEmpresarial\n\n";
+			resultado += "cliente empresarial adicionado exitosamente: " + tb;
+			resultado += "\n Operación terminada";
+			panelDatos.actualizarInterfaz(resultado);
+			}
+			else
+			{
+				panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+			}
+		} 
+		catch (Exception e) 
+		{
+			//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+	}
+
+    
+    /* ****************************************************************
    	 * 			Consulta 1
    	 *****************************************************************/
 

@@ -108,16 +108,15 @@ class SQLProducto
 			
 			 long IDContenedor,
 			 
-			 int EnStock, long iDPromocion) 
+			 int EnStock, long iDPromocion,	long IDCarrito) 
 	{
-		
-		long IDCarritoDeCompras = 1; // porque antes de que alguien los añada a algun carrito estan libres (el carrito 1 es el carrito libre)
+	
         Query q = pm.newQuery(SQL, "INSERT INTO " +"PRODUCTO"+
-        		"(codigoDeBarras,nombre,marca,precioUnitario,presentacion,precioPorUnidad,cantidadEnLaPresentacion,unidadDeMedida,especificacionesDeEmpacado,nivelDeReorden,IDPedido, IDSucursal, IDContenedor, EnStock,IDPromocion) values ("+codigoDeBarras+ ",'"+nombre+"','"+marca+"',"+precioUnitario+",'"+presentacion+"',"+precioPorUnidad+","+cantidadEnLaPresentacion+",'"+unidadesDeMedida+"','"+especificacionesDeEmpacado+"',"+nivelDeReorden+","+ IDPedido+","+IDSucursal+","+ IDContenedor +","+ EnStock +","+ iDPromocion +","+ IDCarritoDeCompras +")");
+        		"(codigoDeBarras,nombre,marca,precioUnitario,presentacion,precioPorUnidad,cantidadEnLaPresentacion,unidadDeMedida,especificacionesDeEmpacado,nivelDeReorden,IDPedido, IDSucursal, IDContenedor, EnStock,IDPromocion) values ("+codigoDeBarras+ ",'"+nombre+"','"+marca+"',"+precioUnitario+",'"+presentacion+"',"+precioPorUnidad+","+cantidadEnLaPresentacion+",'"+unidadesDeMedida+"','"+especificacionesDeEmpacado+"',"+nivelDeReorden+","+ IDPedido+","+IDSucursal+","+ IDContenedor +","+ EnStock +","+ iDPromocion +","+ IDCarrito +")");
         q.setParameters(codigoDeBarras,nombre,
         		marca,precioUnitario,presentacion,precioPorUnidad,cantidadEnLaPresentacion,
         		unidadesDeMedida,especificacionesDeEmpacado,nivelDeReorden,
-        		 IDPedido, IDSucursal, IDContenedor,EnStock,iDPromocion,IDCarritoDeCompras);
+        		 IDPedido, IDSucursal, IDContenedor,EnStock,iDPromocion,IDCarrito);
         return (long)q.executeUnique();            
 	}
 	

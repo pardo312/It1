@@ -21,6 +21,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
+import uniandes.isis2304.superAndes.negocio.CarritoDeCompras;
 import uniandes.isis2304.superAndes.negocio.Categoria;
 import uniandes.isis2304.superAndes.negocio.Cliente;
 import uniandes.isis2304.superAndes.negocio.ClienteEmpresa;
@@ -142,6 +143,8 @@ public class PersistenciaSuperAndes
 	private SQLPromocionUnidadProducto sqlPromocionUnidadProducto;
 
 	private SQLEstante sqlEstante;
+	
+	private SQLCarritoDeCompras sqlCarritoDeCompras;
 
 	private SQLRFC1 sqlRFC1;
 
@@ -466,7 +469,8 @@ public class PersistenciaSuperAndes
 
 			long IDContenedor,
 			int EnStock,
-			long IDPromocion)
+			long IDPromocion
+		, long IDCarrito)
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
@@ -477,7 +481,7 @@ public class PersistenciaSuperAndes
 			long tuplasInsertadas = sqlProducto.registrarProducto(pm,codigoDeBarras ,nombre,
 					marca,precioUnitario,presentacion,precioPorUnidad,cantidadEnLaPresentacion,
 					unidadesDeMedida,especificacionesDeEmpacado,nivelDeReorden,
-					IDPedido, IDSucursal, IDContenedor, EnStock,IDPromocion);
+					IDPedido, IDSucursal, IDContenedor, EnStock,IDPromocion , IDCarrito);
 			tx.commit();
 
 			log.trace ("Inserción de Producto: " + nombre + ": " + tuplasInsertadas + " tuplas insertadas");
@@ -485,7 +489,7 @@ public class PersistenciaSuperAndes
 			return new Producto(codigoDeBarras ,nombre,
 					marca,precioUnitario,presentacion,precioPorUnidad,cantidadEnLaPresentacion,
 					unidadesDeMedida,especificacionesDeEmpacado,nivelDeReorden,
-					IDPedido, IDSucursal, IDContenedor,EnStock,IDPromocion);
+					IDPedido, IDSucursal, IDContenedor,EnStock,IDPromocion, IDCarrito);
 		}
 		catch (Exception e)
 		{
@@ -665,6 +669,40 @@ public class PersistenciaSuperAndes
 			log.trace ("Inserción de cliente empresa " + NIT + ": " + tuplasInsertadas + " tuplas insertadas");
 
 			return new ClienteEmpresa(NIT,direccion);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			return null;
+		}
+		finally
+		{
+			if (tx.isActive())
+			{
+				tx.rollback();
+			}
+			pm.close();
+
+			darClientesEmpresa();
+		}
+
+	}
+
+	public CarritoDeCompras registrarCarritoDeCompras ( long idCarrito, int usado, String NITProveedor, int cedula)
+	{
+
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		try
+		{
+			tx.begin();
+			long tuplasInsertadas = SQLCarritoDeCompras.registrarCarritoDeCompras(pm, idCarrito, usado, NITProveedor, cedula);
+			tx.commit();
+
+			log.trace ("Inserción de cliente empresa " + NITProveedor + ": " + tuplasInsertadas + " tuplas insertadas");
+
+			return new CarritoDeCompras(idCarrito,usado, NITProveedor,cedula);
 		}
 		catch (Exception e)
 		{

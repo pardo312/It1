@@ -21,6 +21,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.hamcrest.core.IsAnything;
 
 import com.google.gson.JsonObject;
 
@@ -211,6 +212,15 @@ public class SuperAndes
 		log.info ("Adicionando el cliente: " + NIT);
 		return clienteEmpresa;
 	}
+	
+	public CarritoDeCompras registrarCarritoDeCompras(long idCarrito, int usado, String NIT, int cedula)
+	{
+		log.info ("Adicionando el carrito: " + idCarrito);
+		CarritoDeCompras carritoDeCompras = pp.registrarCarritoDeCompras(idCarrito, usado, NIT, cedula);		
+		log.info ("Adicionando el carrito: " + NIT);
+		return carritoDeCompras;
+	}
+	
 	public Sucursal registrarSucursal(int id,String nombre,String ciudad,String direccion, String segmentacionDeMercado,String tamanioInstalacion,int NITSupermercado)
 	{
 		log.info ("Adicionando la sucursal: " + nombre);

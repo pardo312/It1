@@ -11,6 +11,12 @@ public class CarritoDeCompras implements VOCarritoDeCompras
 	 */
 	private int usado;
 	
+	private int cedula;
+	
+	private String NITProveedor;
+	
+	private long IDCarrito;
+	
 
 
 	/* ****************************************************************
@@ -21,14 +27,50 @@ public class CarritoDeCompras implements VOCarritoDeCompras
 	 */
 	public CarritoDeCompras() 
 	{
+		this.IDCarrito = 0;
 		this.usado = 0;
+		this.NITProveedor = "0";
+		this.cedula = 0;
 	}
 
-	public CarritoDeCompras( int usado) 
+	public CarritoDeCompras( long IDCarrito, int usado, String NITProveedor, int cedula) 
 	{
+		this.IDCarrito = IDCarrito;
 		this.usado = 0;
+		this.NITProveedor = NITProveedor;
+		this.cedula = cedula;
 	}
 
+	public long getID() 
+	{
+		return IDCarrito;
+	}
+
+	public void setId(long id) 
+	{
+		this.IDCarrito = id;
+	}
+	
+	public String getNITProveedor() 
+	{
+		return NITProveedor;
+	}
+
+	public void setUsado(String NIT) 
+	{
+		this.NITProveedor = NIT;
+	}
+	
+	public int getCedula() 
+	{
+		return cedula;
+	}
+
+	public void setCedula(int cedula) 
+	{
+		this.cedula = cedula;
+	}
+	
 	public int getUsado() 
 	{
 		return usado;
@@ -40,7 +82,7 @@ public class CarritoDeCompras implements VOCarritoDeCompras
 	}
 	
 
-
+// TODO XD 
 	@Override
 	public String toString() 
 	{
