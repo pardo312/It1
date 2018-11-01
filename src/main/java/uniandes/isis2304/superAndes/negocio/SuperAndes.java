@@ -139,14 +139,14 @@ public class SuperAndes
 
 			long IDSucursal,
 
-			long IDContenedor,
-			int EnStock)
+			long IDContenedor,long IDPromocion,
+			int EnStock,long IDCarrito)
 	{
 		log.info ("Adicionando el Producto: " + nombre);
 		Producto Producto = pp.registrarProducto (codigoDeBarras,nombre,
 				marca,precioUnitario,presentacion,precioPorUnidad,cantidadEnLaPresentacion,
 				unidadesDeMedida,especificacionesDeEmpacado,nivelDeReorden,
-				IDPedido, IDSucursal, IDContenedor,EnStock,0);		
+				IDPedido, IDSucursal, IDContenedor,EnStock,IDPromocion,IDCarrito);		
 		log.info ("Adicionando el Producto: " + Producto);
 		return Producto;
 	}

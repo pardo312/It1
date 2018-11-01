@@ -49,6 +49,8 @@ public class Producto
 	private int EnStock;
 
 	private long IDPromocion;
+	
+	private long IDCarrito;
 
 
 	/* ****************************************************************
@@ -74,6 +76,7 @@ public class Producto
 		this.IDContenedor = 0;
 		this.EnStock = 0;
 		this.IDPromocion = 0;
+		this.IDCarrito = 0;
 	}
 
 	/**
@@ -85,7 +88,7 @@ public class Producto
 	 */
 	public Producto(String codigoDeBarras, String nombre, String marca, float precioUnitario,
 			String presentacion,float precioPorUnidad,float cantidadEnLaPresentacion,String unidadesDeMedida, String especificacionesDeEmpacado, 
-			float nivelDeReorden,long IDPedido ,long IDSucursal,long IDBodega,int EnStock, long IDPromocion) 
+			float nivelDeReorden,long IDPedido ,long IDSucursal,long IDBodega,int EnStock, long IDPromocion,long IDCarrito) 
 	{
 		this.codigoDeBarras = codigoDeBarras;
 		this.nombre =nombre;
@@ -102,8 +105,18 @@ public class Producto
 		this.IDContenedor = IDBodega;
 		this.EnStock = EnStock;
 		this.IDPromocion = IDPromocion;
+
+		this.IDCarrito = IDCarrito;
 	}
 
+
+	public long getIDCarrito() {
+		return IDCarrito;
+	}
+
+	public void setIDCarrito(long iDCarrito) {
+		IDCarrito = iDCarrito;
+	}
 
 	public String getCodigoDeBarras() 
 	{
@@ -268,7 +281,7 @@ public class Producto
 		return "Producto [codigoDeBarras=" + codigoDeBarras + ", nombre=" + nombre + ", marca=" + marca + ", precioUnitario="
 				+ precioUnitario  + ", presentacion=" + presentacion + ", precioPorUnidad=" + precioPorUnidad + ", cantidadEnLaPresentacion=" + cantidadEnLaPresentacion + 
 				", unidadDeMedida=" + unidadDeMedida + ", especificacionesDeEmpacado=" + especificacionesDeEmpacado+
-				", nivelDeReorden=" + nivelDeReorden +", IDPedido=" + IDPedido +", IDSucursal=" + IDSucursal +", IDContenedor=" + IDContenedor +", EnStock=" + EnStock +", IDPromocion=" + IDPromocion+"]";
+				", nivelDeReorden=" + nivelDeReorden +", IDPedido=" + IDPedido +", IDSucursal=" + IDSucursal +", IDContenedor=" + IDContenedor +", EnStock=" + EnStock +", IDPromocion=" + IDPromocion+", IDCarrito=" + IDCarrito+"]";
 	}
 
 
