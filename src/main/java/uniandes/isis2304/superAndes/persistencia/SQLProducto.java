@@ -61,15 +61,26 @@ class SQLProducto
 		this.pp = pp;
 	}
 	
-	/**
-	 * Crea y ejecuta la sentencia SQL para adicionar un SIRVEN a la base de datos de Parranderos
-	 * @param pm - El manejador de persistencia
-	 * @param iDPromocion 
-	 * @param idBar - El identificador del bar
-	 * @param idBebida - El identificador de la bebida
-	 * @param horario - El horario en que el bar sirve la bebida (DIURNO, NOCTURNO, TDOOS)
-	 * @return EL número de tuplas insertadas
-	 */
+/**
+ * registra un producto 
+ * @param pm
+ * @param codigoDeBarras
+ * @param nombre
+ * @param marca
+ * @param precioUnitario
+ * @param presentacion
+ * @param precioPorUnidad
+ * @param cantidadEnLaPresentacion
+ * @param unidadesDeMedida
+ * @param especificacionesDeEmpacado
+ * @param nivelDeReorden
+ * @param IDPedido
+ * @param IDSucursal
+ * @param IDContenedor
+ * @param EnStock
+ * @param iDPromocion
+ * @return
+ */
 	public long registrarProducto (PersistenceManager pm,
 			String codigoDeBarras,
 			
@@ -96,14 +107,17 @@ class SQLProducto
 			 long IDSucursal,
 			
 			 long IDContenedor,
+			 
 			 int EnStock, long iDPromocion) 
 	{
+		
+		long IDCarritoDeCompras = 1; // porque antes de que alguien los añada a algun carrito estan libres (el carrito 1 es el carrito libre)
         Query q = pm.newQuery(SQL, "INSERT INTO " +"PRODUCTO"+
-        		"(codigoDeBarras,nombre,marca,precioUnitario,presentacion,precioPorUnidad,cantidadEnLaPresentacion,unidadDeMedida,especificacionesDeEmpacado,nivelDeReorden,IDPedido, IDSucursal, IDContenedor, EnStock,IDPromocion) values ("+codigoDeBarras+ ",'"+nombre+"','"+marca+"',"+precioUnitario+",'"+presentacion+"',"+precioPorUnidad+","+cantidadEnLaPresentacion+",'"+unidadesDeMedida+"','"+especificacionesDeEmpacado+"',"+nivelDeReorden+","+ IDPedido    +","+IDSucursal+","+ IDContenedor +","+ EnStock +","+ iDPromocion +")");
+        		"(codigoDeBarras,nombre,marca,precioUnitario,presentacion,precioPorUnidad,cantidadEnLaPresentacion,unidadDeMedida,especificacionesDeEmpacado,nivelDeReorden,IDPedido, IDSucursal, IDContenedor, EnStock,IDPromocion) values ("+codigoDeBarras+ ",'"+nombre+"','"+marca+"',"+precioUnitario+",'"+presentacion+"',"+precioPorUnidad+","+cantidadEnLaPresentacion+",'"+unidadesDeMedida+"','"+especificacionesDeEmpacado+"',"+nivelDeReorden+","+ IDPedido+","+IDSucursal+","+ IDContenedor +","+ EnStock +","+ iDPromocion +","+ IDCarritoDeCompras +")");
         q.setParameters(codigoDeBarras,nombre,
         		marca,precioUnitario,presentacion,precioPorUnidad,cantidadEnLaPresentacion,
         		unidadesDeMedida,especificacionesDeEmpacado,nivelDeReorden,
-        		 IDPedido, IDSucursal, IDContenedor,EnStock,iDPromocion);
+        		 IDPedido, IDSucursal, IDContenedor,EnStock,iDPromocion,IDCarritoDeCompras);
         return (long)q.executeUnique();            
 	}
 	
