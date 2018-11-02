@@ -140,13 +140,13 @@ public class SuperAndes
 			long IDSucursal,
 
 			long IDContenedor,long IDPromocion,
-			int EnStock,long IDCarrito)
+			int EnStock,int volumen,long IDCarrito)
 	{
 		log.info ("Adicionando el Producto: " + nombre);
 		Producto Producto = pp.registrarProducto (codigoDeBarras,nombre,
 				marca,precioUnitario,presentacion,precioPorUnidad,cantidadEnLaPresentacion,
 				unidadesDeMedida,especificacionesDeEmpacado,nivelDeReorden,
-				IDPedido, IDSucursal, IDContenedor,EnStock,IDPromocion,IDCarrito);		
+				IDPedido, IDSucursal, IDContenedor,EnStock,IDPromocion,volumen,IDCarrito);		
 		log.info ("Adicionando el Producto: " + Producto);
 		return Producto;
 	}
@@ -333,7 +333,19 @@ public class SuperAndes
 		log.info ("Adicionando la factura:  " + factura);
 		return factura;
 	}
-
+	
+	public List<Producto> quitarProductosDeEstante(String cod ,String codigoDeBarras)
+	{
+		log.info ("Generando consulta");        
+        List<Producto> voProd = new LinkedList<Producto> ();
+        for (Producto tb : pp.busquedaProducto(codigoDeBarras))
+        {
+        	voProd.add (tb);
+        }
+        log.info ("Generando Consulta: " + voProd.size() + " existentes");
+        return voProd;
+	}
+	
 	public List<Producto> busquedaProducto(String codigoDeBarras)
 	{
 		log.info ("Generando consulta");        

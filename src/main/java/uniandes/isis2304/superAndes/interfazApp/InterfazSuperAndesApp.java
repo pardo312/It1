@@ -382,6 +382,8 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
     		long IDSucursal = Long.parseLong(JOptionPane.showInputDialog (this, "ID de la sucursal relacionada con este Producto(Si no tiene ninguno deje el campo vacio)?", "Registrar Producto", JOptionPane.QUESTION_MESSAGE));
     		long IDContenedor = Long.parseLong(JOptionPane.showInputDialog (this, "ID de la Contenedor relacionada con este Producto(Si no tiene ninguno deje el campo vacio)?", "Registrar Producto", JOptionPane.QUESTION_MESSAGE));
     		int enStock = Integer.parseInt(JOptionPane.showInputDialog (this, "Producto en stock?", "Registrar Producto", JOptionPane.QUESTION_MESSAGE));
+    		int volumen = Integer.parseInt(JOptionPane.showInputDialog (this, "Cantidad de Productos?", "Registrar Producto", JOptionPane.QUESTION_MESSAGE));
+        	
     		float nivelDeReorden = enStock/100;
     		
     		
@@ -389,7 +391,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
     		if (nombre != null && codigoDeBarras != null && marca != null && presentacion != null  && unidadesDeMedida!= null && especificacionesDeEmpacado != null )
     		{ 
    			
-        		Producto tb = superAndes.registrarProducto(codigoDeBarras,nombre,marca,precioUnitario,presentacion, precioPorUnidad,cantidadEnLaPresentacion,unidadesDeMedida,especificacionesDeEmpacado,nivelDeReorden, IDPedido, IDSucursal, IDContenedor,Long.parseLong("1"),enStock,Long.parseLong("1")) ;
+        		Producto tb = superAndes.registrarProducto(codigoDeBarras,nombre,marca,precioUnitario,presentacion, precioPorUnidad,cantidadEnLaPresentacion,unidadesDeMedida,especificacionesDeEmpacado,nivelDeReorden, IDPedido, IDSucursal, IDContenedor,Long.parseLong("1"),enStock,volumen,Long.parseLong("1")) ;
         		
         		if (tb == null)
         		{
@@ -1085,7 +1087,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 		}
 	}
     /* ****************************************************************
-   	 * 			RF 12
+   	 * 			RF 13
    	 *****************************************************************/
 
     public void adicionarProductoACarrito( )
@@ -1103,10 +1105,12 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 
     		Producto prod = productosConCodigo.get(0);
     		
-    		for (int i = 0; i<numProd;i++)
-            {
+    		
     			String cod = nextval ();
-    			Producto pd = superAndes.registrarProducto(cod,prod.getNombre(),prod.getMarca(),prod.getPrecioUnitario(),prod.getPresentacion(), prod.getPrecioPorUnidad(),prod.getCantidadEnLaPresentacion(),"gr",prod.getEspecificacionesDeEmpacado(), prod.getNivelDeReorden(), prod.getIDPedido(), prod.getIDSucursal(), prod.getIDContenedor(),prod.getEnStock(),1, idCarrito) ;
+    			//Añade Producto a carrito
+    			Producto pd = superAndes.registrarProducto(cod,prod.getNombre(),prod.getMarca(),prod.getPrecioUnitario(),prod.getPresentacion(), prod.getPrecioPorUnidad(),prod.getCantidadEnLaPresentacion(),"gr",prod.getEspecificacionesDeEmpacado(), prod.getNivelDeReorden(), prod.getIDPedido(), prod.getIDSucursal(), prod.getIDContenedor(),1,prod.getEnStock(),numProd, idCarrito) ;
+    			//Quita el numero de productos del estante
+    			Producto fc = superAndes.quitarProductosDeEstante(cod, idCarrito) ;
         		
             		if (pd == null)
             		{
@@ -1118,7 +1122,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
         			panelDatos.actualizarInterfaz(resultado);
         		
         		
-            }
+            
     		
     		
     		
@@ -1133,9 +1137,51 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
     
     private String nextval ()
 	{
-		long resp =(int) (Math.random() * 99) + 20;;
+		long resp =(int) (Math.random() * 60) + 20;;
 		return "0000"+resp;
 	}
+    /* ****************************************************************
+   	 * 			RF 14
+   	 *****************************************************************/
+
+//    public void devolverUnProductoDelCarrito( )
+//    {
+//    	try 
+//    	{
+//    		
+//    		
+//    		String codigoDeBarras = JOptionPane.showInputDialog (this, "Codigo de barras del Producto que desea devolver?", "Devolver Producto a Estante", JOptionPane.QUESTION_MESSAGE);
+//    		long idCarrito = Long.parseLong(JOptionPane.showInputDialog (this, "Id del carrito al cual adicionar producto ?", "Devolver Producto a Estante", JOptionPane.QUESTION_MESSAGE));
+//        	
+//    		
+//    		List <Producto> productosConCodigo = superAndes.busquedaProducto(codigoDeBarras);
+//
+//    		Producto prod = productosConCodigo.get(0);
+//    		
+//    		
+//    			String cod = nextval ();
+//    			Producto pd = superAndes.devolverProducto(cod,prod.getNombre(),prod.getMarca(),prod.getPrecioUnitario(),prod.getPresentacion(), prod.getPrecioPorUnidad(),prod.getCantidadEnLaPresentacion(),"gr",prod.getEspecificacionesDeEmpacado(), prod.getNivelDeReorden(), prod.getIDPedido(), prod.getIDSucursal(), prod.getIDContenedor(),prod.getEnStock(),1, idCarrito) ;
+//        		
+//            		if (pd == null)
+//            		{
+//            			throw new Exception ("No se pudo crear factura con numero: " + codigoDeBarras);
+//            		}
+//            		String resultado = "En adicionarProveedor\n\n";
+//            		resultado += "proveedor adicionado exitosamente: " + pd;
+//        			resultado += "\n Operación terminada";
+//        			panelDatos.actualizarInterfaz(resultado);
+//        	
+//    		
+//    		
+//    		
+//		} 
+//    	catch (Exception e) 
+//    	{
+////			e.printStackTrace();
+//			String resultado = generarMensajeError(e);
+//			panelDatos.actualizarInterfaz(resultado);
+//		}
+//    }
 
 
     /* ****************************************************************

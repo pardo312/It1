@@ -469,7 +469,7 @@ public class PersistenciaSuperAndes
 
 			long IDContenedor,
 			int EnStock,
-			long IDPromocion
+			long IDPromocion,int volumen
 		, long IDCarrito)
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -481,7 +481,7 @@ public class PersistenciaSuperAndes
 			long tuplasInsertadas = sqlProducto.registrarProducto(pm,codigoDeBarras ,nombre,
 					marca,precioUnitario,presentacion,precioPorUnidad,cantidadEnLaPresentacion,
 					unidadesDeMedida,especificacionesDeEmpacado,nivelDeReorden,
-					IDPedido, IDSucursal, IDContenedor, EnStock,IDPromocion , IDCarrito);
+					IDPedido, IDSucursal, IDContenedor, EnStock,IDPromocion ,volumen, IDCarrito);
 			tx.commit();
 
 			log.trace ("Inserción de Producto: " + nombre + ": " + tuplasInsertadas + " tuplas insertadas");
