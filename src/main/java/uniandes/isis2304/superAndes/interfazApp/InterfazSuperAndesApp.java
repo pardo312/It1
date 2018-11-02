@@ -40,6 +40,7 @@ import uniandes.isis2304.superAndes.negocio.Factura;
 import uniandes.isis2304.superAndes.negocio.FacturaProducto;
 import uniandes.isis2304.superAndes.negocio.Producto;
 import uniandes.isis2304.superAndes.negocio.SuperAndes;
+import uniandes.isis2304.superAndes.negocio.VOCarritoDeCompras;
 import uniandes.isis2304.superAndes.negocio.VOCategoria;
 import uniandes.isis2304.superAndes.negocio.VOCliente;
 import uniandes.isis2304.superAndes.negocio.VOClienteEmpresa;
@@ -1060,20 +1061,23 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 		{
 			JOptionPane.showMessageDialog(this, "Recuerda que para pedir un carrito debes ser un cliente registrado");
 			String NIT = JOptionPane.showInputDialog (this, "NIT del cliente si es empresarial? 0 de lo contrario", "Solicitar Carrito", JOptionPane.QUESTION_MESSAGE);
-			String cedula = JOptionPane.showInputDialog (this, "cedula del cliente si es natural? 0 de lo contrario", "Solicitar Carrito", JOptionPane.QUESTION_MESSAGE);
+			int cedula = Integer.parseInt(JOptionPane.showInputDialog (this, "cedula del cliente si es natural? 0 de lo contrario", "Solicitar Carrito", JOptionPane.QUESTION_MESSAGE));
+			long idCarrito= 0; // mas adelante se pone uno autogenerado
+			int usado = 1; // como se esta registrando se asigna a un cliente y esta en uso 
 			
-			if ( NIT.equalsIgnoreCase("0")) {
-			
-			VOClienteEmpresa tb = superAndes.registrarClienteEmpresa(NIT, cedula);
+			if ( NIT != null ) {
+		
+			VOCarritoDeCompras tb = superAndes.registrarCarritoDeCompras(idCarrito, usado, NIT, cedula);
 			if (tb == null)
 			{
-				throw new Exception ("No se pudo crear un cliente empresarial con nombre: " + NIT);
+				throw new Exception ("No se puede asignar un carrito si no esta registrado como cliente ");
 			}
-			String resultado = "En adicionarClienteEmpresarial\n\n";
-			resultado += "cliente empresarial adicionado exitosamente: " + tb;
+			String resultado = "En adicionarCarritoDeCompras\n\n";
+			resultado += "carrito de compras adicionado exitosamente: " + tb;
 			resultado += "\n Operación terminada";
 			panelDatos.actualizarInterfaz(resultado);
 			}
+			
 			else
 			{
 				panelDatos.actualizarInterfaz("Operación cancelada por el usuario");

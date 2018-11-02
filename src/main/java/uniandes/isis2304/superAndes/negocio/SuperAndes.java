@@ -213,13 +213,13 @@ public class SuperAndes
 		return clienteEmpresa;
 	}
 	
-//	public CarritoDeCompras registrarCarritoDeCompras(long idCarrito, int usado, String NIT, int cedula)
-//	{
-//		log.info ("Adicionando el carrito: " + idCarrito);
-//		CarritoDeCompras carritoDeCompras = pp.registrarCarritoDeCompras(idCarrito, usado, NIT, cedula);		
-//		log.info ("Adicionando el carrito: " + NIT);
-//		return carritoDeCompras;
-//	}
+	public CarritoDeCompras registrarCarritoDeCompras(long idCarrito, int usado, String NIT, int cedula)
+	{
+		log.info ("Adicionando el carrito: " + idCarrito);
+		CarritoDeCompras carritoDeCompras = pp.registrarCarritoDeCompras(idCarrito, usado, NIT, cedula);		
+		log.info ("Adicionando el carrito: " + idCarrito);
+		return carritoDeCompras;
+	}
 	
 	public Sucursal registrarSucursal(int id,String nombre,String ciudad,String direccion, String segmentacionDeMercado,String tamanioInstalacion,int NITSupermercado)
 	{

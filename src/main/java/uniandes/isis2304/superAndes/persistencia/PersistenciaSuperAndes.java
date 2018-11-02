@@ -143,7 +143,7 @@ public class PersistenciaSuperAndes
 	private SQLPromocionUnidadProducto sqlPromocionUnidadProducto;
 
 	private SQLEstante sqlEstante;
-	
+
 	private SQLCarritoDeCompras sqlCarritoDeCompras;
 
 	private SQLRFC1 sqlRFC1;
@@ -153,7 +153,7 @@ public class PersistenciaSuperAndes
 	private SQLRFC3 sqlRFC3;
 
 	private SQLRFC4 sqlRFC4;
-	
+
 	private SQLFactura sqlFactura;
 	/* ****************************************************************
 	 * 			Métodos del MANEJADOR DE PERSISTENCIA
@@ -193,6 +193,7 @@ public class PersistenciaSuperAndes
 		tablas.add ("SUPERMERCADO");//21
 		tablas.add ("SUPERMERCADOCLIENTE");//22
 		tablas.add ("TIPOPRODUCTO");//23
+		tablas.add ("CARRITODECOMPRA"); //24
 	}
 
 	/**
@@ -287,7 +288,7 @@ public class PersistenciaSuperAndes
 		sqlRFC3 = new SQLRFC3(this);
 		sqlRFC4 = new SQLRFC4(this);
 		sqlUtil = new SQLUtil(this);
-		
+
 	}
 
 	/**
@@ -471,7 +472,7 @@ public class PersistenciaSuperAndes
 			long IDContenedor,
 			int EnStock,
 			long IDPromocion,int volumen
-		, long IDCarrito)
+			, long IDCarrito)
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
@@ -690,41 +691,47 @@ public class PersistenciaSuperAndes
 
 	}
 
-//	public CarritoDeCompras registrarCarritoDeCompras ( long idCarrito, int usado, String NITProveedor, int cedula)
-//	{
-//
-//		PersistenceManager pm = pmf.getPersistenceManager();
-//		Transaction tx=pm.currentTransaction();
-//		try
-//		{
-//			tx.begin();
-//			long tuplasInsertadas = SQLCarritoDeCompras.registrarCarritoDeCompras(pm, idCarrito, usado, NITProveedor, cedula);
-//			tx.commit();
-//
-//			log.trace ("Inserción de cliente empresa " + NITProveedor + ": " + tuplasInsertadas + " tuplas insertadas");
-//
-//			return new CarritoDeCompras(idCarrito,usado, NITProveedor,cedula);
-//		}
-//		catch (Exception e)
-//		{
-//			e.printStackTrace();
-//			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
-//			return null;
-//		}
-//		finally
-//		{
-//			if (tx.isActive())
-//			{
-//				tx.rollback();
-//			}
-//			pm.close();
-//
-//			darClientesEmpresa();
-//		}
-//
-//	}
+	public CarritoDeCompras registrarCarritoDeCompras ( long idCarrito, int usado, String NITProveedor, int cedula)
+	{
+
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		long ido = nextval ();
+		try
+		{
+			tx.begin();
+			long tuplasInsertadas = sqlCarritoDeCompras.registrarCarritoDeCompras(pm, ido, usado, NITProveedor, cedula);
+			tx.commit();
+
+			log.trace ("Inserción de carrito de compras " + ido + ": " + tuplasInsertadas + " tuplas insertadas");
+
+			return new CarritoDeCompras(ido,usado, NITProveedor,cedula);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			return null;
+		}
+		finally
+		{
+			if (tx.isActive())
+			{
+				tx.rollback();
+			}
+			pm.close();
+
+			darCarritosDeCompras();
+		}
+
+	}
 
 
+
+	private List<CarritoDeCompras> darCarritosDeCompras() 
+	{
+		return sqlCarritoDeCompras.darCarritosDeCompra(pmf.getPersistenceManager());
+	}
 
 	public List<Cliente> darClientes ()
 	{
@@ -803,14 +810,14 @@ public class PersistenciaSuperAndes
 				pm.close();
 			}
 	}
-	
+
 	public Factura registrarFactura(String numeroDeFactura, java.util.Date fecha, long idCliente) {
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
 		try
 		{
 			tx.begin();
-			
+
 			long tuplasInsertadas = sqlFactura.adicionarFactura(pm,numeroDeFactura,fecha,idCliente);
 			tx.commit();
 
@@ -833,14 +840,14 @@ public class PersistenciaSuperAndes
 			pm.close();
 		}
 	}
-	
+
 	public FacturaProducto registrarFacturaProd(String numeroDeFactura, String codigoDeBarras) {
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
 		try
 		{
 			tx.begin();
-			
+
 			long tuplasInsertadas = sqlFactura.adicionarFacturaProd(pm,numeroDeFactura,codigoDeBarras);
 			tx.commit();
 
@@ -893,7 +900,7 @@ public class PersistenciaSuperAndes
 		pm.close();
 	}
 	}
-	
+
 	public Pedido actualizarPedido(int id, java.util.Date fechaEsperada,java.util.Date fechaEntrega, String evaluacionCantidad, String evaluacionCalidad,int calificacion, int finalizado, int NITProveedor) 
 	{PersistenceManager pm = pmf.getPersistenceManager();
 	Transaction tx=pm.currentTransaction();
@@ -970,6 +977,8 @@ public class PersistenciaSuperAndes
 			pm.close();
 		}
 	}
+
+
 
 	//---------------------------------------------------------------------------------------------------
 	public Pague1llevesegundoaxporciento registrarPromocionP1L2AX(int porcentaje) {
@@ -1152,7 +1161,7 @@ public class PersistenciaSuperAndes
 			pm.close();
 		}
 	}
-	
+
 	public void devolverProducto(String codigoDeBarras)
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -1165,13 +1174,13 @@ public class PersistenciaSuperAndes
 
 			log.trace ("Devolviendo El producto :  " + codigoDeBarras );
 
-			
+
 		}
 		catch (Exception e)
 		{
 			e.printStackTrace();
 			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
-			
+
 		}
 		finally
 		{
@@ -1183,15 +1192,15 @@ public class PersistenciaSuperAndes
 		}
 	}
 	public List<Producto> busquedaProducto(String codigoDeBarras,String nombre,int opcion) {
-		
+
 		//Estante
 		if(opcion == 0)
 		{
-		return sqlProducto.buscarCodigoEstante(pmf.getPersistenceManager(),nombre);
+			return sqlProducto.buscarCodigoEstante(pmf.getPersistenceManager(),nombre);
 		}
 		//En algun Carrito
 		else{
-		return sqlProducto.buscarCodigo(pmf.getPersistenceManager(),codigoDeBarras);
+			return sqlProducto.buscarCodigo(pmf.getPersistenceManager(),codigoDeBarras);
 		}
 
 	}
@@ -1207,13 +1216,13 @@ public class PersistenciaSuperAndes
 
 			log.trace ("Abandonando el carrito :  " + idCarrito );
 
-			
+
 		}
 		catch (Exception e)
 		{
 			e.printStackTrace();
 			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
-			
+
 		}
 		finally
 		{
@@ -1275,13 +1284,14 @@ public class PersistenciaSuperAndes
 
 	}
 
-	
 
-	
 
-	
 
-	
+
+
+
+
+
 
 
 

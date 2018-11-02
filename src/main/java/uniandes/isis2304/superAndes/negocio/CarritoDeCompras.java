@@ -56,7 +56,7 @@ public class CarritoDeCompras implements VOCarritoDeCompras
 		return NITProveedor;
 	}
 
-	public void setUsado(String NIT) 
+	public void setNITProveedor(String NIT) 
 	{
 		this.NITProveedor = NIT;
 	}
@@ -81,12 +81,12 @@ public class CarritoDeCompras implements VOCarritoDeCompras
 		this.usado = usado;
 	}
 	
-
-// TODO XD 
+	
 	@Override
 	public String toString() 
 	{
-		String resp = "CarritoDeCompras [usado=" + usado +  "]";
+		String resp = "CarritoDeCompras [ IDCarrito ="+ IDCarrito + "Usado=" + usado + " NIT=" + NITProveedor + ", cedula=" + cedula  + "]";
+		
 		
 		return resp;
 		
