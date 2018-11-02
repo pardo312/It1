@@ -1101,7 +1101,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
     		long idCarrito = Long.parseLong(JOptionPane.showInputDialog (this, "Id del carrito al cual adicionar producto ?", "Adicionar Producto Carrito", JOptionPane.QUESTION_MESSAGE));
         	
     		
-    		List <Producto> productosConCodigo = superAndes.busquedaProducto(codigoDeBarras);
+    		List <Producto> productosConCodigo = superAndes.busquedaProducto(codigoDeBarras,"",1);
 
     		Producto prod = productosConCodigo.get(0);
     		int prodMenosDeEstante =prod.getVolumen() - numProd;
@@ -1144,44 +1144,51 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
    	 * 			RF 14
    	 *****************************************************************/
 
-//    public void devolverUnProductoDelCarrito( )
-//    {
-//    	try 
-//    	{
-//    		
-//    		
-//    		String codigoDeBarras = JOptionPane.showInputDialog (this, "Codigo de barras del Producto que desea devolver?", "Devolver Producto a Estante", JOptionPane.QUESTION_MESSAGE);
-//    		long idCarrito = Long.parseLong(JOptionPane.showInputDialog (this, "Id del carrito al cual adicionar producto ?", "Devolver Producto a Estante", JOptionPane.QUESTION_MESSAGE));
-//        	
-//    		
-//    		List <Producto> productosConCodigo = superAndes.busquedaProducto(codigoDeBarras);
-//
-//    		Producto prod = productosConCodigo.get(0);
-//    		
-//    		
-//    			String cod = nextval ();
-//    			Producto pd = superAndes.devolverProducto(cod,prod.getNombre(),prod.getMarca(),prod.getPrecioUnitario(),prod.getPresentacion(), prod.getPrecioPorUnidad(),prod.getCantidadEnLaPresentacion(),"gr",prod.getEspecificacionesDeEmpacado(), prod.getNivelDeReorden(), prod.getIDPedido(), prod.getIDSucursal(), prod.getIDContenedor(),prod.getEnStock(),1, idCarrito) ;
-//        		
-//            		if (pd == null)
-//            		{
-//            			throw new Exception ("No se pudo crear factura con numero: " + codigoDeBarras);
-//            		}
-//            		String resultado = "En adicionarProveedor\n\n";
-//            		resultado += "proveedor adicionado exitosamente: " + pd;
-//        			resultado += "\n Operación terminada";
-//        			panelDatos.actualizarInterfaz(resultado);
-//        	
-//    		
-//    		
-//    		
-//		} 
-//    	catch (Exception e) 
-//    	{
-////			e.printStackTrace();
-//			String resultado = generarMensajeError(e);
-//			panelDatos.actualizarInterfaz(resultado);
-//		}
-//    }
+    public void devolverUnProductoDelCarrito( )
+    {
+    	try 
+    	{
+    		
+    		
+    		String codigoDeBarras = JOptionPane.showInputDialog (this, "Codigo de barras del Producto que desea devolver?", "Devolver Producto a Estante", JOptionPane.QUESTION_MESSAGE);
+    		long idCarrito = Long.parseLong(JOptionPane.showInputDialog (this, "Id del carrito al cual devolver producto ?", "Devolver Producto a Estante", JOptionPane.QUESTION_MESSAGE));
+        	
+    		List <Producto> productosConCodigo = superAndes.busquedaProducto(codigoDeBarras,"",1);
+    		Producto prod = productosConCodigo.get(0);
+    		
+    		
+    		List <Producto> estanteDeProductosConNombre = superAndes.busquedaProducto("",prod.getNombre(),0);
+    		Producto prodEst = estanteDeProductosConNombre.get(0);
+    		
+    		
+    		
+    		int prodMasDeEstante =prodEst.getVolumen() + prod.getVolumen();
+    		superAndes.quitarProductosDeEstante(prodMasDeEstante, prodEst.getCodigoDeBarras()) ;
+    		//Añade el numero de productos del estante
+			superAndes.devolverProducto(codigoDeBarras) ;
+    		
+    		//Añade Productos al estante correspondiente
+
+			
+            		
+            			
+            	
+            		String resultado  = "";
+            		resultado += "Producto Devuelto Con exito" ;
+        			resultado += "\n Operación terminada";
+        			panelDatos.actualizarInterfaz(resultado);
+        	
+    		
+    		
+    		
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
 
 
     /* ****************************************************************

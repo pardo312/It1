@@ -108,6 +108,10 @@
 				{
 					"label": "Adicionar Producto A Carrito",
 					"event": "adicionarProductoACarrito"
+				},
+				{
+					"label": "Devolver un Producto Del Carrito al estante",
+					"event": "devolverUnProductoDelCarrito"
 				}
 				
 			]

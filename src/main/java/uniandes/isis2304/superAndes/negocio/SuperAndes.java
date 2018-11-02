@@ -343,17 +343,28 @@ public class SuperAndes
 		log.info ("quitandoProdDeEstante:  " + estante);
 		
 	}
-	
-	public List<Producto> busquedaProducto(String codigoDeBarras)
+	public void devolverProducto(String codigoDeBarras)
 	{
-		log.info ("Generando consulta");        
-        List<Producto> voProd = new LinkedList<Producto> ();
-        for (Producto tb : pp.busquedaProducto(codigoDeBarras))
-        {
-        	voProd.add (tb);
-        }
-        log.info ("Generando Consulta: " + voProd.size() + " existentes");
-        return voProd;
+		
+      
+        log.info ("quitandoProdDeEstante con codigo de barras: " + codigoDeBarras);
+		pp.devolverProducto(codigoDeBarras);	
+		log.info ("quitandoProdDeEstante:  ");
+		
+	}
+	public List<Producto> busquedaProducto(String codigoDeBarras,String nombre,int opcion)
+	{
+		
+			log.info ("Generando consulta");        
+	        List<Producto> voProd = new LinkedList<Producto> ();
+	        for (Producto tb : pp.busquedaProducto(codigoDeBarras,nombre ,opcion))
+	        {
+	        	voProd.add (tb);
+	        }
+	        log.info ("Generando Consulta: " + voProd.size() + " existentes");
+	        return voProd;
+	
+		
 	}
 
 	public List<uniandes.isis2304.superAndes.negocio.Consulta1> consulta1()

@@ -1151,9 +1151,47 @@ public class PersistenciaSuperAndes
 			pm.close();
 		}
 	}
-	public List<Producto> busquedaProducto(String codigoDeBarras) {
+	
+	public void devolverProducto(String codigoDeBarras)
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		try
+		{
+			tx.begin();
+			sqlProducto.devolverProducto(pm,codigoDeBarras);
+			tx.commit();
 
+			log.trace ("Devolviendo El producto :  " + codigoDeBarras );
+
+			
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			
+		}
+		finally
+		{
+			if (tx.isActive())
+			{
+				tx.rollback();
+			}
+			pm.close();
+		}
+	}
+	public List<Producto> busquedaProducto(String codigoDeBarras,String nombre,int opcion) {
+		
+		//Estante
+		if(opcion == 0)
+		{
+		return sqlProducto.buscarCodigoEstante(pmf.getPersistenceManager(),nombre);
+		}
+		//En algun Carrito
+		else{
 		return sqlProducto.buscarCodigo(pmf.getPersistenceManager(),codigoDeBarras);
+		}
 
 	}
 	public List<uniandes.isis2304.superAndes.negocio.Consulta1> Consulta1() {

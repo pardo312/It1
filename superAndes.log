@@ -1906,3 +1906,109 @@ ORA-00933: comando SQL no terminado correctamente
 08:36:12,968 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el Producto: Producto [codigoDeBarras=000078, nombre=GASEOSA, marca=COCA COLA, precioUnitario=15000.0, presentacion=FAMILIAR, precioPorUnidad=5000.0, cantidadEnLaPresentacion=3.0, unidadDeMedida=gr, especificacionesDeEmpacado=REGULAR, nivelDeReorden=1.0, IDPedido=1, IDSucursal=1, IDContenedor=2, EnStock=15, IDPromocion=1, IDCarrito=0, volumen=2]
 08:36:12,969 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - quitandoProdDeEstante con codigo de barras: 000001
 08:36:12,984 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - quitandoProdDeEstante:  Producto [codigoDeBarras=, nombre=, marca=, precioUnitario=0.0, presentacion=, precioPorUnidad=0.0, cantidadEnLaPresentacion=0.0, unidadDeMedida=, especificacionesDeEmpacado=, nivelDeReorden=0.0, IDPedido=0, IDSucursal=0, IDContenedor=0, EnStock=0, IDPromocion=0, IDCarrito=0, volumen=0]
+08:59:58,122 (main) INFO  [uniandes.isis2304.superAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+08:59:58,123 (main) INFO  [uniandes.isis2304.superAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+08:59:58,136 (main) INFO  [uniandes.isis2304.superAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+09:00:51,630 (main) INFO  [uniandes.isis2304.superAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+09:00:51,631 (main) INFO  [uniandes.isis2304.superAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+09:00:51,643 (main) INFO  [uniandes.isis2304.superAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+09:01:01,941 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando consulta
+09:01:02,161 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando Consulta: 1 existentes
+09:01:02,162 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el Producto: GASEOSA
+09:01:02,230 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el Producto: Producto [codigoDeBarras=000047, nombre=GASEOSA, marca=COCA COLA, precioUnitario=15000.0, presentacion=FAMILIAR, precioPorUnidad=5000.0, cantidadEnLaPresentacion=3.0, unidadDeMedida=gr, especificacionesDeEmpacado=REGULAR, nivelDeReorden=1.0, IDPedido=1, IDSucursal=1, IDContenedor=2, EnStock=15, IDPromocion=1, IDCarrito=0, volumen=2]
+09:01:02,230 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - quitandoProdDeEstante con codigo de barras: 000001
+09:01:02,244 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - quitandoProdDeEstante:  Producto [codigoDeBarras=, nombre=, marca=, precioUnitario=0.0, presentacion=, precioPorUnidad=0.0, cantidadEnLaPresentacion=0.0, unidadDeMedida=, especificacionesDeEmpacado=, nivelDeReorden=0.0, IDPedido=0, IDSucursal=0, IDContenedor=0, EnStock=0, IDPromocion=0, IDCarrito=0, volumen=0]
+09:02:05,973 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando consulta
+09:02:06,002 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando Consulta: 1 existentes
+09:02:06,003 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el Producto: PESCADO
+09:02:06,017 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el Producto: Producto [codigoDeBarras=000070, nombre=PESCADO, marca=LOCAL, precioUnitario=12000.0, presentacion=INDIVUDUAL, precioPorUnidad=12000.0, cantidadEnLaPresentacion=3.0, unidadDeMedida=gr, especificacionesDeEmpacado=REGULAR, nivelDeReorden=1.0, IDPedido=20, IDSucursal=5, IDContenedor=6, EnStock=20, IDPromocion=1, IDCarrito=0, volumen=2]
+09:02:06,017 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - quitandoProdDeEstante con codigo de barras: 000020
+09:02:06,031 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - quitandoProdDeEstante:  Producto [codigoDeBarras=, nombre=, marca=, precioUnitario=0.0, presentacion=, precioPorUnidad=0.0, cantidadEnLaPresentacion=0.0, unidadDeMedida=, especificacionesDeEmpacado=, nivelDeReorden=0.0, IDPedido=0, IDSucursal=0, IDContenedor=0, EnStock=0, IDPromocion=0, IDCarrito=0, volumen=0]
+09:02:57,430 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando consulta
+09:02:57,456 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando Consulta: 1 existentes
+09:02:57,457 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando consulta
+09:03:16,026 (main) INFO  [uniandes.isis2304.superAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+09:03:16,026 (main) INFO  [uniandes.isis2304.superAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+09:03:16,039 (main) INFO  [uniandes.isis2304.superAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+09:03:32,727 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando consulta
+09:03:33,132 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando Consulta: 1 existentes
+09:03:33,132 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando consulta
+09:03:53,146 (main) INFO  [uniandes.isis2304.superAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+09:03:53,147 (main) INFO  [uniandes.isis2304.superAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+09:03:53,159 (main) INFO  [uniandes.isis2304.superAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+09:04:03,078 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando consulta
+09:04:03,301 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando Consulta: 1 existentes
+09:04:03,302 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando consulta
+09:04:03,332 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando Consulta: 1 existentes
+09:04:03,332 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - quitandoProdDeEstante con codigo de barras: 000070
+09:04:03,404 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - quitandoProdDeEstante:  Producto [codigoDeBarras=, nombre=, marca=, precioUnitario=0.0, presentacion=, precioPorUnidad=0.0, cantidadEnLaPresentacion=0.0, unidadDeMedida=, especificacionesDeEmpacado=, nivelDeReorden=0.0, IDPedido=0, IDSucursal=0, IDContenedor=0, EnStock=0, IDPromocion=0, IDCarrito=0, volumen=0]
+09:04:03,404 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - quitandoProdDeEstante con codigo de barras: 000070
+09:04:03,419 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - quitandoProdDeEstante:  
+09:04:03,420 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - quitandoProdDeEstante con codigo de barras: 000070
+09:04:03,432 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - quitandoProdDeEstante:  Producto [codigoDeBarras=, nombre=, marca=, precioUnitario=0.0, presentacion=, precioPorUnidad=0.0, cantidadEnLaPresentacion=0.0, unidadDeMedida=, especificacionesDeEmpacado=, nivelDeReorden=0.0, IDPedido=0, IDSucursal=0, IDContenedor=0, EnStock=0, IDPromocion=0, IDCarrito=0, volumen=0]
+09:04:53,510 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando consulta
+09:04:53,543 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando Consulta: 1 existentes
+09:04:53,544 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el Producto: GASEOSA
+09:04:53,560 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el Producto: Producto [codigoDeBarras=000028, nombre=GASEOSA, marca=COCA COLA, precioUnitario=15000.0, presentacion=FAMILIAR, precioPorUnidad=5000.0, cantidadEnLaPresentacion=3.0, unidadDeMedida=gr, especificacionesDeEmpacado=REGULAR, nivelDeReorden=1.0, IDPedido=1, IDSucursal=1, IDContenedor=2, EnStock=15, IDPromocion=1, IDCarrito=0, volumen=5]
+09:04:53,561 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - quitandoProdDeEstante con codigo de barras: 000001
+09:04:53,577 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - quitandoProdDeEstante:  Producto [codigoDeBarras=, nombre=, marca=, precioUnitario=0.0, presentacion=, precioPorUnidad=0.0, cantidadEnLaPresentacion=0.0, unidadDeMedida=, especificacionesDeEmpacado=, nivelDeReorden=0.0, IDPedido=0, IDSucursal=0, IDContenedor=0, EnStock=0, IDPromocion=0, IDCarrito=0, volumen=0]
+09:05:40,197 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando consulta
+09:05:40,228 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando Consulta: 1 existentes
+09:05:40,229 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando consulta
+09:05:40,274 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando Consulta: 2 existentes
+09:05:40,275 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - quitandoProdDeEstante con codigo de barras: 000028
+09:05:40,291 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - quitandoProdDeEstante:  Producto [codigoDeBarras=, nombre=, marca=, precioUnitario=0.0, presentacion=, precioPorUnidad=0.0, cantidadEnLaPresentacion=0.0, unidadDeMedida=, especificacionesDeEmpacado=, nivelDeReorden=0.0, IDPedido=0, IDSucursal=0, IDContenedor=0, EnStock=0, IDPromocion=0, IDCarrito=0, volumen=0]
+09:05:40,292 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - quitandoProdDeEstante con codigo de barras: 000028
+09:05:40,306 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - quitandoProdDeEstante:  
+09:05:40,307 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - quitandoProdDeEstante con codigo de barras: 000028
+09:05:40,321 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - quitandoProdDeEstante:  Producto [codigoDeBarras=, nombre=, marca=, precioUnitario=0.0, presentacion=, precioPorUnidad=0.0, cantidadEnLaPresentacion=0.0, unidadDeMedida=, especificacionesDeEmpacado=, nivelDeReorden=0.0, IDPedido=0, IDSucursal=0, IDContenedor=0, EnStock=0, IDPromocion=0, IDCarrito=0, volumen=0]
+09:06:15,701 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando consulta
+09:06:15,727 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando Consulta: 1 existentes
+09:06:15,728 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el Producto: GASEOSA
+09:06:15,745 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el Producto: Producto [codigoDeBarras=000038, nombre=GASEOSA, marca=COCA COLA, precioUnitario=15000.0, presentacion=FAMILIAR, precioPorUnidad=5000.0, cantidadEnLaPresentacion=3.0, unidadDeMedida=gr, especificacionesDeEmpacado=REGULAR, nivelDeReorden=1.0, IDPedido=1, IDSucursal=1, IDContenedor=2, EnStock=15, IDPromocion=1, IDCarrito=0, volumen=20]
+09:06:15,745 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - quitandoProdDeEstante con codigo de barras: 000001
+09:06:15,760 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - quitandoProdDeEstante:  Producto [codigoDeBarras=, nombre=, marca=, precioUnitario=0.0, presentacion=, precioPorUnidad=0.0, cantidadEnLaPresentacion=0.0, unidadDeMedida=, especificacionesDeEmpacado=, nivelDeReorden=0.0, IDPedido=0, IDSucursal=0, IDContenedor=0, EnStock=0, IDPromocion=0, IDCarrito=0, volumen=0]
+09:06:39,558 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando consulta
+09:06:39,585 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando Consulta: 1 existentes
+09:06:39,586 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando consulta
+09:06:39,632 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando Consulta: 2 existentes
+09:06:39,632 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - quitandoProdDeEstante con codigo de barras: 000038
+09:06:39,650 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - quitandoProdDeEstante:  Producto [codigoDeBarras=, nombre=, marca=, precioUnitario=0.0, presentacion=, precioPorUnidad=0.0, cantidadEnLaPresentacion=0.0, unidadDeMedida=, especificacionesDeEmpacado=, nivelDeReorden=0.0, IDPedido=0, IDSucursal=0, IDContenedor=0, EnStock=0, IDPromocion=0, IDCarrito=0, volumen=0]
+09:06:39,650 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - quitandoProdDeEstante con codigo de barras: 000038
+09:06:39,666 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - quitandoProdDeEstante:  
+09:06:39,666 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - quitandoProdDeEstante con codigo de barras: 000038
+09:06:39,679 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - quitandoProdDeEstante:  Producto [codigoDeBarras=, nombre=, marca=, precioUnitario=0.0, presentacion=, precioPorUnidad=0.0, cantidadEnLaPresentacion=0.0, unidadDeMedida=, especificacionesDeEmpacado=, nivelDeReorden=0.0, IDPedido=0, IDSucursal=0, IDContenedor=0, EnStock=0, IDPromocion=0, IDCarrito=0, volumen=0]
+09:08:13,321 (main) INFO  [uniandes.isis2304.superAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+09:08:13,322 (main) INFO  [uniandes.isis2304.superAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+09:08:13,336 (main) INFO  [uniandes.isis2304.superAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+09:08:24,327 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando consulta
+09:08:24,551 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando Consulta: 1 existentes
+09:08:24,552 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el Producto: GASEOSA
+09:08:24,623 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el Producto: Producto [codigoDeBarras=000024, nombre=GASEOSA, marca=COCA COLA, precioUnitario=15000.0, presentacion=FAMILIAR, precioPorUnidad=5000.0, cantidadEnLaPresentacion=3.0, unidadDeMedida=gr, especificacionesDeEmpacado=REGULAR, nivelDeReorden=1.0, IDPedido=1, IDSucursal=1, IDContenedor=2, EnStock=15, IDPromocion=1, IDCarrito=0, volumen=5]
+09:08:24,623 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - quitandoProdDeEstante con codigo de barras: 000001
+09:08:24,640 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - quitandoProdDeEstante:  Producto [codigoDeBarras=, nombre=, marca=, precioUnitario=0.0, presentacion=, precioPorUnidad=0.0, cantidadEnLaPresentacion=0.0, unidadDeMedida=, especificacionesDeEmpacado=, nivelDeReorden=0.0, IDPedido=0, IDSucursal=0, IDContenedor=0, EnStock=0, IDPromocion=0, IDCarrito=0, volumen=0]
+09:08:44,263 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando consulta
+09:08:44,294 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando Consulta: 1 existentes
+09:08:44,294 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando consulta
+09:08:44,336 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando Consulta: 2 existentes
+09:08:44,337 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - quitandoProdDeEstante con codigo de barras: 000024
+09:08:44,359 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - quitandoProdDeEstante:  
+09:08:44,359 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - quitandoProdDeEstante con codigo de barras: 000024
+09:08:44,374 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - quitandoProdDeEstante:  Producto [codigoDeBarras=, nombre=, marca=, precioUnitario=0.0, presentacion=, precioPorUnidad=0.0, cantidadEnLaPresentacion=0.0, unidadDeMedida=, especificacionesDeEmpacado=, nivelDeReorden=0.0, IDPedido=0, IDSucursal=0, IDContenedor=0, EnStock=0, IDPromocion=0, IDCarrito=0, volumen=0]
+09:09:45,241 (main) INFO  [uniandes.isis2304.superAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+09:09:45,243 (main) INFO  [uniandes.isis2304.superAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+09:09:45,255 (main) INFO  [uniandes.isis2304.superAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+09:09:53,845 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando consulta
+09:09:54,055 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando Consulta: 1 existentes
+09:09:54,056 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el Producto: GASEOSA
+09:09:54,123 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el Producto: Producto [codigoDeBarras=000047, nombre=GASEOSA, marca=COCA COLA, precioUnitario=15000.0, presentacion=FAMILIAR, precioPorUnidad=5000.0, cantidadEnLaPresentacion=3.0, unidadDeMedida=gr, especificacionesDeEmpacado=REGULAR, nivelDeReorden=1.0, IDPedido=1, IDSucursal=1, IDContenedor=2, EnStock=15, IDPromocion=1, IDCarrito=0, volumen=5]
+09:09:54,124 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - quitandoProdDeEstante con codigo de barras: 000001
+09:09:54,138 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - quitandoProdDeEstante:  Producto [codigoDeBarras=, nombre=, marca=, precioUnitario=0.0, presentacion=, precioPorUnidad=0.0, cantidadEnLaPresentacion=0.0, unidadDeMedida=, especificacionesDeEmpacado=, nivelDeReorden=0.0, IDPedido=0, IDSucursal=0, IDContenedor=0, EnStock=0, IDPromocion=0, IDCarrito=0, volumen=0]
+09:10:11,493 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando consulta
+09:10:11,523 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando Consulta: 1 existentes
+09:10:11,523 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando consulta
+09:10:11,571 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando Consulta: 2 existentes
+09:10:11,572 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - quitandoProdDeEstante con codigo de barras: 000001
+09:10:11,587 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - quitandoProdDeEstante:  Producto [codigoDeBarras=, nombre=, marca=, precioUnitario=0.0, presentacion=, precioPorUnidad=0.0, cantidadEnLaPresentacion=0.0, unidadDeMedida=, especificacionesDeEmpacado=, nivelDeReorden=0.0, IDPedido=0, IDSucursal=0, IDContenedor=0, EnStock=0, IDPromocion=0, IDCarrito=0, volumen=0]
+09:10:11,587 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - quitandoProdDeEstante con codigo de barras: 000047
+09:10:11,604 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - quitandoProdDeEstante:  
