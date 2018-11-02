@@ -366,6 +366,29 @@ public class SuperAndes
 	
 		
 	}
+	
+	
+	
+	public List<Producto> busaquedaCarrito(long idCarrito)
+	{
+		
+			log.info ("Generando consulta");        
+	        List<Producto> voProd = new LinkedList<Producto> ();
+	        for (Producto tb : pp.busquedaCarrito(idCarrito))
+	        {
+	        	voProd.add (tb);
+	        }
+	        log.info ("Generando Consulta: " + voProd.size() + " existentes");
+	        return voProd;
+	
+	}
+	
+
+	public void pagarCarrito(long idCarrito) {
+		log.info ("pagando el carrito con idCarrito: " + idCarrito);
+		pp.pagarCarrito(idCarrito);	
+		log.info ("pagando el carrito con idCarrito  " + idCarrito);		
+	}
 
 	public void abandonarCarrito(long idCarrito)
 	{
@@ -429,6 +452,7 @@ public class SuperAndes
 		log.info ("Limpiando la BD de SuperAndes: Listo!");
 		return borrrados;
 	}
+
 
 	
 	

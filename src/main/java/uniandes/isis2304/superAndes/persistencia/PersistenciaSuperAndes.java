@@ -1204,6 +1204,41 @@ public class PersistenciaSuperAndes
 		}
 
 	}
+
+	public List<Producto> busquedaCarrito(long idCarrito) {
+		return sqlProducto.buscarCarrito(pmf.getPersistenceManager(),idCarrito);
+
+	}
+	
+
+	public void pagarCarrito(long idCarrito) {
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		try
+		{
+			tx.begin();
+			sqlProducto.pagarCarrito(pm,idCarrito);
+			tx.commit();
+
+			log.trace ("pagando el carrito :  " + idCarrito );
+
+
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+
+		}
+		finally
+		{
+			if (tx.isActive())
+			{
+				tx.rollback();
+			}
+			pm.close();
+		}
+	}
 	public void abandonarCarrito(long idCarrito)
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -1283,6 +1318,7 @@ public class PersistenciaSuperAndes
 		}
 
 	}
+
 
 
 

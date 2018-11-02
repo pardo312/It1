@@ -149,8 +149,17 @@ class SQLProducto
 		return (long) q.executeUnique();   	
 	}
 	
+	public List<Producto> buscarCarrito (PersistenceManager pm, long idCarrito)
+	{
+		Query q = pm.newQuery(SQL, "SELECT CODIGODEBARRAS,NOMBRE,MARCA,PRECIOUNITARIO,PRESENTACION,PRECIOPORUNIDAD,CANTIDADENLAPRESENTACION,UNIDADDEMEDIDA,ESPECIFICACIONESDEEMPACADO,NIVELDEREORDEN,IDPEDIDO,IDSUCURSAL,IDCONTENEDOR,IDPROMOCION,ENSTOCK, IDPROMOCION, VOLUMEN FROM " + "PRODUCTO" + " WHERE IDCARRITO = " + idCarrito );
+		q.setResultClass(Producto.class);		
+		return  (List<Producto>)q.executeList() ;		
+	}
+
+	public long pagarCarrito(PersistenceManager pm, long idCarrito) {
+		Query q = pm.newQuery(SQL,"UPDATE PRODUCTO SET usado = 0 WHERE idCarrito = " +idCarrito );
+		return (long) q.executeUnique();   	
+	}
 	
 	
-
-
 }
