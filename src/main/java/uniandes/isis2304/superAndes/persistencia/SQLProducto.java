@@ -131,12 +131,12 @@ class SQLProducto
 			return  (List<Producto>)q.executeList() ;		
 		}
 	
-	public List<Producto> quitarProductosDeEstante(PersistenceManager pm,int volumenNuevo,String codigoDeBarras)
+	public Long quitarProductosDeEstante(PersistenceManager pm,int volumenNuevo,String codigoDeBarras)
 	{
-		Query q = pm.newQuery(SQL, "UPDATE PRODUCTO SET VOLUMEN ="+ volumenNuevo+ " WHERE codigoDeBarras = " +codigoDeBarras + ")");
-		q.setResultClass(Producto.class);		
-		return  (List<Producto>)q.executeList() ;		
+		Query q = pm.newQuery(SQL,"UPDATE PRODUCTO SET VOLUMEN ="+ volumenNuevo+ " WHERE codigoDeBarras = " +codigoDeBarras );
+		return (long) q.executeUnique();   	
 	}
+	
 	
 	
 

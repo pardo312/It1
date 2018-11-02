@@ -1104,13 +1104,13 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
     		List <Producto> productosConCodigo = superAndes.busquedaProducto(codigoDeBarras);
 
     		Producto prod = productosConCodigo.get(0);
-    		
+    		int prodMenosDeEstante =prod.getVolumen() - numProd;
     		
     			String cod = nextval ();
     			//Añade Producto a carrito
     			Producto pd = superAndes.registrarProducto(cod,prod.getNombre(),prod.getMarca(),prod.getPrecioUnitario(),prod.getPresentacion(), prod.getPrecioPorUnidad(),prod.getCantidadEnLaPresentacion(),"gr",prod.getEspecificacionesDeEmpacado(), prod.getNivelDeReorden(), prod.getIDPedido(), prod.getIDSucursal(), prod.getIDContenedor(),1,prod.getEnStock(),numProd, idCarrito) ;
     			//Quita el numero de productos del estante
-    			Producto fc = superAndes.quitarProductosDeEstante(cod, idCarrito) ;
+    			superAndes.quitarProductosDeEstante(prodMenosDeEstante, codigoDeBarras) ;
         		
             		if (pd == null)
             		{

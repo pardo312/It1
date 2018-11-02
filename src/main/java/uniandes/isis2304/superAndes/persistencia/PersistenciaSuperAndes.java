@@ -489,7 +489,7 @@ public class PersistenciaSuperAndes
 			return new Producto(codigoDeBarras ,nombre,
 					marca,precioUnitario,presentacion,precioPorUnidad,cantidadEnLaPresentacion,
 					unidadesDeMedida,especificacionesDeEmpacado,nivelDeReorden,
-					IDPedido, IDSucursal, IDContenedor,EnStock,IDPromocion, IDCarrito);
+					IDPedido, IDSucursal, IDContenedor,EnStock,IDPromocion,volumen, IDCarrito);
 		}
 		catch (Exception e)
 		{
@@ -1123,7 +1123,34 @@ public class PersistenciaSuperAndes
 			pm.close();
 		}
 	}
+	public  Producto quitarProductosDeEstante(int volumenNuevo,String codigoDeBarras){
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		try
+		{
+			tx.begin();
+			sqlProducto.quitarProductosDeEstante(pm,volumenNuevo,codigoDeBarras);
+			tx.commit();
 
+			log.trace ("Eliminando el numero de productos del estante: " + codigoDeBarras );
+
+			return new Producto();
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			return null;
+		}
+		finally
+		{
+			if (tx.isActive())
+			{
+				tx.rollback();
+			}
+			pm.close();
+		}
+	}
 	public List<Producto> busquedaProducto(String codigoDeBarras) {
 
 		return sqlProducto.buscarCodigo(pmf.getPersistenceManager(),codigoDeBarras);

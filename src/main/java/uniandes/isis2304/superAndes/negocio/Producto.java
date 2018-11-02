@@ -50,6 +50,9 @@ public class Producto
 
 	private long IDPromocion;
 	
+	private int volumen;
+	
+
 	private long IDCarrito;
 
 
@@ -77,6 +80,7 @@ public class Producto
 		this.EnStock = 0;
 		this.IDPromocion = 0;
 		this.IDCarrito = 0;
+		this.volumen = 0;
 	}
 
 	/**
@@ -88,7 +92,7 @@ public class Producto
 	 */
 	public Producto(String codigoDeBarras, String nombre, String marca, float precioUnitario,
 			String presentacion,float precioPorUnidad,float cantidadEnLaPresentacion,String unidadesDeMedida, String especificacionesDeEmpacado, 
-			float nivelDeReorden,long IDPedido ,long IDSucursal,long IDBodega,int EnStock, long IDPromocion,long IDCarrito) 
+			float nivelDeReorden,long IDPedido ,long IDSucursal,long IDBodega,int EnStock, long IDPromocion,int volumen,long IDCarrito) 
 	{
 		this.codigoDeBarras = codigoDeBarras;
 		this.nombre =nombre;
@@ -106,9 +110,18 @@ public class Producto
 		this.EnStock = EnStock;
 		this.IDPromocion = IDPromocion;
 
-		this.IDCarrito = IDCarrito;
+		this.volumen = volumen;
 	}
 
+
+
+	public int getVolumen() {
+		return volumen;
+	}
+
+	public void setVolumen(int volumen) {
+		this.volumen = volumen;
+	}
 
 	public long getIDCarrito() {
 		return IDCarrito;
@@ -281,7 +294,7 @@ public class Producto
 		return "Producto [codigoDeBarras=" + codigoDeBarras + ", nombre=" + nombre + ", marca=" + marca + ", precioUnitario="
 				+ precioUnitario  + ", presentacion=" + presentacion + ", precioPorUnidad=" + precioPorUnidad + ", cantidadEnLaPresentacion=" + cantidadEnLaPresentacion + 
 				", unidadDeMedida=" + unidadDeMedida + ", especificacionesDeEmpacado=" + especificacionesDeEmpacado+
-				", nivelDeReorden=" + nivelDeReorden +", IDPedido=" + IDPedido +", IDSucursal=" + IDSucursal +", IDContenedor=" + IDContenedor +", EnStock=" + EnStock +", IDPromocion=" + IDPromocion+", IDCarrito=" + IDCarrito+"]";
+				", nivelDeReorden=" + nivelDeReorden +", IDPedido=" + IDPedido +", IDSucursal=" + IDSucursal +", IDContenedor=" + IDContenedor +", EnStock=" + EnStock +", IDPromocion=" + IDPromocion+", IDCarrito=" + IDCarrito+", volumen=" + volumen+"]";
 	}
 
 

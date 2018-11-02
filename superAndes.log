@@ -1885,3 +1885,24 @@ ORA-00001: restricción única (ISIS2304B231820.SYS_C00461407) violada
 08:01:39,732 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando Consulta: 1 existentes
 08:01:39,733 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el Producto: GASEOSA
 08:01:39,807 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el Producto: Producto [codigoDeBarras=000030, nombre=GASEOSA, marca=COCA COLA, precioUnitario=15000.0, presentacion=FAMILIAR, precioPorUnidad=5000.0, cantidadEnLaPresentacion=3.0, unidadDeMedida=gr, especificacionesDeEmpacado=REGULAR, nivelDeReorden=1.0, IDPedido=1, IDSucursal=1, IDContenedor=2, EnStock=15, IDPromocion=1, IDCarrito=1]
+08:34:05,827 (main) INFO  [uniandes.isis2304.superAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+08:34:05,828 (main) INFO  [uniandes.isis2304.superAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+08:34:05,842 (main) INFO  [uniandes.isis2304.superAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+08:34:14,868 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando consulta
+08:34:15,107 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando Consulta: 1 existentes
+08:34:15,108 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el Producto: GASEOSA
+08:34:15,183 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el Producto: Producto [codigoDeBarras=000048, nombre=GASEOSA, marca=COCA COLA, precioUnitario=15000.0, presentacion=FAMILIAR, precioPorUnidad=5000.0, cantidadEnLaPresentacion=3.0, unidadDeMedida=gr, especificacionesDeEmpacado=REGULAR, nivelDeReorden=1.0, IDPedido=1, IDSucursal=1, IDContenedor=2, EnStock=15, IDPromocion=1, IDCarrito=0, volumen=2]
+08:34:15,184 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - quitandoProdDeEstante con codigo de barras: 000001
+08:34:15,211 (AWT-EventQueue-0) ERROR [uniandes.isis2304.superAndes.persistencia.PersistenciaSuperAndes] - Exception : Error con la ejecucion de Query de SQL "UPDATE PRODUCTO SET VOLUMEN =41 WHERE codigoDeBarras = 000001)".
+ORA-00933: comando SQL no terminado correctamente
+
+08:34:15,216 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - quitandoProdDeEstante:  null
+08:36:05,405 (main) INFO  [uniandes.isis2304.superAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+08:36:05,407 (main) INFO  [uniandes.isis2304.superAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+08:36:05,423 (main) INFO  [uniandes.isis2304.superAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+08:36:12,644 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando consulta
+08:36:12,893 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando Consulta: 1 existentes
+08:36:12,894 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el Producto: GASEOSA
+08:36:12,968 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el Producto: Producto [codigoDeBarras=000078, nombre=GASEOSA, marca=COCA COLA, precioUnitario=15000.0, presentacion=FAMILIAR, precioPorUnidad=5000.0, cantidadEnLaPresentacion=3.0, unidadDeMedida=gr, especificacionesDeEmpacado=REGULAR, nivelDeReorden=1.0, IDPedido=1, IDSucursal=1, IDContenedor=2, EnStock=15, IDPromocion=1, IDCarrito=0, volumen=2]
+08:36:12,969 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - quitandoProdDeEstante con codigo de barras: 000001
+08:36:12,984 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - quitandoProdDeEstante:  Producto [codigoDeBarras=, nombre=, marca=, precioUnitario=0.0, presentacion=, precioPorUnidad=0.0, cantidadEnLaPresentacion=0.0, unidadDeMedida=, especificacionesDeEmpacado=, nivelDeReorden=0.0, IDPedido=0, IDSucursal=0, IDContenedor=0, EnStock=0, IDPromocion=0, IDCarrito=0, volumen=0]

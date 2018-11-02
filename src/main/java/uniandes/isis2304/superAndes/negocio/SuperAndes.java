@@ -334,16 +334,14 @@ public class SuperAndes
 		return factura;
 	}
 	
-	public List<Producto> quitarProductosDeEstante(String cod ,String codigoDeBarras)
+	public void quitarProductosDeEstante(int volumenNuevo ,String codigoDeBarras )
 	{
-		log.info ("Generando consulta");        
-        List<Producto> voProd = new LinkedList<Producto> ();
-        for (Producto tb : pp.busquedaProducto(codigoDeBarras))
-        {
-        	voProd.add (tb);
-        }
-        log.info ("Generando Consulta: " + voProd.size() + " existentes");
-        return voProd;
+		
+      
+        log.info ("quitandoProdDeEstante con codigo de barras: " + codigoDeBarras);
+		Producto estante = pp.quitarProductosDeEstante(volumenNuevo,codigoDeBarras);	
+		log.info ("quitandoProdDeEstante:  " + estante);
+		
 	}
 	
 	public List<Producto> busquedaProducto(String codigoDeBarras)
