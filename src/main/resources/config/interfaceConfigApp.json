@@ -112,6 +112,10 @@
 				{
 					"label": "Devolver un Producto Del Carrito al estante",
 					"event": "devolverUnProductoDelCarrito"
+				},
+				{
+					"label": "Abandonar Carrito",
+					"event": "abandonarCarrito"
 				}
 				
 			]

@@ -367,6 +367,16 @@ public class SuperAndes
 		
 	}
 
+	public void abandonarCarrito(long idCarrito)
+	{
+		
+      
+        log.info ("abandonando carrito: " + idCarrito);
+		pp.abandonarCarrito(idCarrito);	
+		log.info ("Carrito Abandonado ");
+		
+	}
+	
 	public List<uniandes.isis2304.superAndes.negocio.Consulta1> consulta1()
 	{
 		log.info ("Generando consulta");        

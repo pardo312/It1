@@ -281,6 +281,7 @@ public class PersistenciaSuperAndes
 		sqlPromocionPorcentaje = new SQLPromocionPorcentaje(this);
 		sqlPromocionUnidadProducto = new SQLPromocionUnidadProducto(this);
 		sqlFactura= new SQLFactura(this);
+		sqlCarritoDeCompras = new SQLCarritoDeCompras(this);
 		sqlRFC1 = new SQLRFC1(this);
 		sqlRFC2 = new SQLRFC2(this);
 		sqlRFC3 = new SQLRFC3(this);
@@ -1193,6 +1194,35 @@ public class PersistenciaSuperAndes
 		return sqlProducto.buscarCodigo(pmf.getPersistenceManager(),codigoDeBarras);
 		}
 
+	}
+	public void abandonarCarrito(long idCarrito)
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		try
+		{
+			tx.begin();
+			sqlCarritoDeCompras.devolverProducto(pm,idCarrito);
+			tx.commit();
+
+			log.trace ("Abandonando el carrito :  " + idCarrito );
+
+			
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			
+		}
+		finally
+		{
+			if (tx.isActive())
+			{
+				tx.rollback();
+			}
+			pm.close();
+		}
 	}
 	public List<uniandes.isis2304.superAndes.negocio.Consulta1> Consulta1() {
 

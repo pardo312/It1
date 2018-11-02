@@ -7,6 +7,7 @@ import java.util.List;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
+import uniandes.isis2304.superAndes.negocio.CarritoDeCompras;
 import uniandes.isis2304.superAndes.negocio.Categoria;
 import uniandes.isis2304.superAndes.negocio.Cliente;
 import uniandes.isis2304.superAndes.negocio.ClienteNatural;
@@ -68,11 +69,17 @@ class SQLCarritoDeCompras
 	 * @param pm
 	 * @return la lista de todos los clientes
 	 */
-	public List<ClienteNatural> darCarritosDeCompra(PersistenceManager pm)
+	public List<CarritoDeCompras> darCarritosDeCompra(PersistenceManager pm)
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + "CARRITODECOMPRA");
-		q.setResultClass(Proveedor.class);
-		return (List<ClienteNatural>) q.executeList();
+		return (List<CarritoDeCompras>) q.executeList();
+	}
+	
+	public long devolverProducto(PersistenceManager pm, long idCarrito) 
+	{
+		Query q = pm.newQuery(SQL,"UPDATE CARRITODECOMPRA SET USADO = 0 WHERE IDCARRITO = " +idCarrito );
+		
+        return (long) q.executeUnique();
 	}
 
 }

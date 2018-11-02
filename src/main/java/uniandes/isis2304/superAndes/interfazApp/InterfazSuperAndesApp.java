@@ -1177,10 +1177,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
             		resultado += "Producto Devuelto Con exito" ;
         			resultado += "\n Operación terminada";
         			panelDatos.actualizarInterfaz(resultado);
-        	
-    		
-    		
-    		
+        			
 		} 
     	catch (Exception e) 
     	{
@@ -1189,7 +1186,35 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 			panelDatos.actualizarInterfaz(resultado);
 		}
     }
+    
+    /* ****************************************************************
+   	 * 			RF 16
+   	 *****************************************************************/
 
+    public void abandonarCarrito( )
+    {
+    	try 
+    	{
+    		
+    		
+    		long idCarrito = Long.parseLong(JOptionPane.showInputDialog (this, "Id del carrito a abandonar?", "Devolver Producto a Estante", JOptionPane.QUESTION_MESSAGE));
+        	
+    		superAndes.abandonarCarrito(idCarrito) ;
+
+            		String resultado  = "";
+            		resultado += "Carrito Abandonado, ahora esta disponible para otros clientes" ;
+        			resultado += "\n Operación terminada";
+        			panelDatos.actualizarInterfaz(resultado);
+        			
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+   
 
     /* ****************************************************************
    	 * 			Consulta 1
