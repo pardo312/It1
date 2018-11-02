@@ -38,6 +38,7 @@ import com.google.gson.stream.JsonReader;
 
 import uniandes.isis2304.superAndes.negocio.Factura;
 import uniandes.isis2304.superAndes.negocio.FacturaProducto;
+import uniandes.isis2304.superAndes.negocio.Pedido;
 import uniandes.isis2304.superAndes.negocio.Producto;
 import uniandes.isis2304.superAndes.negocio.SuperAndes;
 import uniandes.isis2304.superAndes.negocio.VOCarritoDeCompras;
@@ -1309,9 +1310,39 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 
 
 	/* ****************************************************************
+   	 * 			RF 18
+   	 *****************************************************************/
+
+    public void consolidarPedidosAProveedores( )
+    {
+    	try 
+    	{
+    		for(Pedido p : superAndes.darPedidos()){
+    			
+    			List<Pedido> pedidosDeEsteProveedor = superAndes.busquedaPedidosPorProveedor(p.getNITProveedor());
+    			if(pedidosDeEsteProveedor.size() > 1)
+    			{
+    				
+    			}
+    		}
+    		
+
+            		String resultado  = "";
+            		resultado += "Pedidos Consolidados Exitosamente" ;
+        			resultado += "\n Operación terminada";
+        			panelDatos.actualizarInterfaz(resultado);
+        			
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+	/* ****************************************************************
 	 * 			Consulta 1
 	 *****************************************************************/
-
 
 
 

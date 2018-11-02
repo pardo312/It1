@@ -132,7 +132,11 @@
 					"label": "Recoger Productos ",
 					"event": "recogerProductos"
 				}
-				
+				,
+				{
+					"label": "Consolidar  Pedidos A Proveedor",
+					"event": "consolidarPedidosAProveedores"
+				}
 			]
 		}		
 				

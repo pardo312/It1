@@ -1300,6 +1300,18 @@ public class PersistenciaSuperAndes
 			pm.close();
 		}
 	}
+public List<Pedido> busquedaPedidosPorProveedor( int NITProveedor) {
+		
+		
+		return sqlPedido.busquedaPedidosPorProveedor(pmf.getPersistenceManager(),NITProveedor);
+		
+
+	}
+
+
+	public List<Pedido> darPedidos() {
+		return sqlPedido.darPedidos(pmf.getPersistenceManager());
+	}
 	public List<uniandes.isis2304.superAndes.negocio.Consulta1> Consulta1() {
 
 		return sqlRFC1.consulta1(pmf.getPersistenceManager());

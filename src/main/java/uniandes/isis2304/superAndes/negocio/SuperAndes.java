@@ -408,6 +408,37 @@ public class SuperAndes
 		
 	}
 	
+	public List<Pedido> busquedaPedidosPorProveedor(int NITProveedor )
+	{
+		
+			log.info ("Generando consulta");        
+	        List<Pedido> voProd = new LinkedList<Pedido> ();
+	        for (Pedido tb : pp.busquedaPedidosPorProveedor(NITProveedor))
+	        {
+	        	voProd.add (tb);
+	        }
+	        log.info ("Generando Consulta: " + voProd.size() + " existentes");
+	        return voProd;
+	
+		
+	}
+	public List<Pedido> darPedidos() {
+		log.info ("Generando los Pedidos");        
+		List<Pedido> voProd = new LinkedList<Pedido> ();
+		
+		for (Pedido tb : pp.darPedidos())
+		{	
+			if(tb != null)
+			{
+				voProd.add (tb);
+			}
+			
+		}
+		log.info ("Generando Pedidos: " + voProd.size() + " existentes");
+		return voProd;
+	}
+
+	
 	public List<uniandes.isis2304.superAndes.negocio.Consulta1> consulta1()
 	{
 		log.info ("Generando consulta");        

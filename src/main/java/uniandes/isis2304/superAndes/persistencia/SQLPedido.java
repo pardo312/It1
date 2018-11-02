@@ -9,6 +9,7 @@ import javax.jdo.Query;
 
 import uniandes.isis2304.superAndes.negocio.Categoria;
 import uniandes.isis2304.superAndes.negocio.Cliente;
+import uniandes.isis2304.superAndes.negocio.Pedido;
 import uniandes.isis2304.superAndes.negocio.Proveedor;
 
 /**
@@ -94,12 +95,22 @@ class SQLPedido
 	 * @param pm
 	 * @return la lista de todos los clientes
 	 */
-	public List<Cliente> darPedidos (PersistenceManager pm)
+	public List<Pedido> darPedidos (PersistenceManager pm)
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + "PEDIDO");
 		q.setResultClass(Proveedor.class);
-		return (List<Cliente>) q.executeList();
+		return (List<Pedido>) q.executeList();
 	}
+
+
+	public List<Pedido> busquedaPedidosPorProveedor (PersistenceManager pm, int NITProveedor)
+	{
+		Query q = pm.newQuery(SQL, "SELECT DISTINCT(P.ID) FROM PEDIDO P, PEDIDO J "
+				+ "WHERE J.NITPROVEEDOR = P.NITPROVEEDOR "
+				+ "AND J.ID != P.ID  AND J.NITPROVEEDOR = "+ NITProveedor);
+		return (List<Pedido>) q.executeList();
+	}
+
 
 
 }

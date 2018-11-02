@@ -81,8 +81,6 @@ public class Pedido implements VOPedido
 	 */
 	public Pedido ( int id2,java.util.Date fechaEsperada2,	java.util.Date fechaEntrega2,String evaluacionCantidad,String evaluacionCalidad,int calificacion, int finalizado, int NITProveedor) 
 	{
-		
-
 		this.id = id2;
 		this.fechaEsperada = fechaEsperada2;
 		this.fechaEntrega = fechaEntrega2;
