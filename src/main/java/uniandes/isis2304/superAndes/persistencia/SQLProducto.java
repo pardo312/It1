@@ -112,19 +112,15 @@ class SQLProducto
 	{
 	
         Query q = pm.newQuery(SQL, "INSERT INTO " +"PRODUCTO"+
-        		"(codigoDeBarras,nombre,marca,precioUnitario,presentacion,precioPorUnidad,cantidadEnLaPresentacion,unidadDeMedida,especificacionesDeEmpacado,nivelDeReorden,IDPedido, IDSucursal, IDContenedor, EnStock,IDPromocion) values ("+codigoDeBarras+ ",'"+nombre+"','"+marca+"',"+precioUnitario+",'"+presentacion+"',"+precioPorUnidad+","+cantidadEnLaPresentacion+",'"+unidadesDeMedida+"','"+especificacionesDeEmpacado+"',"+nivelDeReorden+","+ IDPedido+","+IDSucursal+","+ IDContenedor +","+ EnStock +","+ iDPromocion +","+ IDCarrito +")");
-        q.setParameters(codigoDeBarras,nombre,
-        		marca,precioUnitario,presentacion,precioPorUnidad,cantidadEnLaPresentacion,
-        		unidadesDeMedida,especificacionesDeEmpacado,nivelDeReorden,
-        		 IDPedido, IDSucursal, IDContenedor,EnStock,iDPromocion,IDCarrito);
-        return (long)q.executeUnique();            
+        		"(codigoDeBarras,nombre,marca,precioUnitario,presentacion,precioPorUnidad,cantidadEnLaPresentacion,unidadDeMedida,especificacionesDeEmpacado,nivelDeReorden,IDPedido, IDSucursal, IDContenedor, EnStock,IDPromocion,IDCarrito) values ("+codigoDeBarras+ ",'"+nombre+"','"+marca+"',"+precioUnitario+",'"+presentacion+"',"+precioPorUnidad+","+cantidadEnLaPresentacion+",'"+unidadesDeMedida+"','"+especificacionesDeEmpacado+"',"+nivelDeReorden+","+ IDPedido+","+IDSucursal+","+ IDContenedor +","+ EnStock +","+ iDPromocion +","+ IDCarrito +")");             
+        return (long) q.executeUnique();   
 	}
 	
 	public List<Producto> darProductos (PersistenceManager pm)
 	{
 		Query q = pm.newQuery(SQL, "SELECT IDCONTENEDOR FROM " + "PRODUCTO");
 		q.setResultClass(Producto.class);		
-		return  (List<Producto>)q.executeList() ;
+		return  (List<Producto>)q.executeList();
 		
 	}
 	

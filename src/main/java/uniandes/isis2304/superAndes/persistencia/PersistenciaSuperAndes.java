@@ -689,39 +689,39 @@ public class PersistenciaSuperAndes
 
 	}
 
-	public CarritoDeCompras registrarCarritoDeCompras ( long idCarrito, int usado, String NITProveedor, int cedula)
-	{
-
-		PersistenceManager pm = pmf.getPersistenceManager();
-		Transaction tx=pm.currentTransaction();
-		try
-		{
-			tx.begin();
-			long tuplasInsertadas = SQLCarritoDeCompras.registrarCarritoDeCompras(pm, idCarrito, usado, NITProveedor, cedula);
-			tx.commit();
-
-			log.trace ("Inserción de cliente empresa " + NITProveedor + ": " + tuplasInsertadas + " tuplas insertadas");
-
-			return new CarritoDeCompras(idCarrito,usado, NITProveedor,cedula);
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
-			return null;
-		}
-		finally
-		{
-			if (tx.isActive())
-			{
-				tx.rollback();
-			}
-			pm.close();
-
-			darClientesEmpresa();
-		}
-
-	}
+//	public CarritoDeCompras registrarCarritoDeCompras ( long idCarrito, int usado, String NITProveedor, int cedula)
+//	{
+//
+//		PersistenceManager pm = pmf.getPersistenceManager();
+//		Transaction tx=pm.currentTransaction();
+//		try
+//		{
+//			tx.begin();
+//			long tuplasInsertadas = SQLCarritoDeCompras.registrarCarritoDeCompras(pm, idCarrito, usado, NITProveedor, cedula);
+//			tx.commit();
+//
+//			log.trace ("Inserción de cliente empresa " + NITProveedor + ": " + tuplasInsertadas + " tuplas insertadas");
+//
+//			return new CarritoDeCompras(idCarrito,usado, NITProveedor,cedula);
+//		}
+//		catch (Exception e)
+//		{
+//			e.printStackTrace();
+//			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+//			return null;
+//		}
+//		finally
+//		{
+//			if (tx.isActive())
+//			{
+//				tx.rollback();
+//			}
+//			pm.close();
+//
+//			darClientesEmpresa();
+//		}
+//
+//	}
 
 
 
