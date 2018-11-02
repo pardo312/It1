@@ -100,6 +100,17 @@
 				}
 				
 			]
+		},
+		{ "menuTitle": "Carrito De Compras",
+		  "options":
+			[
+				
+				{
+					"label": "Adicionar Producto A Carrito",
+					"event": "adicionarProductoACarrito"
+				}
+				
+			]
 		}		
 				
 		

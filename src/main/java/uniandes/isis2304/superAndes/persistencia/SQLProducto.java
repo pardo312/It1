@@ -123,6 +123,13 @@ class SQLProducto
 		return  (List<Producto>)q.executeList();
 		
 	}
+
+public List<Producto> buscarCodigo (PersistenceManager pm, String codigoDeBarras)
+	{
+		Query q = pm.newQuery(SQL, "SELECT CODIGODEBARRAS,NOMBRE,MARCA,PRECIOUNITARIO,PRESENTACION,PRECIOPORUNIDAD,CANTIDADENLAPRESENTACION,UNIDADDEMEDIDA,ESPECIFICACIONESDEEMPACADO,NIVELDEREORDEN,IDPEDIDO,IDSUCURSAL,IDCONTENEDOR,IDPROMOCION,ENSTOCK, IDPROMOCION FROM " + "PRODUCTO" + " WHERE CODIGODEBARRAS = " + codigoDeBarras);
+		q.setResultClass(Producto.class);		
+		return  (List<Producto>)q.executeList() ;		
+	}
 	
 	
 

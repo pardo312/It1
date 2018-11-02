@@ -1007,7 +1007,8 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
     		
     		
     		String numeroDeFactura = JOptionPane.showInputDialog (this, "Numero de la factura(nuevo)?", "Registrar Factura", JOptionPane.QUESTION_MESSAGE);
-    		java.util.Date fecha =  (java.util.Date) new SimpleDateFormat("dd/MM/yyyy").parse(JOptionPane.showInputDialog (this, "fecha de la factura? (DD/MM/YYYY)", "Registrar Pedido", JOptionPane.QUESTION_MESSAGE));   		long idCliente = Long.parseLong(JOptionPane.showInputDialog (this, "ID del cliente asociado?", "Registrar Factura", JOptionPane.QUESTION_MESSAGE));
+    		java.util.Date fecha =  (java.util.Date) new SimpleDateFormat("dd/MM/yyyy").parse(JOptionPane.showInputDialog (this, "fecha de la factura? (DD/MM/YYYY)", "Registrar Pedido", JOptionPane.QUESTION_MESSAGE));   		
+    		long idCliente = Long.parseLong(JOptionPane.showInputDialog (this, "ID del cliente asociado?", "Registrar Factura", JOptionPane.QUESTION_MESSAGE));
     		String codigoDeBarras = JOptionPane.showInputDialog (this, "Codigo de barras de producto ?", "Registrar Factura", JOptionPane.QUESTION_MESSAGE);
   			int numProd = Integer.parseInt(JOptionPane.showInputDialog (this, "Numero de productos ?", "Registrar Factura", JOptionPane.QUESTION_MESSAGE));
         	
@@ -1083,8 +1084,60 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 			panelDatos.actualizarInterfaz(resultado);
 		}
 	}
+    /* ****************************************************************
+   	 * 			RF 12
+   	 *****************************************************************/
 
+    public void adicionarProductoACarrito( )
+    {
+    	try 
+    	{
+    		
+    		
+    		String codigoDeBarras = JOptionPane.showInputDialog (this, "Codigo de barras del Producto?", "Adicionar Producto Carrito", JOptionPane.QUESTION_MESSAGE);
+    		int numProd = Integer.parseInt(JOptionPane.showInputDialog (this, "Numero de productos ?", "Adicionar Producto Carrito", JOptionPane.QUESTION_MESSAGE));
+    		long idCarrito = Long.parseLong(JOptionPane.showInputDialog (this, "Id del carrito al cual adicionar producto ?", "Adicionar Producto Carrito", JOptionPane.QUESTION_MESSAGE));
+        	
+    		
+    		List <Producto> productosConCodigo = superAndes.busquedaProducto(codigoDeBarras);
+
+    		Producto prod = productosConCodigo.get(0);
+    		
+    		for (int i = 0; i<numProd;i++)
+            {
+    			String cod = nextval ();
+    			Producto pd = superAndes.registrarProducto(cod,prod.getNombre(),prod.getMarca(),prod.getPrecioUnitario(),prod.getPresentacion(), prod.getPrecioPorUnidad(),prod.getCantidadEnLaPresentacion(),"gr",prod.getEspecificacionesDeEmpacado(), prod.getNivelDeReorden(), prod.getIDPedido(), prod.getIDSucursal(), prod.getIDContenedor(),prod.getEnStock(),1, idCarrito) ;
+        		
+            		if (pd == null)
+            		{
+            			throw new Exception ("No se pudo crear factura con numero: " + codigoDeBarras);
+            		}
+            		String resultado = "En adicionarProveedor\n\n";
+            		resultado += "proveedor adicionado exitosamente: " + pd;
+        			resultado += "\n Operación terminada";
+        			panelDatos.actualizarInterfaz(resultado);
+        		
+        		
+            }
+    		
+    		
+    		
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
     
+    private String nextval ()
+	{
+		long resp =(int) (Math.random() * 99) + 20;;
+		return "0000"+resp;
+	}
+
+
     /* ****************************************************************
    	 * 			Consulta 1
    	 *****************************************************************/

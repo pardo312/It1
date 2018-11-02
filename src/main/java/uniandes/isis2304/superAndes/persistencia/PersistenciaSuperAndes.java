@@ -1124,7 +1124,11 @@ public class PersistenciaSuperAndes
 		}
 	}
 
+	public List<Producto> busquedaProducto(String codigoDeBarras) {
 
+		return sqlProducto.buscarCodigo(pmf.getPersistenceManager(),codigoDeBarras);
+
+	}
 	public List<uniandes.isis2304.superAndes.negocio.Consulta1> Consulta1() {
 
 		return sqlRFC1.consulta1(pmf.getPersistenceManager());

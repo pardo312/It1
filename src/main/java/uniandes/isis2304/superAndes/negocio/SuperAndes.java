@@ -334,7 +334,18 @@ public class SuperAndes
 		return factura;
 	}
 
-	
+	public List<Producto> busquedaProducto(String codigoDeBarras)
+	{
+		log.info ("Generando consulta");        
+        List<Producto> voProd = new LinkedList<Producto> ();
+        for (Producto tb : pp.busquedaProducto(codigoDeBarras))
+        {
+        	voProd.add (tb);
+        }
+        log.info ("Generando Consulta: " + voProd.size() + " existentes");
+        return voProd;
+	}
+
 	public List<uniandes.isis2304.superAndes.negocio.Consulta1> consulta1()
 	{
 		log.info ("Generando consulta");        
