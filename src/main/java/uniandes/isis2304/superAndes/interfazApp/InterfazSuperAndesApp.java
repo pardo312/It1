@@ -1279,6 +1279,33 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 			panelDatos.actualizarInterfaz(resultado);
 		}
 	}
+	
+	/* ****************************************************************
+	 * 			RF 17
+	 *****************************************************************/
+
+	public void recogerProductos( )
+	{
+		try 
+		{
+
+			JOptionPane.showMessageDialog(this, "se recogeran todos los productos y se pondran en sus estantes correspondientes");
+			
+			superAndes.recogerProductos() ;
+
+			String resultado  = "";
+			resultado += "se han recogido los productos" ;
+			resultado += "\n Operación terminada";
+			panelDatos.actualizarInterfaz(resultado);
+
+		} 
+		catch (Exception e) 
+		{
+			//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+	}
 
 
 	/* ****************************************************************

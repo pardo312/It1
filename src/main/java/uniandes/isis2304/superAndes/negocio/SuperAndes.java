@@ -390,6 +390,14 @@ public class SuperAndes
 		log.info ("pagando el carrito con idCarrito  " + idCarrito);		
 	}
 
+	public void recogerProductos() 
+	{
+		log.info ("recogiendo los productos " );
+		pp.recogerProductos();	
+		log.info ("recogiendo los productos" );		
+	}
+
+	
 	public void abandonarCarrito(long idCarrito)
 	{
 		
@@ -453,6 +461,7 @@ public class SuperAndes
 		return borrrados;
 	}
 
+	
 
 	
 	

@@ -160,6 +160,21 @@ class SQLProducto
 		Query q = pm.newQuery(SQL,"UPDATE PRODUCTO SET usado = 0 WHERE idCarrito = " +idCarrito );
 		return (long) q.executeUnique();   	
 	}
+
+	public void recogerProductos(PersistenceManager pm, int i) {
+		List<Producto> productosAbandonados = buscarCarrito (pm, 1);	
+		
+		for (int j = 0; j < productosAbandonados.size(); j++) {
+			Producto productoActual = productosAbandonados.get(j);
+			
+			Query estanteProducto = pm.newQuery(SQL, "SELECT IDCONTENEDOR FROM " + "PRODUCTO" + " WHERE NOMBRE = '" + productoActual.getNombre()+ "'" );
+			estanteProducto.executeUnique(); 
+			Query q = pm.newQuery(SQL, "UPDATE PRODUCTO SET IDCONTENEDOR ="+ estanteProducto+ " WHERE NOMBRE = '" + productoActual.getNombre() + "'" );
+			q.executeUnique(); 
+			
+		}
+		
+	}
 	
 	
 }

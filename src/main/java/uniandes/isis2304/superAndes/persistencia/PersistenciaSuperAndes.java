@@ -1209,7 +1209,7 @@ public class PersistenciaSuperAndes
 		return sqlProducto.buscarCarrito(pmf.getPersistenceManager(),idCarrito);
 
 	}
-	
+
 
 	public void pagarCarrito(long idCarrito) {
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -1238,6 +1238,38 @@ public class PersistenciaSuperAndes
 			}
 			pm.close();
 		}
+	}
+
+
+	public void recogerProductos() {
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		try
+		{
+			tx.begin();
+			sqlProducto.recogerProductos(pm,1); // los productos abandonados tienen idCarrito 1
+			tx.commit();
+
+			log.trace ("recogiendo los productos" );
+
+
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+
+		}
+		finally
+		{
+			if (tx.isActive())
+			{
+				tx.rollback();
+			}
+			pm.close();
+		}
+
+
 	}
 	public void abandonarCarrito(long idCarrito)
 	{
@@ -1318,6 +1350,7 @@ public class PersistenciaSuperAndes
 		}
 
 	}
+
 
 
 

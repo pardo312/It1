@@ -127,6 +127,11 @@
 					"label": "Pagar Carrito ",
 					"event": "pagarCarrito"
 				}
+				,
+				{
+					"label": "Recoger Productos ",
+					"event": "recogerProductos"
+				}
 				
 			]
 		}		
