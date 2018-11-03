@@ -966,9 +966,9 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 			int id = Integer.parseInt(JOptionPane.showInputDialog (this, "id del pedido que llegó?", "Finalizar Pedido", JOptionPane.QUESTION_MESSAGE));
 			java.util.Date fechaEsperada = new Date( 0/1/0001);
 			java.util.Date  fechaEntrega =  (java.util.Date ) new SimpleDateFormat("dd/MM/yyyy").parse(JOptionPane.showInputDialog (this, "fecha en la que te entregaron? (DD/MM/YYYY)", "Finalizar Pedido", JOptionPane.QUESTION_MESSAGE));
-			String evaluacionCantidad = JOptionPane.showInputDialog (this, "evaluacion cantidad?", "Registrar Pedido", JOptionPane.QUESTION_MESSAGE);
-			String evaluacionCalidad = JOptionPane.showInputDialog (this, "evaluacion calidad ?", "Registrar Pedido", JOptionPane.QUESTION_MESSAGE);
-			int calificacion = Integer.parseInt(JOptionPane.showInputDialog (this, "calificacion del pedido?", "Registrar Pedido", JOptionPane.QUESTION_MESSAGE));
+			String evaluacionCantidad = JOptionPane.showInputDialog (this, "evaluacion cantidad?", "Finalizar Pedido", JOptionPane.QUESTION_MESSAGE);
+			String evaluacionCalidad = JOptionPane.showInputDialog (this, "evaluacion calidad ?", "Finalizar Pedido", JOptionPane.QUESTION_MESSAGE);
+			int calificacion = Integer.parseInt(JOptionPane.showInputDialog (this, "calificacion del pedido?", "Finalizar Pedido", JOptionPane.QUESTION_MESSAGE));
 			int finalizado = 0; //Integer.parseInt(JOptionPane.showInputDialog (this, "se ha finalizado el pedido?", "Registrar Contenedor", JOptionPane.QUESTION_MESSAGE));
 			int NITProveedor =0;
 
@@ -1336,6 +1336,55 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 			panelDatos.actualizarInterfaz(resultado);
 		}
     }
+    
+    /* ****************************************************************
+   	 * 			RF 19
+   	 *****************************************************************/
+    public void finalizarPedidoConsolidado( )
+	{
+
+
+		try 
+		{
+			JOptionPane.showMessageDialog(this, "Recuerda que para finalizar un pedido debes consolidarlo primero");
+			int id = Integer.parseInt(JOptionPane.showInputDialog (this, "id del pedido consolidado?", "Finalizar Pedido consolidado", JOptionPane.QUESTION_MESSAGE));
+			java.util.Date fechaEsperada = new Date( 0/1/0001);
+			java.util.Date  fechaEntrega =  (java.util.Date ) new SimpleDateFormat("dd/MM/yyyy").parse(JOptionPane.showInputDialog (this, "fecha en la que te entregaron? (DD/MM/YYYY)", "Finalizar Pedido consolidado", JOptionPane.QUESTION_MESSAGE));
+			String evaluacionCantidad = JOptionPane.showInputDialog (this, "evaluacion cantidad?", "Finalizar Pedido consolidado", JOptionPane.QUESTION_MESSAGE);
+			String evaluacionCalidad = JOptionPane.showInputDialog (this, "evaluacion calidad ?", "Finalizar Pedido consolidado", JOptionPane.QUESTION_MESSAGE);
+			int calificacion = Integer.parseInt(JOptionPane.showInputDialog (this, "calificacion del pedido?", "Finalizar Pedido consolidado", JOptionPane.QUESTION_MESSAGE));
+			int finalizado = 0; //Integer.parseInt(JOptionPane.showInputDialog (this, "se ha finalizado el pedido?", "Registrar Contenedor", JOptionPane.QUESTION_MESSAGE));
+			int NITProveedor =0;
+
+			if ( evaluacionCalidad != null && evaluacionCantidad != null) {
+
+
+				VOPedido tb = superAndes.actualizarPedido(id, fechaEsperada, fechaEntrega, evaluacionCantidad, evaluacionCalidad,calificacion,finalizado,NITProveedor);
+
+				if (tb == null)
+				{
+					throw new Exception ("No se pudo finalizar el pedido de id: " + id);
+				}
+				String resultado = "En EntegarPedido\n\n";
+				resultado += "pedido entregado exitosamente: " + tb;
+				//		resultado += "producto adicionada exitosamente: " + produ;
+				resultado += "\n Operación terminada";
+				panelDatos.actualizarInterfaz(resultado);
+			}
+			else
+			{
+				panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+			}
+		} 
+		catch (Exception e) 
+		{
+			//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+	}
+    
+    
 	/* ****************************************************************
 	 * 			Consulta 1
 	 *****************************************************************/

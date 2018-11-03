@@ -137,6 +137,11 @@
 					"label": "Consolidar  Pedidos A Proveedor",
 					"event": "consolidarPedidosAProveedores"
 				}
+				,
+				{
+					"label": "Finalizar Pedido Consolidado",
+					"event": "finalizarPedidoConsolidado"
+				}
 			]
 		}		
 				
