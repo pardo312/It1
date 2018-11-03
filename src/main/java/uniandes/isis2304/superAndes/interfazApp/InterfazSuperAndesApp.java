@@ -1319,7 +1319,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
     	try 
     	{
     		for(Pedido p : superAndes.darPedidos()){ 			
-    		superAndes.consolidacionPedidosProveedor(0,p.getFechaEsperada(), p.getFechaEntrega(),p.getEvaluacionCantidad(),p.getEvaluacionCalidad(),p.getCalificacion(),0,p.getNITProveedor());    			
+    		superAndes.consolidacionPedidosProveedor(p.getId(),p.getFechaEsperada(), p.getFechaEntrega(),p.getEvaluacionCantidad(),p.getEvaluacionCalidad(),p.getCalificacion(),0,p.getNITProveedor());    			
     		}
     		
 

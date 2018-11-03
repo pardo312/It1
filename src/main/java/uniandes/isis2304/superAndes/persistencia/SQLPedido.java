@@ -109,12 +109,24 @@ class SQLPedido
 		java.sql.Date fecha1 = convertUtilToSql(fechaEsperada);
 		java.sql.Date fecha2 = convertUtilToSql(fechaEntrega);
 		
+		Query e= pm.newQuery(SQL, "SELECT ID,fechaEsperada,FECHAENTREGA,EVALUACIONCANTIDAD,EVALUACIONCALIDAD,CALIFICACION,NITPROVEEDOR FROM PEDIDO WHERE NITPROVEEDOR = " + NITProveedor);
+		e.setResultClass(Pedido.class);
+		List<Pedido> w =  (List<Pedido>) e.executeList();
+		
+		for(Pedido tb: w)
+		{
+			Query z = pm.newQuery(SQL, "UPDATE PRODUCTO Set IDPEDIDO = "+ id +" where IDPEDIDO= "+ tb.getId());
+			z.executeUnique();
+		}
+		
+		
 		Query q = pm.newQuery(SQL, "DELETE FROM PEDIDO where NITPROVEEDOR= "+NITProveedor);
 		Query p = pm.newQuery(SQL, "INSERT INTO PEDIDO (ID, FECHAESPERADA, FECHAENTREGA, EVALUACIONCANTIDAD, EVALUACIONCALIDAD,CALIFICACION,FINALIZADO,NITPROVEEDOR)"
 				+ "VALUES ("+id+",TO_DATE('"+fecha1+"', 'YYYY/MM/DD'),TO_DATE('"+fecha2+"' , 'YYYY/MM/DD'),'"+evaluacionCantidad+"','"+evaluacionCalidad+"', "+calificacion+",0,"+NITProveedor+") ");
 		q.executeUnique();
 		return (long) p.executeUnique() ;
 	}
+
 
 
 

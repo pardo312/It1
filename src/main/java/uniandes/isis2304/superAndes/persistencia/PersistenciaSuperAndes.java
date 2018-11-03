@@ -1311,9 +1311,8 @@ public class PersistenciaSuperAndes
 			pm.close();
 		}
 	}
-public long consolidacionPedidosProveedor( int ip, java.util.Date fechaEsperada,java.util.Date fechaEntrega,String evaluacionCantidad, String evaluacionCalidad, int calificacion, int finalizado,int NITProveedor) {
+public long consolidacionPedidosProveedor( int id, java.util.Date fechaEsperada,java.util.Date fechaEntrega,String evaluacionCantidad, String evaluacionCalidad, int calificacion, int finalizado,int NITProveedor) {
 		
-		int id = nextvalInt ();
 		return sqlPedido.consolidacionPedidosProveedor(pmf.getPersistenceManager(),id, fechaEsperada, fechaEntrega, evaluacionCantidad, evaluacionCalidad, calificacion, finalizado, NITProveedor);
 		
 
