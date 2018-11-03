@@ -57,11 +57,21 @@ class SQLCarritoDeCompras
 	 * @param nombre del cliente
 	 * @return
 	 */
-	public long registrarCarritoDeCompras(PersistenceManager pm, long ido, int cedula, String NITCLIENTE, int usado) 
+	public long registrarCarritoDeCompras(PersistenceManager pm, long ido, int usado, String NITCLIENTE, int cedula) 
 	{
-        Query q = pm.newQuery(SQL, "INSERT INTO " + "CARRITODECOMPRA" + "(idCarrito,cedula,nitcliente,usado) values (?,?,?,?)");
-        q.setParameters( ido, cedula, NITCLIENTE,usado);
+		if (NITCLIENTE.equalsIgnoreCase("0"))
+		{
+        Query q = pm.newQuery(SQL, "INSERT INTO " + "CARRITODECOMPRA" + "(idCarrito,usado,cedula) values ("+ido+ ",1,"+cedula+" )");
+        q.setParameters( ido, usado,cedula);
         return (long) q.executeUnique();
+        }
+		
+		else 
+		{
+			Query q = pm.newQuery(SQL, "INSERT INTO " + "CARRITODECOMPRA" + "(idCarrito,usado,nitcliente) values ("+ido+ ", 1,'"+NITCLIENTE+"' )");
+	        q.setParameters( ido, usado, NITCLIENTE);
+	        return (long) q.executeUnique();
+		}
 	}
 
 	/**
