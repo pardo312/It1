@@ -180,12 +180,17 @@ class SQLProducto
 		for (int j = 0; j < productosAbandonados.size(); j++) {
 			Producto productoActual = productosAbandonados.get(j);
 			
-			Query estanteProducto = pm.newQuery(SQL, "select * from (SELECT IDCONTENEDOR FROM " + "PRODUCTO" + " WHERE NOMBRE = '" + productoActual.getNombre()+ "') where rownum <2" );
+			Query estanteProducto = pm.newQuery(SQL, "select * from (SELECT CODIGODEBARRAS, VOLUMEN FROM " + "PRODUCTO" + " WHERE NOMBRE = '" + productoActual.getNombre()+ "') " );
 			estanteProducto.setResultClass(Producto.class);
+			List<Producto> p = (List<Producto>)estanteProducto.executeList() ;	
 			
-			List<Producto> p = (List<Producto>)estanteProducto.executeList() ;		
+			Query w = pm.newQuery(SQL,"DELETE FROM PRODUCTO WHERE CODIGODEBARRAS = " + productoActual.getCodigoDeBarras() );
+			 w.executeUnique();
+			 
 			
-			Query q = pm.newQuery(SQL, "UPDATE PRODUCTO SET IDCONTENEDOR ="+ productoActual.getIDContenedor()+ " WHERE NOMBRE = '" + productoActual.getNombre() + "'" );
+				
+			
+			Query q = pm.newQuery(SQL, "UPDATE PRODUCTO SET VOLUMEN = VOLUMEN +"+ productoActual.getVolumen()+ " WHERE NOMBRE = '" + productoActual.getNombre() + "' AND IDCARRITO = 0" );
 			q.execute(); 
 			
 		}
