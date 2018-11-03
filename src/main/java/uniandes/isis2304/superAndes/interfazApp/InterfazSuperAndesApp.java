@@ -1145,6 +1145,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 		long resp =(int) (Math.random() * 60) + 20;;
 		return "0000"+resp;
 	}
+	
 	/* ****************************************************************
 	 * 			RF 14
 	 *****************************************************************/
@@ -1317,13 +1318,8 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
     {
     	try 
     	{
-    		for(Pedido p : superAndes.darPedidos()){
-    			
-    			List<Pedido> pedidosDeEsteProveedor = superAndes.busquedaPedidosPorProveedor(p.getNITProveedor());
-    			if(pedidosDeEsteProveedor.size() > 1)
-    			{
-    				
-    			}
+    		for(Pedido p : superAndes.darPedidos()){ 			
+    		superAndes.consolidacionPedidosProveedor(0,p.getFechaEsperada(), p.getFechaEntrega(),p.getEvaluacionCantidad(),p.getEvaluacionCalidad(),p.getCalificacion(),0,p.getNITProveedor());    			
     		}
     		
 
@@ -1396,7 +1392,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 		} 
 		catch (Exception e) 
 		{
-			//			e.printStackTrace();
+			
 			String resultado = generarMensajeError(e);
 			panelDatos.actualizarInterfaz(resultado);
 		}

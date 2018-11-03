@@ -408,16 +408,13 @@ public class SuperAndes
 		
 	}
 	
-	public List<Pedido> busquedaPedidosPorProveedor(int NITProveedor )
+	public long consolidacionPedidosProveedor(int id, java.util.Date fechaEsperada,java.util.Date fechaEntrega,String evaluacionCantidad, String evaluacionCalidad, int calificacion, int finalizado,int NITProveedor )
 	{
 		
 			log.info ("Generando consulta");        
-	        List<Pedido> voProd = new LinkedList<Pedido> ();
-	        for (Pedido tb : pp.busquedaPedidosPorProveedor(NITProveedor))
-	        {
-	        	voProd.add (tb);
-	        }
-	        log.info ("Generando Consulta: " + voProd.size() + " existentes");
+	        long voProd = pp.consolidacionPedidosProveedor(id, fechaEsperada, fechaEntrega, evaluacionCantidad, evaluacionCalidad, calificacion, finalizado, NITProveedor);
+	       
+	        log.info ("Generando Consulta: " + voProd + " existentes");
 	        return voProd;
 	
 		

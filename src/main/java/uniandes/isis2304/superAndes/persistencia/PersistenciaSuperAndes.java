@@ -377,6 +377,12 @@ public class PersistenciaSuperAndes
 		log.trace ("Generando secuencia: " + resp);
 		return resp;
 	}
+	private int nextvalInt ()
+	{
+		int resp = (int)sqlUtil.nextval (pmf.getPersistenceManager());
+		log.trace ("Generando secuencia: " + resp);
+		return resp;
+	}
 
 	/**
 	 * Extrae el mensaje de la exception JDODataStoreException embebido en la Exception e, que da el detalle específico del problema encontrado
@@ -1300,10 +1306,10 @@ public class PersistenciaSuperAndes
 			pm.close();
 		}
 	}
-public List<Pedido> busquedaPedidosPorProveedor( int NITProveedor) {
+public long consolidacionPedidosProveedor( int ip, java.util.Date fechaEsperada,java.util.Date fechaEntrega,String evaluacionCantidad, String evaluacionCalidad, int calificacion, int finalizado,int NITProveedor) {
 		
-		
-		return sqlPedido.busquedaPedidosPorProveedor(pmf.getPersistenceManager(),NITProveedor);
+		int id = nextvalInt ();
+		return sqlPedido.consolidacionPedidosProveedor(pmf.getPersistenceManager(),id, fechaEsperada, fechaEntrega, evaluacionCantidad, evaluacionCalidad, calificacion, finalizado, NITProveedor);
 		
 
 	}

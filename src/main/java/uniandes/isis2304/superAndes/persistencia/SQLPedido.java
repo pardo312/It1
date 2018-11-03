@@ -97,18 +97,23 @@ class SQLPedido
 	 */
 	public List<Pedido> darPedidos (PersistenceManager pm)
 	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + "PEDIDO");
-		q.setResultClass(Proveedor.class);
-		return (List<Pedido>) q.executeList();
+		Query q = pm.newQuery(SQL, "SELECT MAX(ID)AS ID,MIN(fechaesperada) AS fechaesperada,MAX(fechaentrega)AS fechaentrega,MIN(evaluacioncantidad) AS evaluacioncantidad,MIN(evaluacioncalidad)AS  evaluacioncalidad, MAX(calificacion) AS calificacion, NITPROVEEDOR FROM PEDIDO group by NITPROVEEDOR");
+		q.setResultClass(Pedido.class);
+		List<Pedido> w =  (List<Pedido>) q.executeList();
+		return w;
 	}
 
 
-	public List<Pedido> busquedaPedidosPorProveedor (PersistenceManager pm, int NITProveedor)
+	public long consolidacionPedidosProveedor (PersistenceManager pm,int id, java.util.Date fechaEsperada,java.util.Date fechaEntrega,String evaluacionCantidad, String evaluacionCalidad, int calificacion, int finalizado,int NITProveedor)
 	{
-		Query q = pm.newQuery(SQL, "SELECT DISTINCT(P.ID) FROM PEDIDO P, PEDIDO J "
-				+ "WHERE J.NITPROVEEDOR = P.NITPROVEEDOR "
-				+ "AND J.ID != P.ID  AND J.NITPROVEEDOR = "+ NITProveedor);
-		return (List<Pedido>) q.executeList();
+		java.sql.Date fecha1 = convertUtilToSql(fechaEsperada);
+		java.sql.Date fecha2 = convertUtilToSql(fechaEntrega);
+		
+		Query q = pm.newQuery(SQL, "DELETE FROM PEDIDO where NITPROVEEDOR= "+NITProveedor);
+		Query p = pm.newQuery(SQL, "INSERT INTO PEDIDO (ID, FECHAESPERADA, FECHAENTREGA, EVALUACIONCANTIDAD, EVALUACIONCALIDAD,CALIFICACION,FINALIZADO,NITPROVEEDOR)"
+				+ "VALUES ("+id+",TO_DATE('"+fecha1+"', 'YYYY/MM/DD'),TO_DATE('"+fecha2+"' , 'YYYY/MM/DD'),'"+evaluacionCantidad+"','"+evaluacionCalidad+"', "+calificacion+",0,"+NITProveedor+") ");
+		q.executeUnique();
+		return (long) p.executeUnique() ;
 	}
 
 

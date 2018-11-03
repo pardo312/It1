@@ -1,32 +1,8 @@
-/**~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * Universidad	de	los	Andes	(Bogotá	- Colombia)
- * Departamento	de	Ingeniería	de	Sistemas	y	Computación
- * Licenciado	bajo	el	esquema	Academic Free License versión 2.1
- * 		
- * Curso: isis2304 - Sistemas Transaccionales
- * Proyecto: Parranderos Uniandes
- * @version 1.0
- * @author Germán Bravo
- * Julio de 2018
- * 
- * Revisado por: Claudia Jiménez, Christian Ariza
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- */
 
 package uniandes.isis2304.superAndes.negocio;
 
 import java.util.Date;
 
-/**
- * Clase para modelar la relación SIRVEN del negocio de los Parranderos:
- * Cada objeto de esta clase representa el hecho que un bar sirve una bebida y viceversa.
- * Se modela mediante los identificadores del bar y de la bebida respectivamente
- * Debe existir un bar con el identificador dado
- * Debe existir una bebida con el identificador dado 
- * Adicionalmente contiene el horario (DIURNO, NOCTURNO, TODOS) en el cual el bar sirve la bebida
- * 
- * @author Germán Bravo
- */
 public class Pedido implements VOPedido
 {
 	/* ****************************************************************
@@ -58,7 +34,7 @@ public class Pedido implements VOPedido
 	 */
 	public Pedido ()
 	{
-		this.id = 0;
+	this.id = 0;
 	this.fechaEsperada = new java.util.Date(0);
 	this.fechaEntrega = new Date(0);
 	this.evaluacionCantidad = "";
@@ -79,11 +55,11 @@ public class Pedido implements VOPedido
 	 * @param finalizado
 	 * @param NITProveedor
 	 */
-	public Pedido ( int id2,java.util.Date fechaEsperada2,	java.util.Date fechaEntrega2,String evaluacionCantidad,String evaluacionCalidad,int calificacion, int finalizado, int NITProveedor) 
+	public Pedido ( int id,java.util.Date fechaEsperada,	java.util.Date fechaEntrega,String evaluacionCantidad,String evaluacionCalidad,int calificacion, int finalizado, int NITProveedor) 
 	{
-		this.id = id2;
-		this.fechaEsperada = fechaEsperada2;
-		this.fechaEntrega = fechaEntrega2;
+		this.id = id;
+		this.fechaEsperada = fechaEsperada;
+		this.fechaEntrega = fechaEntrega;
 		this.evaluacionCantidad = evaluacionCantidad;
 		this.evaluacionCalidad = evaluacionCalidad;
 		this.calificacion = calificacion;
@@ -97,7 +73,7 @@ public class Pedido implements VOPedido
 		return id;
 	}
 
-	public void setIdBar(int id) 
+	public void setId(int id) 
 	{
 		this.id = id;
 	}
@@ -138,8 +114,6 @@ public class Pedido implements VOPedido
 
 	public void setEvaluacionCalidad(String evaluacionCalidad) 
 	{
-		
-		
 		this.evaluacionCalidad = evaluacionCalidad;
 	}
 	
