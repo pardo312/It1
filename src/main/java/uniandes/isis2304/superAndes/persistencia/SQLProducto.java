@@ -157,7 +157,7 @@ class SQLProducto
 	}
 
 	public long pagarCarrito(PersistenceManager pm, long idCarrito) {
-		Query q = pm.newQuery(SQL,"UPDATE PRODUCTO SET usado = 0 WHERE idCarrito = " +idCarrito );
+		Query q = pm.newQuery(SQL,"UPDATE CARRITODECOMPRA SET usado = 0 WHERE idCarrito = " +idCarrito );
 		return (long) q.executeUnique();   	
 	}
 

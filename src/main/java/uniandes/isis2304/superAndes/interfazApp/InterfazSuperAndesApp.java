@@ -1221,7 +1221,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 						throw new Exception ("No se pudo crear factura con numero: " + numeroDeFactura);
 					}
 					String resultado = "En pagarCarrito\n\n";
-					resultado += "proveedor adicionado exitosamente: " + tb;
+					resultado += "carrito pagado exitosamente: " + tb;
 					resultado += "\n Operación terminada";
 					panelDatos.actualizarInterfaz(resultado);
 
