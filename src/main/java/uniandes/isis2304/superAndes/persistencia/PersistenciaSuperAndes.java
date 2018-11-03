@@ -1282,12 +1282,14 @@ public class PersistenciaSuperAndes
 	}
 	public void abandonarCarrito(long idCarrito)
 	{
+		String codigoDeBarras = "";
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
 		try
 		{
 			tx.begin();
 			sqlCarritoDeCompras.devolverProducto(pm,idCarrito);
+			sqlProducto.abandonarCarrito(pm, idCarrito, codigoDeBarras);
 			tx.commit();
 
 			log.trace ("Abandonando el carrito :  " + idCarrito );

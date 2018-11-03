@@ -143,6 +143,18 @@ class SQLProducto
 		return (long) q.executeUnique();   	
 	}
 	
+	public void abandonarCarrito(PersistenceManager pm,long idCarrito, String codigoDeBarras)
+	{
+		List<Producto> productosEnCarrito = buscarCarrito(pm, idCarrito);
+		for (int i = 0; i < productosEnCarrito.size(); i++) 
+		{
+			Producto productoActual = productosEnCarrito.get(i);
+			Query q = pm.newQuery(SQL,"UPDATE PRODUCTO SET IDCARRITO ="+ 1+ " WHERE codigoDeBarras = " +productoActual.getCodigoDeBarras() );
+			q.executeUnique(); 
+		}
+	
+	}
+	
 	public Long devolverProducto(PersistenceManager pm,String codigoDeBarras)
 	{
 		Query q = pm.newQuery(SQL,"DELETE FROM PRODUCTO WHERE CODIGODEBARRAS = " + codigoDeBarras );
@@ -155,6 +167,7 @@ class SQLProducto
 		q.setResultClass(Producto.class);		
 		return  (List<Producto>)q.executeList() ;		
 	}
+	
 
 	public long pagarCarrito(PersistenceManager pm, long idCarrito) {
 		Query q = pm.newQuery(SQL,"UPDATE CARRITODECOMPRA SET usado = 0 WHERE idCarrito = " +idCarrito );
@@ -167,10 +180,13 @@ class SQLProducto
 		for (int j = 0; j < productosAbandonados.size(); j++) {
 			Producto productoActual = productosAbandonados.get(j);
 			
-			Query estanteProducto = pm.newQuery(SQL, "SELECT IDCONTENEDOR FROM " + "PRODUCTO" + " WHERE NOMBRE = '" + productoActual.getNombre()+ "'" );
-			estanteProducto.executeUnique(); 
-			Query q = pm.newQuery(SQL, "UPDATE PRODUCTO SET IDCONTENEDOR ="+ estanteProducto+ " WHERE NOMBRE = '" + productoActual.getNombre() + "'" );
-			q.executeUnique(); 
+			Query estanteProducto = pm.newQuery(SQL, "select * from (SELECT IDCONTENEDOR FROM " + "PRODUCTO" + " WHERE NOMBRE = '" + productoActual.getNombre()+ "') where rownum <2" );
+			estanteProducto.setResultClass(Producto.class);
+			
+			List<Producto> p = (List<Producto>)estanteProducto.executeList() ;		
+			
+			Query q = pm.newQuery(SQL, "UPDATE PRODUCTO SET IDCONTENEDOR ="+ productoActual.getIDContenedor()+ " WHERE NOMBRE = '" + productoActual.getNombre() + "'" );
+			q.execute(); 
 			
 		}
 		
