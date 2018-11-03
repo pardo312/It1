@@ -1595,6 +1595,42 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 		return resp;
 	}
 	/* ****************************************************************
+	 * 			Consulta 7
+	 *****************************************************************/
+	public void Consulta7( )
+	{
+		String unidadTiempo = JOptionPane.showInputDialog (this, "unidad de tiempo? (semana, mes, año)", "RFC7", JOptionPane.QUESTION_MESSAGE);
+		String tipoProducto = JOptionPane.showInputDialog (this, "tipo Producto? (familiar, personal)", "RFC7", JOptionPane.QUESTION_MESSAGE);
+		
+		
+		try 
+		{
+			List <uniandes.isis2304.superAndes.negocio.Consulta7> lista = superAndes.consulta7(unidadTiempo, tipoProducto);
+
+			String resultado = "En listaProveedor";
+			resultado +=  "\n" + listarConsulta7(lista);
+			panelDatos.actualizarInterfaz(resultado);
+			resultado += "\n Operación terminada";
+		} 
+		catch (Exception e) 
+		{
+			//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+	}
+
+	private String listarConsulta7(List<uniandes.isis2304.superAndes.negocio.Consulta7> lista) 
+	{
+		String resp = "Resultado Consulta 3:\n";
+		int i = 1;
+		for (uniandes.isis2304.superAndes.negocio.Consulta7 tb : lista)
+		{
+			resp += i++ + ". " + tb.toString() + "\n";
+		}
+		return resp;
+	}
+	/* ****************************************************************
 	 * 			Métodos administrativos
 	 *****************************************************************/
 	/**

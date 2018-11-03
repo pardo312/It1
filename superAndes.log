@@ -2694,3 +2694,48 @@ ORA-02291: restricción de integridad (ISIS2304B231820.SYS_C00482272) violada - 
 13:31:54,414 (main) INFO  [uniandes.isis2304.superAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
 13:31:54,414 (main) INFO  [uniandes.isis2304.superAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
 13:31:54,414 (main) INFO  [uniandes.isis2304.superAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+15:23:52,065 (main) INFO  [uniandes.isis2304.superAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+15:23:52,065 (main) INFO  [uniandes.isis2304.superAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+15:23:52,081 (main) INFO  [uniandes.isis2304.superAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+15:24:34,750 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los Pedidos
+15:24:35,078 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando Pedidos: 13 existentes
+15:24:35,093 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando consulta
+15:24:35,125 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando Consulta: 1 existentes
+15:24:35,125 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando consulta
+15:24:35,156 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando Consulta: 1 existentes
+15:24:35,156 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando consulta
+15:24:35,171 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando Consulta: 1 existentes
+15:24:35,171 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando consulta
+15:24:35,203 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando Consulta: 1 existentes
+15:24:35,203 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando consulta
+15:24:35,218 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando Consulta: 1 existentes
+15:24:35,218 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando consulta
+15:24:35,250 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando Consulta: 1 existentes
+15:24:35,250 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando consulta
+15:24:35,281 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando Consulta: 1 existentes
+15:24:35,281 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando consulta
+15:24:35,308 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando Consulta: 1 existentes
+15:24:35,309 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando consulta
+15:24:35,325 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando Consulta: 1 existentes
+15:24:35,325 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando consulta
+15:24:35,340 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando Consulta: 1 existentes
+15:24:35,340 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando consulta
+15:24:35,379 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando Consulta: 1 existentes
+15:24:35,379 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando consulta
+15:24:35,402 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando Consulta: 1 existentes
+15:24:35,403 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando consulta
+15:24:35,426 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando Consulta: 1 existentes
+15:28:55,086 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Actualizando el pedido: 15
+15:28:55,164 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Actualizando el pedido: 15
+15:29:26,980 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el carrito: 0
+15:29:27,068 (AWT-EventQueue-0) ERROR [uniandes.isis2304.superAndes.persistencia.PersistenciaSuperAndes] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO CARRITODECOMPRA(idCarrito,usado,nitcliente) values (294, 1,'10019' )".
+ORA-02291: restricción de integridad (ISIS2304B231820.SYS_C00482271) violada - clave principal no encontrada
+
+15:29:27,084 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el carrito: 0
+15:29:42,789 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el carrito: 0
+15:29:42,828 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el carrito: 0
+15:29:54,698 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el carrito: 0
+15:29:54,729 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el carrito: 0
+15:30:00,568 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - recogiendo los productos 
+15:30:00,583 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - recogiendo los productos
+15:35:55,274 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando consulta

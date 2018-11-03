@@ -479,6 +479,19 @@ public class SuperAndes
         log.info ("Generando Consulta: " + voProd.size() + " existentes");
         return voProd;
 	}
+	public List<uniandes.isis2304.superAndes.negocio.Consulta7> consulta7(String unidadTiempo, String tipoProducto) {
+		log.info ("Generando consulta");        
+        List<Consulta7> voProd = new LinkedList<Consulta7> ();
+        for (Consulta7 tb : pp.Consulta7(unidadTiempo, tipoProducto))
+        {
+        	voProd.add (tb);
+        }
+        log.info ("Generando Consulta: " + voProd.size() + " existentes");
+        return voProd;
+	}
+
+	
+
 
 	//Limpiar SuperAndes
 	public long [] limpiarSuperAndes ()
@@ -489,7 +502,6 @@ public class SuperAndes
 		return borrrados;
 	}
 
-	
 
 	
 	

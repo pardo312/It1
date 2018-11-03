@@ -83,6 +83,12 @@
 					"label": "RFC4",
 					"event": "Consulta4" 
 				}
+				,
+				{
+					
+					"label": "RFC7",
+					"event": "Consulta7" 
+				}
 			]
 		},		
 		{ "menuTitle": "Otros",
