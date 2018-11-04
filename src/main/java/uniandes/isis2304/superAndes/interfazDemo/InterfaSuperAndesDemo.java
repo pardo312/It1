@@ -374,7 +374,7 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
     	{
     		// Ejecución de la demo y recolección de los resultados
 			// ATENCIÓN: En una aplicación real, los datos JAMÁS están en el código
-    		int cedula = 8877;		
+    		int cedula = nextvalCedula();		
     		String nombre = "CLIENTE TEST"	;
     		String email = "cliente@test.com";
     		boolean errorCliente = false;
@@ -759,7 +759,14 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
 		
 		
 	}
-    
+    private int nextvalCedula()
+   	{
+   		int resp =(int) (Math.random() * 100) + 21;;
+   		
+   			return Integer.parseInt("10"+resp);
+   		
+   		
+   	}
     /* ****************************************************************
 	 * 			Listar De tablas
 	 *****************************************************************/
