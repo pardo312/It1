@@ -494,6 +494,11 @@ public class PersistenciaSuperAndes
 		return sqlProducto.darProductos(pmf.getPersistenceManager());
 	}
 
+	public List<CarritoDeCompras> darCarritos() {
+
+
+		return sqlCarritoDeCompras.darCarritosDeCompra(pmf.getPersistenceManager());
+	}
 	public List<Factura> darFacturas() {
 
 
@@ -1536,7 +1541,7 @@ public class PersistenciaSuperAndes
 
 
 	}
-	public void abandonarCarrito(long idCarrito)
+	public CarritoDeCompras abandonarCarrito(long idCarrito)
 	{
 		String codigoDeBarras = "";
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -1544,19 +1549,26 @@ public class PersistenciaSuperAndes
 		try
 		{
 			tx.begin();
-			sqlCarritoDeCompras.devolverProducto(pm,idCarrito);
+			long p = sqlCarritoDeCompras.devolverProducto(pm,idCarrito);
 			sqlProducto.abandonarCarrito(pm, idCarrito, codigoDeBarras);
 			tx.commit();
 
 			log.trace ("Abandonando el carrito :  " + idCarrito );
-
+			if(p == 0)
+			{
+				return null;
+				
+			}
+			else{
+				return new CarritoDeCompras( idCarrito , 0 , "1" ,1);
+			}
 
 		}
 		catch (Exception e)
 		{
 			e.printStackTrace();
 			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
-
+			return null;
 		}
 		finally
 		{

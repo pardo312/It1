@@ -113,6 +113,17 @@ public class SuperAndes
 		log.info ("Generando los VO de Productos: " + voProd.size() + " existentes");
 		return voProd;
 	}
+	
+	public List<CarritoDeCompras> darCarritos() {
+		log.info ("Generando los VO de Carrito");        
+		List<CarritoDeCompras> voProd = new LinkedList<CarritoDeCompras> ();
+		for (CarritoDeCompras tb : pp.darCarritos ())
+		{
+			voProd.add (tb);
+		}
+		log.info ("Generando los VO de Productos: " + voProd.size() + "existentes");
+		return voProd;
+	}
 
 	public List<Factura> darFacturas() {
 		log.info ("Generando los VO de Producto");        
@@ -572,13 +583,14 @@ public class SuperAndes
 	}
 
 
-	public void abandonarCarrito(long idCarrito)
+	public CarritoDeCompras abandonarCarrito(long idCarrito)
 	{
 
 
 		log.info ("abandonando carrito: " + idCarrito);
-		pp.abandonarCarrito(idCarrito);	
+		CarritoDeCompras p = pp.abandonarCarrito(idCarrito);	
 		log.info ("Carrito Abandonado ");
+		return p;
 
 	}
 

@@ -106,7 +106,7 @@
 		{ "menuTitle": "Iteracion 2",
 		  "options":
 			[
-			{
+				{
 					"label": "Adicion y devolucion de Producto a carrito Exitoso",
 					"event": "demoAdicionarEliminarProductoCarritoExitoso"
 				}
@@ -114,6 +114,15 @@
 				{
 					"label": "Adicion y devolucion de Producto a carrito No Exitoso",
 					"event": "demoAdicionarEliminarProductoCarritoNoExitoso"
+				},
+				{
+					"label": "Abandonando un carrito Exitoso",
+					"event": "demoAbandonarUnCarritoExitoso"
+				}
+				,
+				{
+					"label": "Abandonando un carrito No Exitoso",
+					"event": "demoAbandonarUnCarritoNoExitoso"
 				}
 			]
 		}

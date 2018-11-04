@@ -82,7 +82,8 @@ class SQLCarritoDeCompras
 	public List<CarritoDeCompras> darCarritosDeCompra(PersistenceManager pm)
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + "CARRITODECOMPRA");
-		return (List<CarritoDeCompras>) q.executeList();
+		List<CarritoDeCompras> w = (List<CarritoDeCompras>) q.executeList();
+		return w;
 	}
 	
 	public long devolverProducto(PersistenceManager pm, long idCarrito) 
