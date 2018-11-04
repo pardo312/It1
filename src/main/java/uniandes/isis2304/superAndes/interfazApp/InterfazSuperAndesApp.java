@@ -547,7 +547,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 
 			if ( nombre != null && email != null) {
 
-				VOClienteNatural tb = superAndes.registrarClienteNatural(cedula, nombre, email);
+				VOClienteNatural tb = superAndes.registrarClienteNatural(cedula, nombre, email, 1);
 				if (tb == null)
 				{
 					throw new Exception ("No se pudo crear un cliente natural con nombre: " + cedula);

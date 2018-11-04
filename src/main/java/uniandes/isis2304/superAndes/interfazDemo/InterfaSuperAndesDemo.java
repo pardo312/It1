@@ -47,8 +47,11 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 
+import uniandes.isis2304.superAndes.negocio.ClienteNatural;
 import uniandes.isis2304.superAndes.negocio.Proveedor;
 import uniandes.isis2304.superAndes.negocio.SuperAndes;
+import uniandes.isis2304.superAndes.negocio.VOClienteEmpresa;
+import uniandes.isis2304.superAndes.negocio.VOClienteNatural;
 import uniandes.isis2304.superAndes.negocio.VOProveedor;
 
 /**
@@ -355,6 +358,237 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
     }
     
     /* ****************************************************************
+	 * 			Demos de Clientes
+	 *****************************************************************/
+    public void demoClienteNaturalExitoso( )
+    {
+    	try 
+    	{
+    		// Ejecución de la demo y recolección de los resultados
+			// ATENCIÓN: En una aplicación real, los datos JAMÁS están en el código
+    		int cedula = 9995;		
+    		String nombre = "CLIENTE TEST"	;
+    		String email = "cliente@test.com";
+    		boolean errorCliente = false;
+			ClienteNatural cliente = superAndes.registrarClienteNatural(cedula, nombre, email, 1) ;
+			if (cliente == null)
+			{
+				cliente = superAndes.darClienteNatural(cedula);
+				errorCliente = true;
+			}
+			List <VOClienteNatural> lista = superAndes.darVOClienteNatural();
+			long tbEliminados = superAndes.eliminarClienteNatural(cliente.getCedula());
+			
+			// Generación de la cadena de caracteres con la traza de la ejecución de la demo
+			String resultado = "Demo de creación y listado de Proveedores\n\n";
+			resultado += "\n\n************ Generando datos de prueba ************ \n";
+			if (errorCliente)
+			{
+				resultado += "*** Exception creando Cliente !!\n";
+				resultado += "*** Es probable que ese cliente ya existiera y hay restricción de UNICIDAD sobre el id del cliente Natural\n";
+				resultado += "*** Revise el log de superAndes para más detalles\n";
+			}
+			resultado += "Adicionado el Cliente natural con nombre: " + nombre + "\n";
+			resultado += "\n\n************ Ejecutando la demo ************ \n";
+			resultado +=  "\n " + listarClienteNatrual(lista);
+			resultado += "\n\n************ Limpiando la base de datos ************ \n";
+			resultado += tbEliminados + " Proveedores eliminados\n";
+			
+			List <VOClienteNatural> listaDespues = superAndes.darVOClienteNatural();
+			resultado += "\n\n************ Despues de eliminar la lista queda asi:************ \n";
+			resultado +=  "\n " + listarClienteNatrual(listaDespues);
+			resultado += "\n Demo terminada";
+   
+			panelDatos.actualizarInterfaz(resultado);
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+    
+    public void demoClienteNaturalNoExitoso( )
+    {
+    	try 
+    	{
+    		
+    		int cedula = 9995;		
+    		String nombre = "CLIENTE TEST"	;
+    		String email = "cliente@test.com";
+    		boolean errorCliente = false;
+    		ClienteNatural cliente = superAndes.registrarClienteNatural(cedula, nombre, email,0) ;
+			if (cliente == null)
+			{
+				errorCliente = true;
+			}
+			
+			// Generación de la cadena de caracteres con la traza de la ejecución de la demo
+			String resultado = "Demo de creación y listado de Clientes\n\n";
+			resultado += "\n\n************ Generando datos de prueba ************ \n";
+			if (errorCliente)
+			{
+				resultado += "Adicionado el cliente con nombre: " + nombre + "\n";
+				resultado += "\n\n************ Estado de la base de datos antes de la operacion ************ \n";
+				
+				List <VOClienteNatural> lista = superAndes.darVOClienteNatural();
+				resultado +=  "\n " + listarClienteNatrual(lista)+  "\n\n ";
+				
+				resultado += "\n\n************ Error Al insertar************ \n\n";				
+				
+				resultado += "*** Exception creando proveedor !!\n";
+				resultado += "*** Es probable que ese cliente natural ya existiera y hay restricción de UNICIDAD sobre la cedula del cliente\n";
+				resultado += "*** Revise el log de superAndes para más detalles\n";
+				
+				
+				List <VOClienteNatural> listaDespues = superAndes.darVOClienteNatural();
+				resultado += "\n\n************ Despues de el registro queda asi************ \n";
+				resultado +=  "\n " + listarClienteNatrual(listaDespues);
+				
+				panelDatos.actualizarInterfaz(resultado);
+			}
+			else
+			{
+				List <VOClienteNatural> lista = superAndes.darVOClienteNatural();
+				long tbEliminados = superAndes.eliminarClienteNatural(cliente.getCedula());
+				resultado += "Adicionado el cliente con nombre: " + nombre + "\n";
+				resultado += "\n\n************ Ejecutando la demo ************ \n";
+				resultado +=  "\n " + listarClienteNatrual(lista);
+				resultado += "\n\n************ Limpiando la base de datos ************ \n";
+				resultado += tbEliminados + " Clientes eliminados\n";
+				
+				List <VOClienteNatural> listaDespues = superAndes.darVOClienteNatural();
+				resultado += "\n\n************ Despues de eliminar la lista queda asi:************ \n";
+				resultado +=  "\n " + listarClienteNatrual(listaDespues);
+				resultado += "\n Demo terminada";
+	   
+				panelDatos.actualizarInterfaz(resultado);
+				
+			}
+			
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+    
+    public void demoClienteEmpresarialExitoso( )
+    {
+    	try 
+    	{
+    		// Ejecución de la demo y recolección de los resultados
+			// ATENCIÓN: En una aplicación real, los datos JAMÁS están en el código
+			String nombreProveedor = "Juan Manuel";
+			boolean errorProveedor = false;
+			Proveedor proveedor = superAndes.registrarProveedor(nombreProveedor,0) ;
+			if (proveedor == null)
+			{
+				proveedor = superAndes.darProveedor(nombreProveedor);
+				errorProveedor = true;
+			}
+			List <VOProveedor> lista = superAndes.darVOProveedor();
+			long tbEliminados = superAndes.eliminarProveedor((int) proveedor.getNIT());
+			
+			// Generación de la cadena de caracteres con la traza de la ejecución de la demo
+			String resultado = "Demo de creación y listado de Proveedores\n\n";
+			resultado += "\n\n************ Generando datos de prueba ************ \n";
+			if (errorProveedor)
+			{
+				resultado += "*** Exception creando Proveedor !!\n";
+				resultado += "*** Es probable que ese proveedor ya existiera y hay restricción de UNICIDAD sobre el nombre del proveedor\n";
+				resultado += "*** Revise el log de superAndes para más detalles\n";
+			}
+			resultado += "Adicionado el proveedor con nombre: " + nombreProveedor + "\n";
+			resultado += "\n\n************ Ejecutando la demo ************ \n";
+			resultado +=  "\n " + listarProveedores(lista);
+			resultado += "\n\n************ Limpiando la base de datos ************ \n";
+			resultado += tbEliminados + " Proveedores eliminados\n";
+			
+			List <VOProveedor> listaDespues = superAndes.darVOProveedor();
+			resultado += "\n\n************ Despues de eliminar la lista queda asi:************ \n";
+			resultado +=  "\n " + listarProveedores(listaDespues);
+			resultado += "\n Demo terminada";
+   
+			panelDatos.actualizarInterfaz(resultado);
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+    
+    public void demoClienteEmpresarialNoExitoso( )
+    {
+    	try 
+    	{
+    		
+			String nombreProveedor = "Pepe Sierra Nevada";
+			boolean errorProveedor = false;
+			Proveedor proveedor = superAndes.registrarProveedor(nombreProveedor,1) ;
+			if (proveedor == null)
+			{
+				errorProveedor = true;
+			}
+			
+			// Generación de la cadena de caracteres con la traza de la ejecución de la demo
+			String resultado = "Demo de creación y listado de Proveedores\n\n";
+			resultado += "\n\n************ Generando datos de prueba ************ \n";
+			if (errorProveedor)
+			{
+				resultado += "Adicionado el proveedor con nombre: " + nombreProveedor + "\n";
+				resultado += "\n\n************ Estado de la base de datos antes de la operacion ************ \n";
+				
+				List <VOProveedor> lista = superAndes.darVOProveedor();
+				resultado +=  "\n " + listarProveedores(lista)+  "\n\n ";
+				
+				resultado += "\n\n************ Error Al insertar************ \n\n";				
+				
+				resultado += "*** Exception creando proveedor !!\n";
+				resultado += "*** Es probable que ese proveedor ya existiera y hay restricción de UNICIDAD sobre el nombre del proveedor\n";
+				resultado += "*** Revise el log de superAndes para más detalles\n";
+				
+				
+				List <VOProveedor> listaDespues = superAndes.darVOProveedor();
+				resultado += "\n\n************ Despues de el registro queda asi************ \n";
+				resultado +=  "\n " + listarProveedores(listaDespues);
+				
+				panelDatos.actualizarInterfaz(resultado);
+			}
+			else
+			{
+				List <VOProveedor> lista = superAndes.darVOProveedor();
+				long tbEliminados = superAndes.eliminarProveedor((int) proveedor.getNIT());
+				resultado += "Adicionado el proveedor con nombre: " + nombreProveedor + "\n";
+				resultado += "\n\n************ Ejecutando la demo ************ \n";
+				resultado +=  "\n " + listarProveedores(lista);
+				resultado += "\n\n************ Limpiando la base de datos ************ \n";
+				resultado += tbEliminados + " Proveedores eliminados\n";
+				
+				List <VOProveedor> listaDespues = superAndes.darVOProveedor();
+				resultado += "\n\n************ Despues de eliminar la lista queda asi:************ \n";
+				resultado +=  "\n " + listarProveedores(listaDespues);
+				resultado += "\n Demo terminada";
+	   
+				panelDatos.actualizarInterfaz(resultado);
+				
+			}
+			
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+    
+    /* ****************************************************************
 	 * 			Demos de Producto
 	 *****************************************************************/
     
@@ -462,6 +696,26 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
     	String resp = "Los Proveedores existentes son:\n";
     	int i = 1;
         for (VOProveedor tb : lista)
+        {
+        	resp += i++ + ". " + tb.toString() + "\n";
+        }
+        return resp;
+	}
+    private String listarClienteNatrual(List<VOClienteNatural> lista) 
+    {
+    	String resp = "Los Clientes naturales existentes son:\n";
+    	int i = 1;
+        for (VOClienteNatural tb : lista)
+        {
+        	resp += i++ + ". " + tb.toString() + "\n";
+        }
+        return resp;
+	}
+    private String listarClienteEmpresa(List<VOClienteEmpresa> lista) 
+    {
+    	String resp = "Los Clientes empresariales existentes son:\n";
+    	int i = 1;
+        for (VOClienteEmpresa tb : lista)
         {
         	resp += i++ + ". " + tb.toString() + "\n";
         }
