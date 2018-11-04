@@ -78,9 +78,11 @@ class SQLClienteNatural
 	 */
 	public List<ClienteNatural> darClientesNaturales (PersistenceManager pm)
 	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + "CLIENTENATURAL");
+		Query q = pm.newQuery(SQL, "SELECT CEDULA,NOMBRE,EMAIL FROM " + "CLIENTENATURAL");
 		q.setResultClass(ClienteNatural.class);
-		return (List<ClienteNatural>) q.executeList();
+		List<ClienteNatural> w = (List<ClienteNatural>) q.executeList();
+		return w ;
+
 	}
 
 	public long eliminarClienteNatural(PersistenceManager pm, int cedula) {
