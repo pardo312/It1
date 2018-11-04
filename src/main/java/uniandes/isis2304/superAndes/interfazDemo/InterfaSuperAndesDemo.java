@@ -786,6 +786,75 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
   			panelDatos.actualizarInterfaz(resultado);
   		}
       }
+      public void demoContenedorNoExitoso( )
+      {
+      	try 
+        	{
+      		int id = 30;
+      		int capacidadPeso = 100;
+      		int capacidadVolumen = 200;
+      		String unidadesPeso = "kg";
+      		String unidadesVolumen = "metros";
+      		int idBodegaSucursal = 9;
+      		boolean errorContenedor = false;
+  			
+    			VOContenedor Contenedor = superAndes.registrarContenedor(id, capacidadVolumen, capacidadPeso, unidadesPeso, unidadesVolumen, idBodegaSucursal, 0) ;
+    			if (Contenedor == null)
+    			{
+    				errorContenedor = true;
+    			}
+    			
+    			// Generación de la cadena de caracteres con la traza de la ejecución de la demo
+    			String resultado = "Demo de creación y listado de Contenedor\n\n";
+    			resultado += "\n\n************ Generando datos de prueba ************ \n";
+    			if (errorContenedor)
+    			{
+    				resultado += "Adicionado el contenedor con id: " + id + "\n";
+    				resultado += "\n\n************ Estado de la base de datos antes de la operacion ************ \n";
+    				
+    				List <Contenedor> lista = superAndes.darContenedores();
+    				resultado +=  "\n " + listarContenedores(lista)+  "\n\n ";
+    				
+    				resultado += "\n\n************ Error Al insertar************ \n\n";				
+    				
+    				resultado += "*** Exception creando contenedor !!\n";
+    				resultado += "*** Es probable que ese contenedor ya existiera y hay restricción de UNICIDAD sobre el id del contenedor \n";
+    				resultado += "*** Revise el log de superAndes para más detalles\n";
+    				
+    				
+    				List <Contenedor> listaDespues = superAndes.darContenedores();
+    				resultado += "\n\n************ Despues de el registro queda asi************ \n";
+    				resultado +=  "\n " + listarContenedores(listaDespues);
+    				
+    				panelDatos.actualizarInterfaz(resultado);
+    			}
+    			else
+    			{
+    				List <Contenedor> lista = superAndes.darContenedores();
+    				long tbEliminados = superAndes.eliminarContenedor( (int)Contenedor.getId());
+    				resultado += "Adicionado el contenedor con id: " + id + "\n";
+    				resultado += "\n\n************ Ejecutando la demo ************ \n";
+    				resultado +=  "\n " + listarContenedores(lista);
+    				resultado += "\n\n************ Limpiando la base de datos ************ \n";
+    				resultado += tbEliminados + " contenedores eliminadas\n";
+    				
+    				List <Contenedor> listaDespues = superAndes.darContenedores();
+    				resultado += "\n\n************ Despues de eliminar la lista queda asi:************ \n";
+    				resultado +=  "\n " + listarContenedores(listaDespues);
+    				resultado += "\n Demo terminada";
+    	   
+    				panelDatos.actualizarInterfaz(resultado);
+    				
+    			}
+    			
+    		} 
+        	catch (Exception e) 
+        	{
+//    			e.printStackTrace();
+    			String resultado = generarMensajeError(e);
+    			panelDatos.actualizarInterfaz(resultado);
+    		}
+      }
 
     /* ****************************************************************
 	 * 			Demos de Producto
@@ -1396,7 +1465,7 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
         return resp;
 	}
 
-    private String listarContedeores(List<Contenedor> lista) 
+    private String listarContenedores(List<Contenedor> lista) 
     {
     	String resp = "Los contenedores existentes son:\n";
     	int i = 1;

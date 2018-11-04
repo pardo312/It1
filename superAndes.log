@@ -4877,3 +4877,56 @@ ORA-02291: restricción de integridad (ISIS2304B231820.SYS_C00461382) violada - 
 15:37:01,518 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando la factura:  null
 15:37:01,518 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Producto
 15:37:01,640 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando las facturas: 21 existentes
+15:44:38,284 (main) INFO  [uniandes.isis2304.superAndes.interfazDemo.InterfaSuperAndesDemo] - Se encontró un archivo de configuración válido: Interfaz
+15:44:38,285 (main) INFO  [uniandes.isis2304.superAndes.interfazDemo.InterfaSuperAndesDemo] - Se aplica configuración indicada en el archivo de configuración
+15:44:38,304 (main) INFO  [uniandes.isis2304.superAndes.interfazDemo.InterfaSuperAndesDemo] - Se encontró un archivo de configuración válido: Tablas BD
+15:44:53,593 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el contenedor: 30
+15:44:53,869 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el contenedor: 30
+15:44:53,869 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de contenedor
+15:44:53,935 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de sucursal: 28 existentes
+15:44:53,936 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando la sucursal: 30
+15:44:53,947 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando la sucursal 
+15:44:53,948 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de contenedor
+15:44:54,001 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de sucursal: 28 existentes
+15:45:17,753 (main) INFO  [uniandes.isis2304.superAndes.interfazDemo.InterfaSuperAndesDemo] - Se encontró un archivo de configuración válido: Interfaz
+15:45:17,754 (main) INFO  [uniandes.isis2304.superAndes.interfazDemo.InterfaSuperAndesDemo] - Se aplica configuración indicada en el archivo de configuración
+15:45:17,779 (main) INFO  [uniandes.isis2304.superAndes.interfazDemo.InterfaSuperAndesDemo] - Se encontró un archivo de configuración válido: Tablas BD
+15:45:27,484 (main) INFO  [uniandes.isis2304.superAndes.interfazDemo.InterfaSuperAndesDemo] - Se encontró un archivo de configuración válido: Interfaz
+15:45:27,485 (main) INFO  [uniandes.isis2304.superAndes.interfazDemo.InterfaSuperAndesDemo] - Se aplica configuración indicada en el archivo de configuración
+15:45:27,506 (main) INFO  [uniandes.isis2304.superAndes.interfazDemo.InterfaSuperAndesDemo] - Se encontró un archivo de configuración válido: Tablas BD
+15:45:34,699 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el cliente: 10030
+15:45:34,968 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el cliente: 10030
+15:45:34,969 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando consulta
+15:45:40,487 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el cliente: 1056
+15:45:40,587 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el cliente: 1056
+15:45:40,587 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de cliente Natural
+15:45:40,629 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Clientes: 31 existentes
+15:45:40,629 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando el cliente: 0
+15:45:40,643 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando el cliente 
+15:45:40,644 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de cliente Natural
+15:45:40,684 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Clientes: 31 existentes
+15:45:44,343 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el contenedor: 30
+15:45:44,376 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el contenedor: 30
+15:45:44,376 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de contenedor
+15:45:44,426 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de sucursal: 29 existentes
+15:45:44,426 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando la sucursal: 30
+15:45:44,441 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando la sucursal 
+15:45:44,443 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de contenedor
+15:45:44,484 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de sucursal: 29 existentes
+15:58:05,723 (main) INFO  [uniandes.isis2304.superAndes.interfazDemo.InterfaSuperAndesDemo] - Se encontró un archivo de configuración válido: Interfaz
+15:58:05,725 (main) INFO  [uniandes.isis2304.superAndes.interfazDemo.InterfaSuperAndesDemo] - Se aplica configuración indicada en el archivo de configuración
+15:58:05,765 (main) INFO  [uniandes.isis2304.superAndes.interfazDemo.InterfaSuperAndesDemo] - Se encontró un archivo de configuración válido: Tablas BD
+15:58:14,524 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el contenedor: 30
+15:58:14,750 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el contenedor: 30
+15:58:14,751 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de contenedor
+15:58:14,853 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de contenedor : 30 existentes
+15:58:14,853 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando la sucursal: 10
+15:58:14,872 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando la sucursal 
+15:58:14,873 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de contenedor
+15:58:14,921 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de contenedor : 29 existentes
+15:58:21,880 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el contenedor: 30
+15:58:21,916 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el contenedor: 30
+15:58:21,916 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de contenedor
+15:58:21,967 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de contenedor : 29 existentes
+15:58:21,968 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de contenedor
+15:58:22,011 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de contenedor : 29 existentes

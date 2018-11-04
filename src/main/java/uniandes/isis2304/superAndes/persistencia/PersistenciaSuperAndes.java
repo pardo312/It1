@@ -864,6 +864,11 @@ public class PersistenciaSuperAndes
 	{
 		return sqlSucursal.darSucursales(pmf.getPersistenceManager());
 	}
+	
+	public List<Contenedor> darContenedores ()
+	{
+		return sqlContenedor.darContenedores(pmf.getPersistenceManager());
+	}
 	public List<ClienteEmpresa> darClientesEmpresa ()
 	{
 		return sqlClienteEmpresa.darClientesEmpresa(pmf.getPersistenceManager());
