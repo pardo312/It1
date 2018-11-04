@@ -241,10 +241,10 @@ public class SuperAndes
 		return clienteNatural;
 	}	
 
-	public ClienteEmpresa registrarClienteEmpresa(String NIT, String direccion)
+	public ClienteEmpresa registrarClienteEmpresa(String NIT, String direccion, int i)
 	{
 		log.info ("Adicionando el cliente: " + NIT);
-		ClienteEmpresa clienteEmpresa = pp.registrarClienteEmpresa(NIT, direccion) ;		
+		ClienteEmpresa clienteEmpresa = pp.registrarClienteEmpresa(NIT, direccion , i) ;		
 		log.info ("Adicionando el cliente: " + NIT);
 		return clienteEmpresa;
 	}
@@ -611,10 +611,29 @@ public class SuperAndes
 	{
 		
 		log.info ("Eliminando el cliente: " + cedula);
-		long p = pp.eliminarProveedor (cedula);		
+		long p = pp.eliminarClienteNatural (cedula);		
 		log.info ("Eliminando el cliente ");
 		return p;	
 	}
+	
+	public ClienteEmpresa darClienteEmpresa(String NIT)
+	{
+		
+			log.info ("Generando consulta");        
+	        List<ClienteEmpresa> voProv = new LinkedList<ClienteEmpresa> ();
+	        ClienteEmpresa prov = voProv.get(0);
+	        log.info ("Generando Consulta: " + voProv.size() + " existentes");
+	        return prov;	
+	}
+	public long eliminarClienteEmpresa (String NIT)
+	{
+		
+		log.info ("Eliminando el cliente: " + NIT);
+		long p = pp.eliminarClienteEmpresa (NIT);		
+		log.info ("Eliminando el cliente ");
+		return p;	
+	}
+	
 	
 
     /* ****************************************************************
@@ -629,6 +648,7 @@ public class SuperAndes
 		log.info ("Limpiando la BD de SuperAndes: Listo!");
 		return borrrados;
 	}
+
 
 
 	

@@ -580,7 +580,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 
 			if ( NIT != null && direccion != null) {
 
-				VOClienteEmpresa tb = superAndes.registrarClienteEmpresa(NIT, direccion);
+				VOClienteEmpresa tb = superAndes.registrarClienteEmpresa(NIT, direccion, 1);
 				if (tb == null)
 				{
 					throw new Exception ("No se pudo crear un cliente empresarial con nombre: " + NIT);

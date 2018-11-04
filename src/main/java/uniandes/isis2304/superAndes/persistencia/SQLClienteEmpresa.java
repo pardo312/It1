@@ -78,6 +78,11 @@ class SQLClienteEmpresa
 		q.setResultClass(Proveedor.class);
 		return (List<ClienteEmpresa>) q.executeList();
 	}
-	
+
+
+	public long eliminarClienteEmpresa(PersistenceManager pm, String NIT) {
+		 Query q = pm.newQuery(SQL, "DELETE FROM " + "ClienteEmpresa "+ "WHERE NIT = '"+NIT+"'");
+	        return (long) q.executeUnique();  
+	}
 
 }
