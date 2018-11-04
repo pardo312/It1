@@ -283,6 +283,17 @@ public class SuperAndes
 		return voProd;
 
 	}
+	public List<Contenedor> darContenedores() {
+		log.info ("Generando los VO de contenedor");        
+		List<Contenedor> voProd = new LinkedList<Contenedor> ();
+		for (Contenedor tb : pp.darContenedores())
+		{
+			voProd.add (tb);
+		}
+		log.info ("Generando los VO de contenedor : " + voProd.size() + " existentes");
+		return voProd;
+
+	}
 
 
 	public Cliente registrarCliente(int idCliente, int puntosDeCompra, String nitCliente, int cedulaCliente)

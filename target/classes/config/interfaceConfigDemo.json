@@ -76,6 +76,11 @@
 				}
 				,
 				{
+					"label": "Registro Contenedor No Exitoso",
+					"event": "demoContenedorNoExitoso"
+				}
+				,
+				{
 					"label": "Registrar venta producto Exitoso",
 					"event": "demoRegistrarVentaDeProducto"
 				}
