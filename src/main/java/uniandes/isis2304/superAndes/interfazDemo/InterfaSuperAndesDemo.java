@@ -1739,14 +1739,14 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
     {
     	try 
     	{   		
-    		long idCarrito = 280;
+    		int idCarrito = 280;
 			
     		
 			String resultado = "Demo de creación y listado de Productos\n\n";
 						
 			resultado += "\n\n************ Base de datos antes de Operacion: ************ \n";
-			List <Producto> listaAntes = superAndes.darVOProducto();
-			resultado +=  "\n " + listarProductos(listaAntes)+  "\n\n ";
+			List <CarritoDeCompras> listaAntes = superAndes.darCarritos();
+			resultado +=  "\n " + listarCarritos(listaAntes)+  "\n\n ";
 
 			CarritoDeCompras pe = superAndes.abandonarCarrito(idCarrito) ;	
 			if(pe == null)
@@ -1786,7 +1786,7 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
 			
 			resultado += "\n\n************ Limpiando la base de datos ************ \n";
 			
-			resultado += pe.getID() + "<----- Carrito Abandonado\n";			
+			resultado += pe.getIDCarrito() + "<----- Carrito Abandonado\n";			
 			List <CarritoDeCompras> listaDespues = superAndes.darCarritos();
 			resultado += "\n\n************ Despues de eliminar la lista queda asi:************ \n";
 			resultado +=  "\n " + listarCarritos(listaDespues);
@@ -1807,7 +1807,7 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
     {
     	try 
     	{   		
-    		long idCarrito = 9999;
+    		int idCarrito = 9999;
 			
     		
 			String resultado = "Demo de Abandono de un carrito \n\n";
@@ -1854,7 +1854,7 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
 			
 			resultado += "\n\n************ Limpiando la base de datos ************ \n";
 			
-			resultado += pe.getID() + "<----- Carrito Abandonado\n";			
+			resultado += pe.getIDCarrito() + "<----- Carrito Abandonado\n";			
 			List <CarritoDeCompras> listaDespues = superAndes.darCarritos();
 			resultado += "\n\n************ Despues de eliminar la lista queda asi:************ \n";
 			resultado +=  "\n " + listarCarritos(listaDespues);

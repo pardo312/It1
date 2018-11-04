@@ -815,12 +815,12 @@ public class PersistenciaSuperAndes
 
 	}
 
-	public CarritoDeCompras registrarCarritoDeCompras ( long idCarrito, int usado, String NITProveedor, int cedula)
+	public CarritoDeCompras registrarCarritoDeCompras ( int idCarrito, int usado, String NITProveedor, int cedula)
 	{
 
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
-		long ido = nextval ();
+		int ido = (int)nextval ();
 		try
 		{
 			tx.begin();
@@ -1541,7 +1541,7 @@ public class PersistenciaSuperAndes
 
 
 	}
-	public CarritoDeCompras abandonarCarrito(long idCarrito)
+	public CarritoDeCompras abandonarCarrito(int idCarrito)
 	{
 		String codigoDeBarras = "";
 		PersistenceManager pm = pmf.getPersistenceManager();

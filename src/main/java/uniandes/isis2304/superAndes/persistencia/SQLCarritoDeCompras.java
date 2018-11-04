@@ -82,6 +82,7 @@ class SQLCarritoDeCompras
 	public List<CarritoDeCompras> darCarritosDeCompra(PersistenceManager pm)
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + "CARRITODECOMPRA");
+		q.setResultClass(CarritoDeCompras.class);
 		List<CarritoDeCompras> w = (List<CarritoDeCompras>) q.executeList();
 		return w;
 	}

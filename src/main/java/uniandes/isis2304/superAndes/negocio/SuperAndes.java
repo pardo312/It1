@@ -393,7 +393,7 @@ public class SuperAndes
 	}
 
 
-	public CarritoDeCompras registrarCarritoDeCompras(long idCarrito, int usado, String NIT, int cedula)
+	public CarritoDeCompras registrarCarritoDeCompras(int idCarrito, int usado, String NIT, int cedula)
 	{
 		log.info ("Adicionando el carrito: " + idCarrito);
 		CarritoDeCompras carritoDeCompras = pp.registrarCarritoDeCompras(idCarrito, usado, NIT, cedula);		
@@ -583,7 +583,7 @@ public class SuperAndes
 	}
 
 
-	public CarritoDeCompras abandonarCarrito(long idCarrito)
+	public CarritoDeCompras abandonarCarrito(int idCarrito)
 	{
 
 
