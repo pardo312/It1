@@ -660,7 +660,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 
 			if ( unidadesPeso != null && unidadesVolumen != null) {
 
-				VOContenedor tb = superAndes.registrarContenedor(id, capacidadVolumen, capacidadPeso, unidadesPeso, unidadesVolumen,idBodegaSucursal);
+				VOContenedor tb = superAndes.registrarContenedor(id, capacidadVolumen, capacidadPeso, unidadesPeso, unidadesVolumen,idBodegaSucursal, 1);
 				if (tb == null)
 				{
 					throw new Exception ("No se pudo crear el contenedor de id: " + id);

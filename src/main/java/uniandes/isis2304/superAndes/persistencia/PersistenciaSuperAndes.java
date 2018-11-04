@@ -934,7 +934,12 @@ public class PersistenciaSuperAndes
 	}
 	public Contenedor registrarContenedor(int id, int capacidadVolumen,
 			int capacidadPeso, String unidadesPeso, String unidadesVolumen,
-			int idBodegaSucursal) {PersistenceManager pm = pmf.getPersistenceManager();
+			int idBodegaSucursal, int a) 
+	{
+		if (a == 1)
+		{
+
+		PersistenceManager pm = pmf.getPersistenceManager();
 			Transaction tx=pm.currentTransaction();
 			try
 			{
@@ -961,6 +966,25 @@ public class PersistenciaSuperAndes
 				}
 				pm.close();
 			}
+		}
+		
+		else {
+			PersistenceManager pm = pmf.getPersistenceManager();
+			Transaction tx=pm.currentTransaction();
+			
+			tx.begin();
+			long tuplasInsertadas = sqlContenedor.adicionarContenedor(pm, id, capacidadVolumen, capacidadPeso, unidadesPeso, unidadesVolumen, idBodegaSucursal);
+			tx.commit();
+
+			log.trace ("Inserción de contenedor: " + id + ": " + tuplasInsertadas + " tuplas insertadas");
+			if(tuplasInsertadas == 0){
+				return null;
+			}
+			else{
+				return new Contenedor(10, capacidadVolumen, capacidadPeso, unidadesPeso, unidadesVolumen, idBodegaSucursal);
+			}
+			
+		}
 	}
 
 	public Factura registrarFactura(String numeroDeFactura, java.util.Date fecha, long idCliente) {
@@ -1090,6 +1114,11 @@ public class PersistenciaSuperAndes
 	public List<Sucursal> darSucursal ()
 	{
 		return sqlSucursal.darSucursales(pmf.getPersistenceManager());
+	}
+	
+	public List<Contenedor> darContenedor ()
+	{
+		return sqlContenedor.darContenedores(pmf.getPersistenceManager());
 	}
 
 
@@ -1695,6 +1724,41 @@ public long consolidacionPedidosProveedor( int id, java.util.Date fechaEsperada,
 			tx.commit();
 
 			log.trace ("Eliminado sucursal" + id +": " );
+			 r = tuplasEliminadas;
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+
+		}
+		finally
+		{
+			if (tx.isActive())
+			{
+				tx.rollback();
+				
+			}
+			
+			pm.close();
+			
+		}
+		return r;
+		
+	}
+	
+	public long eliminarContenedor(int id) 
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		long r = 0;
+		try
+		{
+			tx.begin();		
+			long tuplasEliminadas = sqlContenedor.eliminarContenedor(pm, id);
+			tx.commit();
+
+			log.trace ("Eliminado contenedor" + id +": " );
 			 r = tuplasEliminadas;
 		}
 		catch (Exception e)
