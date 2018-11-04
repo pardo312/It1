@@ -144,6 +144,16 @@
 					"label": "Asignacion de un carrito a cliente Empresa No Exitoso",
 					"event": "demoRegistrarCarritoAClienteEmpresaNoExitoso"
 				}
+				,
+				{
+					"label": "Pagar un carrito Exitoso",
+					"event": "demoPagarCarritoExitoso"
+				}
+				,
+				{
+					"label": "Pagar un carrito No Exitoso",
+					"event": "demoPagarCarritoNoExitoso"
+				}
 			]
 		}
 	]
