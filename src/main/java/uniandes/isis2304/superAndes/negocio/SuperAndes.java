@@ -460,14 +460,14 @@ public Contenedor darContenedor(int id)
 		return factura;
 	}
 	
-	public void quitarProductosDeEstante(int volumenNuevo ,String codigoDeBarras )
+	public long quitarProductosDeEstante(int volumenNuevo ,String codigoDeBarras )
 	{
 		
       
         log.info ("quitandoProdDeEstante con codigo de barras: " + codigoDeBarras);
-		Producto estante = pp.quitarProductosDeEstante(volumenNuevo,codigoDeBarras);	
+		long estante = pp.quitarProductosDeEstante(volumenNuevo,codigoDeBarras);	
 		log.info ("quitandoProdDeEstante:  " + estante);
-		
+		return estante;
 	}
 	public void devolverProducto(String codigoDeBarras)
 	{
