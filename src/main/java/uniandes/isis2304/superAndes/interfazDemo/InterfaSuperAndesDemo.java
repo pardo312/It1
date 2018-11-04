@@ -51,12 +51,13 @@ import com.google.gson.stream.JsonReader;
 
 import uniandes.isis2304.superAndes.negocio.ClienteEmpresa;
 import uniandes.isis2304.superAndes.negocio.ClienteNatural;
+import uniandes.isis2304.superAndes.negocio.Contenedor;
 import uniandes.isis2304.superAndes.negocio.Proveedor;
 import uniandes.isis2304.superAndes.negocio.Sucursal;
 import uniandes.isis2304.superAndes.negocio.SuperAndes;
 import uniandes.isis2304.superAndes.negocio.VOClienteEmpresa;
 import uniandes.isis2304.superAndes.negocio.VOClienteNatural;
-
+import uniandes.isis2304.superAndes.negocio.VOContenedor;
 import uniandes.isis2304.superAndes.negocio.Estante;
 import uniandes.isis2304.superAndes.negocio.Factura;
 import uniandes.isis2304.superAndes.negocio.FacturaProducto;
@@ -734,7 +735,58 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
     			panelDatos.actualizarInterfaz(resultado);
     		}
       }
-    
+      public void demoContenedorExitoso( )
+      {
+      	try 
+      	{
+      		// Ejecución de la demo y recolección de los resultados
+  			// ATENCIÓN: En una aplicación real, los datos JAMÁS están en el código
+      		int id = 30;
+      		int capacidadPeso = 100;
+      		int capacidadVolumen = 200;
+      		String unidadesPeso = "kg";
+      		String unidadesVolumen = "metros";
+      		int idBodegaSucursal = 9;
+      		boolean errorContenedor = false;
+  			Contenedor contenedor = superAndes.registrarContenedor(id, capacidadVolumen, capacidadPeso, unidadesPeso, unidadesVolumen, idBodegaSucursal, 1);
+  			if (contenedor == null)
+  			{
+  				contenedor = superAndes.darContenedor(id);
+  				errorContenedor = true;
+  			}
+  			List <VOContenedor> lista = superAndes.darVOContenedor();
+  			long tbEliminados = superAndes.eliminarContenedor((int)contenedor.getId());
+  			
+  			// Generación de la cadena de caracteres con la traza de la ejecución de la demo
+  			String resultado = "Demo de creación y listado de contenedores \n\n";
+  			resultado += "\n\n************ Generando datos de prueba ************ \n";
+  			if (errorContenedor)
+  			{
+  				resultado += "*** Exception creando contenedor !!\n";
+  				resultado += "*** Es probable que ese contenedor ya existiera y hay restricción de UNICIDAD sobre el id del contenedor \n";
+  				resultado += "*** Revise el log de superAndes para más detalles\n";
+  			}
+  			resultado += "Adicionado el contenedor con id: " + id + "\n";
+  			resultado += "\n\n************ Ejecutando la demo ************ \n";
+  			resultado +=  "\n " + listarContenedor(lista);
+  			resultado += "\n\n************ Limpiando la base de datos ************ \n";
+  			resultado += tbEliminados + " contenedores eliminados\n";
+  			
+  			List <VOContenedor> listaDespues = superAndes.darVOContenedor();
+  			resultado += "\n\n************ Despues de eliminar la lista queda asi:************ \n";
+  			resultado +=  "\n " + listarContenedor(listaDespues);
+  			resultado += "\n Demo terminada";
+     
+  			panelDatos.actualizarInterfaz(resultado);
+  		} 
+      	catch (Exception e) 
+      	{
+//  			e.printStackTrace();
+  			String resultado = generarMensajeError(e);
+  			panelDatos.actualizarInterfaz(resultado);
+  		}
+      }
+
     /* ****************************************************************
 	 * 			Demos de Producto
 	 *****************************************************************/
@@ -1284,6 +1336,18 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
         return resp;
 	}
 
+    private String listarContedeores(List<Contenedor> lista) 
+    {
+    	String resp = "Los contenedores existentes son:\n";
+    	int i = 1;
+        for (Contenedor tb : lista)
+        {
+        	resp += i++ + ". " + tb.toString() + "\n";
+        }
+        return resp;
+	}
+
+    
     
     private String listarProductos(List<Producto> lista) 
     {
@@ -1354,6 +1418,17 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
     	String resp = " las sucrusales existentes son:\n";
     	int i = 1;
         for (Sucursal tb : lista)
+        {
+        	resp += i++ + ". " + tb.toString() + "\n";
+        }
+        return resp;
+	}
+    
+    private String listarContenedor(List<VOContenedor> lista) 
+    {
+    	String resp = " los contenedores existentes son:\n";
+    	int i = 1;
+        for (VOContenedor tb : lista)
         {
         	resp += i++ + ". " + tb.toString() + "\n";
         }
