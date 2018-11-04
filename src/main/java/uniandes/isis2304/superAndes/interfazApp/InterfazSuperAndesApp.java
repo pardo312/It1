@@ -1146,6 +1146,26 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 		return "0000"+resp;
 	}
 	
+	private int nextvalID ()
+	{
+		int resp =(int) (Math.random() * 60) + 20;;
+		return resp;
+	}
+	
+	private int nextvalNITProveedor ()
+	{
+		long resp =(int) (Math.random() * 19) + 1;;
+		if(resp < 10)
+		{
+			return Integer.parseInt("1000"+resp);
+		}
+		else
+		{
+			return Integer.parseInt("100"+resp);
+		}
+		
+	}
+	
 	/* ****************************************************************
 	 * 			RF 14
 	 *****************************************************************/
@@ -1208,14 +1228,22 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 			int usado = 0; // como se esta dejando de usar el estado de usado cambia a 0
 			List<Producto> productos = superAndes.busaquedaCarrito(idCarrito); // todos los productos de ese carrito
 
+			java.util.Date  fechaEntrega = new Date( 0/1/0001);
+			String evaluacionCantidad = "No Aplica";
+			String evaluacionCalidad = "No Aplica";
+			int calificacion = 0;
+			int finalizado = 0 ;
 
 			if ( idCarrito != 0 ) {
 
 				Factura tb = superAndes.registrarFactura(numeroDeFactura,fecha,idCliente) ;
-				for (int i = 1; i<productos.size();i++)
+				for (int i = 0; i<productos.size();i++)
 				{
-					Producto productoActual = productos.get(1);
+					Producto productoActual = productos.get(i);
 					FacturaProducto fp = superAndes.registrarFacturaProd(numeroDeFactura,productoActual.getCodigoDeBarras()) ;
+					superAndes.registrarPedido(nextvalID(), fecha, fechaEntrega, evaluacionCantidad, evaluacionCalidad, calificacion, finalizado, nextvalNITProveedor());
+					
+					
 					if (fp == null)
 					{
 						throw new Exception ("No se pudo crear factura con numero: " + numeroDeFactura);

@@ -115,16 +115,14 @@ class SQLPedido
 		
 		for(Pedido tb: w)
 		{
-			Query z = pm.newQuery(SQL, "UPDATE PRODUCTO Set IDPEDIDO = "+ id +" where IDPEDIDO= "+ tb.getId());
+			Query z = pm.newQuery(SQL, "UPDATE PRODUCTO Set IDPEDIDO = "+ id +" where IDPEDIDO= "+ tb.getId()+ " AND IDCARRITO != 0");
 			z.executeUnique();
 		}
 		
 		
-		Query q = pm.newQuery(SQL, "DELETE FROM PEDIDO where NITPROVEEDOR= "+NITProveedor);
-		Query p = pm.newQuery(SQL, "INSERT INTO PEDIDO (ID, FECHAESPERADA, FECHAENTREGA, EVALUACIONCANTIDAD, EVALUACIONCALIDAD,CALIFICACION,FINALIZADO,NITPROVEEDOR)"
-				+ "VALUES ("+id+",TO_DATE('"+fecha1+"', 'YYYY/MM/DD'),TO_DATE('"+fecha2+"' , 'YYYY/MM/DD'),'"+evaluacionCantidad+"','"+evaluacionCalidad+"', "+calificacion+",0,"+NITProveedor+") ");
-		q.executeUnique();
-		return (long) p.executeUnique() ;
+		Query q = pm.newQuery(SQL, "DELETE FROM PEDIDO where NITPROVEEDOR= "+NITProveedor +"AND ID !=" + id );
+
+		return (long) q.executeUnique() ;
 	}
 
 

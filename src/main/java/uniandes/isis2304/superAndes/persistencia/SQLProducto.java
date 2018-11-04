@@ -185,10 +185,7 @@ class SQLProducto
 			List<Producto> p = (List<Producto>)estanteProducto.executeList() ;	
 			
 			Query w = pm.newQuery(SQL,"DELETE FROM PRODUCTO WHERE CODIGODEBARRAS = " + productoActual.getCodigoDeBarras() );
-			 w.executeUnique();
-			 
-			
-				
+			 w.executeUnique();	
 			
 			Query q = pm.newQuery(SQL, "UPDATE PRODUCTO SET VOLUMEN = VOLUMEN +"+ productoActual.getVolumen()+ " WHERE NOMBRE = '" + productoActual.getNombre() + "' AND IDCARRITO = 0" );
 			q.execute(); 
