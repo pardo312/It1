@@ -32,6 +32,26 @@
 					"label": "Registro Estante No Exitoso",
 					"event": "demoEstanteNoExitoso"
 				}
+				,
+				{
+					"label": "Registro Cliente Natural Exitoso",
+					"event": "demoClienteNaturalExitoso"
+				}
+				,
+				{
+					"label": "Registro Cliente Natural No Exitoso",
+					"event": "demoClienteNaturalNoExitoso"
+				}
+				,
+				{
+					"label": "Registro Cliente Empresa Exitoso",
+					"event": "demoClienteEmpresarialExitoso"
+				}
+				,
+				{
+					"label": "Registro Cliente Empresa No Exitoso",
+					"event": "demoClienteEmpresarialNoExitoso"
+				}
 			]
 		}
 	]

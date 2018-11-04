@@ -737,11 +737,15 @@ public class PersistenciaSuperAndes
 
 	}
 
-	public ClienteEmpresa registrarClienteEmpresa ( String NIT, String direccion)
+	public ClienteEmpresa registrarClienteEmpresa ( String NIT, String direccion, int i)
 	{
 
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
+		
+		if (i == 1) {
+			
+		
 		try
 		{
 			tx.begin();
@@ -767,6 +771,24 @@ public class PersistenciaSuperAndes
 			pm.close();
 
 			darClientesEmpresa();
+		}
+		}
+		
+		else 
+		{
+			tx.begin();
+			long tuplasInsertadas = sqlClienteEmpresa.registrarClienteEmpresa(pm, "00001", direccion);
+			tx.commit();
+
+			log.trace ("Inserción de cliente Empresa: " + "00001" + ": " + tuplasInsertadas + " tuplas insertadas");
+			if(tuplasInsertadas == 0){
+				return null;
+			}
+			else{
+				return new ClienteEmpresa("00001", direccion);
+			}
+			
+			
 		}
 
 	}
@@ -1511,6 +1533,41 @@ public long consolidacionPedidosProveedor( int id, java.util.Date fechaEsperada,
 			tx.commit();
 
 			log.trace ("Eliminado cliente" + cedula +": " );
+			 r = tuplasEliminadas;
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+
+		}
+		finally
+		{
+			if (tx.isActive())
+			{
+				tx.rollback();
+				
+			}
+			
+			pm.close();
+			
+		}
+		return r;
+		
+	}
+
+	public long eliminarClienteEmpresa(String NIT) 
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		long r = 0;
+		try
+		{
+			tx.begin();		
+			long tuplasEliminadas = sqlClienteEmpresa.eliminarClienteEmpresa(pm,NIT);
+			tx.commit();
+
+			log.trace ("Eliminado cliente" + NIT +": " );
 			 r = tuplasEliminadas;
 		}
 		catch (Exception e)
