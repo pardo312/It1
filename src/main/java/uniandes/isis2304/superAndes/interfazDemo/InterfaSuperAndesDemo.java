@@ -539,66 +539,68 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
     	try 
     	{
     		
-    		String NIT = "10030";
+    		String NIT = "00001";
     		String direccion = "direccion 1";	
 			boolean errorCliente = false;
-			ClienteEmpresa cliente = superAndes.registrarClienteEmpresa(NIT, direccion, 0) ;
+			ClienteEmpresa cliente = superAndes.registrarClienteEmpresa(NIT, direccion, 1) ;
 			if (cliente == null)
 			{
 				errorCliente = true;
 			}
 			
 			// Generación de la cadena de caracteres con la traza de la ejecución de la demo
-			String resultado = "Demo de creación y listado de clientes \n\n";
-			resultado += "\n\n************ Generando datos de prueba ************ \n";
-			if (errorCliente)
-			{
-				resultado += "Adicionado el Cliente con nit: " + NIT + "\n";
-				resultado += "\n\n************ Estado de la base de datos antes de la operacion ************ \n";
-				
-				List <VOClienteEmpresa> lista = superAndes.darVOClienteEmpresarial();
-				resultado +=  "\n " + listarClienteEmpresa(lista)+  "\n\n ";
-				
-				resultado += "\n\n************ Error Al insertar************ \n\n";				
-				
-				resultado += "*** Exception creando cliente !!\n";
-				resultado += "*** Es probable que ese cliente ya existiera y hay restricción de UNICIDAD sobre el nit del cliente\n";
-				resultado += "*** Revise el log de superAndes para más detalles\n";
-				
-				
-				List <VOClienteEmpresa> listaDespues = superAndes.darVOClienteEmpresarial();
-				resultado += "\n\n************ Despues de el registro queda asi************ \n";
-				resultado +=  "\n " + listarClienteEmpresa(listaDespues);
-				
-				panelDatos.actualizarInterfaz(resultado);
-			}
-			else
-			{
-				List <VOClienteEmpresa> lista = superAndes.darVOClienteEmpresarial();
-				long tbEliminados = superAndes.eliminarClienteEmpresa(cliente.getNIT());
-				resultado += "Adicionado el cliente con nit: " + cliente.getNIT() + "\n";
-				resultado += "\n\n************ Ejecutando la demo ************ \n";
-				resultado +=  "\n " + listarClienteEmpresa(lista);
-				resultado += "\n\n************ Limpiando la base de datos ************ \n";
-				resultado += tbEliminados + " cliente eliminados\n";
-				
-				List <VOClienteEmpresa> listaDespues = superAndes.darVOClienteEmpresarial();
-				resultado += "\n\n************ Despues de eliminar la lista queda asi:************ \n";
-				resultado +=  "\n " + listarClienteEmpresa(listaDespues);
-				resultado += "\n Demo terminada";
-	   
-				panelDatos.actualizarInterfaz(resultado);
-				
-			}
-			
-		} 
-    	catch (Exception e) 
-    	{
-//			e.printStackTrace();
-			String resultado = generarMensajeError(e);
-			panelDatos.actualizarInterfaz(resultado);
-		}
+			// Generación de la cadena de caracteres con la traza de la ejecución de la demo
+						String resultado = "Demo de creación y listado de Clientes\n\n";
+						resultado += "\n\n************ Generando datos de prueba ************ \n";
+						if (errorCliente)
+						{
+							resultado += "Adicionado el cliente con nit: " + NIT + "\n";
+							resultado += "\n\n************ Estado de la base de datos antes de la operacion ************ \n";
+							
+							List <ClienteEmpresa> lista = superAndes.darClientesEmpresariales();
+							resultado +=  "\n " + listarClientesEmpresariales(lista)+  "\n\n ";
+							
+							resultado += "\n\n************ Error Al insertar************ \n\n";				
+							
+							resultado += "*** Exception creando cliente !!\n";
+							resultado += "*** Es probable que ese cliente ya existiera y hay restricción de UNICIDAD sobre el nombre del cliente\n";
+							resultado += "*** Revise el log de superAndes para más detalles\n";
+							
+							
+							List <ClienteEmpresa> listaDespues = superAndes.darClientesEmpresariales();
+							resultado += "\n\n************ Despues de el registro queda asi************ \n";
+							resultado +=  "\n " + listarClientesEmpresariales(listaDespues);
+							
+							panelDatos.actualizarInterfaz(resultado);
+						}
+						else
+						{
+							List <ClienteEmpresa> lista = superAndes.darClientesEmpresariales();
+							long tbEliminados = superAndes.eliminarClienteEmpresa(NIT);
+							resultado += "Adicionado el cliente con nit: " + NIT + "\n";
+							resultado += "\n\n************ Ejecutando la demo ************ \n";
+							resultado +=  "\n " + listarClientesEmpresariales(lista);
+							resultado += "\n\n************ Limpiando la base de datos ************ \n";
+							resultado += tbEliminados + " clientes eliminados\n";
+							
+							List <ClienteEmpresa> listaDespues = superAndes.darClientesEmpresariales();
+							resultado += "\n\n************ Despues de eliminar la lista queda asi:************ \n";
+							resultado +=  "\n " + listarClientesEmpresariales(listaDespues);
+							resultado += "\n Demo terminada";
+				   
+							panelDatos.actualizarInterfaz(resultado);
+							
+						}
+						
+					} 
+			    	catch (Exception e) 
+			    	{
+//						e.printStackTrace();
+						String resultado = generarMensajeError(e);
+						panelDatos.actualizarInterfaz(resultado);
+					}
     }
+
     
     /* ****************************************************************
 	 * 			Demos de Producto
@@ -1098,6 +1100,16 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
         return resp;
 	}
     
+    private String listarClientesEmpresariales(List<ClienteEmpresa> lista) 
+    {
+    	String resp = "Los clientes empresariales existentes son:\n";
+    	int i = 1;
+        for (ClienteEmpresa tb : lista)
+        {
+        	resp += i++ + ". " + tb.toString() + "\n";
+        }
+        return resp;
+	}
     /**
      * Genera una cadena de caracteres con la descripción de la excepcion e, haciendo énfasis en las excepcionsde JDO
      * @param e - La excepción recibida

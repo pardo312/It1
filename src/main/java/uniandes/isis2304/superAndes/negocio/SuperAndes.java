@@ -212,6 +212,18 @@ public class SuperAndes
 		log.info ("Generando los VO de Clientes Empresa: " + voTipos.size() + " existentes");
 		return voTipos;
 	}
+	public List<ClienteEmpresa> darClientesEmpresariales() {
+		log.info ("Generando los VO de Cliente");        
+		List<ClienteEmpresa> voProd = new LinkedList<ClienteEmpresa> ();
+		for (ClienteEmpresa tb : pp.darClientesEmpresariales())
+		{
+			voProd.add (tb);
+		}
+		log.info ("Generando los VO de cliente empresa: " + voProd.size() + " existentes");
+		return voProd;
+
+	}
+
 	
 	public List<Estante> darEstantes() {
 		log.info ("Generando los VO de Producto");        

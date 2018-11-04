@@ -759,7 +759,13 @@ public class PersistenciaSuperAndes
 
 			log.trace ("Inserción de cliente empresa " + NIT + ": " + tuplasInsertadas + " tuplas insertadas");
 
+			if(tuplasInsertadas == 0){
+				return null;
+			}
+			else
 			return new ClienteEmpresa(NIT,direccion);
+
+
 		}
 		catch (Exception e)
 		{
@@ -855,6 +861,10 @@ public class PersistenciaSuperAndes
 	public List<Promocion> darPromociones ()
 	{
 		return sqlPromocion.darPromociones(pmf.getPersistenceManager());
+	}
+	public List<ClienteEmpresa> darClientesEmpresariales ()
+	{
+		return sqlClienteEmpresa.darClientesEmpresariales(pmf.getPersistenceManager());
 	}
 
 	/* ****************************************************************

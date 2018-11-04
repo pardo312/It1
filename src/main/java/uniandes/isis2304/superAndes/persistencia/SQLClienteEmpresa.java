@@ -10,6 +10,7 @@ import javax.jdo.Query;
 import uniandes.isis2304.superAndes.negocio.Categoria;
 import uniandes.isis2304.superAndes.negocio.Cliente;
 import uniandes.isis2304.superAndes.negocio.ClienteEmpresa;
+import uniandes.isis2304.superAndes.negocio.ClienteNatural;
 import uniandes.isis2304.superAndes.negocio.Proveedor;
 
 /**
@@ -63,9 +64,15 @@ class SQLClienteEmpresa
 			
 			 String direccion) 
 	{
-        Query q = pm.newQuery(SQL, "INSERT INTO " + "CLIENTEEMPRESA" + "(NIT,direccion) values ( ?, ?)");
+       try {
+		Query q = pm.newQuery(SQL, "INSERT INTO " + "CLIENTEEMPRESA" + "(NIT,direccion) values ( ?, ?)");
         q.setParameters( NIT,  direccion);
         return (long) q.executeUnique();
+       }
+       catch (Exception e)
+		{
+			return 0;
+		}
 	}
 	/**
 	 * lista de todos los clientes
@@ -77,6 +84,14 @@ class SQLClienteEmpresa
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + "CLIENTEEMPRESA");
 		q.setResultClass(ClienteEmpresa.class);
 		return (List<ClienteEmpresa>) q.executeList();
+	}
+	public List<ClienteEmpresa> darClientesEmpresariales(PersistenceManager pm)
+	{
+		Query q = pm.newQuery(SQL, "SELECT NIT,DIRECCION FROM " + "CLIENTEEMPRESA");
+		q.setResultClass(ClienteEmpresa.class);
+		List<ClienteEmpresa> w = (List<ClienteEmpresa>) q.executeList();
+		return w ;
+
 	}
 
 
