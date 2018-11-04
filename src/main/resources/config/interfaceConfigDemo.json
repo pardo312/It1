@@ -5,7 +5,7 @@
 	"bannerPath": "./src/main/resources/config/logo.png",
 	"menuBar":
 	[
-		{ "menuTitle": "Proveedor",
+		{ "menuTitle": "Iteracion 1",
 		  "options":
 			[
 				{
@@ -15,6 +15,22 @@
 				{
 					"label": "Registro Proveedor No Existoso",
 					"event": "demoProveedorNoExitoso"
+				},
+				{
+					"label": "Registro Producto Existoso",
+					"event": "demoProductoExitoso"
+				},
+				{
+					"label": "Registro Producto No Exitoso",
+					"event": "demoProductoNoExitoso"
+				},
+				{
+					"label": "Registro Estante Existoso",
+					"event": "demoEstanteExitoso"
+				},
+				{
+					"label": "Registro Estante No Exitoso",
+					"event": "demoEstanteNoExitoso"
 				}
 			]
 		}

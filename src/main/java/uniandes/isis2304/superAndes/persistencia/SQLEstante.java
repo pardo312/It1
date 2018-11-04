@@ -21,7 +21,7 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
 import uniandes.isis2304.superAndes.negocio.Cliente;
-import uniandes.isis2304.superAndes.negocio.Proveedor;
+import uniandes.isis2304.superAndes.negocio.Estante;
 import uniandes.isis2304.superAndes.negocio.TipoProducto;
 
 /**
@@ -65,12 +65,34 @@ class SQLEstante
 	public long registrarEstante(PersistenceManager pm, long id, float nivelAbastecimiento, long idSucursales) 
 	{
 		
-		 
+		try{ 
         Query q = pm.newQuery(SQL, "INSERT INTO " + "ESTANTE" + "(id, nivelAbastecimiento, idSucursales) values ("+id+","+ nivelAbastecimiento+","+ idSucursales+")");
 
-        return (long) q.executeUnique();            
+        return (long) q.executeUnique(); 
+		}
+		catch (Exception e)
+		{	
+			return 0;
+		}
 	}
-	
+	public List<Estante> darEstantes (PersistenceManager pm)
+	{
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + "Estante ");
+		q.setResultClass(Estante.class);
+		List<Estante> w = (List<Estante>) q.executeList();
+		return w;
+	}
+	public List<Estante> darEstante (PersistenceManager pm, long id)
+	{
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + "Estante WHERE ID =" + id);
+		q.setResultClass(Estante.class);
+		List<Estante> w = (List<Estante>) q.executeList();
+		return w;
+	}
+	public long eliminarEstante(PersistenceManager pm, long id) {
+		 Query q = pm.newQuery(SQL, "DELETE FROM " + "Estante "+ "WHERE id = "+id);
+	        return (long) q.executeUnique();  
+	}
 
 
 	

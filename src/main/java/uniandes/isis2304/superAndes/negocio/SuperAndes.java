@@ -190,6 +190,7 @@ public class SuperAndes
 		return voTipos;
 	}
 	
+
 	public List<VOClienteNatural> darVOClienteNatural() {
 		log.info ("Generando los VO de cliente Natural");        
 		List<VOClienteNatural> voTipos = new LinkedList<VOClienteNatural> ();
@@ -210,6 +211,18 @@ public class SuperAndes
 		}
 		log.info ("Generando los VO de Clientes Empresa: " + voTipos.size() + " existentes");
 		return voTipos;
+	}
+	
+	public List<Estante> darEstantes() {
+		log.info ("Generando los VO de Producto");        
+		List<Estante> voProd = new LinkedList<Estante> ();
+		for (Estante tb : pp.darEstantes ())
+		{
+			voProd.add (tb);
+		}
+		log.info ("Generando los VO de Productos: " + voProd.size() + " existentes");
+		return voProd;
+
 	}
 
 
@@ -561,9 +574,27 @@ public class SuperAndes
 	public long eliminarProveedor(int nit)
 	{
 		
-		log.info ("Eliminando la proveedor: " + nit);
+		log.info ("Eliminando el proveedor: " + nit);
 		long p = pp.eliminarProveedor (nit);		
-		log.info ("Eliminando la promocion ");
+		log.info ("Eliminando el proveedor");
+		return p;	
+	}
+	
+	public long eliminarProducto(String codigoDeBarras)
+	{
+		
+		log.info ("Eliminando el producto: " + codigoDeBarras);
+		long p = pp.eliminarProducto (codigoDeBarras);		
+		log.info ("Eliminando el producto ");
+		return p;	
+	}
+	
+	public long eliminarEstante(long id)
+	{
+		
+		log.info ("Eliminando el Estante: " + id);
+		long p = pp.eliminarEstante (id);		
+		log.info ("Eliminando el Estante ");
 		return p;	
 	}
 	

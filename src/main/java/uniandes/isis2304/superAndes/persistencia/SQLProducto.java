@@ -110,15 +110,20 @@ class SQLProducto
 			 
 			 int EnStock, long iDPromocion,int volumen,	long IDCarrito) 
 	{
-	
+		try{
         Query q = pm.newQuery(SQL, "INSERT INTO " +"PRODUCTO"+
         		"(codigoDeBarras,nombre,marca,precioUnitario,presentacion,precioPorUnidad,cantidadEnLaPresentacion,unidadDeMedida,especificacionesDeEmpacado,nivelDeReorden,IDPedido, IDSucursal, IDContenedor, EnStock,IDPromocion,volumen,IDCarrito) values ('"+codigoDeBarras+ "','"+nombre+"','"+marca+"',"+precioUnitario+",'"+presentacion+"',"+precioPorUnidad+","+cantidadEnLaPresentacion+",'"+unidadesDeMedida+"','"+especificacionesDeEmpacado+"',"+nivelDeReorden+","+ IDPedido+","+IDSucursal+","+ IDContenedor  +","+ EnStock +","+ iDPromocion  +","+ volumen +","+ IDCarrito +")");             
-        return (long) q.executeUnique();   
+        return (long) q.executeUnique();
+		}
+		catch (Exception e)
+		{	
+			return 0;
+		}
 	}
 	
 	public List<Producto> darProductos (PersistenceManager pm)
 	{
-		Query q = pm.newQuery(SQL, "SELECT IDCONTENEDOR FROM " + "PRODUCTO");
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + "PRODUCTO");
 		q.setResultClass(Producto.class);		
 		return  (List<Producto>)q.executeList();
 		
@@ -126,13 +131,13 @@ class SQLProducto
 
 	public List<Producto> buscarCodigo (PersistenceManager pm, String codigoDeBarras)
 		{
-			Query q = pm.newQuery(SQL, "SELECT CODIGODEBARRAS,NOMBRE,MARCA,PRECIOUNITARIO,PRESENTACION,PRECIOPORUNIDAD,CANTIDADENLAPRESENTACION,UNIDADDEMEDIDA,ESPECIFICACIONESDEEMPACADO,NIVELDEREORDEN,IDPEDIDO,IDSUCURSAL,IDCONTENEDOR,IDPROMOCION,ENSTOCK, IDPROMOCION, VOLUMEN FROM " + "PRODUCTO" + " WHERE CODIGODEBARRAS = '" + codigoDeBarras+"'");
+			Query q = pm.newQuery(SQL, "SELECT CODIGODEBARRAS,NOMBRE,MARCA,PRECIOUNITARIO,PRESENTACION,PRECIOPORUNIDAD,CANTIDADENLAPRESENTACION,UNIDADDEMEDIDA,ESPECIFICACIONESDEEMPACADO,NIVELDEREORDEN,IDPEDIDO,IDSUCURSAL,IDCONTENEDOR,IDPROMOCION,ENSTOCK,  VOLUMEN FROM " + "PRODUCTO" + " WHERE CODIGODEBARRAS = '" + codigoDeBarras+"'");
 			q.setResultClass(Producto.class);		
 			return  (List<Producto>)q.executeList() ;		
 		}
 	public List<Producto> buscarCodigoEstante (PersistenceManager pm, String nombre)
 	{
-		Query q = pm.newQuery(SQL, "SELECT CODIGODEBARRAS,NOMBRE,MARCA,PRECIOUNITARIO,PRESENTACION,PRECIOPORUNIDAD,CANTIDADENLAPRESENTACION,UNIDADDEMEDIDA,ESPECIFICACIONESDEEMPACADO,NIVELDEREORDEN,IDPEDIDO,IDSUCURSAL,IDCONTENEDOR,IDPROMOCION,ENSTOCK, IDPROMOCION, VOLUMEN FROM " + "PRODUCTO" + " WHERE NOMBRE = '" + nombre + "' AND IDCARRITO = 0"  );
+		Query q = pm.newQuery(SQL, "SELECT CODIGODEBARRAS,NOMBRE,MARCA,PRECIOUNITARIO,PRESENTACION,PRECIOPORUNIDAD,CANTIDADENLAPRESENTACION,UNIDADDEMEDIDA,ESPECIFICACIONESDEEMPACADO,NIVELDEREORDEN,IDPEDIDO,IDSUCURSAL,IDCONTENEDOR,IDPROMOCION,ENSTOCK,  VOLUMEN FROM " + "PRODUCTO" + " WHERE NOMBRE = '" + nombre + "' AND IDCARRITO = 0"  );
 		q.setResultClass(Producto.class);		
 		return  (List<Producto>)q.executeList() ;		
 	}
@@ -192,6 +197,11 @@ class SQLProducto
 			
 		}
 		
+	}
+	
+	public long eliminarProducto(PersistenceManager pm, String CodigoDeB) {
+		 Query q = pm.newQuery(SQL, "DELETE FROM " + "PRODUCTO "+ "WHERE CODIGODEBARRAS = "+CodigoDeB);
+	        return (long) q.executeUnique();  
 	}
 	
 	
