@@ -154,13 +154,13 @@ public class PersistenciaSuperAndes
 	private SQLRFC3 sqlRFC3;
 
 	private SQLRFC4 sqlRFC4;
-	
+
 	private SQLRFC5 sqlRFC5;
-	
+
 	private SQLRFC6 sqlRFC6;
-	
+
 	private SQLRFC7 sqlRFC7;
-	
+
 	private SQLRFC8 sqlRFC8;
 
 	private SQLFactura sqlFactura;
@@ -427,7 +427,7 @@ public class PersistenciaSuperAndes
 		{
 			return Integer.parseInt("100"+resp);
 		}
-		
+
 	}
 
 	public Proveedor registrarProveedor(String nombre, int opcion)
@@ -436,51 +436,51 @@ public class PersistenciaSuperAndes
 		Transaction tx=pm.currentTransaction();
 		if(opcion == 0)
 		{
-					try
-					{	
-							tx.begin();
-							long NIT = nextvalNITProveedor();
-							long tuplasInsertadas = sqlProveedor.registrarProveedor(pm, NIT, nombre);
-							tx.commit();
-				
-							log.trace ("Inserción de proveedor: " + nombre + ": " + tuplasInsertadas + " tuplas insertadas");
-				
-							return new Proveedor(NIT, nombre);
-					}
-						
-						
-					
-					catch (Exception e)
-					{
-						e.printStackTrace();
-						log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
-						return null;
-					}
-					finally
-					{
-						if (tx.isActive())
-						{
-							tx.rollback();
-						}
-						pm.close();
-					}
-		}
-		else {
-		
+			try
+			{	
 				tx.begin();
-				long tuplasInsertadas = sqlProveedor.registrarProveedor(pm, 10007, nombre);
+				long NIT = nextvalNITProveedor();
+				long tuplasInsertadas = sqlProveedor.registrarProveedor(pm, NIT, nombre);
 				tx.commit();
 
 				log.trace ("Inserción de proveedor: " + nombre + ": " + tuplasInsertadas + " tuplas insertadas");
-				if(tuplasInsertadas == 0){
-					return null;
+
+				return new Proveedor(NIT, nombre);
+			}
+
+
+
+			catch (Exception e)
+			{
+				e.printStackTrace();
+				log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+				return null;
+			}
+			finally
+			{
+				if (tx.isActive())
+				{
+					tx.rollback();
 				}
-				else{
-					return new Proveedor(10007, nombre);
-				}
-				
-			
-			
+				pm.close();
+			}
+		}
+		else {
+
+			tx.begin();
+			long tuplasInsertadas = sqlProveedor.registrarProveedor(pm, 10007, nombre);
+			tx.commit();
+
+			log.trace ("Inserción de proveedor: " + nombre + ": " + tuplasInsertadas + " tuplas insertadas");
+			if(tuplasInsertadas == 0){
+				return null;
+			}
+			else{
+				return new Proveedor(10007, nombre);
+			}
+
+
+
 		}
 	}
 
@@ -495,8 +495,8 @@ public class PersistenciaSuperAndes
 	}
 
 	public List<Factura> darFacturas() {
-	
-	
+
+
 		return sqlFactura.darFacturas(pmf.getPersistenceManager());
 	}
 
@@ -556,7 +556,7 @@ public class PersistenciaSuperAndes
 						unidadesDeMedida,especificacionesDeEmpacado,nivelDeReorden,
 						IDPedido, IDSucursal, IDContenedor,EnStock,IDPromocion,volumen, IDCarrito);
 			}
-			
+
 		}
 		catch (Exception e)
 		{
@@ -691,47 +691,47 @@ public class PersistenciaSuperAndes
 		if (a == 1)
 		{
 
-		PersistenceManager pm = pmf.getPersistenceManager();
-		Transaction tx=pm.currentTransaction();
-		try
-		{
-			tx.begin();
-
-			long tuplasInsertadas = sqlClienteNatural.registrarClienteNatural(pm, cedula, nombre, email);
-			tx.commit();
-
-			log.trace ("Inserción de cliente natural " + nombre + ": " + tuplasInsertadas + " tuplas insertadas");
-
-			
-			if(tuplasInsertadas == 0){
-				return null;
-			}
-			else 
-			return new ClienteNatural(cedula, nombre,email);
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
-			return null;
-		}
-		finally
-		{
-			if (tx.isActive())
-			{
-				tx.rollback();
-			}
-			pm.close();
-
-			darClientesNaturales();
-
-		}
-		}
-		else {
-			
 			PersistenceManager pm = pmf.getPersistenceManager();
 			Transaction tx=pm.currentTransaction();
-			
+			try
+			{
+				tx.begin();
+
+				long tuplasInsertadas = sqlClienteNatural.registrarClienteNatural(pm, cedula, nombre, email);
+				tx.commit();
+
+				log.trace ("Inserción de cliente natural " + nombre + ": " + tuplasInsertadas + " tuplas insertadas");
+
+
+				if(tuplasInsertadas == 0){
+					return null;
+				}
+				else 
+					return new ClienteNatural(cedula, nombre,email);
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+				log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+				return null;
+			}
+			finally
+			{
+				if (tx.isActive())
+				{
+					tx.rollback();
+				}
+				pm.close();
+
+				darClientesNaturales();
+
+			}
+		}
+		else {
+
+			PersistenceManager pm = pmf.getPersistenceManager();
+			Transaction tx=pm.currentTransaction();
+
 			tx.begin();
 			long tuplasInsertadas = sqlClienteNatural.registrarClienteNatural(pm, 1000, nombre, email);
 			tx.commit();
@@ -743,7 +743,7 @@ public class PersistenciaSuperAndes
 			else{
 				return new ClienteNatural(1000, nombre, email);
 			}
-			
+
 		}
 
 	}
@@ -753,44 +753,44 @@ public class PersistenciaSuperAndes
 
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
-		
+
 		if (i == 1) {
-			
-		
-		try
-		{
-			tx.begin();
-			long tuplasInsertadas = sqlClienteEmpresa.registrarClienteEmpresa(pm, NIT, direccion);
-			tx.commit();
 
-			log.trace ("Inserción de cliente empresa " + NIT + ": " + tuplasInsertadas + " tuplas insertadas");
 
-			if(tuplasInsertadas == 0){
+			try
+			{
+				tx.begin();
+				long tuplasInsertadas = sqlClienteEmpresa.registrarClienteEmpresa(pm, NIT, direccion);
+				tx.commit();
+
+				log.trace ("Inserción de cliente empresa " + NIT + ": " + tuplasInsertadas + " tuplas insertadas");
+
+				if(tuplasInsertadas == 0){
+					return null;
+				}
+				else
+					return new ClienteEmpresa(NIT,direccion);
+
+
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+				log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
 				return null;
 			}
-			else
-			return new ClienteEmpresa(NIT,direccion);
-
-
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
-			return null;
-		}
-		finally
-		{
-			if (tx.isActive())
+			finally
 			{
-				tx.rollback();
-			}
-			pm.close();
+				if (tx.isActive())
+				{
+					tx.rollback();
+				}
+				pm.close();
 
-			darClientesEmpresa();
+				darClientesEmpresa();
+			}
 		}
-		}
-		
+
 		else 
 		{
 			tx.begin();
@@ -804,8 +804,8 @@ public class PersistenciaSuperAndes
 			else{
 				return new ClienteEmpresa("00001", direccion);
 			}
-			
-			
+
+
 		}
 
 	}
@@ -864,7 +864,7 @@ public class PersistenciaSuperAndes
 	{
 		return sqlSucursal.darSucursales(pmf.getPersistenceManager());
 	}
-	
+
 	public List<Contenedor> darContenedores ()
 	{
 		return sqlContenedor.darContenedores(pmf.getPersistenceManager());
@@ -891,39 +891,39 @@ public class PersistenciaSuperAndes
 		if (a == 1)
 		{
 
-		PersistenceManager pm = pmf.getPersistenceManager();
-		Transaction tx=pm.currentTransaction();
+			PersistenceManager pm = pmf.getPersistenceManager();
+			Transaction tx=pm.currentTransaction();
 			try
-		{
-			tx.begin();
-			long ido = nextval ();
-			long tuplasInsertadas = sqlSucursal.adicionarSucursal(pm, (int) ido, nombre, ciudad, direccion, segmentacionDeMercado, tamanioInstalacion, NITSupermercado);
-			tx.commit();
-
-			log.trace ("Inserción de sucursal " + nombre + ": " + tuplasInsertadas + " tuplas insertadas");
-
-			return new Sucursal(id,nombre,ciudad,direccion,segmentacionDeMercado,tamanioInstalacion, NITSupermercado);
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
-			return null;
-		}
-		finally
-		{
-			if (tx.isActive())
 			{
-				tx.rollback();
+				tx.begin();
+				long ido = nextval ();
+				long tuplasInsertadas = sqlSucursal.adicionarSucursal(pm, (int) ido, nombre, ciudad, direccion, segmentacionDeMercado, tamanioInstalacion, NITSupermercado);
+				tx.commit();
+
+				log.trace ("Inserción de sucursal " + nombre + ": " + tuplasInsertadas + " tuplas insertadas");
+
+				return new Sucursal(id,nombre,ciudad,direccion,segmentacionDeMercado,tamanioInstalacion, NITSupermercado);
 			}
-			pm.close();
-		}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+				log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+				return null;
+			}
+			finally
+			{
+				if (tx.isActive())
+				{
+					tx.rollback();
+				}
+				pm.close();
+			}
 		}
 		else 
 		{
 			PersistenceManager pm = pmf.getPersistenceManager();
 			Transaction tx=pm.currentTransaction();
-			
+
 			tx.begin();
 			long tuplasInsertadas = sqlSucursal.adicionarSucursal(pm, id, nombre, ciudad, direccion, segmentacionDeMercado, tamanioInstalacion, NITSupermercado);
 			tx.commit();
@@ -944,7 +944,7 @@ public class PersistenciaSuperAndes
 		if (a == 1)
 		{
 
-		PersistenceManager pm = pmf.getPersistenceManager();
+			PersistenceManager pm = pmf.getPersistenceManager();
 			Transaction tx=pm.currentTransaction();
 			try
 			{
@@ -972,11 +972,11 @@ public class PersistenciaSuperAndes
 				pm.close();
 			}
 		}
-		
+
 		else {
 			PersistenceManager pm = pmf.getPersistenceManager();
 			Transaction tx=pm.currentTransaction();
-			
+
 			tx.begin();
 			long tuplasInsertadas = sqlContenedor.adicionarContenedor(pm, id, capacidadVolumen, capacidadPeso, unidadesPeso, unidadesVolumen, idBodegaSucursal);
 			tx.commit();
@@ -988,7 +988,7 @@ public class PersistenciaSuperAndes
 			else{
 				return new Contenedor(10, capacidadVolumen, capacidadPeso, unidadesPeso, unidadesVolumen, idBodegaSucursal);
 			}
-			
+
 		}
 	}
 
@@ -1012,7 +1012,7 @@ public class PersistenciaSuperAndes
 			{
 				return new Factura(numeroDeFactura,fecha,idCliente);
 			}
-			
+
 		}
 		catch (Exception e)
 		{
@@ -1060,34 +1060,58 @@ public class PersistenciaSuperAndes
 		}
 	}
 
-	public Pedido registrarPedido(int id, java.util.Date fechaEsperada,java.util.Date fechaEntrega, String evaluacionCantidad, String evaluacionCalidad,int calificacion, int finalizado, int NITProveedor) 
-	{PersistenceManager pm = pmf.getPersistenceManager();
-	Transaction tx=pm.currentTransaction();
-	try
+	public Pedido registrarPedido(int id, java.util.Date fechaEsperada,java.util.Date fechaEntrega, String evaluacionCantidad, String evaluacionCalidad,int calificacion, int finalizado, int NITProveedor, int a) 
 	{
-		tx.begin();
-		long ido = nextval ();
-		long tuplasInsertadas = sqlPedido.registrarPedido(pm, (int) ido, fechaEsperada, fechaEntrega, evaluacionCantidad, evaluacionCalidad, calificacion,finalizado,NITProveedor);
-		tx.commit();
-
-		log.trace ("Inserción del contenedor " + id + ": " + tuplasInsertadas + " tuplas insertadas");
-
-		return new Pedido(id,fechaEsperada,fechaEntrega,evaluacionCantidad,evaluacionCalidad,calificacion, finalizado,NITProveedor);
-	}
-	catch (Exception e)
-	{
-		e.printStackTrace();
-		log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
-		return null;
-	}
-	finally
-	{
-		if (tx.isActive())
+		if (a== 1)
 		{
-			tx.rollback();
+
+			PersistenceManager pm = pmf.getPersistenceManager();
+			Transaction tx=pm.currentTransaction();
+			try
+			{
+				tx.begin();
+				long ido = nextval ();
+				long tuplasInsertadas = sqlPedido.registrarPedido(pm, (int) ido, fechaEsperada, fechaEntrega, evaluacionCantidad, evaluacionCalidad, calificacion,finalizado,NITProveedor);
+				tx.commit();
+
+				log.trace ("Inserción del contenedor " + id + ": " + tuplasInsertadas + " tuplas insertadas");
+
+				return new Pedido(id,fechaEsperada,fechaEntrega,evaluacionCantidad,evaluacionCalidad,calificacion, finalizado,NITProveedor);
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+				log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+				return null;
+			}
+			finally
+			{
+				if (tx.isActive())
+				{
+					tx.rollback();
+				}
+				pm.close();
+			}
 		}
-		pm.close();
-	}
+
+		else
+		{
+			PersistenceManager pm = pmf.getPersistenceManager();
+			Transaction tx=pm.currentTransaction();
+
+			tx.begin();
+			long tuplasInsertadas = sqlPedido.registrarPedido(pm, id, fechaEsperada, fechaEntrega, evaluacionCantidad, evaluacionCalidad, calificacion, finalizado, NITProveedor);
+			tx.commit();
+
+			log.trace ("Inserción de contenedor: " + id + ": " + tuplasInsertadas + " tuplas insertadas");
+			if(tuplasInsertadas == 0){
+				return null;
+			}
+			else{
+				return new Pedido(10, fechaEsperada, fechaEntrega, evaluacionCantidad, evaluacionCalidad, calificacion, finalizado, NITProveedor);
+			}
+		}
+
 	}
 
 	public Pedido actualizarPedido(int id, java.util.Date fechaEsperada,java.util.Date fechaEntrega, String evaluacionCantidad, String evaluacionCalidad,int calificacion, int finalizado, int NITProveedor) 
@@ -1128,10 +1152,15 @@ public class PersistenciaSuperAndes
 	{
 		return sqlSucursal.darSucursales(pmf.getPersistenceManager());
 	}
-	
+
 	public List<Contenedor> darContenedor ()
 	{
 		return sqlContenedor.darContenedores(pmf.getPersistenceManager());
+	}
+	
+	public List<Pedido> darPedido ()
+	{
+		return sqlPedido.darPedidos(pmf.getPersistenceManager());
 	}
 
 
@@ -1219,7 +1248,7 @@ public class PersistenciaSuperAndes
 
 			log.trace ("Inserción de estante: " + idEstante + ": " + tuplasInsertadas + " tuplas insertadas");
 
-			
+
 			if(tuplasInsertadas == 0){
 				return null;
 			}
@@ -1242,7 +1271,7 @@ public class PersistenciaSuperAndes
 			pm.close();
 		}
 	}
-	
+
 	public Promocion registrarPromocion(int idPromocion, String descr, String Precio , int idSucursal) {
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
@@ -1255,7 +1284,7 @@ public class PersistenciaSuperAndes
 
 			log.trace ("Inserción de Promocion: " + idPromocion + ": " + tuplasInsertadas + " tuplas insertadas");
 
-			
+
 			if(tuplasInsertadas == 0){
 				return null;
 			}
@@ -1355,7 +1384,7 @@ public class PersistenciaSuperAndes
 		}
 		catch (Exception e)
 		{
-			
+
 			e.printStackTrace();
 			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
 			return 0;
@@ -1538,10 +1567,10 @@ public class PersistenciaSuperAndes
 			pm.close();
 		}
 	}
-public long consolidacionPedidosProveedor( int id, java.util.Date fechaEsperada,java.util.Date fechaEntrega,String evaluacionCantidad, String evaluacionCalidad, int calificacion, int finalizado,int NITProveedor) {
-		
+	public long consolidacionPedidosProveedor( int id, java.util.Date fechaEsperada,java.util.Date fechaEntrega,String evaluacionCantidad, String evaluacionCalidad, int calificacion, int finalizado,int NITProveedor) {
+
 		return sqlPedido.consolidacionPedidosProveedor(pmf.getPersistenceManager(),id, fechaEsperada, fechaEntrega, evaluacionCantidad, evaluacionCalidad, calificacion, finalizado, NITProveedor);
-		
+
 
 	}
 
@@ -1562,7 +1591,7 @@ public long consolidacionPedidosProveedor( int id, java.util.Date fechaEsperada,
 	public List<uniandes.isis2304.superAndes.negocio.Consulta3> Consulta3() {
 		return sqlRFC3.consulta3(pmf.getPersistenceManager());
 	}
-	
+
 	public List<Producto> Consulta4(String r) {
 		// TODO Auto-generated method stub
 		return sqlRFC4.consulta4(pmf.getPersistenceManager(),r);
@@ -1579,8 +1608,8 @@ public long consolidacionPedidosProveedor( int id, java.util.Date fechaEsperada,
 	public List<uniandes.isis2304.superAndes.negocio.Consulta8> Consulta8(String idSucursal) {
 		return sqlRFC8.consulta8(pmf.getPersistenceManager(), idSucursal);
 	}
-	
-	
+
+
 	public List<Proveedor> darProveedor(String nombre) {
 		return sqlProveedor.darProveedor(pmf.getPersistenceManager(),nombre);
 	}
@@ -1596,7 +1625,7 @@ public long consolidacionPedidosProveedor( int id, java.util.Date fechaEsperada,
 			tx.commit();
 
 			log.trace ("Eliminado Proveedor" + nit +": " );
-			 r = tuplasEliminadas;
+			r = tuplasEliminadas;
 		}
 		catch (Exception e)
 		{
@@ -1609,88 +1638,88 @@ public long consolidacionPedidosProveedor( int id, java.util.Date fechaEsperada,
 			if (tx.isActive())
 			{
 				tx.rollback();
-				
+
 			}
-			
+
 			pm.close();
-			
+
 		}
 		return r;
-		
+
 	}
 	//Producto
-		public long eliminarProducto(String codigoDeBarras) {
-			PersistenceManager pm = pmf.getPersistenceManager();
-			Transaction tx=pm.currentTransaction();
-			long r = 0;
-			try
-			{
-				tx.begin();		
-				long tuplasEliminadas = sqlProducto.eliminarProducto(pm,codigoDeBarras);
-				tx.commit();
+	public long eliminarProducto(String codigoDeBarras) {
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		long r = 0;
+		try
+		{
+			tx.begin();		
+			long tuplasEliminadas = sqlProducto.eliminarProducto(pm,codigoDeBarras);
+			tx.commit();
 
-				log.trace ("Eliminado producto: " + codigoDeBarras +": " );
-				 r = tuplasEliminadas;
-			}
-			catch (Exception e)
-			{
-				e.printStackTrace();
-				log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
-
-			}
-			finally
-			{
-				if (tx.isActive())
-				{
-					tx.rollback();
-					
-				}
-				
-				pm.close();
-				
-			}
-			return r;
-			
-			
-			
+			log.trace ("Eliminado producto: " + codigoDeBarras +": " );
+			r = tuplasEliminadas;
 		}
-		
-		public long eliminarFactura(String NumFactura) {
-			PersistenceManager pm = pmf.getPersistenceManager();
-			Transaction tx=pm.currentTransaction();
-			long r = 0;
-			try
-			{
-				tx.begin();		
-				long tuplasEliminadas = sqlFactura.eliminarFactura(pm,NumFactura);
-				tx.commit();
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
 
-				log.trace ("Eliminado Factura: " + NumFactura +": " );
-				 r = tuplasEliminadas;
-			}
-			catch (Exception e)
-			{
-				e.printStackTrace();
-				log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
-
-			}
-			finally
-			{
-				if (tx.isActive())
-				{
-					tx.rollback();
-					
-				}
-				
-				pm.close();
-				
-			}
-			return r;
-			
-			
-			
 		}
-	
+		finally
+		{
+			if (tx.isActive())
+			{
+				tx.rollback();
+
+			}
+
+			pm.close();
+
+		}
+		return r;
+
+
+
+	}
+
+	public long eliminarFactura(String NumFactura) {
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		long r = 0;
+		try
+		{
+			tx.begin();		
+			long tuplasEliminadas = sqlFactura.eliminarFactura(pm,NumFactura);
+			tx.commit();
+
+			log.trace ("Eliminado Factura: " + NumFactura +": " );
+			r = tuplasEliminadas;
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+
+		}
+		finally
+		{
+			if (tx.isActive())
+			{
+				tx.rollback();
+
+			}
+
+			pm.close();
+
+		}
+		return r;
+
+
+
+	}
+
 	public long eliminarClienteNatural(int cedula) 
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -1703,7 +1732,7 @@ public long consolidacionPedidosProveedor( int id, java.util.Date fechaEsperada,
 			tx.commit();
 
 			log.trace ("Eliminado cliente" + cedula +": " );
-			 r = tuplasEliminadas;
+			r = tuplasEliminadas;
 		}
 		catch (Exception e)
 		{
@@ -1716,14 +1745,14 @@ public long consolidacionPedidosProveedor( int id, java.util.Date fechaEsperada,
 			if (tx.isActive())
 			{
 				tx.rollback();
-				
+
 			}
-			
+
 			pm.close();
-			
+
 		}
 		return r;
-		
+
 	}
 	public long eliminarSucursal(int id) 
 	{
@@ -1737,7 +1766,7 @@ public long consolidacionPedidosProveedor( int id, java.util.Date fechaEsperada,
 			tx.commit();
 
 			log.trace ("Eliminado sucursal" + id +": " );
-			 r = tuplasEliminadas;
+			r = tuplasEliminadas;
 		}
 		catch (Exception e)
 		{
@@ -1750,16 +1779,16 @@ public long consolidacionPedidosProveedor( int id, java.util.Date fechaEsperada,
 			if (tx.isActive())
 			{
 				tx.rollback();
-				
+
 			}
-			
+
 			pm.close();
-			
+
 		}
 		return r;
-		
+
 	}
-	
+
 	public long eliminarContenedor(int id) 
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -1772,7 +1801,7 @@ public long consolidacionPedidosProveedor( int id, java.util.Date fechaEsperada,
 			tx.commit();
 
 			log.trace ("Eliminado contenedor" + id +": " );
-			 r = tuplasEliminadas;
+			r = tuplasEliminadas;
 		}
 		catch (Exception e)
 		{
@@ -1785,15 +1814,50 @@ public long consolidacionPedidosProveedor( int id, java.util.Date fechaEsperada,
 			if (tx.isActive())
 			{
 				tx.rollback();
-				
+
 			}
-			
+
 			pm.close();
-			
+
 		}
 		return r;
-		
+
 	}
+	public long eliminarPedido(int id) 
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		long r = 0;
+		try
+		{
+			tx.begin();		
+			long tuplasEliminadas = sqlPedido.eliminarPedido(pm, id);
+			tx.commit();
+
+			log.trace ("Eliminado pedido" + id +": " );
+			r = tuplasEliminadas;
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+
+		}
+		finally
+		{
+			if (tx.isActive())
+			{
+				tx.rollback();
+
+			}
+
+			pm.close();
+
+		}
+		return r;
+
+	}
+
 
 	public long eliminarClienteEmpresa(String NIT) 
 	{
@@ -1807,7 +1871,7 @@ public long consolidacionPedidosProveedor( int id, java.util.Date fechaEsperada,
 			tx.commit();
 
 			log.trace ("Eliminado cliente" + NIT +": " );
-			 r = tuplasEliminadas;
+			r = tuplasEliminadas;
 		}
 		catch (Exception e)
 		{
@@ -1820,23 +1884,23 @@ public long consolidacionPedidosProveedor( int id, java.util.Date fechaEsperada,
 			if (tx.isActive())
 			{
 				tx.rollback();
-				
+
 			}
-			
+
 			pm.close();
-			
+
 		}
 		return r;
-		
+
 	}
 
-		
+
 
 	public List<Estante> darEstantes()
 	{
 		return sqlEstante.darEstantes(pmf.getPersistenceManager());
 	}
-	
+
 	public long eliminarEstante(long id) {
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
@@ -1848,7 +1912,7 @@ public long consolidacionPedidosProveedor( int id, java.util.Date fechaEsperada,
 			tx.commit();
 
 			log.trace ("Eliminado Estante: " + id +": " );
-			 r = tuplasEliminadas;
+			r = tuplasEliminadas;
 		}
 		catch (Exception e)
 		{
@@ -1865,7 +1929,7 @@ public long consolidacionPedidosProveedor( int id, java.util.Date fechaEsperada,
 		}
 		return r;	
 	}
-	
+
 	/* ****************************************************************
 	 * 			Limpiar Super Andes
 	 *****************************************************************/

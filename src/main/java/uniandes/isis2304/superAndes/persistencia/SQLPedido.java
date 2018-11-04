@@ -60,12 +60,21 @@ class SQLPedido
 	 */
 	public long registrarPedido (PersistenceManager pm,int id, java.util.Date fechaEsperada,java.util.Date fechaEntrega,String evaluacionCantidad, String evaluacionCalidad, int calificacion, int finalizado,int NITProveedor) 
 	{
+		
+		
 		java.sql.Date fecha1 = convertUtilToSql(fechaEsperada);
 		java.sql.Date fecha2 = convertUtilToSql(fechaEntrega);
 
+		try {
+		
 		Query q = pm.newQuery(SQL, "INSERT INTO " + "PEDIDO" + "(id,fechaEsperada,fechaEntrega,evaluacionCantidad,evaluacionCalidad,calificacion,finalizado,NITProveedor) values ("+id+", TO_DATE('"+fecha1+"', 'YYYY/MM/DD'), TO_DATE('"+fecha2+"', 'YYYY/MM/DD'), '"+evaluacionCantidad+"', '"+evaluacionCalidad+"', "+calificacion+", "+finalizado+", "+NITProveedor+" )");
 		q.setParameters( id, fechaEsperada, fechaEntrega,evaluacionCantidad,evaluacionCalidad,calificacion, finalizado,NITProveedor);
 		return (long) q.executeUnique();
+		}
+		catch (Exception e)
+		{
+			return 0;
+		}
 		
 
 	}
@@ -125,6 +134,10 @@ class SQLPedido
 		return (long) q.executeUnique() ;
 	}
 
+	public long eliminarPedido(PersistenceManager pm, int id) {
+		 Query q = pm.newQuery(SQL, "DELETE FROM " + "PEDIDO "+ "WHERE ID = "+id);
+	        return (long) q.executeUnique();  
+	}
 
 
 

@@ -926,7 +926,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 
 				Producto producto = buscarPorCodigoDeBarras(codigoDeBarras);
 
-				VOPedido tb = superAndes.registrarPedido(id, fechaEsperada, fechaEntrega, evaluacionCantidad, evaluacionCalidad,calificacion,finalizado,NITProveedor);
+				VOPedido tb = superAndes.registrarPedido(id, fechaEsperada, fechaEntrega, evaluacionCantidad, evaluacionCalidad,calificacion,finalizado,NITProveedor, 1);
 				//	VOProducto produ = superAndes.registrarProducto(codigoDeBarras, producto.getNombre(), producto.getMarca(), producto.getPrecioUnitario(), producto.getPresentacion(), producto.getPrecioPorUnidad(), producto.getCantidadEnLaPresentacion(), producto.getUnidadesDeMedida(), producto.getEspecificacionesDeEmpacado(), producto.getNivelDeReorden(), id, producto.getIDSucursal(), producto.getIDContenedor(), producto.getEnStock());
 
 
@@ -1239,7 +1239,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 				{
 					Producto productoActual = productos.get(i);
 					FacturaProducto fp = superAndes.registrarFacturaProd(numeroDeFactura,productoActual.getCodigoDeBarras()) ;
-					superAndes.registrarPedido(nextvalID(), fecha, fechaEntrega, evaluacionCantidad, evaluacionCalidad, calificacion, finalizado, nextvalNITProveedor());
+					superAndes.registrarPedido(nextvalID(), fecha, fechaEntrega, evaluacionCantidad, evaluacionCalidad, calificacion, finalizado, nextvalNITProveedor(), 1);
 					
 					
 					if (fp == null)
