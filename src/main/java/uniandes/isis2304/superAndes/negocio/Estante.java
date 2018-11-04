@@ -33,16 +33,13 @@ public class Estante implements VOEstante
 	 *****************************************************************/
 	
 	
-	private long id;	
+	private int id;	
 
 	
-	private float nivelAbastecimiento;
-	
-	private long idSucursal;
-	
-//	private List<Object []> tiposDeProductosQueGuardan;
-//	
-//	private List<Object []> productosQueGuardan;
+	private int nivelAbastecimiento;
+				
+	private int idSucursales;
+
 
 
 	/* ****************************************************************
@@ -56,7 +53,7 @@ public class Estante implements VOEstante
 		this.id = 0;
 		
 		this.nivelAbastecimiento = 0;
-		this.idSucursal = 0;
+		this.idSucursales = 0;
 	}
 
 	/**
@@ -64,44 +61,44 @@ public class Estante implements VOEstante
 	 * @param idBebedor - El identificador del bebedor. Debe exixtir un bebedor con dicho identificador
 	 * @param idBebida - El identificador de la bebida. Debe existir una bebida con dicho identificador
 	 */
-	public Estante(long id ,float nivelAbastecimiento,long idSucursal) 
+	public Estante(int id ,int nivelAbastecimiento,int idSucursales) 
 	{
 		this.id = id;
 		
 		this.nivelAbastecimiento = nivelAbastecimiento;
-		this.idSucursal = idSucursal;
+		this.idSucursales = idSucursales;
 	}
 
 
-	public long getId() 
+	public int getId() 
 	{
 		return id;
 	}
 
-	public void setId(long id) 
+	public void setId(int id) 
 	{
 		this.id = id;
 	}
 
-	public float getNivelAbastecimiento() 
+	public int getNivelAbastecimiento() 
 	{
 		return nivelAbastecimiento;
 	}
 
-	public void setNnivelAbastecimiento(float nivelAbastecimiento) 
+	public void setNivelAbastecimiento(int nivelAbastecimiento) 
 	{
 		this.nivelAbastecimiento = nivelAbastecimiento;
 	}
 
 
-	public long getIdSucursal() 
+	public int getIdSucursales() 
 	{
-		return idSucursal;
+		return idSucursales;
 	}
 
-	public void setIdSucursal(long idSucursal) 
+	public void setIdSucursales(int idSucursales) 
 	{
-		this.idSucursal = idSucursal;
+		this.idSucursales = idSucursales;
 	}
 	
 	
@@ -111,7 +108,7 @@ public class Estante implements VOEstante
 	@Override
 	public String toString() 
 	{
-		String resp = "Estante [id=" + id + ", idSucursal=" + idSucursal+ "]";
+		String resp = "Estante [id=" + id + ", nivelAbastecimiento=" + nivelAbastecimiento+ ", idSucursales=" + idSucursales+ "]";
 	return resp;
 	}
 

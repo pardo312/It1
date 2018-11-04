@@ -526,8 +526,8 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
     {
     	try 
     	{
-    		int idEstante = 6;
-    		float nivelDeAbastecimiento = 8;
+    		int idEstante = nextvalID();
+    		int nivelDeAbastecimiento = 8;
     		int idSucursal = 5;
 			
 			
@@ -573,9 +573,9 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
     {
     	try 
     	{
-    		long idEstante = 6;
-    		float nivelDeAbastecimiento = 8;
-    		long idSucursal = 5;
+    		int idEstante = 6;
+    		int nivelDeAbastecimiento = 8;
+    		int idSucursal = 5;
 			
 			
 			boolean errorEstante = false;
@@ -637,13 +637,11 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
 		}
     }
    
-    private long nextvalIDSucursal()
+    private int nextvalID()
 	{
-		long resp =(int) (Math.random() * 100) + 21;;
+		int resp =(int) (Math.random() * 100) + 21;;
 		
 			return resp;
-		
-		
 	}
     
     

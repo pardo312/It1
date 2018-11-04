@@ -27,11 +27,11 @@ public interface VOEstante
 	 * 			Métodos
 	 *****************************************************************/
 
-	public long getId();
+	public int getId();
 
-	public float getNivelAbastecimiento();
+	public int getNivelAbastecimiento();
 	
-	public long getIdSucursal();
+	public int getIdSucursales();
 	@Override
 	public String toString();
 	

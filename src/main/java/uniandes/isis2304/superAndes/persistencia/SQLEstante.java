@@ -62,7 +62,7 @@ class SQLEstante
 	}
 	
 	
-	public long registrarEstante(PersistenceManager pm, long id, float nivelAbastecimiento, long idSucursales) 
+	public long registrarEstante(PersistenceManager pm, int id, int nivelAbastecimiento, int idSucursales) 
 	{
 		
 		try{ 

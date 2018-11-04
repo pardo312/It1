@@ -1072,7 +1072,7 @@ public class PersistenciaSuperAndes
 	//------------------------------
 
 
-	public Estante registrarEstante(long idEstante, float nivelReabastecimiento, long idSucursal) {
+	public Estante registrarEstante(int idEstante, int nivelReabastecimiento, int idSucursal) {
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
 		try
@@ -1084,7 +1084,13 @@ public class PersistenciaSuperAndes
 
 			log.trace ("Inserción de estante: " + idEstante + ": " + tuplasInsertadas + " tuplas insertadas");
 
-			return new Estante(idEstante, nivelReabastecimiento,idSucursal);
+			
+			if(tuplasInsertadas == 0){
+				return null;
+			}
+			else{
+				return new Estante(idEstante, nivelReabastecimiento,idSucursal);
+			}
 		}
 		catch (Exception e)
 		{

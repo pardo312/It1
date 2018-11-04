@@ -780,7 +780,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 		{
 
 			//Nivel reabastecimiento
-			long idEstante = Long.parseLong(JOptionPane.showInputDialog (this, "Id del estante?", "Registrar Proveedor", JOptionPane.QUESTION_MESSAGE));
+			int idEstante = Integer.parseInt(JOptionPane.showInputDialog (this, "Id del estante?", "Registrar Proveedor", JOptionPane.QUESTION_MESSAGE));
 
 			List<Producto> prodTots = listarProducto();
 			List<Producto> prodDeEstante = new LinkedList<Producto>();
@@ -791,14 +791,14 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 					prodDeEstante.add(tb);
 				}
 			}
-			float nivelReabastecimiento = prodDeEstante.size( );
+			int nivelReabastecimiento = prodDeEstante.size( );
 			if(nivelReabastecimiento == 0)
 			{
 				panelDatos.actualizarInterfaz("Nivel de reabastecimiento es 0, porfavor traiga productos de bodega");
 			}
 			//Fin nivel abastecimiento
 			System.out.println(nivelReabastecimiento);
-			long idSucursal = Long.parseLong(JOptionPane.showInputDialog (this, "Sucursal a la cual se asociara el estante?", "Registrar Proveedor", JOptionPane.QUESTION_MESSAGE));
+			int idSucursal = Integer.parseInt(JOptionPane.showInputDialog (this, "Sucursal a la cual se asociara el estante?", "Registrar Proveedor", JOptionPane.QUESTION_MESSAGE));
 
 			VOEstante tb = superAndes.registrarEstante(idEstante,nivelReabastecimiento,idSucursal) ;
 			if (tb == null)

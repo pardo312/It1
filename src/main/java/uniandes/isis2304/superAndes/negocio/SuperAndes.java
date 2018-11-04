@@ -279,7 +279,7 @@ public class SuperAndes
 	}
 	//Fin producto
 
-	public VOEstante registrarEstante(long idEstante, float nivelReabastecimiento, long idSucursal) {
+	public VOEstante registrarEstante(int idEstante, int nivelReabastecimiento, int idSucursal) {
 		log.info ("Adicionando el Estante: " + idEstante);
 		Estante estante = pp.registrarEstante (idEstante,nivelReabastecimiento,idSucursal);		
 		log.info ("Adicionando el proveedor: " + estante);
