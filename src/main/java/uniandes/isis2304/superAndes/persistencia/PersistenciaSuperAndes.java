@@ -472,8 +472,13 @@ public class PersistenciaSuperAndes
 				tx.commit();
 
 				log.trace ("Inserción de proveedor: " + nombre + ": " + tuplasInsertadas + " tuplas insertadas");
-
-				return new Proveedor(10007, nombre);
+				if(tuplasInsertadas == 0){
+					return null;
+				}
+				else{
+					return new Proveedor(10007, nombre);
+				}
+				
 			
 			
 		}

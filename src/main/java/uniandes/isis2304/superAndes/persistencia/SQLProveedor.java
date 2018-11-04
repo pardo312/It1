@@ -64,17 +64,27 @@ class SQLProveedor
 	
 	public long registrarProveedor(PersistenceManager pm, long NIT, String nombre) 
 	{
+		try{
         Query q = pm.newQuery(SQL, "INSERT INTO " + "PROVEEDOR" + "(NIT, nombre) values ("+NIT+",'"+ nombre+"')");
         q.setParameters(NIT, nombre);
-        return (long) q.executeUnique();            
+        return (long) q.executeUnique();  
+	}
+	catch (Exception e)
+	{	
+		return 0;
+	}
 	}
 	
 	public List<Proveedor> darProveedores (PersistenceManager pm)
 	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + "PROVEEDOR");
-		q.setResultClass(Proveedor.class);
-		List<Proveedor> w = (List<Proveedor>) q.executeList();
-		return w;
+		
+			Query q = pm.newQuery(SQL, "SELECT * FROM " + "PROVEEDOR");
+			q.setResultClass(Proveedor.class);
+			List<Proveedor> w = (List<Proveedor>) q.executeList();
+			return w;
+		
+		
+		
 	}
 	
 	public List<Proveedor> darProveedor (PersistenceManager pm, String nombre)
