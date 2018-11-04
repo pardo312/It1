@@ -13,7 +13,7 @@ public class CarritoDeCompras implements VOCarritoDeCompras
 	
 	private int cedula;
 	
-	private String NITProveedor;
+	private String NITCliente;
 	
 	private long IDCarrito;
 	
@@ -29,36 +29,36 @@ public class CarritoDeCompras implements VOCarritoDeCompras
 	{
 		this.IDCarrito = 0;
 		this.usado = 0;
-		this.NITProveedor = "0";
+		this.NITCliente = "0";
 		this.cedula = 0;
 	}
 
-	public CarritoDeCompras( long IDCarrito, int usado, String NITProveedor, int cedula) 
+	public CarritoDeCompras( long IDCarrito, int usado, String NITCliente, int cedula) 
 	{
 		this.IDCarrito = IDCarrito;
 		this.usado = 0;
-		this.NITProveedor = NITProveedor;
+		this.NITCliente = NITCliente;
 		this.cedula = cedula;
 	}
 
-	public long getID() 
+	public long getIDCarrito() 
 	{
 		return IDCarrito;
 	}
 
-	public void setId(long id) 
+	public void setIdCarrito(long idCarrito) 
 	{
-		this.IDCarrito = id;
+		this.IDCarrito = idCarrito;
 	}
 	
-	public String getNITProveedor() 
+	public String getNITCliente() 
 	{
-		return NITProveedor;
+		return NITCliente;
 	}
 
-	public void setNITProveedor(String NIT) 
+	public void setNITCliente(String NIT) 
 	{
-		this.NITProveedor = NIT;
+		this.NITCliente = NIT;
 	}
 	
 	public int getCedula() 
@@ -85,7 +85,7 @@ public class CarritoDeCompras implements VOCarritoDeCompras
 	@Override
 	public String toString() 
 	{
-		String resp = "CarritoDeCompras [ IDCarrito ="+ IDCarrito + "Usado=" + usado + " NIT=" + NITProveedor + ", cedula=" + cedula  + "]";
+		String resp = "CarritoDeCompras [ IDCarrito ="+ IDCarrito + "Usado=" + usado + " NITCLIENTE=" + NITCliente + ", cedula=" + cedula  + "]";
 		
 		
 		return resp;

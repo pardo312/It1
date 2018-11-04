@@ -11,6 +11,7 @@ import uniandes.isis2304.superAndes.negocio.CarritoDeCompras;
 import uniandes.isis2304.superAndes.negocio.Categoria;
 import uniandes.isis2304.superAndes.negocio.Cliente;
 import uniandes.isis2304.superAndes.negocio.ClienteNatural;
+import uniandes.isis2304.superAndes.negocio.Pedido;
 import uniandes.isis2304.superAndes.negocio.Proveedor;
 
 /**
@@ -57,20 +58,28 @@ class SQLCarritoDeCompras
 	 * @param nombre del cliente
 	 * @return
 	 */
-	public long registrarCarritoDeCompras(PersistenceManager pm, long ido, int usado, String NITCLIENTE, int cedula) 
+	public long registrarCarritoDeCompras(PersistenceManager pm, long idCarrito, int usado, String NITCLIENTE, int cedula) 
 	{
+		try {
+		
 		if (NITCLIENTE.equalsIgnoreCase("0"))
 		{
-        Query q = pm.newQuery(SQL, "INSERT INTO " + "CARRITODECOMPRA" + "(idCarrito,usado,cedula) values ("+ido+ ",1,"+cedula+" )");
-        q.setParameters( ido, usado,cedula);
+        Query q = pm.newQuery(SQL, "INSERT INTO " + "CARRITODECOMPRA" + "(idCarrito,usado,cedula) values ("+idCarrito+ ",1,"+cedula+" )");
+        q.setParameters( idCarrito, usado,cedula);
         return (long) q.executeUnique();
         }
 		
 		else 
 		{
-			Query q = pm.newQuery(SQL, "INSERT INTO " + "CARRITODECOMPRA" + "(idCarrito,usado,nitcliente) values ("+ido+ ", 1,'"+NITCLIENTE+"' )");
-	        q.setParameters( ido, usado, NITCLIENTE);
+			Query q = pm.newQuery(SQL, "INSERT INTO " + "CARRITODECOMPRA" + "(idCarrito,usado,nitcliente) values ("+idCarrito+ ", 1,'"+NITCLIENTE+"' )");
+	        q.setParameters( idCarrito, usado, NITCLIENTE);
 	        return (long) q.executeUnique();
+		}
+		}
+		
+		catch (Exception e)
+		{
+			return 0;
 		}
 	}
 
@@ -81,8 +90,10 @@ class SQLCarritoDeCompras
 	 */
 	public List<CarritoDeCompras> darCarritosDeCompra(PersistenceManager pm)
 	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + "CARRITODECOMPRA");
-		return (List<CarritoDeCompras>) q.executeList();
+		Query q = pm.newQuery(SQL, "SELECT IDCARRITO, USADO, NITCLIENTE, CEDULA FROM " + "CARRITODECOMPRA");
+		q.setResultClass(CarritoDeCompras.class);
+		List<CarritoDeCompras> w =  (List<CarritoDeCompras>) q.executeList();
+		return w;
 	}
 	
 	public long devolverProducto(PersistenceManager pm, long idCarrito) 
@@ -91,5 +102,11 @@ class SQLCarritoDeCompras
 		
         return (long) q.executeUnique();
 	}
+
+	public long eliminarCarrito(PersistenceManager pm, int id) {
+		 Query q = pm.newQuery(SQL, "DELETE FROM " + "CARRITODECOMPRA "+ "WHERE IDCARRITO = "+id);
+	        return (long) q.executeUnique();  
+	}
+	
 
 }

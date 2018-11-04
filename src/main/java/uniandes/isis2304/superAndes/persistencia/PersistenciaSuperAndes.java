@@ -810,39 +810,66 @@ public class PersistenciaSuperAndes
 
 	}
 
-	public CarritoDeCompras registrarCarritoDeCompras ( long idCarrito, int usado, String NITProveedor, int cedula)
+	public CarritoDeCompras registrarCarritoDeCompras ( long idCarrito, int usado, String NITCliente, int cedula, int a)
 	{
 
-		PersistenceManager pm = pmf.getPersistenceManager();
-		Transaction tx=pm.currentTransaction();
-		long ido = nextval ();
-		try
+		if (a== 1)
 		{
+
+
+			PersistenceManager pm = pmf.getPersistenceManager();
+			Transaction tx=pm.currentTransaction();
+			long ido = nextval ();
+			try
+			{
+				tx.begin();
+				long tuplasInsertadas = sqlCarritoDeCompras.registrarCarritoDeCompras(pm, idCarrito, usado, NITCliente, cedula);
+				tx.commit();
+
+				log.trace ("Inserción de carrito de compras " + idCarrito + ": " + tuplasInsertadas + " tuplas insertadas");
+
+				if(tuplasInsertadas == 0){
+					return null;
+				}
+				else
+				return new CarritoDeCompras(idCarrito,usado, NITCliente,cedula);
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+				log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+				return null;
+			}
+			finally
+			{
+				if (tx.isActive())
+				{
+					tx.rollback();
+				}
+				pm.close();
+
+				darCarritosDeCompras();
+			}
+		}
+		else {
+
+
+			PersistenceManager pm = pmf.getPersistenceManager();
+			Transaction tx=pm.currentTransaction();
+
 			tx.begin();
-			long tuplasInsertadas = sqlCarritoDeCompras.registrarCarritoDeCompras(pm, ido, usado, NITProveedor, cedula);
+			long tuplasInsertadas = sqlCarritoDeCompras.registrarCarritoDeCompras(pm, 2, usado, NITCliente, cedula);
 			tx.commit();
 
-			log.trace ("Inserción de carrito de compras " + ido + ": " + tuplasInsertadas + " tuplas insertadas");
-
-			return new CarritoDeCompras(ido,usado, NITProveedor,cedula);
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
-			return null;
-		}
-		finally
-		{
-			if (tx.isActive())
-			{
-				tx.rollback();
+			log.trace ("Inserción de carrito: " + 2 + ": " + tuplasInsertadas + " tuplas insertadas");
+			if(tuplasInsertadas == 0){
+				return null;
 			}
-			pm.close();
+			else{
+				return new CarritoDeCompras(2, usado, NITCliente, cedula);
+			}
 
-			darCarritosDeCompras();
 		}
-
 	}
 
 
@@ -869,6 +896,11 @@ public class PersistenciaSuperAndes
 	{
 		return sqlContenedor.darContenedores(pmf.getPersistenceManager());
 	}
+	public List<CarritoDeCompras> darCarritos ()
+	{
+		return sqlCarritoDeCompras.darCarritosDeCompra(pmf.getPersistenceManager());
+	}
+	
 	public List<ClienteEmpresa> darClientesEmpresa ()
 	{
 		return sqlClienteEmpresa.darClientesEmpresa(pmf.getPersistenceManager());
@@ -1158,6 +1190,11 @@ public class PersistenciaSuperAndes
 		return sqlContenedor.darContenedores(pmf.getPersistenceManager());
 	}
 	
+	public List<CarritoDeCompras> darCarritoDeCompras ()
+	{
+		return sqlCarritoDeCompras.darCarritosDeCompra(pmf.getPersistenceManager());
+	}
+
 	public List<Pedido> darPedido ()
 	{
 		return sqlPedido.darPedidos(pmf.getPersistenceManager());
@@ -1823,6 +1860,42 @@ public class PersistenciaSuperAndes
 		return r;
 
 	}
+	
+	public long eliminarCarrito(int idCarrito) 
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		long r = 0;
+		try
+		{
+			tx.begin();		
+			long tuplasEliminadas = sqlCarritoDeCompras.eliminarCarrito(pm, idCarrito);
+			tx.commit();
+
+			log.trace ("Eliminado carrito" + idCarrito +": " );
+			r = tuplasEliminadas;
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+
+		}
+		finally
+		{
+			if (tx.isActive())
+			{
+				tx.rollback();
+
+			}
+
+			pm.close();
+
+		}
+		return r;
+
+	}
+	
 	public long eliminarPedido(int id) 
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();

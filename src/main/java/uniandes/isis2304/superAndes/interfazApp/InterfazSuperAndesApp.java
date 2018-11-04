@@ -1066,7 +1066,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 
 			if ( NIT != null ) {
 
-				VOCarritoDeCompras tb = superAndes.registrarCarritoDeCompras(idCarrito, usado, NIT, cedula);
+				VOCarritoDeCompras tb = superAndes.registrarCarritoDeCompras(idCarrito, usado, NIT, cedula, 1);
 				if (tb == null)
 				{
 					throw new Exception ("No se puede asignar un carrito si no esta registrado como cliente ");

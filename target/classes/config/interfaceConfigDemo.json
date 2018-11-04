@@ -115,6 +115,16 @@
 					"label": "Adicion y devolucion de Producto a carrito No Exitoso",
 					"event": "demoAdicionarEliminarProductoCarritoNoExitoso"
 				}
+				,
+				{
+					"label": "Asignacion de un carrito a cliente natural Exitoso",
+					"event": "demoRegistrarCarritoAClienteNaturalExitoso"
+				}
+				,
+				{
+					"label": "Asignacion de un carrito a cliente natural No Exitoso",
+					"event": "demoRegistrarCarritoAClienteNaturalNoExitoso"
+				}
 			]
 		}
 	]

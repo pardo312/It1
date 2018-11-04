@@ -20,6 +20,12 @@ public interface VOCarritoDeCompras
 {
 	public int getUsado() ;
 	
+	public int getCedula();
+	
+	public String getNITCliente();
+	
+	public long getIDCarrito();
+	
 	
 	@Override
 	public String toString();

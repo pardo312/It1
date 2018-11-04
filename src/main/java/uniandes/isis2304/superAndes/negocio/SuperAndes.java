@@ -294,6 +294,17 @@ public class SuperAndes
 		return voProd;
 
 	}
+	public List<CarritoDeCompras> darCarritos() {
+		log.info ("Generando los VO de contenedor");        
+		List<CarritoDeCompras> voProd = new LinkedList<CarritoDeCompras> ();
+		for (CarritoDeCompras tb : pp.darCarritos())
+		{
+			voProd.add (tb);
+		}
+		log.info ("Generando los VO de contenedor : " + voProd.size() + " existentes");
+		return voProd;
+
+	}
 	
 	public List<Pedido> darPedidios() {
 		log.info ("Generando los VO de pedido");        
@@ -343,6 +354,18 @@ public class SuperAndes
 		return voTipos;
 	}
 	
+	public List<VOCarritoDeCompras> darVOCarrito() {
+		log.info ("Generando los VO de carrito");        
+		List<VOCarritoDeCompras> voTipos = new LinkedList<VOCarritoDeCompras> ();
+		for (CarritoDeCompras tb : pp.darCarritoDeCompras ())
+		{
+			voTipos.add (tb);
+		}
+		log.info ("Generando los VO de carrito: " + voTipos.size() + " existentes");
+		return voTipos;
+	}
+	
+	
 	public List<VOPedido> darVOPedido() {
 		log.info ("Generando los VO de contenedor");        
 		List<VOPedido> voTipos = new LinkedList<VOPedido> ();
@@ -371,6 +394,17 @@ public class SuperAndes
 		log.info ("Generando Consulta: " + voProv.size() + " existentes");
 		return prov;	
 	}
+	
+	public CarritoDeCompras darCarrito (int idCarrito)
+	{
+
+		log.info ("Generando consulta");        
+		List<CarritoDeCompras> voProv = new LinkedList<CarritoDeCompras> ();
+		CarritoDeCompras prov = voProv.get(0);
+		log.info ("Generando Consulta: " + voProv.size() + " existentes");
+		return prov;	
+	}
+	
 	public Pedido darPedido(int id)
 	{
 
@@ -382,10 +416,10 @@ public class SuperAndes
 	}
 
 
-	public CarritoDeCompras registrarCarritoDeCompras(long idCarrito, int usado, String NIT, int cedula)
+	public CarritoDeCompras registrarCarritoDeCompras(long idCarrito, int usado, String NITCliente, int cedula, int a)
 	{
 		log.info ("Adicionando el carrito: " + idCarrito);
-		CarritoDeCompras carritoDeCompras = pp.registrarCarritoDeCompras(idCarrito, usado, NIT, cedula);		
+		CarritoDeCompras carritoDeCompras = pp.registrarCarritoDeCompras(idCarrito, usado, NITCliente, cedula ,a);		
 		log.info ("Adicionando el carrito: " + idCarrito);
 		return carritoDeCompras;
 	}
@@ -787,6 +821,15 @@ public class SuperAndes
 		log.info ("Eliminando el contenedor: " + id);
 		long p = pp.eliminarContenedor (id);		
 		log.info ("Eliminando el contenedor  ");
+		return p;	
+	}
+	
+	public long eliminarCarrito (int id)
+	{
+
+		log.info ("Eliminando el carrito: " + id);
+		long p = pp.eliminarCarrito (id);		
+		log.info ("Eliminando el carrito  ");
 		return p;	
 	}
 	

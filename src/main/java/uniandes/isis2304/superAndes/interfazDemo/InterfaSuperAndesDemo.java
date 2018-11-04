@@ -49,12 +49,14 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 
+import uniandes.isis2304.superAndes.negocio.CarritoDeCompras;
 import uniandes.isis2304.superAndes.negocio.ClienteEmpresa;
 import uniandes.isis2304.superAndes.negocio.ClienteNatural;
 import uniandes.isis2304.superAndes.negocio.Contenedor;
 import uniandes.isis2304.superAndes.negocio.Proveedor;
 import uniandes.isis2304.superAndes.negocio.Sucursal;
 import uniandes.isis2304.superAndes.negocio.SuperAndes;
+import uniandes.isis2304.superAndes.negocio.VOCarritoDeCompras;
 import uniandes.isis2304.superAndes.negocio.VOClienteEmpresa;
 import uniandes.isis2304.superAndes.negocio.VOClienteNatural;
 import uniandes.isis2304.superAndes.negocio.VOContenedor;
@@ -999,6 +1001,127 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
     		}
       }
 
+      /* ****************************************************************
+  	 * 			Demos de contenedor
+  	 *****************************************************************/
+    
+    public void demoRegistrarCarritoAClienteNaturalExitoso( )
+    {
+    	try 
+    	{
+    		// Ejecución de la demo y recolección de los resultados
+			// ATENCIÓN: En una aplicación real, los datos JAMÁS están en el código
+    		String NITCliente = "0";
+    		int cedula = 1008;
+    		long idCarrito= 5; // mas adelante se pone uno autogenerado
+			int usado = 1; // como se esta registrando se asigna a un cliente y esta en uso 
+			boolean errorCarrito = false;
+			CarritoDeCompras carrito = superAndes.registrarCarritoDeCompras(idCarrito, usado, NITCliente, cedula,1);
+			if (carrito == null)
+			{
+				carrito = superAndes.darCarrito((int)idCarrito);
+				errorCarrito = true;
+			}
+			List <VOCarritoDeCompras> lista = superAndes.darVOCarrito();
+			long tbEliminados = superAndes.eliminarCarrito((int)carrito.getIDCarrito());
+			
+			// Generación de la cadena de caracteres con la traza de la ejecución de la demo
+			String resultado = "Demo de creación y listado de carritos \n\n";
+			resultado += "\n\n************ Generando datos de prueba ************ \n";
+			if (errorCarrito)
+			{
+				resultado += "*** Exception creando carrito !!\n";
+				resultado += "*** Es probable que ese carrito ya existiera y hay restricción de UNICIDAD sobre el id del carrito \n";
+				resultado += "*** Revise el log de superAndes para más detalles\n";
+			}
+			resultado += "Adicionado el carrito con id: " + idCarrito + "\n";
+			resultado += "\n\n************ Ejecutando la demo ************ \n";
+			resultado +=  "\n " + listarCarrito(lista);
+			resultado += "\n\n************ Limpiando la base de datos ************ \n";
+			resultado += tbEliminados + " carritos eliminados\n";
+			
+			List <VOCarritoDeCompras> listaDespues = superAndes.darVOCarrito();
+			resultado += "\n\n************ Despues de eliminar la lista queda asi:************ \n";
+			resultado +=  "\n " + listarCarrito(listaDespues);
+			resultado += "\n Demo terminada";
+   
+			panelDatos.actualizarInterfaz(resultado);
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+    public void demoRegistrarCarritoAClienteNaturalNoExitoso( )
+    {
+    	try 
+      	{
+    		String NITCliente = "0";
+    		int cedula = 1008;
+    		long idCarrito= 5; // mas adelante se pone uno autogenerado
+			int usado = 1; // como se esta registrando se asigna a un cliente y esta en uso 
+			boolean errorCarrito = false;
+			
+  			VOCarritoDeCompras Carrito = superAndes.registrarCarritoDeCompras(idCarrito, usado, NITCliente, cedula, 0) ;
+  			if (Carrito == null)
+  			{
+  				errorCarrito = true;
+  			}
+  			
+  			// Generación de la cadena de caracteres con la traza de la ejecución de la demo
+  			String resultado = "Demo de creación y listado de Carrito\n\n";
+  			resultado += "\n\n************ Generando datos de prueba ************ \n";
+  			if (errorCarrito)
+  			{
+  				resultado += "Adicionado el carrito con id: " + idCarrito + "\n";
+  				resultado += "\n\n************ Estado de la base de datos antes de la operacion ************ \n";
+  				
+  				List <CarritoDeCompras> lista = superAndes.darCarritos();
+  				resultado +=  "\n " + listarCarritos(lista)+  "\n\n ";
+  				
+  				resultado += "\n\n************ Error Al insertar************ \n\n";				
+  				
+  				resultado += "*** Exception creando carrito !!\n";
+  				resultado += "*** Es probable que ese carrito ya existiera y hay restricción de UNICIDAD sobre el id del carrito \n";
+  				resultado += "*** Revise el log de superAndes para más detalles\n";
+  				
+  				
+  				List <CarritoDeCompras> listaDespues = superAndes.darCarritos();
+  				resultado += "\n\n************ Despues de el registro queda asi************ \n";
+  				resultado +=  "\n " + listarCarritos(listaDespues);
+  				
+  				panelDatos.actualizarInterfaz(resultado);
+  			}
+  			else
+  			{
+  				List <CarritoDeCompras> lista = superAndes.darCarritos();
+  				long tbEliminados = superAndes.eliminarContenedor( (int)Carrito.getIDCarrito());
+  				resultado += "Adicionado el contenedor con id: " + idCarrito + "\n";
+  				resultado += "\n\n************ Ejecutando la demo ************ \n";
+  				resultado +=  "\n " + listarCarritos(lista);
+  				resultado += "\n\n************ Limpiando la base de datos ************ \n";
+  				resultado += tbEliminados + " contenedores eliminadas\n";
+  				
+  				List <CarritoDeCompras> listaDespues = superAndes.darCarritos();
+  				resultado += "\n\n************ Despues de eliminar la lista queda asi:************ \n";
+  				resultado +=  "\n " + listarCarritos(listaDespues);
+  				resultado += "\n Demo terminada";
+  	   
+  				panelDatos.actualizarInterfaz(resultado);
+  				
+  			}
+  			
+  		} 
+      	catch (Exception e) 
+      	{
+//  			e.printStackTrace();
+  			String resultado = generarMensajeError(e);
+  			panelDatos.actualizarInterfaz(resultado);
+  		}
+    }
+
       
     /* ****************************************************************
 	 * 			Demos de Producto
@@ -1581,6 +1704,8 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
 	 * 			DEMOs IT2
 	 ***********************************************************************************************************************************************/
     
+    
+    
     public void demoAdicionarEliminarProductoCarritoNoExitoso( )
     {
     	try 
@@ -1732,6 +1857,7 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
     
     
     
+    
     /* ****************************************************************
 	 * 			Listar De tablas
 	 *****************************************************************/
@@ -1771,6 +1897,17 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
     	String resp = "Los contenedores existentes son:\n";
     	int i = 1;
         for (Contenedor tb : lista)
+        {
+        	resp += i++ + ". " + tb.toString() + "\n";
+        }
+        return resp;
+	}
+    
+    private String listarCarritos(List<CarritoDeCompras> lista) 
+    {
+    	String resp = "Los carritps existentes son:\n";
+    	int i = 1;
+        for (CarritoDeCompras tb : lista)
         {
         	resp += i++ + ". " + tb.toString() + "\n";
         }
@@ -1870,6 +2007,17 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
     	String resp = " los contenedores existentes son:\n";
     	int i = 1;
         for (VOContenedor tb : lista)
+        {
+        	resp += i++ + ". " + tb.toString() + "\n";
+        }
+        return resp;
+	}
+    
+    private String listarCarrito(List<VOCarritoDeCompras> lista) 
+    {
+    	String resp = " los carritos existentes son:\n";
+    	int i = 1;
+        for (VOCarritoDeCompras tb : lista)
         {
         	resp += i++ + ". " + tb.toString() + "\n";
         }
