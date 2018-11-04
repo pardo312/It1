@@ -5432,3 +5432,14 @@ ORA-02291: restricción de integridad (ISIS2304B231820.SYS_C00461382) violada - 
 17:45:06,091 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Productos: 12existentes
 17:45:06,091 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Carrito
 17:45:06,202 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Productos: 12existentes
+17:46:41,496 (main) INFO  [uniandes.isis2304.superAndes.interfazDemo.InterfaSuperAndesDemo] - Se encontró un archivo de configuración válido: Interfaz
+17:46:41,496 (main) INFO  [uniandes.isis2304.superAndes.interfazDemo.InterfaSuperAndesDemo] - Se aplica configuración indicada en el archivo de configuración
+17:46:41,502 (main) INFO  [uniandes.isis2304.superAndes.interfazDemo.InterfaSuperAndesDemo] - Se encontró un archivo de configuración válido: Tablas BD
+17:46:47,094 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Producto
+17:46:48,043 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Productos: 13 existentes
+17:46:48,043 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - abandonando carrito: 9999
+17:46:50,700 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Carrito Abandonado 
+17:46:50,701 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Carrito
+17:46:51,220 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Productos: 12existentes
+17:46:51,220 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Carrito
+17:46:52,261 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Productos: 12existentes

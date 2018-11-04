@@ -1739,7 +1739,7 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
     {
     	try 
     	{   		
-    		int idCarrito = 280;
+    		int idCarrito = 295;
 			
     		
 			String resultado = "Demo de creación y listado de Productos\n\n";
@@ -1813,8 +1813,8 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
 			String resultado = "Demo de Abandono de un carrito \n\n";
 						
 			resultado += "\n\n************ Base de datos antes de Operacion: ************ \n";
-			List <Producto> listaAntes = superAndes.darVOProducto();
-			resultado +=  "\n " + listarProductos(listaAntes)+  "\n\n ";
+			List <CarritoDeCompras> listaAntes = superAndes.darCarritos();
+			resultado +=  "\n " + listarCarritos(listaAntes)+  "\n\n ";
 
 			CarritoDeCompras pe = superAndes.abandonarCarrito(idCarrito) ;	
 			if(pe == null)
