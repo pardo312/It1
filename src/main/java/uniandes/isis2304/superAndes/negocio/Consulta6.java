@@ -30,9 +30,9 @@ public class Consulta6
 
 
 
-	private long id;
+	private int idCliente;
 
-	private float venta;
+	private int venta;
 
 
 	/* ****************************************************************
@@ -41,33 +41,33 @@ public class Consulta6
 
 	public Consulta6() 
 	{
-		this.id = 0;
+		this.idCliente = 0;
 		this.venta = 0;
 	}
 
 
 
 
-	public Consulta6(long id, float venta) {
-		this.id = id;
+	public Consulta6(int idCliente, int venta) {
+		this.idCliente = idCliente;
 		this.venta = venta;
 	}
 
-	public long getId() {
-		return id;
+	public int getIdCliente() {
+		return idCliente;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setIdCliente(int idCliente) {
+		this.idCliente = idCliente;
 	}
 
 	
 
-	public float getVenta() {
+	public int getVenta() {
 		return venta;
 	}
 
-	public void setVenta(float venta) {
+	public void setVenta(int venta) {
 		this.venta = venta;
 	}
 
@@ -75,7 +75,7 @@ public class Consulta6
 	@Override
 	public String toString() 
 	{
-		String resp = "Consulta6 [id=" + id + ", venta=" + venta +	"]";
+		String resp = "Consulta6 [idCliente=" + idCliente + ", venta=" + venta +	"]";
 
 		return resp;
 
