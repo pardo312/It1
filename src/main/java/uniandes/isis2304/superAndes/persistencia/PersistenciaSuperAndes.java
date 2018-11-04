@@ -1436,6 +1436,40 @@ public long consolidacionPedidosProveedor( int id, java.util.Date fechaEsperada,
 		return r;
 		
 	}
+	//Producto
+	public long eliminarProducto(String codigoDeBarras) {
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		long r = 0;
+		try
+		{
+			tx.begin();		
+			long tuplasEliminadas = sqlProducto.eliminarProducto(pm,codigoDeBarras);
+			tx.commit();
+
+			log.trace ("Eliminado producto: " + codigoDeBarras +": " );
+			 r = tuplasEliminadas;
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+
+		}
+		finally
+		{
+			if (tx.isActive())
+			{
+				tx.rollback();
+				
+			}
+			
+			pm.close();
+			
+		}
+		return r;
+		
+	}
 	/* ****************************************************************
 	 * 			Limpiar Super Andes
 	 *****************************************************************/

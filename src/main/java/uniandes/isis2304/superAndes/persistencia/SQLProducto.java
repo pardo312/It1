@@ -194,5 +194,10 @@ class SQLProducto
 		
 	}
 	
+	public long eliminarProducto(PersistenceManager pm, String CodigoDeB) {
+		 Query q = pm.newQuery(SQL, "DELETE FROM " + "PRODUCTO "+ "WHERE CODIGODEBARRAS = "+CodigoDeB);
+	        return (long) q.executeUnique();  
+	}
+	
 	
 }

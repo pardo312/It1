@@ -539,9 +539,18 @@ public class SuperAndes
 	public long eliminarProveedor(int nit)
 	{
 		
-		log.info ("Eliminando la proveedor: " + nit);
+		log.info ("Eliminando el proveedor: " + nit);
 		long p = pp.eliminarProveedor (nit);		
-		log.info ("Eliminando la promocion ");
+		log.info ("Eliminando el proveedor");
+		return p;	
+	}
+	
+	public long eliminarProducto(String codigoDeBarras)
+	{
+		
+		log.info ("Eliminando el producto: " + codigoDeBarras);
+		long p = pp.eliminarProducto (codigoDeBarras);		
+		log.info ("Eliminando el producto ");
 		return p;	
 	}
 	
