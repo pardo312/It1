@@ -29,13 +29,13 @@ public class Promocion implements VOPromocion
 	 *****************************************************************/
 
 	
-	private long id;
+	private int id;
 	
 	private String descripcion;
 
 	private String precioPromocion;
 	
-	private long idSucursal;
+	private int idSucursal;
 	
 	
 //	private List<Object []> ProductosQueOfrecen;
@@ -54,7 +54,7 @@ public class Promocion implements VOPromocion
 	}
 
 
-    public Promocion( long id, String descripcion,String precioPromocion, long idSucursal)
+    public Promocion( int id, String descripcion,String precioPromocion, int idSucursal)
 	 
     {
     	this.id = id;
@@ -65,12 +65,12 @@ public class Promocion implements VOPromocion
 	}
 
    
-	public long getId() 
+	public int getId() 
 	{
 		return id;
 	}
 
-	public void setId(long id) 
+	public void setId(int id) 
 	{
 		this.id = id;
 	}
@@ -98,13 +98,13 @@ public class Promocion implements VOPromocion
 	}
 	
 	
-	public long getIdSucursal() 
+	public int getIdSucursal() 
 	{
 		return idSucursal;
 	}
 	
 	
-	public void setIdSucursal(long idSucursal) 
+	public void setIdSucursal(int idSucursal) 
 	{
 		this.idSucursal = idSucursal;
 	}

@@ -25,15 +25,6 @@
 					"event": "demoProductoNoExitoso"
 				},
 				{
-					"label": "Registro Estante Existoso",
-					"event": "demoEstanteExitoso"
-				},
-				{
-					"label": "Registro Estante No Exitoso",
-					"event": "demoEstanteNoExitoso"
-				}
-				,
-				{
 					"label": "Registro Cliente Natural Exitoso",
 					"event": "demoClienteNaturalExitoso"
 				}
@@ -51,7 +42,24 @@
 				{
 					"label": "Registro Cliente Empresa No Exitoso",
 					"event": "demoClienteEmpresarialNoExitoso"
+				},
+				{
+					"label": "Registro Estante Existoso",
+					"event": "demoEstanteExitoso"
+				},
+				{
+					"label": "Registro Estante No Exitoso",
+					"event": "demoEstanteNoExitoso"
+				},
+				{
+					"label": "Registro Promocion Existoso",
+					"event": "demoPromocionExitoso"
+				},
+				{
+					"label": "Registro Promocion No Exitoso",
+					"event": "demoPromocionNoExitoso"
 				}
+				
 			]
 		}
 	]

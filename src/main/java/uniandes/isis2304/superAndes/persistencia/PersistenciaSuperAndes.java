@@ -847,6 +847,10 @@ public class PersistenciaSuperAndes
 	{
 		return sqlClienteEmpresa.darClientesEmpresa(pmf.getPersistenceManager());
 	}
+	public List<Promocion> darPromociones ()
+	{
+		return sqlPromocion.darPromociones(pmf.getPersistenceManager());
+	}
 
 	/* ****************************************************************
 	 * 			RF4
@@ -1150,6 +1154,42 @@ public class PersistenciaSuperAndes
 			pm.close();
 		}
 	}
+	
+	public Promocion registrarPromocion(int idPromocion, String descr, String Precio , int idSucursal) {
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		try
+		{
+			tx.begin();
+
+			long tuplasInsertadas = sqlPromocion.registrarPromocion(pm, idPromocion, descr,Precio,idSucursal);
+			tx.commit();
+
+			log.trace ("Inserción de Promocion: " + idPromocion + ": " + tuplasInsertadas + " tuplas insertadas");
+
+			
+			if(tuplasInsertadas == 0){
+				return null;
+			}
+			else{
+				return new Promocion(idPromocion, descr,Precio,idSucursal);
+			}
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			return null;
+		}
+		finally
+		{
+			if (tx.isActive())
+			{
+				tx.rollback();
+			}
+			pm.close();
+		}
+	}
 
 	//---------------------------------------------------------------------------------------------------
 	public Paguexcantidadllevey registrarPromocionPXCLY(int x, int y) {
@@ -1213,24 +1253,24 @@ public class PersistenciaSuperAndes
 	}
 
 
-	public void eliminarPromocion(long idPromocion) {
+	public long eliminarPromocion(long idPromocion) {
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
 		try
 		{
 			tx.begin();
-			long id = nextval ();
-			long tuplasInsertadas = sqlPromocion.eliminarPromocion(pm,id);
+			long tuplasInsertadas = sqlPromocion.eliminarPromocion(pm,idPromocion);
 			tx.commit();
 
-			log.trace ("Inserción de Promocion " + id +": " + tuplasInsertadas + " tuplas insertadas");
-
+			log.trace ("Inserción de Promocion " + idPromocion+": " + tuplasInsertadas + " tuplas insertadas");
+			return tuplasInsertadas;
 		}
 		catch (Exception e)
 		{
+			
 			e.printStackTrace();
 			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
-
+			return 0;
 		}
 		finally
 		{

@@ -56,10 +56,11 @@ import uniandes.isis2304.superAndes.negocio.VOClienteNatural;
 
 import uniandes.isis2304.superAndes.negocio.Estante;
 import uniandes.isis2304.superAndes.negocio.Producto;
+import uniandes.isis2304.superAndes.negocio.Promocion;
 import uniandes.isis2304.superAndes.negocio.Proveedor;
 import uniandes.isis2304.superAndes.negocio.SuperAndes;
 import uniandes.isis2304.superAndes.negocio.VOEstante;
-
+import uniandes.isis2304.superAndes.negocio.VOPromocion;
 import uniandes.isis2304.superAndes.negocio.VOProveedor;
 
 /**
@@ -768,7 +769,7 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
    		
    	}
     /* ****************************************************************
-	 * 			Listar De tablas
+	 * 			DEMO Estante
 	 *****************************************************************/
     public void demoEstanteExitoso( )
     {
@@ -817,6 +818,7 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
 			panelDatos.actualizarInterfaz(resultado);
 		}
     }
+    
     public void demoEstanteNoExitoso( )
     {
     	try 
@@ -870,6 +872,127 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
 				List <Estante> listaDespues = superAndes.darEstantes();
 				resultado += "\n\n************ Despues de eliminar la lista queda asi:************ \n";
 				resultado +=  "\n " + listarEstantes(listaDespues);
+				resultado += "\n Demo terminada";
+	   
+				panelDatos.actualizarInterfaz(resultado);
+				
+			}
+			
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+    
+    /* ****************************************************************
+   	 * 			DEMO Estante
+   	 *****************************************************************/
+    public void demoPromocionExitoso( )
+    {
+    	try 
+    	{
+    		int ID  = nextvalID();
+    		String DESCRIPCION ="3 Xbox Por 2";
+    		String PRECIOPROMOCION = "10000";
+    		int idSucursal = 5;
+			
+			
+			boolean errorPromocion = false;
+			VOPromocion Promocion = superAndes.registrarPromocion(ID, DESCRIPCION, PRECIOPROMOCION,idSucursal);
+			if (Promocion == null)
+			{
+				errorPromocion = true;
+			}
+			List <Promocion> lista = superAndes.darPromociones();
+			long tbEliminados = superAndes.eliminarPromocion(Promocion.getId());
+			
+			// Generación de la cadena de caracteres con la traza de la ejecución de la demo
+			String resultado = "Demo de creación y listado de Promociones\n\n";
+			resultado += "\n\n************ Generando datos de prueba ************ \n";
+			if (errorPromocion)
+			{
+				resultado += "*** Exception creando Promocion !!\n";
+				resultado += "*** Es probable que ese Promocion ya existiera y hay restricción de UNICIDAD sobre el nombre del Promocion\n";
+				resultado += "*** Revise el log de superAndes para más detalles\n";
+			}
+			resultado += "Adicionado el Promocion con nombre: " + ID + "\n";
+			resultado += "\n\n************ Ejecutando la demo ************ \n";
+			resultado +=  "\n " + listarPromociones(lista);
+			resultado += "\n\n************ Limpiando la base de datos ************ \n";
+			resultado += tbEliminados + " Promociones eliminados\n";
+			
+			List <Promocion> listaDespues = superAndes.darPromociones();
+			resultado += "\n\n************ Despues de eliminar la lista queda asi:************ \n";
+			resultado +=  "\n " + listarPromociones(listaDespues);
+			resultado += "\n Demo terminada";
+   
+			panelDatos.actualizarInterfaz(resultado);
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+    
+    public void demoPromocionNoExitoso( )
+    {
+    	try 
+    	{
+    		int ID  = 5;
+    		String DESCRIPCION ="3 Xbox Por 2";
+    		String PRECIOPROMOCION = "10000";
+    		int idSucursal = 5;
+			
+			
+    		boolean errorPromocion = false;
+			VOPromocion Promocion = superAndes.registrarPromocion(ID, DESCRIPCION, PRECIOPROMOCION,idSucursal);
+			if (Promocion == null)
+			{
+				errorPromocion = true;
+			}
+			
+			// Generación de la cadena de caracteres con la traza de la ejecución de la demo
+			String resultado = "Demo de creación y listado de Promociones\n\n";
+			resultado += "\n\n************ Generando datos de prueba ************ \n";
+			if (errorPromocion)
+			{
+				resultado += "Adicionado el Promocion con id: " + ID + "\n";
+				resultado += "\n\n************ Estado de la base de datos antes de la operacion ************ \n";
+				
+				List <Promocion> lista = superAndes.darPromociones();
+				resultado +=  "\n " + listarPromociones(lista)+  "\n\n ";
+				
+				resultado += "\n\n************ Error Al insertar************ \n\n";				
+				
+				resultado += "*** Exception creando Promocion !!\n";
+				resultado += "*** Es probable que ese Promocion ya existiera y hay restricción de UNICIDAD sobre el nombre del Promocion\n";
+				resultado += "*** Revise el log de superAndes para más detalles\n";
+				
+				
+				List <Promocion> listaDespues = superAndes.darPromociones();
+				resultado += "\n\n************ Despues de el registro queda asi************ \n";
+				resultado +=  "\n " + listarPromociones(listaDespues);
+				
+				panelDatos.actualizarInterfaz(resultado);
+			}
+			else
+			{
+				List <Promocion> lista = superAndes.darPromociones();
+				long tbEliminados = superAndes.eliminarPromocion( Promocion.getId());
+				resultado += "Adicionado el Promocion con nombre: " + ID + "\n";
+				resultado += "\n\n************ Ejecutando la demo ************ \n";
+				resultado +=  "\n " + listarPromociones(lista);
+				resultado += "\n\n************ Limpiando la base de datos ************ \n";
+				resultado += tbEliminados + " Promociones eliminados\n";
+				
+				List <Promocion> listaDespues = superAndes.darPromociones();
+				resultado += "\n\n************ Despues de eliminar la lista queda asi:************ \n";
+				resultado +=  "\n " + listarPromociones(listaDespues);
 				resultado += "\n Demo terminada";
 	   
 				panelDatos.actualizarInterfaz(resultado);
@@ -946,6 +1069,17 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
     	String resp = "Los Estante existentes son:\n";
     	int i = 1;
         for (Estante tb : lista)
+        {
+        	resp += i++ + ". " + tb.toString() + "\n";
+        }
+        return resp;
+	}
+    
+    private String listarPromociones(List<Promocion> lista) 
+    {
+    	String resp = "Las Promocion existentes son:\n";
+    	int i = 1;
+        for (Promocion tb : lista)
         {
         	resp += i++ + ". " + tb.toString() + "\n";
         }

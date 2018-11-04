@@ -27,7 +27,7 @@ public interface VOPromocion
 	 * 			Métodos 
 	 *****************************************************************/
      
-	public long getId() ;
+	public int getId() ;
 	
 	
 	public String getDescripcion() ;
@@ -36,7 +36,7 @@ public interface VOPromocion
 	public String getPrecioPromocion() ;
 	
 	
-	public long getIdSucursal() ;
+	public int getIdSucursal() ;
 	
 	
 	@Override

@@ -7,6 +7,8 @@ import java.util.List;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
+import uniandes.isis2304.superAndes.negocio.Promocion;
+import uniandes.isis2304.superAndes.negocio.Proveedor;
 import uniandes.isis2304.superAndes.negocio.TipoProducto;
 
 
@@ -42,25 +44,39 @@ class SQLPromociones
 		this.pp = pp;
 	}
 
-	public long adicionarPromociones (PersistenceManager pm,long id,
+	public long registrarPromocion (PersistenceManager pm,int id,
 			
 			 String descripcion,
 
 			 String precioPromocion,
 			
-			 long idSucursal) 
-	{
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaPromociones() + "(id,descripcion, precioPromocion,idSucursal) values (?, ,?,??)");
-        q.setParameters(id,
-        		
-        		  descripcion,
-
-        		  precioPromocion,
-        		
-        		  idSucursal);
-        return (long) q.executeUnique();            
+			 int idSucursal) 
+	{	try{
+        Query q = pm.newQuery(SQL, "INSERT INTO " + "PROMOCION" + "(ID, DESCRIPCION,PRECIOPROMOCION,IDSUCURSAL) values ("+id+",'"+ descripcion+"','"+ precioPromocion+"',"+ idSucursal+")");
+        return (long) q.executeUnique();  
+	}
+	catch (Exception e)
+	{	
+		return 0;
+	}
 	}
 
+	public List<Promocion> darPromociones (PersistenceManager pm)
+	{		
+			Query q = pm.newQuery(SQL, "SELECT * FROM " + "PROMOCION");
+			q.setResultClass(Promocion.class);
+			List<Promocion> w = (List<Promocion>) q.executeList();
+			return w;	
+	}
+	
+	public List<Promocion> darPromocion(PersistenceManager pm, String id)
+	{
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + "PROMOCION WHERE ID = " + id);
+		q.setResultClass(Promocion.class);
+		List<Promocion> w = (List<Promocion>) q.executeList();
+		return w;
+	}
+	
 	public long eliminarPromocion(PersistenceManager pm, long id) {
 		 Query q = pm.newQuery(SQL, "DELETE FROM " + "PROMOCION "+ "WHERE ID = "+id);
 	        return (long) q.executeUnique();  

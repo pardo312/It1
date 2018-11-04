@@ -224,6 +224,18 @@ public class SuperAndes
 		return voProd;
 
 	}
+	
+	public List<Promocion> darPromociones() {
+		log.info ("Generando los VO de Producto");        
+		List<Promocion> voProd = new LinkedList<Promocion> ();
+		for (Promocion tb : pp.darPromociones ())
+		{
+			voProd.add (tb);
+		}
+		log.info ("Generando los VO de Productos: " + voProd.size() + " existentes");
+		return voProd;
+
+	}
 
 
 	public Cliente registrarCliente(int idCliente, int puntosDeCompra, String nitCliente, int cedulaCliente)
@@ -303,14 +315,20 @@ public class SuperAndes
 	}
 	//Fin producto
 
-	public VOEstante registrarEstante(int idEstante, int nivelReabastecimiento, int idSucursal) {
+	public VOEstante registrarEstante(int idEstante, int nivelReabastecimiento, int idSucursal ) {
 		log.info ("Adicionando el Estante: " + idEstante);
 		Estante estante = pp.registrarEstante (idEstante,nivelReabastecimiento,idSucursal);		
 		log.info ("Adicionando el proveedor: " + estante);
 		return estante;
 	}
 
-
+	
+	public Promocion registrarPromocion(int idPromocion, String descr, String Precio , int idSucursal) {
+		log.info ("Adicionando el Estante: " + idPromocion);
+		Promocion promocion = pp.registrarPromocion (idPromocion,descr,Precio,idSucursal);		
+		log.info ("Adicionando el proveedor: " + idPromocion);
+		return promocion;
+	}
 	public VOPaguexunidadesllevey registrarPromocionCantidad(int x, int y, int p) {
 		log.info ("Adicionando la promocion ");
 
@@ -348,10 +366,11 @@ public class SuperAndes
 	}
 
 
-	public void eliminarPromocion(long idPromocion) {
+	public long eliminarPromocion(long idPromocion) {
 		log.info ("Eliminando la promocion: " + idPromocion);
-		pp.eliminarPromocion (idPromocion);		
+		long w = pp.eliminarPromocion (idPromocion);		
 		log.info ("Eliminando la promocion ");
+		return w;
 
 	}
 	
