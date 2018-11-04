@@ -1398,24 +1398,24 @@ public class PersistenciaSuperAndes
 			pm.close();
 		}
 	}
-	public  Producto quitarProductosDeEstante(int volumenNuevo,String codigoDeBarras){
+	public  long quitarProductosDeEstante(int volumenNuevo,String codigoDeBarras){
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
 		try
 		{
 			tx.begin();
-			sqlProducto.quitarProductosDeEstante(pm,volumenNuevo,codigoDeBarras);
+			long tuplasElim =sqlProducto.quitarProductosDeEstante(pm,volumenNuevo,codigoDeBarras);
 			tx.commit();
 
 			log.trace ("Eliminando el numero de productos del estante: " + codigoDeBarras );
 
-			return new Producto();
+			return tuplasElim;
 		}
 		catch (Exception e)
 		{
 			e.printStackTrace();
 			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
-			return null;
+			return 0;
 		}
 		finally
 		{

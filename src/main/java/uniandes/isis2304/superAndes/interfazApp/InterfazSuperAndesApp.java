@@ -1092,7 +1092,31 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 	/* ****************************************************************
 	 * 			RF 13
 	 *****************************************************************/
-
+	private String nextval ()
+	{
+		long resp =(int) (Math.random() * 60) + 20;;
+		return "0000"+resp;
+	}
+	
+	private int nextvalID ()
+	{
+		int resp =(int) (Math.random() * 60) + 20;;
+		return resp;
+	}
+	
+	private int nextvalNITProveedor ()
+	{
+		long resp =(int) (Math.random() * 19) + 1;;
+		if(resp < 10)
+		{
+			return Integer.parseInt("1000"+resp);
+		}
+		else
+		{
+			return Integer.parseInt("100"+resp);
+		}
+		
+	}
 	public void adicionarProductoACarrito( )
 	{
 		try 
@@ -1138,31 +1162,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 		}
 	}
 
-	private String nextval ()
-	{
-		long resp =(int) (Math.random() * 60) + 20;;
-		return "0000"+resp;
-	}
 	
-	private int nextvalID ()
-	{
-		int resp =(int) (Math.random() * 60) + 20;;
-		return resp;
-	}
-	
-	private int nextvalNITProveedor ()
-	{
-		long resp =(int) (Math.random() * 19) + 1;;
-		if(resp < 10)
-		{
-			return Integer.parseInt("1000"+resp);
-		}
-		else
-		{
-			return Integer.parseInt("100"+resp);
-		}
-		
-	}
 	
 	/* ****************************************************************
 	 * 			RF 14

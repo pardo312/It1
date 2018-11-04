@@ -503,24 +503,29 @@ public class SuperAndes
 		return factura;
 	}
 
-	public void quitarProductosDeEstante(int volumenNuevo ,String codigoDeBarras )
+
+	
+	
+	public long quitarProductosDeEstante(int volumenNuevo ,String codigoDeBarras )
 	{
-
-
-		log.info ("quitandoProdDeEstante con codigo de barras: " + codigoDeBarras);
-		Producto estante = pp.quitarProductosDeEstante(volumenNuevo,codigoDeBarras);	
+		
+      
+        log.info ("quitandoProdDeEstante con codigo de barras: " + codigoDeBarras);
+		long estante = pp.quitarProductosDeEstante(volumenNuevo,codigoDeBarras);	
 		log.info ("quitandoProdDeEstante:  " + estante);
+		return estante;
 
 	}
+	
+	
 	public void devolverProducto(String codigoDeBarras)
 	{
-
-
 		log.info ("quitandoProdDeEstante con codigo de barras: " + codigoDeBarras);
 		pp.devolverProducto(codigoDeBarras);	
 		log.info ("quitandoProdDeEstante:  ");
 
 	}
+	
 	public List<Producto> busquedaProducto(String codigoDeBarras,String nombre,int opcion)
 	{
 
