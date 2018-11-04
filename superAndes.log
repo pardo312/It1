@@ -4116,3 +4116,142 @@ ORA-00001: restricción única (ISIS2304B231820.SYS_C00461376) violada
 12:25:17,887 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de cliente natural: 30 existentes
 12:25:17,904 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Cliente
 12:25:17,960 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de cliente natural: 30 existentes
+12:26:16,450 (main) INFO  [uniandes.isis2304.superAndes.interfazDemo.InterfaSuperAndesDemo] - Se encontró un archivo de configuración válido: Interfaz
+12:26:16,453 (main) INFO  [uniandes.isis2304.superAndes.interfazDemo.InterfaSuperAndesDemo] - Se aplica configuración indicada en el archivo de configuración
+12:26:16,471 (main) INFO  [uniandes.isis2304.superAndes.interfazDemo.InterfaSuperAndesDemo] - Se encontró un archivo de configuración válido: Tablas BD
+12:26:23,958 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el cliente: 1021
+12:26:24,255 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el cliente: 1021
+12:26:24,255 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de cliente Natural
+12:26:24,295 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Clientes: 31 existentes
+12:26:24,295 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando el cliente: 0
+12:26:24,310 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando el cliente 
+12:26:24,310 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de cliente Natural
+12:26:24,352 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Clientes: 31 existentes
+12:26:27,978 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el Estante: 6
+12:26:28,019 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el proveedor: null
+12:26:28,019 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Producto
+12:26:28,056 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Productos: 22 existentes
+12:26:28,056 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Producto
+12:26:28,093 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Productos: 22 existentes
+12:26:31,910 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el cliente: 1001
+12:26:31,933 (AWT-EventQueue-0) ERROR [uniandes.isis2304.superAndes.persistencia.PersistenciaSuperAndes] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO CLIENTENATURAL(cedula,nombre,email) values ( 1001, 'CLIENTE TEST', 'cliente@test.com')".
+ORA-00001: restricción única (ISIS2304B231820.SYS_C00461376) violada
+
+12:26:31,979 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el cliente: 1001
+12:26:31,979 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Cliente
+12:26:32,021 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de cliente natural: 31 existentes
+12:26:32,022 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Cliente
+12:26:32,055 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de cliente natural: 31 existentes
+12:27:02,561 (main) INFO  [uniandes.isis2304.superAndes.interfazDemo.InterfaSuperAndesDemo] - Se encontró un archivo de configuración válido: Interfaz
+12:27:02,562 (main) INFO  [uniandes.isis2304.superAndes.interfazDemo.InterfaSuperAndesDemo] - Se aplica configuración indicada en el archivo de configuración
+12:27:02,579 (main) INFO  [uniandes.isis2304.superAndes.interfazDemo.InterfaSuperAndesDemo] - Se encontró un archivo de configuración válido: Tablas BD
+12:27:09,573 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el Estante: 6
+12:27:09,823 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el proveedor: null
+12:27:09,848 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Producto
+12:27:09,935 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Productos: 22 existentes
+12:27:09,936 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Producto
+12:27:10,003 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Productos: 22 existentes
+12:27:12,670 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el cliente: 1058
+12:27:12,740 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el cliente: 1058
+12:27:12,740 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Cliente
+12:27:12,780 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de cliente natural: 32 existentes
+12:27:12,780 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando el cliente: 0
+12:27:12,794 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando el cliente 
+12:27:12,795 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Cliente
+12:27:12,833 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de cliente natural: 32 existentes
+12:27:24,015 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el cliente: 1078
+12:27:24,068 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el cliente: 1078
+12:27:24,069 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de cliente Natural
+12:27:24,101 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Clientes: 33 existentes
+12:27:24,102 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando el cliente: 0
+12:27:24,122 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando el cliente 
+12:27:24,122 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de cliente Natural
+12:27:24,156 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Clientes: 33 existentes
+12:27:33,686 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el cliente: 10111
+12:27:33,740 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el cliente: 10111
+12:27:33,740 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Cliente
+12:27:33,778 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de cliente natural: 34 existentes
+12:27:33,778 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando el cliente: 0
+12:27:33,790 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando el cliente 
+12:27:33,790 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Cliente
+12:27:33,821 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de cliente natural: 34 existentes
+12:29:24,087 (main) INFO  [uniandes.isis2304.superAndes.interfazDemo.InterfaSuperAndesDemo] - Se encontró un archivo de configuración válido: Interfaz
+12:29:24,089 (main) INFO  [uniandes.isis2304.superAndes.interfazDemo.InterfaSuperAndesDemo] - Se aplica configuración indicada en el archivo de configuración
+12:29:24,126 (main) INFO  [uniandes.isis2304.superAndes.interfazDemo.InterfaSuperAndesDemo] - Se encontró un archivo de configuración válido: Tablas BD
+12:29:31,135 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el cliente: 1097
+12:29:31,426 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el cliente: 1097
+12:29:31,426 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de cliente Natural
+12:29:31,467 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Clientes: 35 existentes
+12:29:31,467 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando el cliente: 0
+12:29:31,480 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando el cliente 
+12:29:31,481 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de cliente Natural
+12:29:31,520 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Clientes: 35 existentes
+12:29:33,748 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el cliente: 1000
+12:29:33,778 (AWT-EventQueue-0) ERROR [uniandes.isis2304.superAndes.persistencia.PersistenciaSuperAndes] - Exception : Error con la ejecucion de Query de SQL "INSERT INTO CLIENTENATURAL(cedula,nombre,email) values ( 1000, 'CLIENTE TEST', 'cliente@test.com')".
+ORA-00001: restricción única (ISIS2304B231820.SYS_C00461376) violada
+
+12:29:33,825 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el cliente: 1000
+12:29:33,825 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Cliente
+12:29:33,869 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de cliente natural: 35 existentes
+12:29:33,870 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Cliente
+12:29:33,917 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de cliente natural: 35 existentes
+12:32:15,247 (main) INFO  [uniandes.isis2304.superAndes.interfazDemo.InterfaSuperAndesDemo] - Se encontró un archivo de configuración válido: Interfaz
+12:32:15,248 (main) INFO  [uniandes.isis2304.superAndes.interfazDemo.InterfaSuperAndesDemo] - Se aplica configuración indicada en el archivo de configuración
+12:32:15,266 (main) INFO  [uniandes.isis2304.superAndes.interfazDemo.InterfaSuperAndesDemo] - Se encontró un archivo de configuración válido: Tablas BD
+12:32:22,480 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el cliente: 1048
+12:32:22,773 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el cliente: 1048
+12:32:22,773 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de cliente Natural
+12:32:22,819 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Clientes: 35 existentes
+12:32:22,819 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando el cliente: 0
+12:32:22,834 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando el cliente 
+12:32:22,834 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de cliente Natural
+12:32:22,874 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Clientes: 35 existentes
+12:32:27,069 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el cliente: 1000
+12:32:27,141 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el cliente: 1000
+12:32:27,142 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Cliente
+12:32:27,189 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de cliente natural: 35 existentes
+12:32:27,189 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando el cliente: 0
+12:32:27,201 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando el cliente 
+12:32:27,201 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Cliente
+12:32:27,237 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de cliente natural: 35 existentes
+12:32:42,472 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el cliente: 1000
+12:32:42,554 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el cliente: 1000
+12:32:42,554 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Cliente
+12:32:42,590 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de cliente natural: 35 existentes
+12:32:42,590 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando el cliente: 0
+12:32:42,603 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando el cliente 
+12:32:42,603 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Cliente
+12:32:42,636 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de cliente natural: 35 existentes
+12:32:46,051 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el Estante: 6
+12:32:46,069 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el proveedor: null
+12:32:46,069 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Producto
+12:32:46,110 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Productos: 22 existentes
+12:32:46,111 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Producto
+12:32:46,137 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Productos: 22 existentes
+12:33:56,420 (main) INFO  [uniandes.isis2304.superAndes.interfazDemo.InterfaSuperAndesDemo] - Se encontró un archivo de configuración válido: Interfaz
+12:33:56,421 (main) INFO  [uniandes.isis2304.superAndes.interfazDemo.InterfaSuperAndesDemo] - Se aplica configuración indicada en el archivo de configuración
+12:33:56,438 (main) INFO  [uniandes.isis2304.superAndes.interfazDemo.InterfaSuperAndesDemo] - Se encontró un archivo de configuración válido: Tablas BD
+12:34:19,745 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el cliente: 1000
+12:38:08,890 (main) INFO  [uniandes.isis2304.superAndes.interfazDemo.InterfaSuperAndesDemo] - Se encontró un archivo de configuración válido: Interfaz
+12:38:08,892 (main) INFO  [uniandes.isis2304.superAndes.interfazDemo.InterfaSuperAndesDemo] - Se aplica configuración indicada en el archivo de configuración
+12:38:08,934 (main) INFO  [uniandes.isis2304.superAndes.interfazDemo.InterfaSuperAndesDemo] - Se encontró un archivo de configuración válido: Tablas BD
+12:38:16,082 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el cliente: 1058
+12:38:16,372 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el cliente: 1058
+12:38:16,372 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando consulta
+12:38:34,237 (main) INFO  [uniandes.isis2304.superAndes.interfazDemo.InterfaSuperAndesDemo] - Se encontró un archivo de configuración válido: Interfaz
+12:38:34,243 (main) INFO  [uniandes.isis2304.superAndes.interfazDemo.InterfaSuperAndesDemo] - Se aplica configuración indicada en el archivo de configuración
+12:38:34,262 (main) INFO  [uniandes.isis2304.superAndes.interfazDemo.InterfaSuperAndesDemo] - Se encontró un archivo de configuración válido: Tablas BD
+12:38:39,840 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el cliente: 1029
+12:38:40,107 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el cliente: 1029
+12:38:40,108 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de cliente Natural
+12:38:40,149 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Clientes: 36 existentes
+12:38:40,150 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando el cliente: 0
+12:38:40,165 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando el cliente 
+12:38:40,165 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de cliente Natural
+12:38:40,208 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Clientes: 36 existentes
+12:38:51,530 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el cliente: 1000
+12:38:51,608 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el cliente: 1000
+12:38:51,608 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Cliente
+12:38:51,647 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de cliente natural: 36 existentes
+12:38:51,647 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Cliente
+12:38:51,686 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de cliente natural: 36 existentes

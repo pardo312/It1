@@ -422,7 +422,7 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
     {
     	try 
     	{
-    		int cedula = 1001;		
+    		int cedula = 1000;		
     		String nombre = "CLIENTE TEST"	;
     		String email = "cliente@test.com";
     		boolean errorCliente = false;

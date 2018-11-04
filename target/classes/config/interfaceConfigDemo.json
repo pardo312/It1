@@ -1,0 +1,59 @@
+{
+	"title": "Demostración de superAndes",
+	"frameH": 600,
+	"frameW": 800,
+	"bannerPath": "./src/main/resources/config/logo.png",
+	"menuBar":
+	[
+		{ "menuTitle": "Iteracion 1",
+		  "options":
+			[
+				{
+					"label": "Registro Proveedor Exitoso",
+					"event": "demoProveedorExitoso"
+				},
+				{
+					"label": "Registro Proveedor No Existoso",
+					"event": "demoProveedorNoExitoso"
+				},
+				{
+					"label": "Registro Producto Existoso",
+					"event": "demoProductoExitoso"
+				},
+				{
+					"label": "Registro Producto No Exitoso",
+					"event": "demoProductoNoExitoso"
+				},
+				{
+					"label": "Registro Estante Existoso",
+					"event": "demoEstanteExitoso"
+				},
+				{
+					"label": "Registro Estante No Exitoso",
+					"event": "demoEstanteNoExitoso"
+				}
+				,
+				{
+					"label": "Registro Cliente Natural Exitoso",
+					"event": "demoClienteNaturalExitoso"
+				}
+				,
+				{
+					"label": "Registro Cliente Natural No Exitoso",
+					"event": "demoClienteNaturalNoExitoso"
+				}
+				,
+				{
+					"label": "Registro Cliente Empresa Exitoso",
+					"event": "demoClienteEmpresarialExitoso"
+				}
+				,
+				{
+					"label": "Registro Cliente Empresa No Exitoso",
+					"event": "demoClienteEmpresarialNoExitoso"
+				}
+			]
+		}
+	]
+}
+	

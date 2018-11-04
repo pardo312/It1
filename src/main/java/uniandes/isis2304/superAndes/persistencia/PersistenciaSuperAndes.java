@@ -696,6 +696,11 @@ public class PersistenciaSuperAndes
 
 			log.trace ("Inserción de cliente natural " + nombre + ": " + tuplasInsertadas + " tuplas insertadas");
 
+			
+			if(tuplasInsertadas == 0){
+				return null;
+			}
+			else 
 			return new ClienteNatural(cedula, nombre,email);
 		}
 		catch (Exception e)

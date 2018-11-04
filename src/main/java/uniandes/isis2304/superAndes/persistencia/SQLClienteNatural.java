@@ -66,9 +66,15 @@ class SQLClienteNatural
 			
 			 String email) 
 	{
+		try {
         Query q = pm.newQuery(SQL, "INSERT INTO " + "CLIENTENATURAL"+ "(cedula,nombre,email) values ( "+cedula+", '"+nombre+"', '"+email+"')");
         q.setParameters( cedula, nombre,  email);
         return (long) q.executeUnique();
+		}
+		catch (Exception e)
+		{
+			return 0;
+		}
 	}
 
 	/**
