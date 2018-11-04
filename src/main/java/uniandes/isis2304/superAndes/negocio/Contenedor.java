@@ -116,7 +116,7 @@ public class Contenedor implements VOContenedor
 	}
 	
 	
-	public void setunidadesPeso(String unidadesPeso) 
+	public void setUnidadesPeso(String unidadesPeso) 
 	{
 		this.unidadesPeso = unidadesPeso;
 	}

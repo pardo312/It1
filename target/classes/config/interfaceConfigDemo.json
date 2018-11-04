@@ -69,6 +69,11 @@
 					"label": "Registro Sucursal No Exitoso",
 					"event": "demoSucursalNoExitoso"
 				}
+				,
+				{
+					"label": "Registro Contenedor Exitoso",
+					"event": "demoContenedorExitoso"
+				}
 				
 			]
 		}

@@ -7,6 +7,7 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
 import uniandes.isis2304.superAndes.negocio.Cliente;
+import uniandes.isis2304.superAndes.negocio.Contenedor;
 import uniandes.isis2304.superAndes.negocio.Estante;
 import uniandes.isis2304.superAndes.negocio.Proveedor;
 import uniandes.isis2304.superAndes.negocio.Sucursal;
@@ -57,9 +58,16 @@ class SQLContenedor
 	 */
 	
 	public long adicionarContenedor(PersistenceManager pm, int ido,int capacidadVolumen, int capacidadPeso, String unidadesPeso,String unidadesVolumen, int idBodegaSucursal) {
-		 Query q = pm.newQuery(SQL, "INSERT INTO " + "CONTENEDOR" + "(id,capacidadVolumen,capacidadPeso,unidadesPeso,unidadesVolumen,idBodegaSucursal) values (?,?,?,?,?,?)");
+		 
+		try {
+		Query q = pm.newQuery(SQL, "INSERT INTO " + "CONTENEDOR" + "(id,capacidadVolumen,capacidadPeso,unidadesPeso,unidadesVolumen,idBodegaSucursal) values (?,?,?,?,?,?)");
 	        q.setParameters( ido, capacidadVolumen, capacidadPeso,unidadesPeso,unidadesVolumen, idBodegaSucursal);
 	        return (long) q.executeUnique();
+		}
+		catch (Exception e)
+		{
+			return 0;
+		}
 	}
 	
 	/**
@@ -67,14 +75,17 @@ class SQLContenedor
 	 * @param pm
 	 * @return la lista de todos los clientes
 	 */
-	public List<Sucursal> darContenedores (PersistenceManager pm)
+	public List<Contenedor> darContenedores (PersistenceManager pm)
 	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + "CONTENEDORES");
-		q.setResultClass(Proveedor.class);
-		return (List<Sucursal>) q.executeList();
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + "CONTENEDOR");
+		q.setResultClass(Contenedor.class);
+		return (List<Contenedor>) q.executeList();
 	}
 
-
+	public long eliminarContenedor(PersistenceManager pm, int id) {
+		 Query q = pm.newQuery(SQL, "DELETE FROM " + "CONTENEDOR "+ "WHERE ID = "+id);
+	        return (long) q.executeUnique();  
+	}
 	
 
 }
