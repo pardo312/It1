@@ -494,6 +494,12 @@ public class PersistenciaSuperAndes
 		return sqlProducto.darProductos(pmf.getPersistenceManager());
 	}
 
+	public List<Factura> darFacturas() {
+	
+	
+		return sqlFactura.darFacturas(pmf.getPersistenceManager());
+	}
+
 
 	/* ****************************************************************
 	 * 			Requerimiento 2
@@ -1582,6 +1588,42 @@ public long consolidacionPedidosProveedor( int id, java.util.Date fechaEsperada,
 				tx.commit();
 
 				log.trace ("Eliminado producto: " + codigoDeBarras +": " );
+				 r = tuplasEliminadas;
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+				log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+
+			}
+			finally
+			{
+				if (tx.isActive())
+				{
+					tx.rollback();
+					
+				}
+				
+				pm.close();
+				
+			}
+			return r;
+			
+			
+			
+		}
+		
+		public long eliminarFactura(String NumFactura) {
+			PersistenceManager pm = pmf.getPersistenceManager();
+			Transaction tx=pm.currentTransaction();
+			long r = 0;
+			try
+			{
+				tx.begin();		
+				long tuplasEliminadas = sqlFactura.eliminarFactura(pm,NumFactura);
+				tx.commit();
+
+				log.trace ("Eliminado Factura: " + NumFactura +": " );
 				 r = tuplasEliminadas;
 			}
 			catch (Exception e)

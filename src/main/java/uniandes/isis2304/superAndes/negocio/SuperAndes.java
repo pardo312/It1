@@ -113,6 +113,17 @@ public class SuperAndes
 		log.info ("Generando los VO de Productos: " + voProd.size() + " existentes");
 		return voProd;
 	}
+	
+	public List<Factura> darFacturas() {
+		log.info ("Generando los VO de Producto");        
+		List<Factura> voProd = new LinkedList<Factura> ();
+		for (Factura tb : pp.darFacturas ())
+		{
+			voProd.add (tb);
+		}
+		log.info ("Generando las facturas: " + voProd.size() + " existentes");
+		return voProd;
+	}
 
 
 	//	//Metodos de Productos
@@ -641,6 +652,14 @@ public class SuperAndes
 		log.info ("Eliminando el producto: " + codigoDeBarras);
 		long p = pp.eliminarProducto (codigoDeBarras);		
 		log.info ("Eliminando el producto ");
+		return p;	
+	}
+	public long eliminarFactura(String NumeroFac)
+	{
+		
+		log.info ("Eliminando el Factura: " + NumeroFac);
+		long p = pp.eliminarFactura (NumeroFac);		
+		log.info ("Eliminando el Factura ");
 		return p;	
 	}
 	
