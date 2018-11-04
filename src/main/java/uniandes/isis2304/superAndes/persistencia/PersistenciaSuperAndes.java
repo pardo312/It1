@@ -160,6 +160,8 @@ public class PersistenciaSuperAndes
 	private SQLRFC6 sqlRFC6;
 	
 	private SQLRFC7 sqlRFC7;
+	
+	private SQLRFC8 sqlRFC8;
 
 	private SQLFactura sqlFactura;
 	/* ****************************************************************
@@ -297,6 +299,7 @@ public class PersistenciaSuperAndes
 		sqlRFC5 = new SQLRFC5(this);
 		sqlRFC6 = new SQLRFC6(this);
 		sqlRFC7 = new SQLRFC7(this);
+		sqlRFC8 = new SQLRFC8(this);
 		sqlUtil = new SQLUtil(this);
 
 	}
@@ -1355,6 +1358,9 @@ public long consolidacionPedidosProveedor( int id, java.util.Date fechaEsperada,
 	}
 	public List<uniandes.isis2304.superAndes.negocio.Consulta7> Consulta7(String unidadTiempo, String tipoProducto) {
 		return sqlRFC7.consulta7(pmf.getPersistenceManager(), unidadTiempo, tipoProducto);
+	}
+	public List<uniandes.isis2304.superAndes.negocio.Consulta8> Consulta8(String idSucursal) {
+		return sqlRFC8.consulta8(pmf.getPersistenceManager(), idSucursal);
 	}
 	/* ****************************************************************
 	 * 			Limpiar Super Andes

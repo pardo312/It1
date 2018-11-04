@@ -1696,12 +1696,11 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 	 *****************************************************************/
 	public void Consulta7( )
 	{
-		String unidadTiempo = JOptionPane.showInputDialog (this, "unidad de tiempo? (semana, mes, año)", "RFC7", JOptionPane.QUESTION_MESSAGE);
-		String tipoProducto = JOptionPane.showInputDialog (this, "tipo Producto? (organico, tecnologia, aseo)", "RFC7", JOptionPane.QUESTION_MESSAGE);
-		
-		
 		try 
 		{
+			String unidadTiempo = JOptionPane.showInputDialog (this, "unidad de tiempo? (semana, mes, año)", "RFC7", JOptionPane.QUESTION_MESSAGE);
+			String tipoProducto = JOptionPane.showInputDialog (this, "tipo Producto? (organico, tecnologia, aseo)", "RFC7", JOptionPane.QUESTION_MESSAGE);
+			
 			List <uniandes.isis2304.superAndes.negocio.Consulta7> lista = superAndes.consulta7(unidadTiempo, tipoProducto);
 
 			String resultado = "En listaProveedor";
@@ -1727,6 +1726,44 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 		}
 		return resp;
 	}
+	
+	/* ****************************************************************
+	 * 			Consulta 8
+	 *****************************************************************/
+	public void Consulta8( )
+	{
+		try 
+		{
+			
+			String idSucursal = JOptionPane.showInputDialog (this, "id de la sucursal? ", "RFC8", JOptionPane.QUESTION_MESSAGE);
+			
+			List <uniandes.isis2304.superAndes.negocio.Consulta8> lista = superAndes.consulta8(idSucursal);
+
+			String resultado = "En listaProveedor";
+			resultado +=  "\n" + listarConsulta8(lista);
+			panelDatos.actualizarInterfaz(resultado);
+			resultado += "\n Operación terminada";
+		} 
+		catch (Exception e) 
+		{
+			//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+	}
+	
+	
+	private String listarConsulta8(List<uniandes.isis2304.superAndes.negocio.Consulta8> lista) 
+	{
+		String resp = "Resultado Consulta 8:\n";
+		int i = 1;
+		for (uniandes.isis2304.superAndes.negocio.Consulta8 tb : lista)
+		{
+			resp += i++ + ". " + tb.toString() + "\n";
+		}
+		return resp;
+	}
+
 	/* ****************************************************************
 	 * 			Métodos administrativos
 	 *****************************************************************/

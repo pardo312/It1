@@ -101,6 +101,12 @@
 					"label": "RFC7",
 					"event": "Consulta7" 
 				}
+				,
+				{
+					
+					"label": "RFC8",
+					"event": "Consulta8" 
+				}
 			]
 		},		
 		{ "menuTitle": "Otros",

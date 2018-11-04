@@ -513,6 +513,16 @@ public class SuperAndes
         log.info ("Generando Consulta: " + voProd.size() + " existentes");
         return voProd;
 	}
+	public List<uniandes.isis2304.superAndes.negocio.Consulta8> consulta8(String idSucursal) {
+		log.info ("Generando consulta");        
+        List<uniandes.isis2304.superAndes.negocio.Consulta8> voProd = new LinkedList<Consulta8> ();
+        for (Consulta8 tb : pp.Consulta8(idSucursal))
+        {
+        	voProd.add (tb);
+        }
+        log.info ("Generando Consulta: " + voProd.size() + " existentes");
+        return voProd;
+	}
 
 	
 
