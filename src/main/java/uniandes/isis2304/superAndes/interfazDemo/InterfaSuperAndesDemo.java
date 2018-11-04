@@ -1437,6 +1437,93 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
 	 * 			DEMOs IT2
 	 ***********************************************************************************************************************************************/
     
+    public void demoAdicionarEliminarProductoCarritoNoExitoso( )
+    {
+    	try 
+    	{
+    		String codigoDeBarras1 = "000008";
+    		int numProd = 2;
+    		long idCarrito = 99999;
+			
+    		List <Producto> productosConCodigo = superAndes.busquedaProducto(codigoDeBarras1,"",1);
+    		Producto prod = productosConCodigo.get(0);
+			String resultado = "Demo de creación y listado de Productos\n\n";
+						
+			resultado += "\n\n************ Base de datos antes de Operacion: ************ \n";
+			List <Producto> listaAntes = superAndes.darVOProducto();
+			resultado +=  "\n " + listarProductos(listaAntes)+  "\n\n ";
+
+				
+			Producto pe=superAndes.registrarProducto(nextvalCodigoBarras(),prod.getNombre(),prod.getMarca(),prod.getPrecioUnitario(),prod.getPresentacion(), prod.getPrecioPorUnidad(),prod.getCantidadEnLaPresentacion(),"gr",prod.getEspecificacionesDeEmpacado(), prod.getNivelDeReorden(), prod.getIDPedido(), prod.getIDSucursal(), prod.getIDContenedor(),1,prod.getEnStock(),numProd, idCarrito) ;
+			if(pe == null)
+			{
+				resultado += "\n\n************ Generando datos de prueba ************ \n";
+				
+				List <Producto> listaDurante = superAndes.darVOProducto();
+				resultado += "Adicionado el Producto con Carrito: " + idCarrito + "\n";
+				resultado += "\n\n************ Ejecutando la demo ************ \n";
+				resultado +=  "\n " + listarProductos(listaDurante);
+				
+				
+				resultado += "\n\n************ Error Al insertar************ \n\n";				
+				
+				resultado += "*** Exception creando El producto !!\n";
+				resultado += "*** Es probable que el carrito no exista y hay restriccion de llave foranea en Productos con el idCarrito\n";
+				resultado += "*** Revise el log de superAndes para más detalles\n";
+				
+				
+				List <Producto> listaDespues = superAndes.darVOProducto();
+				resultado += "\n\n************ Despues de la operacion la lista queda asi:************ \n";
+				resultado +=  "\n " + listarProductos(listaDespues);
+				resultado += "\n Demo terminada";
+				
+				panelDatos.actualizarInterfaz(resultado);
+			}
+			else
+			{
+			int prodMenosDeEstante =prod.getVolumen() - numProd;
+			superAndes.quitarProductosDeEstante(prodMenosDeEstante, codigoDeBarras1) ;
+
+			
+			resultado += "\n\n************ Generando datos de prueba ************ \n";
+			
+			List <Producto> listaDurante = superAndes.darVOProducto();
+			resultado += "Adicionado el Producto con Carrito: " + idCarrito + "\n";
+			resultado += "\n\n************ Ejecutando la demo ************ \n";
+			resultado +=  "\n " + listarProductos(listaDurante);
+			
+			
+			
+			//Eliminacion
+			List <Producto> productosConCodigoEliminar = superAndes.busquedaProducto(pe.getCodigoDeBarras(),"",1);
+			Producto prodElim = productosConCodigoEliminar.get(0);
+
+
+			List <Producto> estanteDeProductosConNombreEliminar = superAndes.busquedaProducto("",prodElim.getNombre(),0);
+			Producto prodEst = estanteDeProductosConNombreEliminar.get(0);
+
+			int prodMasDeEstante =prodEst.getVolumen() + prod.getVolumen();
+			long p = superAndes.quitarProductosDeEstante(prodMasDeEstante, prodEst.getCodigoDeBarras()) ;
+			superAndes.devolverProducto(pe.getCodigoDeBarras()) ;
+			resultado += "\n\n************ Limpiando la base de datos ************ \n";
+			
+			resultado += p + " Productos eliminados\n";			
+			List <Producto> listaDespues = superAndes.darVOProducto();
+			resultado += "\n\n************ Despues de eliminar la lista queda asi:************ \n";
+			resultado +=  "\n " + listarProductos(listaDespues);
+			resultado += "\n Demo terminada";
+   
+			panelDatos.actualizarInterfaz(resultado);
+			}
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+    
     public void demoAdicionarEliminarProductoCarritoExitoso( )
     {
     	try 
@@ -1452,13 +1539,9 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
 			resultado += "\n\n************ Base de datos antes de Operacion: ************ \n";
 			List <Producto> listaAntes = superAndes.darVOProducto();
 			resultado +=  "\n " + listarProductos(listaAntes)+  "\n\n ";
-
+	
 			
-			
-			
-			
-			
-			Producto pe=superAndes.registrarProducto(nextvalCodigoBarras(),prod.getNombre(),prod.getMarca(),prod.getPrecioUnitario(),prod.getPresentacion(), prod.getPrecioPorUnidad(),prod.getCantidadEnLaPresentacion(),"gr",prod.getEspecificacionesDeEmpacado(), prod.getNivelDeReorden(), prod.getIDPedido(), prod.getIDSucursal(), prod.getIDContenedor(),1,prod.getEnStock(),numProd, 280) ;
+			Producto pe=superAndes.registrarProducto(nextvalCodigoBarras(),prod.getNombre(),prod.getMarca(),prod.getPrecioUnitario(),prod.getPresentacion(), prod.getPrecioPorUnidad(),prod.getCantidadEnLaPresentacion(),"gr",prod.getEspecificacionesDeEmpacado(), prod.getNivelDeReorden(), prod.getIDPedido(), prod.getIDSucursal(), prod.getIDContenedor(),1,prod.getEnStock(),numProd, idCarrito) ;
 
 			int prodMenosDeEstante =prod.getVolumen() - numProd;
 			superAndes.quitarProductosDeEstante(prodMenosDeEstante, codigoDeBarras1) ;
@@ -1493,88 +1576,6 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
 			resultado += "\n Demo terminada";
    
 			panelDatos.actualizarInterfaz(resultado);
-		} 
-    	catch (Exception e) 
-    	{
-//			e.printStackTrace();
-			String resultado = generarMensajeError(e);
-			panelDatos.actualizarInterfaz(resultado);
-		}
-    }
-    
-    public void demoAdicionarEliminarProductoCarritoNoExitoso( )
-    {
-    	try 
-    	{
-    		String codigoDeBarras = "000005"; // Codigo de barras que ya existe
-			String nombre = "Parlantes";
-			String marca = "Omega";
-			float precioUnitario = 150000;
-			String presentacion = "Individual";
-			float precioPorUnidad = 150000;
-			float cantidadEnLaPresentacion = 6;
-			String unidadesDeMedida = "GR";
-			String especificacionesDeEmpacado = "Regular";
-			long IDPedido = 5;
-			long IDPromocion = 3;
-			long IDSucursal = 4;
-			long IDContenedor = 16;
-			int EnStock = 32;
-			int volumen = 123;
-			int IDCarrito = 0;
-			float nivelDeReorden = EnStock/100;
-			
-			
-			boolean errorProducto = false;
-			Producto Producto = superAndes.registrarProducto(codigoDeBarras, nombre, marca, precioUnitario, presentacion, precioPorUnidad, cantidadEnLaPresentacion, unidadesDeMedida, especificacionesDeEmpacado, nivelDeReorden, IDPedido, IDSucursal, IDContenedor, IDPromocion, EnStock, volumen, IDCarrito);
-			if (Producto == null)
-			{
-				errorProducto = true;
-			}
-			
-			// Generación de la cadena de caracteres con la traza de la ejecución de la demo
-			String resultado = "Demo de creación y listado de Productos\n\n";
-			resultado += "\n\n************ Generando datos de prueba ************ \n";
-			if (errorProducto)
-			{
-				resultado += "Adicionado el Producto con nombre: " + codigoDeBarras + "\n";
-				resultado += "\n\n************ Estado de la base de datos antes de la operacion ************ \n";
-				
-				List <Producto> lista = superAndes.darVOProducto();
-				resultado +=  "\n " + listarProductos(lista)+  "\n\n ";
-				
-				resultado += "\n\n************ Error Al insertar************ \n\n";				
-				
-				resultado += "*** Exception creando Producto !!\n";
-				resultado += "*** Es probable que ese Producto ya existiera y hay restricción de UNICIDAD sobre el nombre del Producto\n";
-				resultado += "*** Revise el log de superAndes para más detalles\n";
-				
-				
-				List <Producto> listaDespues = superAndes.darVOProducto();
-				resultado += "\n\n************ Despues de el registro queda asi************ \n";
-				resultado +=  "\n " + listarProductos(listaDespues);
-				
-				panelDatos.actualizarInterfaz(resultado);
-			}
-			else
-			{
-				List <Producto> lista = superAndes.darVOProducto();
-				long tbEliminados = superAndes.eliminarProducto( Producto.getCodigoDeBarras());
-				resultado += "Adicionado el Producto con nombre: " + codigoDeBarras + "\n";
-				resultado += "\n\n************ Ejecutando la demo ************ \n";
-				resultado +=  "\n " + listarProductos(lista);
-				resultado += "\n\n************ Limpiando la base de datos ************ \n";
-				resultado += tbEliminados + " Productos eliminados\n";
-				
-				List <Producto> listaDespues = superAndes.darVOProducto();
-				resultado += "\n\n************ Despues de eliminar la lista queda asi:************ \n";
-				resultado +=  "\n " + listarProductos(listaDespues);
-				resultado += "\n Demo terminada";
-	   
-				panelDatos.actualizarInterfaz(resultado);
-				
-			}
-			
 		} 
     	catch (Exception e) 
     	{
