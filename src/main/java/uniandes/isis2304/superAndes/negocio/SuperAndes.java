@@ -296,6 +296,37 @@ public class SuperAndes
 		log.info ("Adicionando el cliente: " + NIT);
 		return clienteEmpresa;
 	}
+
+
+public List<VOContenedor> darVOContenedor() {
+		log.info ("Generando los VO de contenedor");        
+		List<VOContenedor> voTipos = new LinkedList<VOContenedor> ();
+		for (Contenedor tb : pp.darContenedor ())
+		{
+			voTipos.add (tb);
+		}
+		log.info ("Generando los VO de sucursal: " + voTipos.size() + " existentes");
+		return voTipos;
+	}
+
+public Contenedor registrarContenedor(int id, int capacidadVolumen,
+			int capacidadPeso, String unidadesPeso, String unidadesVolumen,
+			int idBodegaSucursal, int a) {
+		log.info ("Adicionando el contenedor: " + id);
+		Contenedor contenedor = pp.registrarContenedor(id, capacidadVolumen, capacidadPeso, unidadesPeso, unidadesVolumen, idBodegaSucursal, a);		
+		log.info ("Adicionando el contenedor: " + id);
+		return contenedor;
+	}
+public Contenedor darContenedor(int id)
+	{
+		
+			log.info ("Generando consulta");        
+	        List<Contenedor> voProv = new LinkedList<Contenedor> ();
+	        Contenedor prov = voProv.get(0);
+	        log.info ("Generando Consulta: " + voProv.size() + " existentes");
+	        return prov;	
+	}
+
 	
 	public CarritoDeCompras registrarCarritoDeCompras(long idCarrito, int usado, String NIT, int cedula)
 	{
@@ -312,14 +343,7 @@ public class SuperAndes
 		log.info ("Adicionando la sucursal: " + nombre);
 		return sucursal;
 	}
-	public Contenedor registrarContenedor(int id, int capacidadVolumen,
-			int capacidadPeso, String unidadesPeso, String unidadesVolumen,
-			int idBodegaSucursal) {
-		log.info ("Adicionando el contenedor: " + id);
-		Contenedor contenedor = pp.registrarContenedor(id, capacidadVolumen, capacidadPeso, unidadesPeso, unidadesVolumen, idBodegaSucursal);		
-		log.info ("Adicionando el contenedor: " + id);
-		return contenedor;
-	}
+
 	public Pedido registrarPedido(int id,java.util.Date fechaEsperada,java.util.Date fechaEntrega,String evaluacionCantidad, String evaluacionCalidad,int calificacion,int finalizado, int NITProveedor)
 	{
 		log.info ("Adicionando el pedido: " + id);
@@ -685,11 +709,19 @@ public class SuperAndes
 	{
 		
 		log.info ("Eliminando la sucursal: " + id);
-		long p = pp.eliminarClienteNatural (id);		
+		long p = pp.eliminarSucursal (id);		
 		log.info ("Eliminando la sucursal ");
 		return p;	
 	}
 	
+	public long eliminarContenedor (int id)
+	{
+		
+		log.info ("Eliminando la sucursal: " + id);
+		long p = pp.eliminarContenedor (id);		
+		log.info ("Eliminando la sucursal ");
+		return p;	
+	}
 	public ClienteEmpresa darClienteEmpresa(String NIT)
 	{
 		
