@@ -1013,7 +1013,7 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
 			// ATENCIÓN: En una aplicación real, los datos JAMÁS están en el código
     		String NITCliente = "0";
     		int cedula = 1008;
-    		long idCarrito= 5; // mas adelante se pone uno autogenerado
+    		int idCarrito= 5; // mas adelante se pone uno autogenerado
 			int usado = 1; // como se esta registrando se asigna a un cliente y esta en uso 
 			boolean errorCarrito = false;
 			CarritoDeCompras carrito = superAndes.registrarCarritoDeCompras(idCarrito, usado, NITCliente, cedula,1);
@@ -1060,7 +1060,7 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
       	{
     		String NITCliente = "0";
     		int cedula = 1008;
-    		long idCarrito= 5; // mas adelante se pone uno autogenerado
+    		int idCarrito= 5; // mas adelante se pone uno autogenerado
 			int usado = 1; // como se esta registrando se asigna a un cliente y esta en uso 
 			boolean errorCarrito = false;
 			
@@ -1703,9 +1703,11 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
     /* **********************************************************************************************************************************************
 	 * 			DEMOs IT2
 	 ***********************************************************************************************************************************************/
-    
-    
-    
+
+    /* ****************************************************************
+	 * 			Demo Adicionar y Devolver Prod a Carrito
+	 *****************************************************************/
+
     public void demoAdicionarEliminarProductoCarritoNoExitoso( )
     {
     	try 
@@ -1854,7 +1856,144 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
 		}
     }
     
+    /* ****************************************************************
+	 * 			Demo Abandonar un carrito
+	 *****************************************************************/
+    public void demoAbandonarUnCarritoExitoso( )
+    {
+    	try 
+    	{   		
+    		int idCarrito = 295;
+			
+    		
+			String resultado = "Demo de creación y listado de Productos\n\n";
+						
+			resultado += "\n\n************ Base de datos antes de Operacion: ************ \n";
+			List <CarritoDeCompras> listaAntes = superAndes.darCarritos();
+			resultado +=  "\n " + listarCarritos(listaAntes)+  "\n\n ";
+
+			CarritoDeCompras pe = superAndes.abandonarCarrito(idCarrito) ;	
+			if(pe == null)
+			{
+				resultado += "\n\n************ Generando datos de prueba ************ \n";
+				
+				List <CarritoDeCompras> listaDurante = superAndes.darCarritos();
+				resultado += "abandonando el carrito: " + idCarrito + "\n";
+				resultado += "\n\n************ Ejecutando la demo ************ \n";
+				resultado +=  "\n " + listarCarritos(listaDurante);
+				
+				
+				resultado += "\n\n************ Error Al insertar************ \n\n";				
+				
+				resultado += "*** Exception abandonando el carrito !!\n";
+				resultado += "*** Es probable que el carrito no exista \n";
+				resultado += "*** Revise el log de superAndes para más detalles\n";
+				
+				
+				List <CarritoDeCompras> listaDespues = superAndes.darCarritos();
+				resultado += "\n\n************ Despues de la operacion la lista queda asi:************ \n";
+				resultado +=  "\n " + listarCarritos(listaDespues);
+				resultado += "\n Demo terminada";
+				
+				panelDatos.actualizarInterfaz(resultado);
+			}
+			else
+			{
+			
+			resultado += "\n\n************ Generando datos de prueba ************ \n";
+			
+			List <CarritoDeCompras> listaDurante = superAndes.darCarritos();
+			resultado += "abandonando el carrito: " + idCarrito + "\n";
+			resultado += "\n\n************ Ejecutando la demo ************ \n";
+			resultado +=  "\n " + listarCarritos(listaDurante);
+
+			
+			resultado += "\n\n************ Limpiando la base de datos ************ \n";
+			
+			resultado += pe.getIDCarrito() + "<----- Carrito Abandonado\n";			
+			List <CarritoDeCompras> listaDespues = superAndes.darCarritos();
+			resultado += "\n\n************ Despues de eliminar la lista queda asi:************ \n";
+			resultado +=  "\n " + listarCarritos(listaDespues);
+			resultado += "\n Demo terminada";
+   
+			panelDatos.actualizarInterfaz(resultado);
+			}
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
     
+    public void demoAbandonarUnCarritoNoExitoso( )
+    {
+    	try 
+    	{   		
+    		int idCarrito = 9999;
+			
+    		
+			String resultado = "Demo de Abandono de un carrito \n\n";
+						
+			resultado += "\n\n************ Base de datos antes de Operacion: ************ \n";
+			List <CarritoDeCompras> listaAntes = superAndes.darCarritos();
+			resultado +=  "\n " + listarCarritos(listaAntes)+  "\n\n ";
+
+			CarritoDeCompras pe = superAndes.abandonarCarrito(idCarrito) ;	
+			if(pe == null)
+			{
+				resultado += "\n\n************ Generando datos de prueba ************ \n";
+				
+				List <CarritoDeCompras> listaDurante = superAndes.darCarritos();
+				resultado += "Abandonando el carrito: " + idCarrito + "\n";
+				resultado += "\n\n************ Ejecutando la demo ************ \n";
+				resultado +=  "\n " + listarCarritos(listaDurante);
+				
+				
+				resultado += "\n\n************ Error Al insertar************ \n\n";				
+				
+				resultado += "*** Exception abandonando el carrito !!\n";
+				resultado += "*** Es probable que el carrito no exista \n";
+				resultado += "*** Revise el log de superAndes para más detalles\n";
+				
+				
+				List <CarritoDeCompras> listaDespues = superAndes.darCarritos();
+				resultado += "\n\n************ Despues de la operacion la lista queda asi:************ \n";
+				resultado +=  "\n " + listarCarritos(listaDespues);
+				resultado += "\n Demo terminada";
+				
+				panelDatos.actualizarInterfaz(resultado);
+			}
+			else
+			{
+			
+			resultado += "\n\n************ Generando datos de prueba ************ \n";
+			
+			List <CarritoDeCompras> listaDurante = superAndes.darCarritos();
+			resultado += "Abandonando el carrito: " + idCarrito + "\n";
+			resultado += "\n\n************ Ejecutando la demo ************ \n";
+			resultado +=  "\n " + listarCarritos(listaDurante);
+
+			
+			resultado += "\n\n************ Limpiando la base de datos ************ \n";
+			
+			resultado += pe.getIDCarrito() + "<----- Carrito Abandonado\n";			
+			List <CarritoDeCompras> listaDespues = superAndes.darCarritos();
+			resultado += "\n\n************ Despues de eliminar la lista queda asi:************ \n";
+			resultado +=  "\n " + listarCarritos(listaDespues);
+			resultado += "\n Demo terminada";
+   
+			panelDatos.actualizarInterfaz(resultado);
+			}
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
     
     
     
@@ -1903,16 +2042,7 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
         return resp;
 	}
     
-    private String listarCarritos(List<CarritoDeCompras> lista) 
-    {
-    	String resp = "Los carritps existentes son:\n";
-    	int i = 1;
-        for (CarritoDeCompras tb : lista)
-        {
-        	resp += i++ + ". " + tb.toString() + "\n";
-        }
-        return resp;
-	}
+   
     
     private String listarPedidos(List<Pedido> lista) 
     {
@@ -1932,6 +2062,16 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
     	String resp = "Los Productos existentes son:\n";
     	int i = 1;
         for (Producto tb : lista)
+       {
+        	resp += i++ + ". " + tb.toString() + "\n";
+        }
+        return resp;
+	} 
+    private String listarCarritos(List<CarritoDeCompras> lista) 
+    {
+    	String resp = "Los Carritos De Compras existentes son:\n";
+    	int i = 1;
+        for (CarritoDeCompras tb : lista)
        {
         	resp += i++ + ". " + tb.toString() + "\n";
         }

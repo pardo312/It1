@@ -24,7 +24,7 @@ public interface VOCarritoDeCompras
 	
 	public String getNITCliente();
 	
-	public long getIDCarrito();
+	public int getIDCarrito();
 	
 	
 	@Override
