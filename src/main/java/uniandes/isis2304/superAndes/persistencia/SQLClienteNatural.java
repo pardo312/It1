@@ -79,7 +79,7 @@ class SQLClienteNatural
 	public List<ClienteNatural> darClientesNaturales (PersistenceManager pm)
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + "CLIENTENATURAL");
-		q.setResultClass(Proveedor.class);
+		q.setResultClass(ClienteNatural.class);
 		return (List<ClienteNatural>) q.executeList();
 	}
 

@@ -27,7 +27,7 @@ public interface VOClienteNatural
 	
 	public String getNombre() ;
 	
-	public String getEemail();
+	public String getEmail();
 	
 	@Override
 	public String toString();

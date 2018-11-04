@@ -682,7 +682,7 @@ public class PersistenciaSuperAndes
 
 	public ClienteNatural registrarClienteNatural ( int cedula, String nombre, String email, int a)
 	{
-		if (a== 1)
+		if (a == 1)
 		{
 
 		PersistenceManager pm = pmf.getPersistenceManager();

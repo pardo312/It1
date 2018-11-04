@@ -62,7 +62,7 @@ public class ClienteNatural implements VOClienteNatural
 	}
 	
 	
-	public String getEemail() 
+	public String getEmail() 
 	{
 		return email;
 	}

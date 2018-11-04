@@ -400,7 +400,7 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
 			resultado += "\n\n************ Ejecutando la demo ************ \n";
 			resultado +=  "\n " + listarClienteNatural(lista);
 			resultado += "\n\n************ Limpiando la base de datos ************ \n";
-			resultado += tbEliminados + " Proveedores eliminados\n";
+			resultado += tbEliminados + " Cliente eliminados\n";
 			
 			List <VOClienteNatural> listaDespues = superAndes.darVOClienteNatural();
 			resultado += "\n\n************ Despues de eliminar la lista queda asi:************ \n";
@@ -445,7 +445,7 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
 				
 				resultado += "\n\n************ Error Al insertar************ \n\n";				
 				
-				resultado += "*** Exception creando proveedor !!\n";
+				resultado += "*** Exception creando cliete !!\n";
 				resultado += "*** Es probable que ese cliente natural ya existiera y hay restricción de UNICIDAD sobre la cedula del cliente\n";
 				resultado += "*** Revise el log de superAndes para más detalles\n";
 				
@@ -499,7 +499,7 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
 				cliente = superAndes.darClienteEmpresa(NIT);
 				errorCliente = true;
 			}
-			List <VOProveedor> lista = superAndes.darVOProveedor();
+			List <VOClienteEmpresa> lista = superAndes.darVOClienteEmpresarial();
 			long tbEliminados = superAndes.eliminarClienteEmpresa(cliente.getNIT());
 			
 			// Generación de la cadena de caracteres con la traza de la ejecución de la demo
@@ -513,9 +513,9 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
 			}
 			resultado += "Adicionado el cliente con nit: " + NIT + "\n";
 			resultado += "\n\n************ Ejecutando la demo ************ \n";
-			resultado +=  "\n " + listarProveedores(lista);
+			resultado +=  "\n " + listarClienteEmpresa(lista);
 			resultado += "\n\n************ Limpiando la base de datos ************ \n";
-			resultado += tbEliminados + " Proveedores eliminados\n";
+			resultado += tbEliminados + " cliente eliminados\n";
 			
 			List <VOClienteEmpresa> listaDespues = superAndes.darVOClienteEmpresarial();
 			resultado += "\n\n************ Despues de eliminar la lista queda asi:************ \n";
@@ -547,7 +547,7 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
 			}
 			
 			// Generación de la cadena de caracteres con la traza de la ejecución de la demo
-			String resultado = "Demo de creación y listado de Proveedores\n\n";
+			String resultado = "Demo de creación y listado de clientes \n\n";
 			resultado += "\n\n************ Generando datos de prueba ************ \n";
 			if (errorCliente)
 			{
@@ -560,7 +560,7 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
 				resultado += "\n\n************ Error Al insertar************ \n\n";				
 				
 				resultado += "*** Exception creando cliente !!\n";
-				resultado += "*** Es probable que ese proveedor ya existiera y hay restricción de UNICIDAD sobre el nombre del proveedor\n";
+				resultado += "*** Es probable que ese cliente ya existiera y hay restricción de UNICIDAD sobre el nit del cliente\n";
 				resultado += "*** Revise el log de superAndes para más detalles\n";
 				
 				
@@ -578,7 +578,7 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
 				resultado += "\n\n************ Ejecutando la demo ************ \n";
 				resultado +=  "\n " + listarClienteEmpresa(lista);
 				resultado += "\n\n************ Limpiando la base de datos ************ \n";
-				resultado += tbEliminados + " Proveedores eliminados\n";
+				resultado += tbEliminados + " cliente eliminados\n";
 				
 				List <VOClienteEmpresa> listaDespues = superAndes.darVOClienteEmpresarial();
 				resultado += "\n\n************ Despues de eliminar la lista queda asi:************ \n";
