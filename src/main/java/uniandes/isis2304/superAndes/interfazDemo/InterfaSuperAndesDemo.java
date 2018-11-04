@@ -27,6 +27,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.jdo.JDODataStoreException;
@@ -57,6 +59,8 @@ import uniandes.isis2304.superAndes.negocio.VOClienteEmpresa;
 import uniandes.isis2304.superAndes.negocio.VOClienteNatural;
 import uniandes.isis2304.superAndes.negocio.VOContenedor;
 import uniandes.isis2304.superAndes.negocio.Estante;
+import uniandes.isis2304.superAndes.negocio.Factura;
+import uniandes.isis2304.superAndes.negocio.FacturaProducto;
 import uniandes.isis2304.superAndes.negocio.Producto;
 import uniandes.isis2304.superAndes.negocio.Promocion;
 import uniandes.isis2304.superAndes.negocio.Proveedor;
@@ -815,6 +819,14 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
 			float nivelDeReorden = EnStock/100;
 			
 			
+			// Generación de la cadena de caracteres con la traza de la ejecución de la demo
+						String resultado = "Demo de creación y listado de Productos\n\n";
+						
+			resultado += "\n\n************ Base de datos antes de Operacion: ************ \n";
+			List <Producto> listaAntes = superAndes.darVOProducto();
+
+			resultado +=  "\n " + listarProductos(listaAntes)+  "\n\n ";
+			
 			boolean errorProducto = false;
 			Producto Producto = superAndes.registrarProducto(codigoDeBarras, nombre, marca, precioUnitario, presentacion, precioPorUnidad, cantidadEnLaPresentacion, unidadesDeMedida, especificacionesDeEmpacado, nivelDeReorden, IDPedido, IDSucursal, IDContenedor, IDPromocion, EnStock, volumen, IDCarrito);
 			if (Producto == null)
@@ -824,8 +836,10 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
 			List <Producto> lista = superAndes.darVOProducto();
 			long tbEliminados = superAndes.eliminarProducto(Producto.getCodigoDeBarras());
 			
-			// Generación de la cadena de caracteres con la traza de la ejecución de la demo
-			String resultado = "Demo de creación y listado de Productos\n\n";
+			
+			
+			
+			
 			resultado += "\n\n************ Generando datos de prueba ************ \n";
 			if (errorProducto)
 			{
@@ -952,6 +966,22 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
    		
    		
    	}
+    private int nextvalID()
+  	{
+  		int resp =(int) (Math.random() * 100) + 21;;
+  		
+  			return resp;
+  	}
+      
+    private String nextvalIdFactura()
+   	{
+   		int resp =(int) (Math.random() * 100) + 21;;
+   		
+   			return "20"+resp;
+   		
+   		
+   	}
+    
     /* ****************************************************************
 	 * 			DEMO Estante
 	 *****************************************************************/
@@ -1072,7 +1102,7 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
     }
     
     /* ****************************************************************
-   	 * 			DEMO Estante
+   	 * 			DEMO Promocion 
    	 *****************************************************************/
     public void demoPromocionExitoso( )
     {
@@ -1192,15 +1222,85 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
 		}
     }
    
-    private int nextvalID()
+  
+    
+    
+    /* ****************************************************************
+	 * 			DEMO registrar Venta
+	 *****************************************************************/
+    
+    public void demoRegistrarVentaDeProducto( )
 	{
-		int resp =(int) (Math.random() * 100) + 21;;
-		
-			return resp;
+		try 
+		{
+
+			
+			String numeroDeFactura = nextvalIdFactura();
+			java.util.Date fecha = new Date( 0/1/0001);
+			int idCliente = nextvalID(); 					
+			String codigoDeBarras = nextvalCodigoBarras();
+			int numProd = 12;
+
+			
+//			for (int i = 1; i<numProd;i++)
+//			{
+//
+//
+//				FacturaProducto fp = superAndes.registrarFacturaProd(numeroDeFactura,codigoDeBarras) ;
+//				if (fp == null)
+//				{
+//					throw new Exception ("No se pudo crear factura con numero: " + numeroDeFactura);
+//				}
+//				String resultado = "En adicionarProveedor\n\n";
+//				resultado += "proveedor adicionado exitosamente: " + tb;
+//				resultado += "\n Operación terminada";
+//				panelDatos.actualizarInterfaz(resultado);
+//
+//
+//			}
+			
+			String resultado = "Demo de creación y listado de Promociones\n\n";
+			resultado += "\n\n************ Base de datos antes de Operacion: ************ \n";
+	
+			
+			resultado += "\n\n************ Factura: ************ \n";
+			List <Factura> listaFacAntes = superAndes.darFacturas();
+			resultado +=  "\n " + listarFactura(listaFacAntes)+  "\n\n ";
+			
+			
+			
+			resultado += "\n\n************ Generando datos de prueba ************ \n";
+			
+			
+			Factura tb = superAndes.registrarFactura(numeroDeFactura,fecha,idCliente) ;
+			resultado += "\n\n************ Añadiendo Factura "+numeroDeFactura+"************ \n";
+			List <Factura> listaFac = superAndes.darFacturas();
+			resultado +=  "\n " + listarFactura(listaFac)+  "\n\n ";
+
+			
+			
+			resultado += "\n\n************ Eliminando ************ \n";
+			
+			long FacEliminados = superAndes.eliminarFactura(numeroDeFactura);
+			
+			resultado +=  "\n " + FacEliminados+  " Facturas eliminadas \n\n ";
+
+			resultado += "\n\n************ Base de datos Despues de Operacion: ************ \n";
+
+			
+			resultado += "\n\n************ Factura: ************ \n";
+			List <Factura> listaFacDesp = superAndes.darFacturas();
+			resultado +=  "\n " + listarFactura(listaFacDesp)+  "\n\n ";
+
+		} 
+		catch (Exception e) 
+		{
+			//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
 	}
-    
-    
-    
+
     
     /* ****************************************************************
 	 * 			Listar De tablas
@@ -1254,6 +1354,16 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
     	String resp = "Los Productos existentes son:\n";
     	int i = 1;
         for (Producto tb : lista)
+       {
+        	resp += i++ + ". " + tb.toString() + "\n";
+        }
+        return resp;
+	} 
+    private String listarFactura(List<Factura> lista) 
+    {
+    	String resp = "Las Factura existentes son:\n";
+    	int i = 1;
+        for (Factura tb : lista)
        {
         	resp += i++ + ". " + tb.toString() + "\n";
         }

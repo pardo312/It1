@@ -22,6 +22,8 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
 import uniandes.isis2304.superAndes.negocio.Cliente;
+import uniandes.isis2304.superAndes.negocio.Factura;
+import uniandes.isis2304.superAndes.negocio.Producto;
 import uniandes.isis2304.superAndes.negocio.Proveedor;
 import uniandes.isis2304.superAndes.negocio.TipoProducto;
 
@@ -87,6 +89,26 @@ class SQLFactura
         Query q = pm.newQuery(SQL, "INSERT INTO " + "FacturaProducto" + "(numeroFactura,codigoDeBarrasProducto) values ('"+numeroDeFactura+"','"+codigoDeBarras+"')");
        
         return (long) q.executeUnique();     
+	}
+	
+	public List<Factura> darFacturas (PersistenceManager pm)
+	{
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + "FACTURA");
+		q.setResultClass(Factura.class);		
+		return  (List<Factura>)q.executeList();
+		
+	}
+	
+	public List<Factura> darFactura (PersistenceManager pm, String Factura)
+	{
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + "FACTURA WHERE NUMEROFACTURA = " + Factura);
+		q.setResultClass(Factura.class);
+		List<Factura> w = (List<Factura>) q.executeList();
+		return w;
+	}
+	public long eliminarFactura(PersistenceManager pm, String Factura) {
+		 Query q = pm.newQuery(SQL, "DELETE FROM " + "FACTURA "+ "WHERE NUMEROFACTURA = "+Factura);
+	        return (long) q.executeUnique();  
 	}
 	
 	
