@@ -76,6 +76,18 @@ class SQLProveedor
 		List<Proveedor> w = (List<Proveedor>) q.executeList();
 		return w;
 	}
+	
+	public List<Proveedor> darProveedor (PersistenceManager pm, String nombre)
+	{
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + "PROVEEDOR WHERE NOMBRE = " + nombre);
+		q.setResultClass(Proveedor.class);
+		List<Proveedor> w = (List<Proveedor>) q.executeList();
+		return w;
+	}
+	public long eliminarProveedor(PersistenceManager pm, int NIT) {
+		 Query q = pm.newQuery(SQL, "DELETE FROM " + "Proveedor "+ "WHERE NIT = "+NIT);
+	        return (long) q.executeUnique();  
+	}
 
 	
 

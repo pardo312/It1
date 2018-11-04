@@ -3305,3 +3305,17 @@ ORA-00001: restricción única (ISIS2304B231820.SYS_C00461381) violada
 07:04:23,460 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando Consulta: 18 existentes
 07:05:06,893 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando consulta
 07:05:06,992 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando Consulta: 18 existentes
+07:07:15,030 (main) INFO  [uniandes.isis2304.superAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Interfaz
+07:07:15,030 (main) INFO  [uniandes.isis2304.superAndes.interfazApp.InterfazSuperAndesApp] - Se aplica configuración indicada en el archivo de configuración
+07:07:15,037 (main) INFO  [uniandes.isis2304.superAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
+07:08:54,840 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando consulta
+07:08:54,969 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando Consulta: 0 existentes
+07:36:59,258 (main) INFO  [uniandes.isis2304.superAndes.interfazDemo.InterfaSuperAndesDemo] - Se encontró un archivo de configuración válido: Interfaz
+07:36:59,258 (main) INFO  [uniandes.isis2304.superAndes.interfazDemo.InterfaSuperAndesDemo] - Se aplica configuración indicada en el archivo de configuración
+07:36:59,261 (main) INFO  [uniandes.isis2304.superAndes.interfazDemo.InterfaSuperAndesDemo] - Se encontró un archivo de configuración válido: Tablas BD
+07:37:02,982 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el proveedor: Juan Manuel
+07:37:03,484 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el proveedor: Proveedor [NIT=341, nombre=Juan Manuel]
+07:37:03,484 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Proveedor
+07:37:03,569 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Proveedor: 22 existentes
+07:37:03,569 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando la proveedor: 341
+07:37:03,639 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando la promocion 

@@ -1,0 +1,19 @@
+{
+	"title": "Demostración de superAndes",
+	"frameH": 600,
+	"frameW": 800,
+	"bannerPath": "./src/main/resources/config/logo.png",
+	"menuBar":
+	[
+		{ "menuTitle": "Proveedor",
+		  "options":
+			[
+				{
+					"label": "CRD de Proveedor",
+					"event": "demoProveedor"
+				}
+			]
+		}
+	]
+}
+	

@@ -1362,6 +1362,45 @@ public long consolidacionPedidosProveedor( int id, java.util.Date fechaEsperada,
 	public List<uniandes.isis2304.superAndes.negocio.Consulta8> Consulta8(String idSucursal) {
 		return sqlRFC8.consulta8(pmf.getPersistenceManager(), idSucursal);
 	}
+	
+	
+	public List<Proveedor> darProveedor(String nombre) {
+		return sqlProveedor.darProveedor(pmf.getPersistenceManager(),nombre);
+	}
+
+	public long eliminarProveedor(int nit) {
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		long r = 0;
+		try
+		{
+			tx.begin();		
+			long tuplasEliminadas = sqlProveedor.eliminarProveedor(pm,nit);
+			tx.commit();
+
+			log.trace ("Eliminado Proveedor" + nit +": " );
+			 r = tuplasEliminadas;
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+
+		}
+		finally
+		{
+			if (tx.isActive())
+			{
+				tx.rollback();
+				
+			}
+			
+			pm.close();
+			
+		}
+		return r;
+		
+	}
 	/* ****************************************************************
 	 * 			Limpiar Super Andes
 	 *****************************************************************/

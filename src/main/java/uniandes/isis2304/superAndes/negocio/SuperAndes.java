@@ -523,10 +523,33 @@ public class SuperAndes
         log.info ("Generando Consulta: " + voProd.size() + " existentes");
         return voProd;
 	}
-
+    /* ****************************************************************
+	 * 			Metodos Para las pruebas
+	 *****************************************************************/
+    
+	public Proveedor darProveedor(String nombre)
+	{
+		
+			log.info ("Generando consulta");        
+	        List<Proveedor> voProv = new LinkedList<Proveedor> ();
+	        Proveedor prov = voProv.get(0);
+	        log.info ("Generando Consulta: " + voProv.size() + " existentes");
+	        return prov;	
+	}
+	public long eliminarProveedor(int nit)
+	{
+		
+		log.info ("Eliminando la proveedor: " + nit);
+		long p = pp.eliminarProveedor (nit);		
+		log.info ("Eliminando la promocion ");
+		return p;	
+	}
 	
 
-
+    /* ****************************************************************
+	 * 			Metodos Extra
+	 *****************************************************************/
+    
 	//Limpiar SuperAndes
 	public long [] limpiarSuperAndes ()
 	{
