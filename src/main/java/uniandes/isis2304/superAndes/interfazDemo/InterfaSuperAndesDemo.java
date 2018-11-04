@@ -61,11 +61,13 @@ import uniandes.isis2304.superAndes.negocio.VOContenedor;
 import uniandes.isis2304.superAndes.negocio.Estante;
 import uniandes.isis2304.superAndes.negocio.Factura;
 import uniandes.isis2304.superAndes.negocio.FacturaProducto;
+import uniandes.isis2304.superAndes.negocio.Pedido;
 import uniandes.isis2304.superAndes.negocio.Producto;
 import uniandes.isis2304.superAndes.negocio.Promocion;
 import uniandes.isis2304.superAndes.negocio.Proveedor;
 import uniandes.isis2304.superAndes.negocio.SuperAndes;
 import uniandes.isis2304.superAndes.negocio.VOEstante;
+import uniandes.isis2304.superAndes.negocio.VOPedido;
 import uniandes.isis2304.superAndes.negocio.VOPromocion;
 import uniandes.isis2304.superAndes.negocio.VOProveedor;
 import uniandes.isis2304.superAndes.negocio.VOSucursal;
@@ -735,6 +737,11 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
     			panelDatos.actualizarInterfaz(resultado);
     		}
       }
+      
+      /* ****************************************************************
+    	 * 			Demos de contenedor
+    	 *****************************************************************/
+      
       public void demoContenedorExitoso( )
       {
       	try 
@@ -856,6 +863,143 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
     		}
       }
 
+      
+      /* ****************************************************************
+    	 * 			Demos de registrar pedido
+    	 *****************************************************************/
+      
+      public void demoRegistrarPedidoExitoso( )
+      {
+      	try 
+      	{
+      		// Ejecución de la demo y recolección de los resultados
+  			// ATENCIÓN: En una aplicación real, los datos JAMÁS están en el código
+      		
+      		java.util.Date fechaEsperada =  new Date( 0/1/0001);
+      		java.util.Date  fechaEntrega = new Date( 0/1/0001);
+			String evaluacionCantidad = "0";
+			String evaluacionCalidad = "0";
+			int calificacion = 0;
+			int finalizado = 0 ;//Integer.parseInt(JOptionPane.showInputDialog (this, "se ha finalizado el pedido?", "Registrar Pedido", JOptionPane.QUESTION_MESSAGE));
+			int NITProveedor = 10019;
+			int id = 10021;
+			
+			boolean errorPedido = false;
+	  		
+			Pedido pedido = superAndes.registrarPedido(id , fechaEsperada, fechaEntrega, evaluacionCantidad, evaluacionCalidad, calificacion, finalizado, NITProveedor,1);
+  			
+			
+			if (pedido == null)
+  			{
+  				pedido = superAndes.darPedido(id);
+  				errorPedido = true;
+  			}
+  			List <VOPedido> lista = superAndes.darVOPedido();
+  			long tbEliminados = superAndes.eliminarPedido((int)pedido.getId());
+  			
+  			// Generación de la cadena de caracteres con la traza de la ejecución de la demo
+  			String resultado = "Demo de creación y listado de pedidos \n\n";
+  			resultado += "\n\n************ Generando datos de prueba ************ \n";
+  			if (errorPedido)
+  			{
+  				resultado += "*** Exception creando contenedor !!\n";
+  				resultado += "*** Es probable que ese contenedor ya existiera y hay restricción de UNICIDAD sobre el id del contenedor \n";
+  				resultado += "*** Revise el log de superAndes para más detalles\n";
+  			}
+  			resultado += "Adicionado el pedido con id: " + id + "\n";
+  			resultado += "\n\n************ Ejecutando la demo ************ \n";
+  			resultado +=  "\n " + listarPedido(lista);
+  			resultado += "\n\n************ Limpiando la base de datos ************ \n";
+  			resultado += tbEliminados + " pedidos eliminados\n";
+  			
+  			List <VOPedido> listaDespues = superAndes.darVOPedido();
+  			resultado += "\n\n************ Despues de eliminar la lista queda asi:************ \n";
+  			resultado +=  "\n " + listarPedido(listaDespues);
+  			resultado += "\n Demo terminada";
+     
+  			panelDatos.actualizarInterfaz(resultado);
+  		} 
+      	catch (Exception e) 
+      	{
+//  			e.printStackTrace();
+  			String resultado = generarMensajeError(e);
+  			panelDatos.actualizarInterfaz(resultado);
+  		}
+      }
+      
+      public void demoRegistrarPedidoNoExitoso( )
+      {
+      	try 
+        	{
+      		java.util.Date fechaEsperada =  new Date( 0/1/0001);
+      		java.util.Date  fechaEntrega = new Date( 0/1/0001);
+			String evaluacionCantidad = "0";
+			String evaluacionCalidad = "0";
+			int calificacion = 0;
+			int finalizado = 0 ;
+			int NITProveedor = 10019;
+			int id = 10021;
+			boolean errorPedido = false;
+  			
+    			VOPedido Pedido = superAndes.registrarPedido(id, fechaEsperada, fechaEntrega, evaluacionCantidad, evaluacionCalidad, calificacion, finalizado, NITProveedor, 0) ;
+    			if (Pedido == null)
+    			{
+    				errorPedido = true;
+    			}
+    			
+    			// Generación de la cadena de caracteres con la traza de la ejecución de la demo
+    			String resultado = "Demo de creación y listado de Pedido\n\n";
+    			resultado += "\n\n************ Generando datos de prueba ************ \n";
+    			if (errorPedido)
+    			{
+    				resultado += "Adicionado el pedido con id: " + id + "\n";
+    				resultado += "\n\n************ Estado de la base de datos antes de la operacion ************ \n";
+    				
+    				List <Pedido> lista = superAndes.darPedidos();
+    				resultado +=  "\n " + listarPedidos(lista)+  "\n\n ";
+    				
+    				resultado += "\n\n************ Error Al insertar************ \n\n";				
+    				
+    				resultado += "*** Exception creando pedido !!\n";
+    				resultado += "*** Es probable que ese pedido ya existiera y hay restricción de UNICIDAD sobre el id del contenedor \n";
+    				resultado += "*** Revise el log de superAndes para más detalles\n";
+    				
+    				
+    				List <Pedido> listaDespues = superAndes.darPedidos();
+    				resultado += "\n\n************ Despues de el registro queda asi************ \n";
+    				resultado +=  "\n " + listarPedidos(listaDespues);
+    				
+    				panelDatos.actualizarInterfaz(resultado);
+    			}
+    			else
+    			{
+    				List <Pedido> lista = superAndes.darPedidos();
+    				long tbEliminados = superAndes.eliminarPedido( (int)Pedido.getId());
+    				resultado += "Adicionado el pedido con id: " + id + "\n";
+    				resultado += "\n\n************ Ejecutando la demo ************ \n";
+    				resultado +=  "\n " + listarPedidos(lista);
+    				resultado += "\n\n************ Limpiando la base de datos ************ \n";
+    				resultado += tbEliminados + " pedidos eliminadas\n";
+    				
+    				List <Pedido> listaDespues = superAndes.darPedidos();
+    				resultado += "\n\n************ Despues de eliminar la lista queda asi:************ \n";
+    				resultado +=  "\n " + listarPedidos(listaDespues);
+    				resultado += "\n Demo terminada";
+    	   
+    				panelDatos.actualizarInterfaz(resultado);
+    				
+    			}
+    			
+    		} 
+        	catch (Exception e) 
+        	{
+//    			e.printStackTrace();
+    			String resultado = generarMensajeError(e);
+    			panelDatos.actualizarInterfaz(resultado);
+    		}
+      }
+
+      
     /* ****************************************************************
 	 * 			Demos de Producto
 	 *****************************************************************/
@@ -1475,6 +1619,17 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
         }
         return resp;
 	}
+    
+    private String listarPedidos(List<Pedido> lista) 
+    {
+    	String resp = "Los pedidos existentes son:\n";
+    	int i = 1;
+        for (Pedido tb : lista)
+        {
+        	resp += i++ + ". " + tb.toString() + "\n";
+        }
+        return resp;
+	}
 
     
     
@@ -1558,6 +1713,17 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
     	String resp = " los contenedores existentes son:\n";
     	int i = 1;
         for (VOContenedor tb : lista)
+        {
+        	resp += i++ + ". " + tb.toString() + "\n";
+        }
+        return resp;
+	}
+    
+    private String listarPedido(List<VOPedido> lista) 
+    {
+    	String resp = " los contenedores existentes son:\n";
+    	int i = 1;
+        for (VOPedido tb : lista)
         {
         	resp += i++ + ". " + tb.toString() + "\n";
         }

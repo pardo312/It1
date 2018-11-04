@@ -113,7 +113,7 @@ public class SuperAndes
 		log.info ("Generando los VO de Productos: " + voProd.size() + " existentes");
 		return voProd;
 	}
-	
+
 	public List<Factura> darFacturas() {
 		log.info ("Generando los VO de Producto");        
 		List<Factura> voProd = new LinkedList<Factura> ();
@@ -200,7 +200,7 @@ public class SuperAndes
 		log.info ("Generando los VO de Clientes: " + voTipos.size() + " existentes");
 		return voTipos;
 	}
-	
+
 
 	public List<VOClienteNatural> darVOClienteNatural() {
 		log.info ("Generando los VO de cliente Natural");        
@@ -235,7 +235,7 @@ public class SuperAndes
 
 	}
 
-	
+
 	public List<Estante> darEstantes() {
 		log.info ("Generando los VO de Producto");        
 		List<Estante> voProd = new LinkedList<Estante> ();
@@ -247,7 +247,7 @@ public class SuperAndes
 		return voProd;
 
 	}
-	
+
 	public List<Promocion> darPromociones() {
 		log.info ("Generando los VO de Producto");        
 		List<Promocion> voProd = new LinkedList<Promocion> ();
@@ -294,6 +294,18 @@ public class SuperAndes
 		return voProd;
 
 	}
+	
+	public List<Pedido> darPedidios() {
+		log.info ("Generando los VO de pedido");        
+		List<Pedido> voProd = new LinkedList<Pedido> ();
+		for (Pedido tb : pp.darPedidos())
+		{
+			voProd.add (tb);
+		}
+		log.info ("Generando los VO de contenedor : " + voProd.size() + " existentes");
+		return voProd;
+
+	}
 
 
 	public Cliente registrarCliente(int idCliente, int puntosDeCompra, String nitCliente, int cedulaCliente)
@@ -320,7 +332,7 @@ public class SuperAndes
 	}
 
 
-public List<VOContenedor> darVOContenedor() {
+	public List<VOContenedor> darVOContenedor() {
 		log.info ("Generando los VO de contenedor");        
 		List<VOContenedor> voTipos = new LinkedList<VOContenedor> ();
 		for (Contenedor tb : pp.darContenedor ())
@@ -330,8 +342,19 @@ public List<VOContenedor> darVOContenedor() {
 		log.info ("Generando los VO de sucursal: " + voTipos.size() + " existentes");
 		return voTipos;
 	}
+	
+	public List<VOPedido> darVOPedido() {
+		log.info ("Generando los VO de contenedor");        
+		List<VOPedido> voTipos = new LinkedList<VOPedido> ();
+		for (Pedido tb : pp.darPedido())
+		{
+			voTipos.add (tb);
+		}
+		log.info ("Generando los VO de sucursal: " + voTipos.size() + " existentes");
+		return voTipos;
+	}
 
-public Contenedor registrarContenedor(int id, int capacidadVolumen,
+	public Contenedor registrarContenedor(int id, int capacidadVolumen,
 			int capacidadPeso, String unidadesPeso, String unidadesVolumen,
 			int idBodegaSucursal, int a) {
 		log.info ("Adicionando el contenedor: " + id);
@@ -339,17 +362,26 @@ public Contenedor registrarContenedor(int id, int capacidadVolumen,
 		log.info ("Adicionando el contenedor: " + id);
 		return contenedor;
 	}
-public Contenedor darContenedor(int id)
+	public Contenedor darContenedor(int id)
 	{
-		
-			log.info ("Generando consulta");        
-	        List<Contenedor> voProv = new LinkedList<Contenedor> ();
-	        Contenedor prov = voProv.get(0);
-	        log.info ("Generando Consulta: " + voProv.size() + " existentes");
-	        return prov;	
+
+		log.info ("Generando consulta");        
+		List<Contenedor> voProv = new LinkedList<Contenedor> ();
+		Contenedor prov = voProv.get(0);
+		log.info ("Generando Consulta: " + voProv.size() + " existentes");
+		return prov;	
+	}
+	public Pedido darPedido(int id)
+	{
+
+		log.info ("Generando consulta");        
+		List<Pedido> voProv = new LinkedList<Pedido> ();
+		Pedido prov = voProv.get(0);
+		log.info ("Generando Consulta: " + voProv.size() + " existentes");
+		return prov;	
 	}
 
-	
+
 	public CarritoDeCompras registrarCarritoDeCompras(long idCarrito, int usado, String NIT, int cedula)
 	{
 		log.info ("Adicionando el carrito: " + idCarrito);
@@ -357,7 +389,7 @@ public Contenedor darContenedor(int id)
 		log.info ("Adicionando el carrito: " + idCarrito);
 		return carritoDeCompras;
 	}
-	
+
 	public Sucursal registrarSucursal(int id,String nombre,String ciudad,String direccion, String segmentacionDeMercado,String tamanioInstalacion,int NITSupermercado, int a)
 	{
 		log.info ("Adicionando la sucursal: " + nombre);
@@ -366,10 +398,10 @@ public Contenedor darContenedor(int id)
 		return sucursal;
 	}
 
-	public Pedido registrarPedido(int id,java.util.Date fechaEsperada,java.util.Date fechaEntrega,String evaluacionCantidad, String evaluacionCalidad,int calificacion,int finalizado, int NITProveedor)
+	public Pedido registrarPedido(int id,java.util.Date fechaEsperada,java.util.Date fechaEntrega,String evaluacionCantidad, String evaluacionCalidad,int calificacion,int finalizado, int NITProveedor, int a)
 	{
 		log.info ("Adicionando el pedido: " + id);
-		Pedido pedido = pp.registrarPedido(id, fechaEsperada, fechaEntrega, evaluacionCantidad, evaluacionCalidad, calificacion, finalizado, NITProveedor);		
+		Pedido pedido = pp.registrarPedido(id, fechaEsperada, fechaEntrega, evaluacionCantidad, evaluacionCalidad, calificacion, finalizado, NITProveedor, a);		
 		log.info ("Adicionando el pedido: " + id);
 		return pedido;
 	}
@@ -404,7 +436,7 @@ public Contenedor darContenedor(int id)
 		return estante;
 	}
 
-	
+
 	public Promocion registrarPromocion(int idPromocion, String descr, String Precio , int idSucursal) {
 		log.info ("Adicionando el Estante: " + idPromocion);
 		Promocion promocion = pp.registrarPromocion (idPromocion,descr,Precio,idSucursal);		
@@ -455,71 +487,71 @@ public Contenedor darContenedor(int id)
 		return w;
 
 	}
-	
-	
+
+
 	public Factura registrarFactura(String numeroDeFactura, java.util.Date fecha, int idCliente) {
 		log.info ("Adicionando la factura: " + numeroDeFactura);
 		Factura factura = pp.registrarFactura (numeroDeFactura,fecha,idCliente);		
 		log.info ("Adicionando la factura:  " + factura);
 		return factura;
 	}
-	
+
 	public FacturaProducto registrarFacturaProd(String numeroDeFactura, String codigoDeBarras) {
 		log.info ("Adicionando la factura: " + numeroDeFactura);
 		FacturaProducto factura = pp.registrarFacturaProd (numeroDeFactura,codigoDeBarras);		
 		log.info ("Adicionando la factura:  " + factura);
 		return factura;
 	}
-	
+
 	public void quitarProductosDeEstante(int volumenNuevo ,String codigoDeBarras )
 	{
-		
-      
-        log.info ("quitandoProdDeEstante con codigo de barras: " + codigoDeBarras);
+
+
+		log.info ("quitandoProdDeEstante con codigo de barras: " + codigoDeBarras);
 		Producto estante = pp.quitarProductosDeEstante(volumenNuevo,codigoDeBarras);	
 		log.info ("quitandoProdDeEstante:  " + estante);
-		
+
 	}
 	public void devolverProducto(String codigoDeBarras)
 	{
-		
-      
-        log.info ("quitandoProdDeEstante con codigo de barras: " + codigoDeBarras);
+
+
+		log.info ("quitandoProdDeEstante con codigo de barras: " + codigoDeBarras);
 		pp.devolverProducto(codigoDeBarras);	
 		log.info ("quitandoProdDeEstante:  ");
-		
+
 	}
 	public List<Producto> busquedaProducto(String codigoDeBarras,String nombre,int opcion)
 	{
-		
-			log.info ("Generando consulta");        
-	        List<Producto> voProd = new LinkedList<Producto> ();
-	        for (Producto tb : pp.busquedaProducto(codigoDeBarras,nombre ,opcion))
-	        {
-	        	voProd.add (tb);
-	        }
-	        log.info ("Generando Consulta: " + voProd.size() + " existentes");
-	        return voProd;
-	
-		
+
+		log.info ("Generando consulta");        
+		List<Producto> voProd = new LinkedList<Producto> ();
+		for (Producto tb : pp.busquedaProducto(codigoDeBarras,nombre ,opcion))
+		{
+			voProd.add (tb);
+		}
+		log.info ("Generando Consulta: " + voProd.size() + " existentes");
+		return voProd;
+
+
 	}
-	
-	
-	
+
+
+
 	public List<Producto> busaquedaCarrito(long idCarrito)
 	{
-		
-			log.info ("Generando consulta");        
-	        List<Producto> voProd = new LinkedList<Producto> ();
-	        for (Producto tb : pp.busquedaCarrito(idCarrito))
-	        {
-	        	voProd.add (tb);
-	        }
-	        log.info ("Generando Consulta: " + voProd.size() + " existentes");
-	        return voProd;
-	
+
+		log.info ("Generando consulta");        
+		List<Producto> voProd = new LinkedList<Producto> ();
+		for (Producto tb : pp.busquedaCarrito(idCarrito))
+		{
+			voProd.add (tb);
+		}
+		log.info ("Generando Consulta: " + voProd.size() + " existentes");
+		return voProd;
+
 	}
-	
+
 
 	public void pagarCarrito(long idCarrito) {
 		log.info ("pagando el carrito con idCarrito: " + idCarrito);
@@ -534,156 +566,156 @@ public Contenedor darContenedor(int id)
 		log.info ("recogiendo los productos" );		
 	}
 
-	
+
 	public void abandonarCarrito(long idCarrito)
 	{
-		
-      
-        log.info ("abandonando carrito: " + idCarrito);
+
+
+		log.info ("abandonando carrito: " + idCarrito);
 		pp.abandonarCarrito(idCarrito);	
 		log.info ("Carrito Abandonado ");
-		
+
 	}
-	
+
 	public long consolidacionPedidosProveedor(int id, java.util.Date fechaEsperada,java.util.Date fechaEntrega,String evaluacionCantidad, String evaluacionCalidad, int calificacion, int finalizado,int NITProveedor )
 	{
-		
-			log.info ("Generando consulta");        
-	        long voProd = pp.consolidacionPedidosProveedor(id, fechaEsperada, fechaEntrega, evaluacionCantidad, evaluacionCalidad, calificacion, finalizado, NITProveedor);
-	       
-	        log.info ("Generando Consulta: " + voProd + " existentes");
-	        return voProd;
-	
-		
+
+		log.info ("Generando consulta");        
+		long voProd = pp.consolidacionPedidosProveedor(id, fechaEsperada, fechaEntrega, evaluacionCantidad, evaluacionCalidad, calificacion, finalizado, NITProveedor);
+
+		log.info ("Generando Consulta: " + voProd + " existentes");
+		return voProd;
+
+
 	}
 	public List<Pedido> darPedidos() {
 		log.info ("Generando los Pedidos");        
 		List<Pedido> voProd = new LinkedList<Pedido> ();
-		
+
 		for (Pedido tb : pp.darPedidos())
 		{	
 			if(tb != null)
 			{
 				voProd.add (tb);
 			}
-			
+
 		}
 		log.info ("Generando Pedidos: " + voProd.size() + " existentes");
 		return voProd;
 	}
 
-	
+
 	public List<uniandes.isis2304.superAndes.negocio.Consulta1> consulta1()
 	{
 		log.info ("Generando consulta");        
-        List<Consulta1> voProd = new LinkedList<Consulta1> ();
-        for (Consulta1 tb : pp.Consulta1())
-        {
-        	voProd.add (tb);
-        }
-        log.info ("Generando Consulta: " + voProd.size() + " existentes");
-        return voProd;
+		List<Consulta1> voProd = new LinkedList<Consulta1> ();
+		for (Consulta1 tb : pp.Consulta1())
+		{
+			voProd.add (tb);
+		}
+		log.info ("Generando Consulta: " + voProd.size() + " existentes");
+		return voProd;
 	}
 	public List<uniandes.isis2304.superAndes.negocio.Consulta2> consulta2()
 	{
 		log.info ("Generando consulta");        
-        List<Consulta2> voProd = new LinkedList<Consulta2> ();
-        for (Consulta2 tb : pp.Consulta2())
-        {
-        	voProd.add (tb);
-        }
-        log.info ("Generando Consulta: " + voProd.size() + " existentes");
-        return voProd;
+		List<Consulta2> voProd = new LinkedList<Consulta2> ();
+		for (Consulta2 tb : pp.Consulta2())
+		{
+			voProd.add (tb);
+		}
+		log.info ("Generando Consulta: " + voProd.size() + " existentes");
+		return voProd;
 	}
 	public List<uniandes.isis2304.superAndes.negocio.Consulta3> consulta3() {
 		log.info ("Generando consulta");        
-        List<Consulta3> voProd = new LinkedList<Consulta3> ();
-        for (Consulta3 tb : pp.Consulta3())
-        {
-        	voProd.add (tb);
-        }
-        log.info ("Generando Consulta: " + voProd.size() + " existentes");
-        return voProd;
+		List<Consulta3> voProd = new LinkedList<Consulta3> ();
+		for (Consulta3 tb : pp.Consulta3())
+		{
+			voProd.add (tb);
+		}
+		log.info ("Generando Consulta: " + voProd.size() + " existentes");
+		return voProd;
 	}
-	
-	
+
+
 	public List<Producto> consulta4(String r) {
 		log.info ("Generando consulta");        
-        List<Producto> voProd = new LinkedList<Producto> ();
-        for (Producto tb : pp.Consulta4(r))
-        {
-        	voProd.add (tb);
-        }
-        log.info ("Generando Consulta: " + voProd.size() + " existentes");
-        return voProd;
+		List<Producto> voProd = new LinkedList<Producto> ();
+		for (Producto tb : pp.Consulta4(r))
+		{
+			voProd.add (tb);
+		}
+		log.info ("Generando Consulta: " + voProd.size() + " existentes");
+		return voProd;
 	}
 	public List<uniandes.isis2304.superAndes.negocio.Consulta5> consulta5() {
 		log.info ("Generando consulta");        
-        List<Consulta5> voProd = new LinkedList<Consulta5> ();
-        for (Consulta5 tb : pp.Consulta5())
-        {
-        	voProd.add (tb);
-        }
-        log.info ("Generando Consulta: " + voProd.size() + " existentes");
-        return voProd;
+		List<Consulta5> voProd = new LinkedList<Consulta5> ();
+		for (Consulta5 tb : pp.Consulta5())
+		{
+			voProd.add (tb);
+		}
+		log.info ("Generando Consulta: " + voProd.size() + " existentes");
+		return voProd;
 	}
 	public List<uniandes.isis2304.superAndes.negocio.Consulta6> consulta6(String fechaInicial, String fechaFinal) throws ParseException {
 		log.info ("Generando consulta");        
-        List<Consulta6> voProd = new LinkedList<Consulta6> ();
-        for (Consulta6 tb : pp.Consulta6(fechaInicial, fechaFinal))
-        {
-        	voProd.add (tb);
-        }
-        log.info ("Generando Consulta: " + voProd.size() + " existentes");
-        return voProd;
+		List<Consulta6> voProd = new LinkedList<Consulta6> ();
+		for (Consulta6 tb : pp.Consulta6(fechaInicial, fechaFinal))
+		{
+			voProd.add (tb);
+		}
+		log.info ("Generando Consulta: " + voProd.size() + " existentes");
+		return voProd;
 	}
-	
-	
+
+
 	public List<uniandes.isis2304.superAndes.negocio.Consulta7> consulta7(String unidadTiempo, String tipoProducto) {
 		log.info ("Generando consulta");        
-        List<Consulta7> voProd = new LinkedList<Consulta7> ();
-        for (Consulta7 tb : pp.Consulta7(unidadTiempo, tipoProducto))
-        {
-        	voProd.add (tb);
-        }
-        log.info ("Generando Consulta: " + voProd.size() + " existentes");
-        return voProd;
+		List<Consulta7> voProd = new LinkedList<Consulta7> ();
+		for (Consulta7 tb : pp.Consulta7(unidadTiempo, tipoProducto))
+		{
+			voProd.add (tb);
+		}
+		log.info ("Generando Consulta: " + voProd.size() + " existentes");
+		return voProd;
 	}
 	public List<uniandes.isis2304.superAndes.negocio.Consulta8> consulta8(String idSucursal) {
 		log.info ("Generando consulta");        
-        List<uniandes.isis2304.superAndes.negocio.Consulta8> voProd = new LinkedList<Consulta8> ();
-        for (Consulta8 tb : pp.Consulta8(idSucursal))
-        {
-        	voProd.add (tb);
-        }
-        log.info ("Generando Consulta: " + voProd.size() + " existentes");
-        return voProd;
+		List<uniandes.isis2304.superAndes.negocio.Consulta8> voProd = new LinkedList<Consulta8> ();
+		for (Consulta8 tb : pp.Consulta8(idSucursal))
+		{
+			voProd.add (tb);
+		}
+		log.info ("Generando Consulta: " + voProd.size() + " existentes");
+		return voProd;
 	}
-    /* ****************************************************************
+	/* ****************************************************************
 	 * 			Metodos Para las pruebas
 	 *****************************************************************/
-    
+
 	public Proveedor darProveedor(String nombre)
 	{
-		
-			log.info ("Generando consulta");        
-	        List<Proveedor> voProv = new LinkedList<Proveedor> ();
-	        Proveedor prov = voProv.get(0);
-	        log.info ("Generando Consulta: " + voProv.size() + " existentes");
-	        return prov;	
+
+		log.info ("Generando consulta");        
+		List<Proveedor> voProv = new LinkedList<Proveedor> ();
+		Proveedor prov = voProv.get(0);
+		log.info ("Generando Consulta: " + voProv.size() + " existentes");
+		return prov;	
 	}
 	public long eliminarProveedor(int nit)
 	{
-		
+
 		log.info ("Eliminando el proveedor: " + nit);
 		long p = pp.eliminarProveedor (nit);		
 		log.info ("Eliminando el proveedor");
 		return p;	
 	}
-	
+
 	public long eliminarProducto(String codigoDeBarras)
 	{
-		
+
 		log.info ("Eliminando el producto: " + codigoDeBarras);
 		long p = pp.eliminarProducto (codigoDeBarras);		
 		log.info ("Eliminando el producto ");
@@ -691,91 +723,101 @@ public Contenedor darContenedor(int id)
 	}
 	public long eliminarFactura(String NumeroFac)
 	{
-		
+
 		log.info ("Eliminando el Factura: " + NumeroFac);
 		long p = pp.eliminarFactura (NumeroFac);		
 		log.info ("Eliminando el Factura ");
 		return p;	
 	}
-	
+
 	public long eliminarEstante(long id)
 	{
-		
+
 		log.info ("Eliminando el Estante: " + id);
 		long p = pp.eliminarEstante (id);		
 		log.info ("Eliminando el Estante ");
 		return p;	
 	}
-	
+
 	public ClienteNatural darClienteNatural(int cedula)
 	{
-		
-			log.info ("Generando consulta");        
-	        List<ClienteNatural> voProv = new LinkedList<ClienteNatural> ();
-	        ClienteNatural prov = voProv.get(0);
-	        log.info ("Generando Consulta: " + voProv.size() + " existentes");
-	        return prov;	
+
+		log.info ("Generando consulta");        
+		List<ClienteNatural> voProv = new LinkedList<ClienteNatural> ();
+		ClienteNatural prov = voProv.get(0);
+		log.info ("Generando Consulta: " + voProv.size() + " existentes");
+		return prov;	
 	}
 	public Sucursal darSucursal(int id)
 	{
-		
-			log.info ("Generando consulta");        
-	        List<Sucursal> voProv = new LinkedList<Sucursal> ();
-	        Sucursal prov = voProv.get(0);
-	        log.info ("Generando Consulta: " + voProv.size() + " existentes");
-	        return prov;	
+
+		log.info ("Generando consulta");        
+		List<Sucursal> voProv = new LinkedList<Sucursal> ();
+		Sucursal prov = voProv.get(0);
+		log.info ("Generando Consulta: " + voProv.size() + " existentes");
+		return prov;	
 	}
-	
+
 	public long eliminarClienteNatural (int cedula)
 	{
-		
+
 		log.info ("Eliminando el cliente: " + cedula);
 		long p = pp.eliminarClienteNatural (cedula);		
 		log.info ("Eliminando el cliente ");
 		return p;	
 	}
-	
+
 	public long eliminarSucursal (int id)
 	{
-		
+
 		log.info ("Eliminando la sucursal: " + id);
 		long p = pp.eliminarSucursal (id);		
 		log.info ("Eliminando la sucursal ");
 		return p;	
 	}
-	
+
 	public long eliminarContenedor (int id)
 	{
-		
-		log.info ("Eliminando la sucursal: " + id);
+
+		log.info ("Eliminando el contenedor: " + id);
 		long p = pp.eliminarContenedor (id);		
-		log.info ("Eliminando la sucursal ");
+		log.info ("Eliminando el contenedor  ");
+		return p;	
+	}
+	
+
+	public long eliminarPedido (int id)
+	{
+
+		log.info ("Eliminando el pedido: " + id);
+		long p = pp.eliminarContenedor (id);		
+		log.info ("Eliminando el pedido ");
 		return p;	
 	}
 	public ClienteEmpresa darClienteEmpresa(String NIT)
 	{
-		
-			log.info ("Generando consulta");        
-	        List<ClienteEmpresa> voProv = new LinkedList<ClienteEmpresa> ();
-	        ClienteEmpresa prov = voProv.get(0);
-	        log.info ("Generando Consulta: " + voProv.size() + " existentes");
-	        return prov;	
+
+		log.info ("Generando consulta");        
+		List<ClienteEmpresa> voProv = new LinkedList<ClienteEmpresa> ();
+		ClienteEmpresa prov = voProv.get(0);
+		log.info ("Generando Consulta: " + voProv.size() + " existentes");
+		return prov;	
 	}
 	public long eliminarClienteEmpresa (String NIT)
 	{
-		
+
 		log.info ("Eliminando el cliente: " + NIT);
 		long p = pp.eliminarClienteEmpresa (NIT);		
 		log.info ("Eliminando el cliente ");
 		return p;	
 	}
-	
-	
 
-    /* ****************************************************************
+
+
+	/* ****************************************************************
 	 * 			Metodos Extra
 	 *****************************************************************/
-    
+
 	//Limpiar SuperAndes
 	public long [] limpiarSuperAndes ()
 	{
@@ -787,12 +829,12 @@ public Contenedor darContenedor(int id)
 
 
 
-	
-	
 
-	
 
-	
+
+
+
+
 
 
 

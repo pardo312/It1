@@ -89,6 +89,16 @@
 					"label": "Registrar venta producto No Exitoso",
 					"event": "demoRegistrarVentaDeProductoNoExitoso"
 				}
+				,
+				{
+					"label": "Registrar pedido Exitoso",
+					"event": "demoRegistrarPedidoExitoso"
+				}
+				,
+				{
+					"label": "Registrar pedido No Exitoso",
+					"event": "demoRegistrarPedidoNoExitoso"
+				}
 				
 			]
 		}
