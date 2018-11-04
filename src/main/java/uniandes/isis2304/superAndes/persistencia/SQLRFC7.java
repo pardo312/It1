@@ -71,44 +71,50 @@ class SQLRFC7
 	{
 		if (unidadTiempo.equalsIgnoreCase("semana"))
 		{
-			for (int i = 0; i < 156; i+=7) {
-
-
-			String fechaConsulta = "between TO_DATE('2018-01-"+i+"', 'YYYY-MM-DD') and CURRENT_TIMESTAMP )";
-			String o = "SELECT CODIGODEBARRAS, NOMBRE, MARCA,precioUnitario,presentacion,precioPorUnidad,cantidadEnLaPresentacion,unidadDeMedida,especificacionesDeEmpacado, nivelDeReorden,IDPedido,IDSucursal,IDContenedor,EnStock FROM PRODUCTO "  ;
+			String o = "SELECT CATE.NOMBRECATEGORIA , FAC.FECHA AS FECHAMAYORDEMANDA , SUM(PRODU.PRECIOUNITARIO) AS INGRESOS , FAC.FECHA AS FECHAMENORDEMANDA\n" + 
+					"FROM CATEGORIA CATE, FACTURA FAC, PRODUCTO PRODU, FACTURAPRODUCTO FACPRO\n" + 
+					"WHERE CATE.CODIGODEBARRASPRODUCTO = PRODU.CODIGODEBARRAS AND FAC.NUMEROFACTURA = FACPRO.NUMEROFACTURA AND FACPRO.CODIGODEBARRASPRODUCTO = PRODU.CODIGODEBARRAS \n" + 
+					"AND FAC.FECHA BETWEEN TO_DATE('2016-01-01', 'YYYY-MM-DD') and CURRENT_TIMESTAMP AND CATE.NOMBRECATEGORIA = '"+tipoProducto+"'\n" + 
+					"group by CATE.NOMBRECATEGORIA, FAC.FECHA, FAC.FECHA\n" + 
+					"ORDER BY INGRESOS DESC"  ;
 			Query q = pm.newQuery(SQL,o );
 			q.setResultClass(Producto.class);
 			List<Consulta7> w = (List<Consulta7>) q.executeList();
 			return w;
-			
-			}
-			
-	
+
+
+
+
 		}
 		else if (unidadTiempo.equalsIgnoreCase("mes")){
-			
-			for (int i = 0; i < 12; i++) {
-				String fechaConsulta = "between TO_DATE('2018-"+i+"-1', 'YYYY-MM-DD') and CURRENT_TIMESTAMP )";
-				String o = "SELECT CODIGODEBARRAS, NOMBRE, MARCA,precioUnitario,presentacion,precioPorUnidad,cantidadEnLaPresentacion,unidadDeMedida,especificacionesDeEmpacado, nivelDeReorden,IDPedido,IDSucursal,IDContenedor,EnStock FROM PRODUCTO " ;
-				Query q = pm.newQuery(SQL,o );
-				q.setResultClass(Producto.class);
-				List<Consulta7> w = (List<Consulta7>) q.executeList();
-				return w;
-			}
-			
-			
-		}
-		else {for (int i = 2017; i < 2020; i++) {
-			String fechaConsulta = "between TO_DATE('"+i+"-01-01', 'YYYY-MM-DD') and CURRENT_TIMESTAMP )";
-			String o = "SELECT CODIGODEBARRAS, NOMBRE, MARCA,precioUnitario,presentacion,precioPorUnidad,cantidadEnLaPresentacion,unidadDeMedida,especificacionesDeEmpacado, nivelDeReorden,IDPedido,IDSucursal,IDContenedor,EnStock FROM PRODUCTO " ;
+
+			String o = "SELECT CATE.NOMBRECATEGORIA , FAC.FECHA AS FECHAMAYORDEMANDA , SUM(PRODU.PRECIOUNITARIO) AS INGRESOS , FAC.FECHA AS FECHAMENORDEMANDA\n" + 
+					"FROM CATEGORIA CATE, FACTURA FAC, PRODUCTO PRODU, FACTURAPRODUCTO FACPRO\n" + 
+					"WHERE CATE.CODIGODEBARRASPRODUCTO = PRODU.CODIGODEBARRAS AND FAC.NUMEROFACTURA = FACPRO.NUMEROFACTURA AND FACPRO.CODIGODEBARRASPRODUCTO = PRODU.CODIGODEBARRAS \n" + 
+					"AND FAC.FECHA BETWEEN TO_DATE('2016-01-01', 'YYYY-MM-DD') and CURRENT_TIMESTAMP AND CATE.NOMBRECATEGORIA = '"+tipoProducto+"'\n" + 
+					"group by CATE.NOMBRECATEGORIA, FAC.FECHA, FAC.FECHA\n" + 
+					"ORDER BY INGRESOS DESC"  ;
 			Query q = pm.newQuery(SQL,o );
 			q.setResultClass(Producto.class);
 			List<Consulta7> w = (List<Consulta7>) q.executeList();
 			return w;
-		}
+
 
 		}
-		return null;
+		else {
+			String o = "SELECT CATE.NOMBRECATEGORIA , FAC.FECHA AS FECHAMAYORDEMANDA , SUM(PRODU.PRECIOUNITARIO) AS INGRESOS , FAC.FECHA AS FECHAMENORDEMANDA\n" + 
+					"FROM CATEGORIA CATE, FACTURA FAC, PRODUCTO PRODU, FACTURAPRODUCTO FACPRO\n" + 
+					"WHERE CATE.CODIGODEBARRASPRODUCTO = PRODU.CODIGODEBARRAS AND FAC.NUMEROFACTURA = FACPRO.NUMEROFACTURA AND FACPRO.CODIGODEBARRASPRODUCTO = PRODU.CODIGODEBARRAS \n" + 
+					"AND FAC.FECHA BETWEEN TO_DATE('2016-01-01', 'YYYY-MM-DD') and CURRENT_TIMESTAMP AND CATE.NOMBRECATEGORIA = '"+tipoProducto+"'\n" + 
+					"group by CATE.NOMBRECATEGORIA, FAC.FECHA, FAC.FECHA\n" + 
+					"ORDER BY INGRESOS DESC"  ;
+			Query q = pm.newQuery(SQL,o );
+			q.setResultClass(Producto.class);
+			List<Consulta7> w = (List<Consulta7>) q.executeList();
+			return w;
+
+
+		}
 
 
 	}

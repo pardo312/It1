@@ -1697,7 +1697,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 	public void Consulta7( )
 	{
 		String unidadTiempo = JOptionPane.showInputDialog (this, "unidad de tiempo? (semana, mes, año)", "RFC7", JOptionPane.QUESTION_MESSAGE);
-		String tipoProducto = JOptionPane.showInputDialog (this, "tipo Producto? (familiar, personal)", "RFC7", JOptionPane.QUESTION_MESSAGE);
+		String tipoProducto = JOptionPane.showInputDialog (this, "tipo Producto? (organico, tecnologia, aseo)", "RFC7", JOptionPane.QUESTION_MESSAGE);
 		
 		
 		try 
@@ -1719,7 +1719,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 
 	private String listarConsulta7(List<uniandes.isis2304.superAndes.negocio.Consulta7> lista) 
 	{
-		String resp = "Resultado Consulta 3:\n";
+		String resp = "Resultado Consulta 7:\n";
 		int i = 1;
 		for (uniandes.isis2304.superAndes.negocio.Consulta7 tb : lista)
 		{
