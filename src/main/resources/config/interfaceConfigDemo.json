@@ -9,8 +9,12 @@
 		  "options":
 			[
 				{
-					"label": "CRD de Proveedor",
-					"event": "demoProveedor"
+					"label": "Registro Proveedor Exitoso",
+					"event": "demoProveedorExitoso"
+				},
+				{
+					"label": "Registro Proveedor No Existoso",
+					"event": "demoProveedorNoExitoso"
 				}
 			]
 		}

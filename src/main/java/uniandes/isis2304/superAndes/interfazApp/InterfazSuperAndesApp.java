@@ -258,7 +258,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 			String nombre = JOptionPane.showInputDialog (this, "Nombre del proveedor?", "Registrar Proveedor", JOptionPane.QUESTION_MESSAGE);
 			if (nombre != null)
 			{
-				VOProveedor tb = superAndes.registrarProveedor(nombre) ;
+				VOProveedor tb = superAndes.registrarProveedor(nombre,0) ;
 				if (tb == null)
 				{
 					throw new Exception ("No se pudo crear un proveedor con nombre: " + nombre);

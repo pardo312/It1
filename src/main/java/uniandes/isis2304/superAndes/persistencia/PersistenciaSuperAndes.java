@@ -416,36 +416,66 @@ public class PersistenciaSuperAndes
 	/* ****************************************************************
 	 * 			Requerimiento 1
 	 *****************************************************************/
+	private int nextvalNITProveedor ()
+	{
+		long resp =(int) (Math.random() * 100) + 20;;
+		if(resp < 10)
+		{
+			return Integer.parseInt("1000"+resp);
+		}
+		else
+		{
+			return Integer.parseInt("100"+resp);
+		}
+		
+	}
 
-
-	public Proveedor registrarProveedor(String nombre)
+	public Proveedor registrarProveedor(String nombre, int opcion)
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
-		try
+		if(opcion == 0)
 		{
-			tx.begin();
-			long NIT = nextval ();
-			long tuplasInsertadas = sqlProveedor.registrarProveedor(pm, NIT, nombre);
-			tx.commit();
-
-			log.trace ("Inserción de tipo de bebida: " + nombre + ": " + tuplasInsertadas + " tuplas insertadas");
-
-			return new Proveedor(NIT, nombre);
+					try
+					{	
+							tx.begin();
+							long NIT = nextvalNITProveedor();
+							long tuplasInsertadas = sqlProveedor.registrarProveedor(pm, NIT, nombre);
+							tx.commit();
+				
+							log.trace ("Inserción de proveedor: " + nombre + ": " + tuplasInsertadas + " tuplas insertadas");
+				
+							return new Proveedor(NIT, nombre);
+					}
+						
+						
+					
+					catch (Exception e)
+					{
+						e.printStackTrace();
+						log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+						return null;
+					}
+					finally
+					{
+						if (tx.isActive())
+						{
+							tx.rollback();
+						}
+						pm.close();
+					}
 		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
-			return null;
-		}
-		finally
-		{
-			if (tx.isActive())
-			{
-				tx.rollback();
-			}
-			pm.close();
+		else {
+		
+				tx.begin();
+				long tuplasInsertadas = sqlProveedor.registrarProveedor(pm, 10007, nombre);
+				tx.commit();
+
+				log.trace ("Inserción de proveedor: " + nombre + ": " + tuplasInsertadas + " tuplas insertadas");
+
+				return new Proveedor(10007, nombre);
+			
+			
 		}
 	}
 

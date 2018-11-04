@@ -240,16 +240,9 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
     }
     
 	/* ****************************************************************
-	 * 			Demos de TipoBebida
+	 * 			Demos de Proveedor
 	 *****************************************************************/
-    /**
-     * Demostración de creación, consulta y borrado de Tipos de Bebida
-     * Muestra la traza de la ejecución en el panelDatos
-     * 
-     * Pre: La base de datos está vacía
-     * Post: La base de datos está vacía
-     */
-    public void demoProveedor( )
+    public void demoProveedorExitoso( )
     {
     	try 
     	{
@@ -257,7 +250,7 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
 			// ATENCIÓN: En una aplicación real, los datos JAMÁS están en el código
 			String nombreProveedor = "Juan Manuel";
 			boolean errorTipoBebida = false;
-			Proveedor proveedor = superAndes.registrarProveedor(nombreProveedor) ;
+			Proveedor proveedor = superAndes.registrarProveedor(nombreProveedor,0) ;
 			if (proveedor == null)
 			{
 				proveedor = superAndes.darProveedor(nombreProveedor);
@@ -271,15 +264,19 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
 			resultado += "\n\n************ Generando datos de prueba ************ \n";
 			if (errorTipoBebida)
 			{
-				resultado += "*** Exception creando tipo de bebida !!\n";
+				resultado += "*** Exception creando Proveedor !!\n";
 				resultado += "*** Es probable que ese proveedor ya existiera y hay restricción de UNICIDAD sobre el nombre del proveedor\n";
 				resultado += "*** Revise el log de superAndes para más detalles\n";
 			}
 			resultado += "Adicionado el proveedor con nombre: " + nombreProveedor + "\n";
 			resultado += "\n\n************ Ejecutando la demo ************ \n";
-			resultado +=  "\n" + lista ;
+			resultado +=  "\n " + listarTiposBebida(lista);
 			resultado += "\n\n************ Limpiando la base de datos ************ \n";
 			resultado += tbEliminados + " Proveedores eliminados\n";
+			
+			List <VOProveedor> listaDespues = superAndes.darVOProveedor();
+			resultado += "\n\n************ Despues de eliminar la lista queda asi:************ \n";
+			resultado +=  "\n " + listarTiposBebida(listaDespues);
 			resultado += "\n Demo terminada";
    
 			panelDatos.actualizarInterfaz(resultado);
@@ -291,8 +288,166 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
 			panelDatos.actualizarInterfaz(resultado);
 		}
     }
+    
+    public void demoProveedorNoExitoso( )
+    {
+    	try 
+    	{
+    		
+			String nombreProveedor = "Pepe Sierra Nevada";
+			boolean errorTipoBebida = false;
+			Proveedor proveedor = superAndes.registrarProveedor(nombreProveedor,1) ;
+			if (proveedor == null)
+			{
+				proveedor = superAndes.darProveedor(nombreProveedor);
+				errorTipoBebida = true;
+			}
+			List <VOProveedor> lista = superAndes.darVOProveedor();
+			long tbEliminados = superAndes.eliminarProveedor((int) proveedor.getNIT());
+			
+			// Generación de la cadena de caracteres con la traza de la ejecución de la demo
+			String resultado = "Demo de creación y listado de Proveedores\n\n";
+			resultado += "\n\n************ Generando datos de prueba ************ \n";
+			if (errorTipoBebida)
+			{
+				resultado += "*** Exception creando proveedor !!\n";
+				resultado += "*** Es probable que ese proveedor ya existiera y hay restricción de UNICIDAD sobre el nombre del proveedor\n";
+				resultado += "*** Revise el log de superAndes para más detalles\n";
+			}
+			resultado += "Adicionado el proveedor con nombre: " + nombreProveedor + "\n";
+			resultado += "\n\n************ Ejecutando la demo ************ \n";
+			resultado +=  "\n " + listarTiposBebida(lista);
+			resultado += "\n\n************ Limpiando la base de datos ************ \n";
+			resultado += tbEliminados + " Proveedores eliminados\n";
+			
+			List <VOProveedor> listaDespues = superAndes.darVOProveedor();
+			resultado += "\n\n************ Despues de eliminar la lista queda asi:************ \n";
+			resultado +=  "\n " + listarTiposBebida(listaDespues);
+			resultado += "\n Demo terminada";
+   
+			panelDatos.actualizarInterfaz(resultado);
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+    
+    /* ****************************************************************
+	 * 			Demos de Producto
+	 *****************************************************************/
+    
+		    /* ****************************************************************
+		   	 * 			Demos Agregar
+		   	 *****************************************************************/
 
-	
+    public void demoProductoExitoso( )
+    {
+    	try 
+    	{
+    		// Ejecución de la demo y recolección de los resultados
+			// ATENCIÓN: En una aplicación real, los datos JAMÁS están en el código
+			String nombreProveedor = "Juan Manuel";
+			boolean errorTipoBebida = false;
+			Proveedor proveedor = superAndes.registrarProveedor(nombreProveedor,0) ;
+			if (proveedor == null)
+			{
+				proveedor = superAndes.darProveedor(nombreProveedor);
+				errorTipoBebida = true;
+			}
+			List <VOProveedor> lista = superAndes.darVOProveedor();
+			long tbEliminados = superAndes.eliminarProveedor((int) proveedor.getNIT());
+			
+			// Generación de la cadena de caracteres con la traza de la ejecución de la demo
+			String resultado = "Demo de creación y listado de Proveedores\n\n";
+			resultado += "\n\n************ Generando datos de prueba ************ \n";
+			if (errorTipoBebida)
+			{
+				resultado += "*** Exception creando Proveedor !!\n";
+				resultado += "*** Es probable que ese proveedor ya existiera y hay restricción de UNICIDAD sobre el nombre del proveedor\n";
+				resultado += "*** Revise el log de superAndes para más detalles\n";
+			}
+			resultado += "Adicionado el proveedor con nombre: " + nombreProveedor + "\n";
+			resultado += "\n\n************ Ejecutando la demo ************ \n";
+			resultado +=  "\n " + listarTiposBebida(lista);
+			resultado += "\n\n************ Limpiando la base de datos ************ \n";
+			resultado += tbEliminados + " Proveedores eliminados\n";
+			
+			List <VOProveedor> listaDespues = superAndes.darVOProveedor();
+			resultado += "\n\n************ Despues de eliminar la lista queda asi:************ \n";
+			resultado +=  "\n " + listarTiposBebida(listaDespues);
+			resultado += "\n Demo terminada";
+   
+			panelDatos.actualizarInterfaz(resultado);
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+    
+    public void demoProductoNoExitoso( )
+    {
+    	try 
+    	{
+    		
+			String nombreProveedor = "Pepe Sierra Nevada";
+			boolean errorTipoBebida = false;
+			Proveedor proveedor = superAndes.registrarProveedor(nombreProveedor,1) ;
+			if (proveedor == null)
+			{
+				proveedor = superAndes.darProveedor(nombreProveedor);
+				errorTipoBebida = true;
+			}
+			List <VOProveedor> lista = superAndes.darVOProveedor();
+			long tbEliminados = superAndes.eliminarProveedor((int) proveedor.getNIT());
+			
+			// Generación de la cadena de caracteres con la traza de la ejecución de la demo
+			String resultado = "Demo de creación y listado de Proveedores\n\n";
+			resultado += "\n\n************ Generando datos de prueba ************ \n";
+			
+			resultado += "Adicionado el proveedor con nombre: " + nombreProveedor + "\n";
+			resultado += "\n\n************ Ejecutando la demo ************ \n";
+			resultado +=  "\n " + listarTiposBebida(lista);
+			resultado += "\n\n************ Limpiando la base de datos ************ \n";
+			resultado += tbEliminados + " Proveedores eliminados\n";
+			
+			List <VOProveedor> listaDespues = superAndes.darVOProveedor();
+			resultado += "\n\n************ Despues de eliminar la lista queda asi:************ \n";
+			resultado +=  "\n " + listarTiposBebida(listaDespues);
+			resultado += "\n Demo terminada";
+   
+			panelDatos.actualizarInterfaz(resultado);
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+    
+    
+    
+    
+    
+    /* ****************************************************************
+	 * 			Listar De tablas
+	 *****************************************************************/
+    private String listarTiposBebida(List<VOProveedor> lista) 
+    {
+    	String resp = "Los Proveedores existentes son:\n";
+    	int i = 1;
+        for (VOProveedor tb : lista)
+        {
+        	resp += i++ + ". " + tb.toString() + "\n";
+        }
+        return resp;
+	}
 
     /**
      * Genera una cadena de caracteres con la descripción de la excepcion e, haciendo énfasis en las excepcionsde JDO

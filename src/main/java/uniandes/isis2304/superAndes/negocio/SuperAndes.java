@@ -82,10 +82,10 @@ public class SuperAndes
 
 	//Metodos de Proveedor
 
-	public Proveedor registrarProveedor (String nombre)
+	public Proveedor registrarProveedor (String nombre, int opcion)
 	{
 		log.info ("Adicionando el proveedor: " + nombre);
-		Proveedor proveedor = pp.registrarProveedor (nombre);		
+		Proveedor proveedor = pp.registrarProveedor (nombre,opcion);		
 		log.info ("Adicionando el proveedor: " + proveedor);
 		return proveedor;
 	}
