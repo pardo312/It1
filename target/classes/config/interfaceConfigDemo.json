@@ -134,6 +134,16 @@
 					"label": "Asignacion de un carrito a cliente natural No Exitoso",
 					"event": "demoRegistrarCarritoAClienteNaturalNoExitoso"
 				}
+				,
+				{
+					"label": "Asignacion de un carrito a cliente Empresa Exitoso",
+					"event": "demoRegistrarCarritoAClienteEmpresaExitoso"
+				}
+				,
+				{
+					"label": "Asignacion de un carrito a cliente Empresa No Exitoso",
+					"event": "demoRegistrarCarritoAClienteEmpresaNoExitoso"
+				}
 			]
 		}
 	]

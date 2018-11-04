@@ -398,7 +398,7 @@ public class SuperAndes
 		return prov;	
 	}
 	
-	public CarritoDeCompras darCarrito (int idCarrito)
+	public CarritoDeCompras darCarrito(int idCarrito)
 	{
 
 		log.info ("Generando consulta");        
