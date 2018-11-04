@@ -66,9 +66,15 @@ class SQLClienteNatural
 			
 			 String email) 
 	{
+		try {
         Query q = pm.newQuery(SQL, "INSERT INTO " + "CLIENTENATURAL"+ "(cedula,nombre,email) values ( "+cedula+", '"+nombre+"', '"+email+"')");
         q.setParameters( cedula, nombre,  email);
         return (long) q.executeUnique();
+		}
+		catch (Exception e)
+		{
+			return 0;
+		}
 	}
 
 	/**
@@ -82,6 +88,7 @@ class SQLClienteNatural
 		q.setResultClass(ClienteNatural.class);
 		List<ClienteNatural> w = (List<ClienteNatural>) q.executeList();
 		return w ;
+
 	}
 
 	public long eliminarClienteNatural(PersistenceManager pm, int cedula) {

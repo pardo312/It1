@@ -682,7 +682,7 @@ public class PersistenciaSuperAndes
 
 	public ClienteNatural registrarClienteNatural ( int cedula, String nombre, String email, int a)
 	{
-		if (a== 1)
+		if (a == 1)
 		{
 
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -696,6 +696,11 @@ public class PersistenciaSuperAndes
 
 			log.trace ("Inserción de cliente natural " + nombre + ": " + tuplasInsertadas + " tuplas insertadas");
 
+			
+			if(tuplasInsertadas == 0){
+				return null;
+			}
+			else 
 			return new ClienteNatural(cedula, nombre,email);
 		}
 		catch (Exception e)

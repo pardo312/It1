@@ -75,7 +75,7 @@ class SQLClienteEmpresa
 	public List<ClienteEmpresa> darClientesEmpresa (PersistenceManager pm)
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + "CLIENTEEMPRESA");
-		q.setResultClass(Proveedor.class);
+		q.setResultClass(ClienteEmpresa.class);
 		return (List<ClienteEmpresa>) q.executeList();
 	}
 

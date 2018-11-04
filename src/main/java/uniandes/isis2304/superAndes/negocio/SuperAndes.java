@@ -237,6 +237,18 @@ public class SuperAndes
 
 	}
 
+	public List<ClienteNatural> darClientesNaturales() {
+		log.info ("Generando los VO de Cliente");        
+		List<ClienteNatural> voProd = new LinkedList<ClienteNatural> ();
+		for (ClienteNatural tb : pp.darClientesNaturales ())
+		{
+			voProd.add (tb);
+		}
+		log.info ("Generando los VO de cliente natural: " + voProd.size() + " existentes");
+		return voProd;
+
+	}
+
 
 	public Cliente registrarCliente(int idCliente, int puntosDeCompra, String nitCliente, int cedulaCliente)
 	{
