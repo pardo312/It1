@@ -541,11 +541,16 @@ public class PersistenciaSuperAndes
 			tx.commit();
 
 			log.trace ("Inserción de Producto: " + nombre + ": " + tuplasInsertadas + " tuplas insertadas");
-
-			return new Producto(codigoDeBarras ,nombre,
-					marca,precioUnitario,presentacion,precioPorUnidad,cantidadEnLaPresentacion,
-					unidadesDeMedida,especificacionesDeEmpacado,nivelDeReorden,
-					IDPedido, IDSucursal, IDContenedor,EnStock,IDPromocion,volumen, IDCarrito);
+			if(tuplasInsertadas == 0){
+				return null;
+			}
+			else{
+				return new Producto(codigoDeBarras ,nombre,
+						marca,precioUnitario,presentacion,precioPorUnidad,cantidadEnLaPresentacion,
+						unidadesDeMedida,especificacionesDeEmpacado,nivelDeReorden,
+						IDPedido, IDSucursal, IDContenedor,EnStock,IDPromocion,volumen, IDCarrito);
+			}
+			
 		}
 		catch (Exception e)
 		{
