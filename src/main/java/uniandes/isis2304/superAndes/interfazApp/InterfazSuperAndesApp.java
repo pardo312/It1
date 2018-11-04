@@ -1622,6 +1622,75 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 		}
 		return resp;
 	}
+	
+	/* ****************************************************************
+	 * 			Consulta 5
+	 *****************************************************************/
+	public void Consulta5( )
+	{
+		try 
+		{
+			List <uniandes.isis2304.superAndes.negocio.Consulta5> lista = superAndes.consulta5();
+
+			String resultado = "En listaProveedor";
+			resultado +=  "\n" + listarConsulta5(lista);
+			panelDatos.actualizarInterfaz(resultado);
+			resultado += "\n Operación terminada";
+		} 
+		catch (Exception e) 
+		{
+			//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+	}
+
+	private String listarConsulta5(List<uniandes.isis2304.superAndes.negocio.Consulta5> lista) 
+	{
+		String resp = "Resultado Consulta 5:\n";
+		int i = 1;
+		for (uniandes.isis2304.superAndes.negocio.Consulta5 tb : lista)
+		{
+			resp += i++ + ". " + tb.toString() + "\n";
+		}
+		return resp;
+	}
+	
+	/* ****************************************************************
+	 * 			Consulta 6
+	 *****************************************************************/
+	public void Consulta6( )
+	{
+		try 
+		{
+			String fechaInicial = JOptionPane.showInputDialog (this, "fecha inicial? (DD/MM/YYYY)", "RFC6", JOptionPane.QUESTION_MESSAGE);
+			String fechaFinal = JOptionPane.showInputDialog (this, "fecha final? (DD/MM/YYYY)", "RFC6", JOptionPane.QUESTION_MESSAGE);
+			
+			List <uniandes.isis2304.superAndes.negocio.Consulta6> lista = superAndes.consulta6(fechaInicial, fechaFinal);
+
+			String resultado = "En listaProveedor";
+			resultado +=  "\n" + listarConsulta6(lista);
+			panelDatos.actualizarInterfaz(resultado);
+			resultado += "\n Operación terminada";
+		} 
+		catch (Exception e) 
+		{
+			//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+	}
+
+	private String listarConsulta6(List<uniandes.isis2304.superAndes.negocio.Consulta6> lista) 
+	{
+		String resp = "Resultado Consulta 6:\n";
+		int i = 1;
+		for (uniandes.isis2304.superAndes.negocio.Consulta6 tb : lista)
+		{
+			resp += i++ + ". " + tb.toString() + "\n";
+		}
+		return resp;
+	}
 	/* ****************************************************************
 	 * 			Consulta 7
 	 *****************************************************************/

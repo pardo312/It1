@@ -6,6 +6,7 @@ package uniandes.isis2304.superAndes.persistencia;
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.text.ParseException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -154,6 +155,10 @@ public class PersistenciaSuperAndes
 
 	private SQLRFC4 sqlRFC4;
 	
+	private SQLRFC5 sqlRFC5;
+	
+	private SQLRFC6 sqlRFC6;
+	
 	private SQLRFC7 sqlRFC7;
 
 	private SQLFactura sqlFactura;
@@ -289,6 +294,8 @@ public class PersistenciaSuperAndes
 		sqlRFC2 = new SQLRFC2(this);
 		sqlRFC3 = new SQLRFC3(this);
 		sqlRFC4 = new SQLRFC4(this);
+		sqlRFC5 = new SQLRFC5(this);
+		sqlRFC6 = new SQLRFC6(this);
 		sqlRFC7 = new SQLRFC7(this);
 		sqlUtil = new SQLUtil(this);
 
@@ -1335,11 +1342,17 @@ public long consolidacionPedidosProveedor( int id, java.util.Date fechaEsperada,
 	public List<uniandes.isis2304.superAndes.negocio.Consulta3> Consulta3() {
 		return sqlRFC3.consulta3(pmf.getPersistenceManager());
 	}
+	
 	public List<Producto> Consulta4(String r) {
 		// TODO Auto-generated method stub
 		return sqlRFC4.consulta4(pmf.getPersistenceManager(),r);
 	}
-	
+	public List<uniandes.isis2304.superAndes.negocio.Consulta5> Consulta5() {
+		return sqlRFC5.consulta5(pmf.getPersistenceManager());
+	}
+	public List<uniandes.isis2304.superAndes.negocio.Consulta6> Consulta6(String fechaInicial, String fechaFinal) throws ParseException {
+		return sqlRFC6.consulta6(pmf.getPersistenceManager(), fechaInicial,fechaFinal);
+	}
 	public List<uniandes.isis2304.superAndes.negocio.Consulta7> Consulta7(String unidadTiempo, String tipoProducto) {
 		return sqlRFC7.consulta7(pmf.getPersistenceManager(), unidadTiempo, tipoProducto);
 	}

@@ -15,8 +15,9 @@
 
 package uniandes.isis2304.superAndes.negocio;
 
-import java.sql.Date;
+import java.sql.Date; 
 import java.sql.Timestamp;
+import java.text.ParseException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -469,6 +470,7 @@ public class SuperAndes
         return voProd;
 	}
 	
+	
 	public List<Producto> consulta4(String r) {
 		log.info ("Generando consulta");        
         List<Producto> voProd = new LinkedList<Producto> ();
@@ -479,6 +481,28 @@ public class SuperAndes
         log.info ("Generando Consulta: " + voProd.size() + " existentes");
         return voProd;
 	}
+	public List<uniandes.isis2304.superAndes.negocio.Consulta5> consulta5() {
+		log.info ("Generando consulta");        
+        List<Consulta5> voProd = new LinkedList<Consulta5> ();
+        for (Consulta5 tb : pp.Consulta5())
+        {
+        	voProd.add (tb);
+        }
+        log.info ("Generando Consulta: " + voProd.size() + " existentes");
+        return voProd;
+	}
+	public List<uniandes.isis2304.superAndes.negocio.Consulta6> consulta6(String fechaInicial, String fechaFinal) throws ParseException {
+		log.info ("Generando consulta");        
+        List<Consulta6> voProd = new LinkedList<Consulta6> ();
+        for (Consulta6 tb : pp.Consulta6(fechaInicial, fechaFinal))
+        {
+        	voProd.add (tb);
+        }
+        log.info ("Generando Consulta: " + voProd.size() + " existentes");
+        return voProd;
+	}
+	
+	
 	public List<uniandes.isis2304.superAndes.negocio.Consulta7> consulta7(String unidadTiempo, String tipoProducto) {
 		log.info ("Generando consulta");        
         List<Consulta7> voProd = new LinkedList<Consulta7> ();
