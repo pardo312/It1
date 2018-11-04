@@ -680,8 +680,10 @@ public class PersistenciaSuperAndes
 
 
 
-	public ClienteNatural registrarClienteNatural ( int cedula, String nombre, String email)
+	public ClienteNatural registrarClienteNatural ( int cedula, String nombre, String email, int a)
 	{
+		if (a== 1)
+		{
 
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
@@ -689,7 +691,7 @@ public class PersistenciaSuperAndes
 		{
 			tx.begin();
 
-			long tuplasInsertadas = sqlClienteNatural.registrarClienteNatural(pm, cedula, email, nombre);
+			long tuplasInsertadas = sqlClienteNatural.registrarClienteNatural(pm, cedula, nombre, email);
 			tx.commit();
 
 			log.trace ("Inserción de cliente natural " + nombre + ": " + tuplasInsertadas + " tuplas insertadas");
@@ -712,6 +714,25 @@ public class PersistenciaSuperAndes
 
 			darClientesNaturales();
 
+		}
+		}
+		else {
+			
+			PersistenceManager pm = pmf.getPersistenceManager();
+			Transaction tx=pm.currentTransaction();
+			
+			tx.begin();
+			long tuplasInsertadas = sqlClienteNatural.registrarClienteNatural(pm, 1000, nombre, email);
+			tx.commit();
+
+			log.trace ("Inserción de cliente Natural: " + nombre + ": " + tuplasInsertadas + " tuplas insertadas");
+			if(tuplasInsertadas == 0){
+				return null;
+			}
+			else{
+				return new ClienteNatural(1000, nombre, email);
+			}
+			
 		}
 
 	}
@@ -1448,17 +1469,54 @@ public long consolidacionPedidosProveedor( int id, java.util.Date fechaEsperada,
 		
 	}
 	//Producto
-	public long eliminarProducto(String codigoDeBarras) {
+		public long eliminarProducto(String codigoDeBarras) {
+			PersistenceManager pm = pmf.getPersistenceManager();
+			Transaction tx=pm.currentTransaction();
+			long r = 0;
+			try
+			{
+				tx.begin();		
+				long tuplasEliminadas = sqlProducto.eliminarProducto(pm,codigoDeBarras);
+				tx.commit();
+
+				log.trace ("Eliminado producto: " + codigoDeBarras +": " );
+				 r = tuplasEliminadas;
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+				log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+
+			}
+			finally
+			{
+				if (tx.isActive())
+				{
+					tx.rollback();
+					
+				}
+				
+				pm.close();
+				
+			}
+			return r;
+			
+			
+			
+		}
+	
+	public long eliminarClienteNatural(int cedula) 
+	{
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
 		long r = 0;
 		try
 		{
 			tx.begin();		
-			long tuplasEliminadas = sqlProducto.eliminarProducto(pm,codigoDeBarras);
+			long tuplasEliminadas = sqlClienteNatural.eliminarClienteNatural(pm,cedula);
 			tx.commit();
 
-			log.trace ("Eliminado producto: " + codigoDeBarras +": " );
+			log.trace ("Eliminado cliente" + cedula +": " );
 			 r = tuplasEliminadas;
 		}
 		catch (Exception e)
@@ -1480,10 +1538,10 @@ public long consolidacionPedidosProveedor( int id, java.util.Date fechaEsperada,
 		}
 		return r;
 		
-		
-		
 	}
-	
+
+		
+
 	public List<Estante> darEstantes()
 	{
 		return sqlEstante.darEstantes(pmf.getPersistenceManager());
@@ -1517,7 +1575,6 @@ public long consolidacionPedidosProveedor( int id, java.util.Date fechaEsperada,
 		}
 		return r;	
 	}
-	
 	
 	/* ****************************************************************
 	 * 			Limpiar Super Andes

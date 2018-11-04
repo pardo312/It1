@@ -190,6 +190,29 @@ public class SuperAndes
 		return voTipos;
 	}
 	
+
+	public List<VOClienteNatural> darVOClienteNatural() {
+		log.info ("Generando los VO de cliente Natural");        
+		List<VOClienteNatural> voTipos = new LinkedList<VOClienteNatural> ();
+		for (ClienteNatural tb : pp.darClientesNaturales ())
+		{
+			voTipos.add (tb);
+		}
+		log.info ("Generando los VO de Clientes: " + voTipos.size() + " existentes");
+		return voTipos;
+	}
+
+	public List<VOClienteEmpresa> darVOClienteEmpresarial() {
+		log.info ("Generando los VO de cliente Empresarial");        
+		List<VOClienteEmpresa> voTipos = new LinkedList<VOClienteEmpresa> ();
+		for (ClienteEmpresa tb : pp.darClientesEmpresa ())
+		{
+			voTipos.add (tb);
+		}
+		log.info ("Generando los VO de Clientes Empresa: " + voTipos.size() + " existentes");
+		return voTipos;
+	}
+	
 	public List<Estante> darEstantes() {
 		log.info ("Generando los VO de Producto");        
 		List<Estante> voProd = new LinkedList<Estante> ();
@@ -199,6 +222,7 @@ public class SuperAndes
 		}
 		log.info ("Generando los VO de Productos: " + voProd.size() + " existentes");
 		return voProd;
+
 	}
 
 
@@ -209,10 +233,10 @@ public class SuperAndes
 		log.info ("Adicionando el cliente: " + cliente);
 		return cliente;
 	}
-	public ClienteNatural registrarClienteNatural(int cedula, String nombre, String email)
+	public ClienteNatural registrarClienteNatural(int cedula, String nombre, String email, int a)
 	{
 		log.info ("Adicionando el cliente: " + cedula);
-		ClienteNatural clienteNatural = pp.registrarClienteNatural(cedula, nombre, email) ;		
+		ClienteNatural clienteNatural = pp.registrarClienteNatural(cedula, nombre, email, a) ;		
 		log.info ("Adicionando el cliente: " + cedula);
 		return clienteNatural;
 	}	
@@ -571,6 +595,24 @@ public class SuperAndes
 		log.info ("Eliminando el Estante: " + id);
 		long p = pp.eliminarEstante (id);		
 		log.info ("Eliminando el Estante ");
+		return p;	
+	}
+	
+	public ClienteNatural darClienteNatural(int cedula)
+	{
+		
+			log.info ("Generando consulta");        
+	        List<ClienteNatural> voProv = new LinkedList<ClienteNatural> ();
+	        ClienteNatural prov = voProv.get(0);
+	        log.info ("Generando Consulta: " + voProv.size() + " existentes");
+	        return prov;	
+	}
+	public long eliminarClienteNatural (int cedula)
+	{
+		
+		log.info ("Eliminando el cliente: " + cedula);
+		long p = pp.eliminarProveedor (cedula);		
+		log.info ("Eliminando el cliente ");
 		return p;	
 	}
 	
