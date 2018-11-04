@@ -39,7 +39,7 @@ public class Factura
 	
 	private java.util.Date fecha;
 	
-	private long idCliente;
+	private int idCliente;
 	
 	
 
@@ -62,7 +62,7 @@ public class Factura
 
     public Factura(  String numeroFactura,
 	
-	 java.util.Date fecha2, long idCliente)
+	 java.util.Date fecha2, int idCliente)
 	 
     {
     	this.numeroFactura = numeroFactura;
@@ -93,12 +93,12 @@ public class Factura
 		this.fecha = fecha;
 	}
 	
-	public long getIDCliente() 
+	public int getIdCliente() 
 	{
 		return idCliente;
 	}
 
-	public void setIDCliente(long idCliente) 
+	public void setIdCliente(int idCliente) 
 	{
 		this.idCliente = idCliente;
 	}
@@ -109,7 +109,7 @@ public class Factura
 	@Override
 	public String toString() 
 	{
-		String resp = "Factura [numeroFactura=" + numeroFactura + ", fecha=" + fecha 
+		String resp = "Factura [numeroFactura=" + numeroFactura + ", fecha=" + fecha + ", idCliente=" + idCliente 
 				+ "]";
 
 		return resp;

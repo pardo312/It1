@@ -972,6 +972,12 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
   		
   			return resp;
   	}
+    private int nextvalID2()
+  	{
+  		int resp =(int) (Math.random() * 20) + 1;;
+  		
+  			return resp;
+  	}
       
     private String nextvalIdFactura()
    	{
@@ -991,7 +997,7 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
     	{
     		int idEstante = nextvalID();
     		int nivelDeAbastecimiento = 8;
-    		int idSucursal = 5;
+    		int idSucursal = 6;
 			
 			
 			boolean errorEstante = false;
@@ -1111,7 +1117,7 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
     		int ID  = nextvalID();
     		String DESCRIPCION ="3 Xbox Por 2";
     		String PRECIOPROMOCION = "10000";
-    		int idSucursal = 5;
+    		int idSucursal = 6;
 			
 			
 			boolean errorPromocion = false;
@@ -1237,27 +1243,8 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
 			
 			String numeroDeFactura = nextvalIdFactura();
 			java.util.Date fecha = new Date( 0/1/0001);
-			int idCliente = nextvalID(); 					
-			String codigoDeBarras = nextvalCodigoBarras();
-			int numProd = 12;
-
-			
-//			for (int i = 1; i<numProd;i++)
-//			{
-//
-//
-//				FacturaProducto fp = superAndes.registrarFacturaProd(numeroDeFactura,codigoDeBarras) ;
-//				if (fp == null)
-//				{
-//					throw new Exception ("No se pudo crear factura con numero: " + numeroDeFactura);
-//				}
-//				String resultado = "En adicionarProveedor\n\n";
-//				resultado += "proveedor adicionado exitosamente: " + tb;
-//				resultado += "\n Operación terminada";
-//				panelDatos.actualizarInterfaz(resultado);
-//
-//
-//			}
+			int idCliente = nextvalID2(); 					
+		
 			
 			String resultado = "Demo de creación y listado de Promociones\n\n";
 			resultado += "\n\n************ Base de datos antes de Operacion: ************ \n";
@@ -1291,7 +1278,7 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
 			resultado += "\n\n************ Factura: ************ \n";
 			List <Factura> listaFacDesp = superAndes.darFacturas();
 			resultado +=  "\n " + listarFactura(listaFacDesp)+  "\n\n ";
-
+			panelDatos.actualizarInterfaz(resultado);
 		} 
 		catch (Exception e) 
 		{
@@ -1300,7 +1287,80 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
 			panelDatos.actualizarInterfaz(resultado);
 		}
 	}
+    public void demoRegistrarVentaDeProductoNoExitoso( )
+   	{
+   		try 
+   		{
 
+   			
+   			String numeroDeFactura = nextvalIdFactura();
+   			java.util.Date fecha = new Date( 0/1/0001);
+   			int idCliente = 39; 					
+   	
+
+   			
+
+   			String resultado = "Demo de creación y listado de Promociones\n\n";
+   			resultado += "\n\n************ Base de datos antes de Operacion: ************ \n";
+   	
+   			
+   			resultado += "\n\n************ Factura: ************ \n";
+   			List <Factura> listaFacAntes = superAndes.darFacturas();
+   			resultado +=  "\n " + listarFactura(listaFacAntes)+  "\n\n ";
+   			
+   			
+   			
+   			resultado += "\n\n************ Generando datos de prueba ************ \n";
+   			
+   			
+   			Factura tb = superAndes.registrarFactura(numeroDeFactura,fecha,idCliente) ;
+   			if(tb == null)
+   			{
+   				resultado += "\n\n************ Añadiendo Factura "+numeroDeFactura+"************ \n";
+   	   			List <Factura> listaFac = superAndes.darFacturas();
+   	   			resultado +=  "\n " + listarFactura(listaFac)+  "\n\n ";
+				
+				resultado += "\n\n************ Error Al insertar************ \n\n";				
+				
+				resultado += "*** Exception creando Factura !!\n";
+				resultado += "*** Es probable que ese Factura ya existiera y hay restricción de UNICIDAD sobre el nombre del Promocion\n";
+				resultado += "*** Revise el log de superAndes para más detalles\n";
+				
+				
+				
+				panelDatos.actualizarInterfaz(resultado);
+   			}
+   			else
+   			{
+   				resultado += "\n\n************ Añadiendo Factura "+numeroDeFactura+"************ \n";
+   	   			List <Factura> listaFac = superAndes.darFacturas();
+   	   			resultado +=  "\n " + listarFactura(listaFac)+  "\n\n ";
+
+   	   			
+   	   			
+   	   			resultado += "\n\n************ Eliminando ************ \n";
+   	   			
+   	   			long FacEliminados = superAndes.eliminarFactura(numeroDeFactura);
+   	   			
+   	   			resultado +=  "\n " + FacEliminados+  " Facturas eliminadas \n\n ";
+
+   	   			resultado += "\n\n************ Base de datos Despues de Operacion: ************ \n";
+
+   	   			
+   	   			resultado += "\n\n************ Factura: ************ \n";
+   	   			List <Factura> listaFacDesp = superAndes.darFacturas();
+   	   			resultado +=  "\n " + listarFactura(listaFacDesp)+  "\n\n ";
+   	   			panelDatos.actualizarInterfaz(resultado);
+   			}
+   			
+   		} 
+   		catch (Exception e) 
+   		{
+   			//			e.printStackTrace();
+   			String resultado = generarMensajeError(e);
+   			panelDatos.actualizarInterfaz(resultado);
+   		}
+   	}
     
     /* ****************************************************************
 	 * 			Listar De tablas

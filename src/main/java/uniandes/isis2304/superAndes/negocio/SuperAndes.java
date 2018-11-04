@@ -446,7 +446,7 @@ public Contenedor darContenedor(int id)
 	}
 	
 	
-	public Factura registrarFactura(String numeroDeFactura, java.util.Date fecha, long idCliente) {
+	public Factura registrarFactura(String numeroDeFactura, java.util.Date fecha, int idCliente) {
 		log.info ("Adicionando la factura: " + numeroDeFactura);
 		Factura factura = pp.registrarFactura (numeroDeFactura,fecha,idCliente);		
 		log.info ("Adicionando la factura:  " + factura);

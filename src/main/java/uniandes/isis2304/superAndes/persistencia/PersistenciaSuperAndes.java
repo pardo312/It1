@@ -987,7 +987,7 @@ public class PersistenciaSuperAndes
 		}
 	}
 
-	public Factura registrarFactura(String numeroDeFactura, java.util.Date fecha, long idCliente) {
+	public Factura registrarFactura(String numeroDeFactura, java.util.Date fecha, int idCliente) {
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
 		try
@@ -997,9 +997,17 @@ public class PersistenciaSuperAndes
 			long tuplasInsertadas = sqlFactura.adicionarFactura(pm,numeroDeFactura,fecha,idCliente);
 			tx.commit();
 
-			log.trace ("Inserción del contenedor " + numeroDeFactura + ": " + tuplasInsertadas + " tuplas insertadas");
+			log.trace ("Inserción de la factura " + numeroDeFactura + ": " + tuplasInsertadas + " tuplas insertadas");
 
-			return new Factura(numeroDeFactura,fecha,idCliente);
+			if(tuplasInsertadas == 0)
+			{
+				return null;
+			}
+			else
+			{
+				return new Factura(numeroDeFactura,fecha,idCliente);
+			}
+			
 		}
 		catch (Exception e)
 		{

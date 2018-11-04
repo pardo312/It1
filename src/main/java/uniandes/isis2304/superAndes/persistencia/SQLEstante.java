@@ -72,6 +72,7 @@ class SQLEstante
 		}
 		catch (Exception e)
 		{	
+			e.printStackTrace();
 			return 0;
 		}
 	}

@@ -65,13 +65,19 @@ class SQLFactura
 	}
 	
 	
-	public long adicionarFactura(PersistenceManager pm,String numeroDeFactura, java.util.Date fecha, long idCliente) 
+	public long adicionarFactura(PersistenceManager pm,String numeroDeFactura, java.util.Date fecha, int idCliente) 
 	{
-		
+
+		try{
 		java.sql.Date fecha1 = convertUtilToSql(fecha);
         Query q = pm.newQuery(SQL, "INSERT INTO " + "Factura" + "(numeroFactura,fecha,idCliente) values ('"+numeroDeFactura+"',TO_DATE('"+fecha1+"', 'YYYY/MM/DD'),'"+ idCliente+"')");
-       
-        return (long) q.executeUnique();            
+       return (long) q.executeUnique(); 
+		}
+		catch (Exception e)
+		{	
+			return 0;
+		}
+                   
 	}
 
 
@@ -93,9 +99,10 @@ class SQLFactura
 	
 	public List<Factura> darFacturas (PersistenceManager pm)
 	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + "FACTURA");
-		q.setResultClass(Factura.class);		
-		return  (List<Factura>)q.executeList();
+		Query q = pm.newQuery(SQL, "SELECT NUMEROFACTURA,IDCLIENTE FROM " + "FACTURA");
+		q.setResultClass(Factura.class);
+		List<Factura> w = (List<Factura>)q.executeList();
+		return w ;
 		
 	}
 	

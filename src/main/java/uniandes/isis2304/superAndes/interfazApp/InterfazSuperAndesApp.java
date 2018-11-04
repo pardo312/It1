@@ -1010,7 +1010,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 
 			String numeroDeFactura = JOptionPane.showInputDialog (this, "Numero de la factura(nuevo)?", "Registrar Factura", JOptionPane.QUESTION_MESSAGE);
 			java.util.Date fecha =  (java.util.Date) new SimpleDateFormat("dd/MM/yyyy").parse(JOptionPane.showInputDialog (this, "fecha de la factura? (DD/MM/YYYY)", "Registrar Pedido", JOptionPane.QUESTION_MESSAGE));   		
-			long idCliente = Long.parseLong(JOptionPane.showInputDialog (this, "ID del cliente asociado?", "Registrar Factura", JOptionPane.QUESTION_MESSAGE));
+			int idCliente = Integer.parseInt(JOptionPane.showInputDialog (this, "ID del cliente asociado?", "Registrar Factura", JOptionPane.QUESTION_MESSAGE));
 			String codigoDeBarras = JOptionPane.showInputDialog (this, "Codigo de barras de producto ?", "Registrar Factura", JOptionPane.QUESTION_MESSAGE);
 			int numProd = Integer.parseInt(JOptionPane.showInputDialog (this, "Numero de productos ?", "Registrar Factura", JOptionPane.QUESTION_MESSAGE));
 
@@ -1221,7 +1221,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 		{
 			String numeroDeFactura = JOptionPane.showInputDialog (this, "Numero de la factura(nuevo)?", "Pagar carrito", JOptionPane.QUESTION_MESSAGE);
 			java.util.Date fecha =  (java.util.Date) new SimpleDateFormat("dd/MM/yyyy").parse(JOptionPane.showInputDialog (this, "fecha de la factura? (DD/MM/YYYY)", "Pagar carrito", JOptionPane.QUESTION_MESSAGE));   		
-			long idCliente = Long.parseLong(JOptionPane.showInputDialog (this, "ID del cliente asociado?", "Pagar Carrito", JOptionPane.QUESTION_MESSAGE));
+			int idCliente = Integer.parseInt(JOptionPane.showInputDialog (this, "ID del cliente asociado?", "Pagar Carrito", JOptionPane.QUESTION_MESSAGE));
 			long idCarrito = Long.parseLong(JOptionPane.showInputDialog (this, "id de tu carrito", "PagarCarrito", JOptionPane.QUESTION_MESSAGE));
 			int usado = 0; // como se esta dejando de usar el estado de usado cambia a 0
 			List<Producto> productos = superAndes.busaquedaCarrito(idCarrito); // todos los productos de ese carrito
