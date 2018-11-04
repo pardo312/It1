@@ -1177,7 +1177,7 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
 	 * 			DEMO registrar Venta
 	 *****************************************************************/
     
-    public void registrarVentaDeProducto( )
+    public void demoRegistrarVentaDeProducto( )
 	{
 		try 
 		{
