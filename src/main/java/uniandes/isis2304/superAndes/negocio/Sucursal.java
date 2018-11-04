@@ -88,12 +88,12 @@ public class Sucursal implements VOSucursal
 
 	}
     
-    public long getid() 
+    public long getId() 
 	{
 		return id;
 	}
 
-	public void setid(long id) 
+	public void setId(long id) 
 	{
 		this.id = id;
 	}

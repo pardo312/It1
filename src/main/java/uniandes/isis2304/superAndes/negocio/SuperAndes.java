@@ -261,6 +261,18 @@ public class SuperAndes
 
 	}
 
+	public List<Sucursal> darSucursales() {
+		log.info ("Generando los VO de sucursal");        
+		List<Sucursal> voProd = new LinkedList<Sucursal> ();
+		for (Sucursal tb : pp.darSucursales())
+		{
+			voProd.add (tb);
+		}
+		log.info ("Generando los VO de cliente natural: " + voProd.size() + " existentes");
+		return voProd;
+
+	}
+
 
 	public Cliente registrarCliente(int idCliente, int puntosDeCompra, String nitCliente, int cedulaCliente)
 	{
@@ -293,10 +305,10 @@ public class SuperAndes
 		return carritoDeCompras;
 	}
 	
-	public Sucursal registrarSucursal(int id,String nombre,String ciudad,String direccion, String segmentacionDeMercado,String tamanioInstalacion,int NITSupermercado)
+	public Sucursal registrarSucursal(int id,String nombre,String ciudad,String direccion, String segmentacionDeMercado,String tamanioInstalacion,int NITSupermercado, int a)
 	{
 		log.info ("Adicionando la sucursal: " + nombre);
-		Sucursal sucursal = pp.registrarSucursal(id, nombre, ciudad, direccion, segmentacionDeMercado, tamanioInstalacion, NITSupermercado);		
+		Sucursal sucursal = pp.registrarSucursal(id, nombre, ciudad, direccion, segmentacionDeMercado, tamanioInstalacion, NITSupermercado, a);		
 		log.info ("Adicionando la sucursal: " + nombre);
 		return sucursal;
 	}
@@ -650,12 +662,31 @@ public class SuperAndes
 	        log.info ("Generando Consulta: " + voProv.size() + " existentes");
 	        return prov;	
 	}
+	public Sucursal darSucursal(int id)
+	{
+		
+			log.info ("Generando consulta");        
+	        List<Sucursal> voProv = new LinkedList<Sucursal> ();
+	        Sucursal prov = voProv.get(0);
+	        log.info ("Generando Consulta: " + voProv.size() + " existentes");
+	        return prov;	
+	}
+	
 	public long eliminarClienteNatural (int cedula)
 	{
 		
 		log.info ("Eliminando el cliente: " + cedula);
 		long p = pp.eliminarClienteNatural (cedula);		
 		log.info ("Eliminando el cliente ");
+		return p;	
+	}
+	
+	public long eliminarSucursal (int id)
+	{
+		
+		log.info ("Eliminando la sucursal: " + id);
+		long p = pp.eliminarClienteNatural (id);		
+		log.info ("Eliminando la sucursal ");
 		return p;	
 	}
 	

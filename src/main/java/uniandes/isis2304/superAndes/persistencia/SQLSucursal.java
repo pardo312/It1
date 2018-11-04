@@ -7,6 +7,7 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
 import uniandes.isis2304.superAndes.negocio.Cliente;
+import uniandes.isis2304.superAndes.negocio.ClienteNatural;
 import uniandes.isis2304.superAndes.negocio.Estante;
 import uniandes.isis2304.superAndes.negocio.Proveedor;
 import uniandes.isis2304.superAndes.negocio.Sucursal;
@@ -57,9 +58,15 @@ class SQLSucursal
 	 */
 	public long adicionarSucursal(PersistenceManager pm,int id,String nombre,String ciudad, String direccion,String segmentacionDeMercado, String tamanioInstalacion, long NITSupermercado) 
 	{
+		try {
         Query q = pm.newQuery(SQL, "INSERT INTO " + "SUCURSAL" + "(id,nombre,ciudad,direccion,segmentacionDeMercado,tamanioInstalacion,NITSupermercado) values (?,?,?,?,?,?,?)");
         q.setParameters( id, nombre, ciudad,direccion,segmentacionDeMercado, tamanioInstalacion,NITSupermercado);
         return (long) q.executeUnique();
+		}
+		catch (Exception e)
+		{
+			return 0;
+		}
 	}
 
 	/**
@@ -69,12 +76,16 @@ class SQLSucursal
 	 */
 	public List<Sucursal> darSucursales (PersistenceManager pm)
 	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + "SUCURSAL");
-		q.setResultClass(Proveedor.class);
-		return (List<Sucursal>) q.executeList();
+		Query q = pm.newQuery(SQL, "SELECT ID,NOMBRE,CIUDAD,DIRECCION,SEGMENTACIONDEMERCADO, TAMANIOINSTALACION, NITSUPERMERCADO FROM " + "SUCURSAL");
+		q.setResultClass(Sucursal.class);
+		List<Sucursal> w = (List<Sucursal>) q.executeList();
+		return w ;
 	}
 
-
+	public long eliminarSucursal(PersistenceManager pm, int id) {
+		 Query q = pm.newQuery(SQL, "DELETE FROM " + "SUCURSAL "+ "WHERE ID = "+id);
+	        return (long) q.executeUnique();  
+	}
 	
 
 }

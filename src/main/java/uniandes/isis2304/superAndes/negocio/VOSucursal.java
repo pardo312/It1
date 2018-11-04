@@ -27,7 +27,7 @@ public interface VOSucursal
 	 * 			Métodos 
 	 *****************************************************************/
      
-	 public long getid()  ;
+	 public long getId()  ;
 	 
 	 public String getNombre()   ;
 	 

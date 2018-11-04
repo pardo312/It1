@@ -622,7 +622,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 
 			if ( nombre != null && ciudad != null&& direccion != null&& segmentacionDeMercado != null&& tamanioInstalacion != null) {
 
-				VOSucursal tb = superAndes.registrarSucursal(id, nombre, ciudad, direccion, segmentacionDeMercado, tamanioInstalacion, NITSupermercado);
+				VOSucursal tb = superAndes.registrarSucursal(id, nombre, ciudad, direccion, segmentacionDeMercado, tamanioInstalacion, NITSupermercado, 1);
 				if (tb == null)
 				{
 					throw new Exception ("No se pudo crear una sucursal de nombre: " + nombre);

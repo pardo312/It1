@@ -50,6 +50,7 @@ import com.google.gson.stream.JsonReader;
 import uniandes.isis2304.superAndes.negocio.ClienteEmpresa;
 import uniandes.isis2304.superAndes.negocio.ClienteNatural;
 import uniandes.isis2304.superAndes.negocio.Proveedor;
+import uniandes.isis2304.superAndes.negocio.Sucursal;
 import uniandes.isis2304.superAndes.negocio.SuperAndes;
 import uniandes.isis2304.superAndes.negocio.VOClienteEmpresa;
 import uniandes.isis2304.superAndes.negocio.VOClienteNatural;
@@ -62,6 +63,7 @@ import uniandes.isis2304.superAndes.negocio.SuperAndes;
 import uniandes.isis2304.superAndes.negocio.VOEstante;
 import uniandes.isis2304.superAndes.negocio.VOPromocion;
 import uniandes.isis2304.superAndes.negocio.VOProveedor;
+import uniandes.isis2304.superAndes.negocio.VOSucursal;
 
 /**
  * Clase principal de la interfaz
@@ -601,6 +603,133 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
 					}
     }
 
+    /* ****************************************************************
+  	 * 			Demos de sucursal
+  	 *****************************************************************/
+      public void demoSucursalExitoso( )
+      {
+      	try 
+      	{
+      		// Ejecución de la demo y recolección de los resultados
+  			// ATENCIÓN: En una aplicación real, los datos JAMÁS están en el código
+      		int id = 50;
+      		String nombre = "TEST ";
+      		String ciudad = "TEST";
+      		String direccion = "DIRECCION";
+      		String segmentacionDeMercado = "JOVENES";
+      		String tamanioInstalacion = "GRANDE";
+      		int NITSupermercado = 5;
+      		boolean errorSucursal = false;
+  			Sucursal sucursal = superAndes.registrarSucursal(id, nombre, ciudad, direccion, segmentacionDeMercado, tamanioInstalacion, NITSupermercado, 1);
+  			if (sucursal == null)
+  			{
+  				sucursal = superAndes.darSucursal(id);
+  				errorSucursal = true;
+  			}
+  			List <VOSucursal> lista = superAndes.darVOSucursal();
+  			long tbEliminados = superAndes.eliminarSucursal((int)sucursal.getId());
+  			
+  			// Generación de la cadena de caracteres con la traza de la ejecución de la demo
+  			String resultado = "Demo de creación y listado de Sucursales \n\n";
+  			resultado += "\n\n************ Generando datos de prueba ************ \n";
+  			if (errorSucursal)
+  			{
+  				resultado += "*** Exception creando sucursal !!\n";
+  				resultado += "*** Es probable que esa sucursal ya existiera y hay restricción de UNICIDAD sobre el id de la sucursal\n";
+  				resultado += "*** Revise el log de superAndes para más detalles\n";
+  			}
+  			resultado += "Adicionado la sucursal con nombre: " + nombre + "\n";
+  			resultado += "\n\n************ Ejecutando la demo ************ \n";
+  			resultado +=  "\n " + listarSucursal(lista);
+  			resultado += "\n\n************ Limpiando la base de datos ************ \n";
+  			resultado += tbEliminados + " sucursales eliminados\n";
+  			
+  			List <VOSucursal> listaDespues = superAndes.darVOSucursal();
+  			resultado += "\n\n************ Despues de eliminar la lista queda asi:************ \n";
+  			resultado +=  "\n " + listarSucursal(listaDespues);
+  			resultado += "\n Demo terminada";
+     
+  			panelDatos.actualizarInterfaz(resultado);
+  		} 
+      	catch (Exception e) 
+      	{
+//  			e.printStackTrace();
+  			String resultado = generarMensajeError(e);
+  			panelDatos.actualizarInterfaz(resultado);
+  		}
+      }
+      
+      		
+      public void demoSucursalNoExitoso( )
+      {
+      	try 
+        	{
+      		int id = 50;
+      		String nombre = "TEST ";
+      		String ciudad = "TEST";
+      		String direccion = "DIRECCION";
+      		String segmentacionDeMercado = "JOVENES";
+      		String tamanioInstalacion = "GRANDE";
+      		int NITSupermercado = 5;
+      		boolean errorSucursal = false;
+  			
+    			VOSucursal Sucursal = superAndes.registrarSucursal(id, nombre, ciudad, direccion, segmentacionDeMercado, tamanioInstalacion, NITSupermercado, 0);
+    			if (Sucursal == null)
+    			{
+    				errorSucursal = true;
+    			}
+    			
+    			// Generación de la cadena de caracteres con la traza de la ejecución de la demo
+    			String resultado = "Demo de creación y listado de Sucursales\n\n";
+    			resultado += "\n\n************ Generando datos de prueba ************ \n";
+    			if (errorSucursal)
+    			{
+    				resultado += "Adicionado la sucursal con id: " + id + "\n";
+    				resultado += "\n\n************ Estado de la base de datos antes de la operacion ************ \n";
+    				
+    				List <Sucursal> lista = superAndes.darSucursales();
+    				resultado +=  "\n " + listarSucursales(lista)+  "\n\n ";
+    				
+    				resultado += "\n\n************ Error Al insertar************ \n\n";				
+    				
+    				resultado += "*** Exception creando sucursal !!\n";
+    				resultado += "*** Es probable que esa sucursal ya existiera y hay restricción de UNICIDAD sobre el id de la sucursal\n";
+    				resultado += "*** Revise el log de superAndes para más detalles\n";
+    				
+    				
+    				List <Sucursal> listaDespues = superAndes.darSucursales();
+    				resultado += "\n\n************ Despues de el registro queda asi************ \n";
+    				resultado +=  "\n " + listarSucursales(listaDespues);
+    				
+    				panelDatos.actualizarInterfaz(resultado);
+    			}
+    			else
+    			{
+    				List <Sucursal> lista = superAndes.darSucursales();
+    				long tbEliminados = superAndes.eliminarSucursal( (int)Sucursal.getId());
+    				resultado += "Adicionado la sucursal con id: " + id + "\n";
+    				resultado += "\n\n************ Ejecutando la demo ************ \n";
+    				resultado +=  "\n " + listarSucursales(lista);
+    				resultado += "\n\n************ Limpiando la base de datos ************ \n";
+    				resultado += tbEliminados + " sucursales eliminados\n";
+    				
+    				List <Sucursal> listaDespues = superAndes.darSucursales();
+    				resultado += "\n\n************ Despues de eliminar la lista queda asi:************ \n";
+    				resultado +=  "\n " + listarSucursales(listaDespues);
+    				resultado += "\n Demo terminada";
+    	   
+    				panelDatos.actualizarInterfaz(resultado);
+    				
+    			}
+    			
+    		} 
+        	catch (Exception e) 
+        	{
+//    			e.printStackTrace();
+    			String resultado = generarMensajeError(e);
+    			panelDatos.actualizarInterfaz(resultado);
+    		}
+      }
     
     /* ****************************************************************
 	 * 			Demos de Producto
@@ -1044,6 +1173,16 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
         }
         return resp;
 	}
+    private String listarSucursal(List<VOSucursal> lista) 
+    {
+    	String resp = "Las sucursales existentes son:\n";
+    	int i = 1;
+        for (VOSucursal tb : lista)
+        {
+        	resp += i++ + ". " + tb.toString() + "\n";
+        }
+        return resp;
+	}
 
     
     private String listarProductos(List<Producto> lista) 
@@ -1094,6 +1233,17 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
     	String resp = "Los clientes naturales existentes son:\n";
     	int i = 1;
         for (ClienteNatural tb : lista)
+        {
+        	resp += i++ + ". " + tb.toString() + "\n";
+        }
+        return resp;
+	}
+    
+    private String listarSucursales(List<Sucursal> lista) 
+    {
+    	String resp = " las sucrusales existentes son:\n";
+    	int i = 1;
+        for (Sucursal tb : lista)
         {
         	resp += i++ + ". " + tb.toString() + "\n";
         }

@@ -59,6 +59,16 @@
 					"label": "Registro Promocion No Exitoso",
 					"event": "demoPromocionNoExitoso"
 				}
+				,
+				{
+					"label": "Registro Sucursal Exitoso",
+					"event": "demoSucursalExitoso"
+				}
+				,
+				{
+					"label": "Registro Sucursal No Exitoso",
+					"event": "demoSucursalNoExitoso"
+				}
 				
 			]
 		}

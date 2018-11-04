@@ -854,6 +854,10 @@ public class PersistenciaSuperAndes
 	{
 		return sqlClienteNatural.darClientesNaturales(pmf.getPersistenceManager());
 	}
+	public List<Sucursal> darSucursales ()
+	{
+		return sqlSucursal.darSucursales(pmf.getPersistenceManager());
+	}
 	public List<ClienteEmpresa> darClientesEmpresa ()
 	{
 		return sqlClienteEmpresa.darClientesEmpresa(pmf.getPersistenceManager());
@@ -871,11 +875,14 @@ public class PersistenciaSuperAndes
 	 * 			RF4
 	 *****************************************************************/
 
-	public Sucursal registrarSucursal(int id, String nombre, String ciudad, String direccion, String segmentacionDeMercado, String tamanioInstalacion, int NITSupermercado)
+	public Sucursal registrarSucursal(int id, String nombre, String ciudad, String direccion, String segmentacionDeMercado, String tamanioInstalacion, int NITSupermercado, int a )
 	{
+		if (a == 1)
+		{
+
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
-		try
+			try
 		{
 			tx.begin();
 			long ido = nextval ();
@@ -899,6 +906,24 @@ public class PersistenciaSuperAndes
 				tx.rollback();
 			}
 			pm.close();
+		}
+		}
+		else 
+		{
+			PersistenceManager pm = pmf.getPersistenceManager();
+			Transaction tx=pm.currentTransaction();
+			
+			tx.begin();
+			long tuplasInsertadas = sqlSucursal.adicionarSucursal(pm, id, nombre, ciudad, direccion, segmentacionDeMercado, tamanioInstalacion, NITSupermercado);
+			tx.commit();
+
+			log.trace ("Inserción de Sucursal: " + nombre + ": " + tuplasInsertadas + " tuplas insertadas");
+			if(tuplasInsertadas == 0){
+				return null;
+			}
+			else{
+				return new Sucursal(5, nombre, ciudad, tamanioInstalacion, tamanioInstalacion, tamanioInstalacion, tuplasInsertadas);
+			}
 		}
 	}
 	public Contenedor registrarContenedor(int id, int capacidadVolumen,
@@ -1594,6 +1619,40 @@ public long consolidacionPedidosProveedor( int id, java.util.Date fechaEsperada,
 			tx.commit();
 
 			log.trace ("Eliminado cliente" + cedula +": " );
+			 r = tuplasEliminadas;
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+
+		}
+		finally
+		{
+			if (tx.isActive())
+			{
+				tx.rollback();
+				
+			}
+			
+			pm.close();
+			
+		}
+		return r;
+		
+	}
+	public long eliminarSucursal(int id) 
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		long r = 0;
+		try
+		{
+			tx.begin();		
+			long tuplasEliminadas = sqlSucursal.eliminarSucursal(pm, id);
+			tx.commit();
+
+			log.trace ("Eliminado sucursal" + id +": " );
 			 r = tuplasEliminadas;
 		}
 		catch (Exception e)
