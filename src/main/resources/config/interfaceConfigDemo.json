@@ -88,8 +88,15 @@
 				{
 					"label": "Registrar venta producto No Exitoso",
 					"event": "demoRegistrarVentaDeProductoNoExitoso"
-				},
-				{
+				}
+				
+				
+			]
+		},
+		{ "menuTitle": "Iteracion 1",
+		  "options":
+			[
+			{
 					"label": "Adicion y devolucion de Producto a carrito Exitoso",
 					"event": "demoAdicionarEliminarProductoCarritoExitoso"
 				}
@@ -98,7 +105,6 @@
 					"label": "Adicion y devolucion de Producto a carrito No Exitoso",
 					"event": "demoAdicionarEliminarProductoCarritoNoExitoso"
 				}
-				
 			]
 		}
 	]
