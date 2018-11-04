@@ -47,9 +47,11 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 
+import uniandes.isis2304.superAndes.negocio.Estante;
 import uniandes.isis2304.superAndes.negocio.Producto;
 import uniandes.isis2304.superAndes.negocio.Proveedor;
 import uniandes.isis2304.superAndes.negocio.SuperAndes;
+import uniandes.isis2304.superAndes.negocio.VOEstante;
 import uniandes.isis2304.superAndes.negocio.VOProveedor;
 
 /**
@@ -517,6 +519,133 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
 		
 	}
     
+    /* ****************************************************************
+	 * 			Listar De tablas
+	 *****************************************************************/
+    public void demoEstanteExitoso( )
+    {
+    	try 
+    	{
+    		int idEstante = 6;
+    		float nivelDeAbastecimiento = 8;
+    		int idSucursal = 5;
+			
+			
+			boolean errorEstante = false;
+			VOEstante Estante = superAndes.registrarEstante(idEstante, nivelDeAbastecimiento, idSucursal);
+			if (Estante == null)
+			{
+				errorEstante = true;
+			}
+			List <Estante> lista = superAndes.darEstantes();
+			long tbEliminados = superAndes.eliminarEstante(Estante.getId());
+			
+			// Generación de la cadena de caracteres con la traza de la ejecución de la demo
+			String resultado = "Demo de creación y listado de Estantes\n\n";
+			resultado += "\n\n************ Generando datos de prueba ************ \n";
+			if (errorEstante)
+			{
+				resultado += "*** Exception creando Estante !!\n";
+				resultado += "*** Es probable que ese Estante ya existiera y hay restricción de UNICIDAD sobre el nombre del Estante\n";
+				resultado += "*** Revise el log de superAndes para más detalles\n";
+			}
+			resultado += "Adicionado el Estante con nombre: " + idEstante + "\n";
+			resultado += "\n\n************ Ejecutando la demo ************ \n";
+			resultado +=  "\n " + listarEstantes(lista);
+			resultado += "\n\n************ Limpiando la base de datos ************ \n";
+			resultado += tbEliminados + " Estantes eliminados\n";
+			
+			List <Estante> listaDespues = superAndes.darEstantes();
+			resultado += "\n\n************ Despues de eliminar la lista queda asi:************ \n";
+			resultado +=  "\n " + listarEstantes(listaDespues);
+			resultado += "\n Demo terminada";
+   
+			panelDatos.actualizarInterfaz(resultado);
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+    public void demoEstanteNoExitoso( )
+    {
+    	try 
+    	{
+    		long idEstante = 6;
+    		float nivelDeAbastecimiento = 8;
+    		long idSucursal = 5;
+			
+			
+			boolean errorEstante = false;
+			VOEstante Estante = superAndes.registrarEstante(idEstante, nivelDeAbastecimiento, idSucursal);
+			if (Estante == null)
+			{
+				errorEstante = true;
+			}
+			
+			// Generación de la cadena de caracteres con la traza de la ejecución de la demo
+			String resultado = "Demo de creación y listado de Estantes\n\n";
+			resultado += "\n\n************ Generando datos de prueba ************ \n";
+			if (errorEstante)
+			{
+				resultado += "Adicionado el Estante con id: " + idEstante + "\n";
+				resultado += "\n\n************ Estado de la base de datos antes de la operacion ************ \n";
+				
+				List <Estante> lista = superAndes.darEstantes();
+				resultado +=  "\n " + listarEstantes(lista)+  "\n\n ";
+				
+				resultado += "\n\n************ Error Al insertar************ \n\n";				
+				
+				resultado += "*** Exception creando Estante !!\n";
+				resultado += "*** Es probable que ese Estante ya existiera y hay restricción de UNICIDAD sobre el nombre del Estante\n";
+				resultado += "*** Revise el log de superAndes para más detalles\n";
+				
+				
+				List <Estante> listaDespues = superAndes.darEstantes();
+				resultado += "\n\n************ Despues de el registro queda asi************ \n";
+				resultado +=  "\n " + listarEstantes(listaDespues);
+				
+				panelDatos.actualizarInterfaz(resultado);
+			}
+			else
+			{
+				List <Estante> lista = superAndes.darEstantes();
+				long tbEliminados = superAndes.eliminarEstante( Estante.getId());
+				resultado += "Adicionado el Estante con nombre: " + idEstante + "\n";
+				resultado += "\n\n************ Ejecutando la demo ************ \n";
+				resultado +=  "\n " + listarEstantes(lista);
+				resultado += "\n\n************ Limpiando la base de datos ************ \n";
+				resultado += tbEliminados + " Estantes eliminados\n";
+				
+				List <Estante> listaDespues = superAndes.darEstantes();
+				resultado += "\n\n************ Despues de eliminar la lista queda asi:************ \n";
+				resultado +=  "\n " + listarEstantes(listaDespues);
+				resultado += "\n Demo terminada";
+	   
+				panelDatos.actualizarInterfaz(resultado);
+				
+			}
+			
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+   
+    private long nextvalIDSucursal()
+	{
+		long resp =(int) (Math.random() * 100) + 21;;
+		
+			return resp;
+		
+		
+	}
+    
     
     
     
@@ -536,9 +665,20 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
     
     private String listarProductos(List<Producto> lista) 
     {
-    	String resp = "Los Proveedores existentes son:\n";
+    	String resp = "Los Productos existentes son:\n";
     	int i = 1;
         for (Producto tb : lista)
+        {
+        	resp += i++ + ". " + tb.toString() + "\n";
+        }
+        return resp;
+	}
+    
+    private String listarEstantes(List<Estante> lista) 
+    {
+    	String resp = "Los Estante existentes son:\n";
+    	int i = 1;
+        for (Estante tb : lista)
         {
         	resp += i++ + ". " + tb.toString() + "\n";
         }

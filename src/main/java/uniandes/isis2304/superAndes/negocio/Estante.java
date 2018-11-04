@@ -104,25 +104,6 @@ public class Estante implements VOEstante
 		this.idSucursal = idSucursal;
 	}
 	
-//	public List<Object []> getTiposDeProductosQueGuardan() 
-//	{
-//		return tiposDeProductosQueGuardan;
-//	}
-//
-//	public void setTiposDeProductosQueGuardan (List<Object []> tiposDeProductosQueGuardan) 
-//	{
-//		this.tiposDeProductosQueGuardan = tiposDeProductosQueGuardan;
-//	}
-//	
-//	public List<Object []> getProductosQueGuardan() 
-//	{
-//		return this.productosQueGuardan;
-//	}
-//
-//	public void setProductosQueGuardan (List<Object []> productosQueGuardan) 
-//	{
-//		this.productosQueGuardan = productosQueGuardan;
-//	}
 	
 	/** 
 	 * @return Una cadena con la información básica
@@ -131,40 +112,7 @@ public class Estante implements VOEstante
 	public String toString() 
 	{
 		String resp = "Estante [id=" + id + ", idSucursal=" + idSucursal+ "]";
-		
-//		resp += "\n --- Tipos De Productos Que Guardan\n";
-//		int i = 1;
-//		for (Object [] visita : tiposDeProductosQueGuardan)
-//		{
-//			TipoProducto tipoProducto = (TipoProducto) visita [0];
-//			String nombre = (String) visita [1];
-//			resp += i++ + ". " + "[" + tipoProducto.toString() + ", nombre=" + nombre + "]\n";;
-//		}
-		
-//		resp += "\n --- Tipos De Productos Que Guardan\n";
-//		int i = 1;
-//		for (Object [] visita : productosQueGuardan)
-//		{
-//			Producto tipoProducto = (Producto) visita [0];
-//			String nombre = (String) visita [1];
-//			String marca = (String) visita [2];
-//			float precioUnitario = (float) visita [3];
-//			String presentacion = (String) visita [4];
-//			float precioPorUnidad = (float) visita [5];
-//			float cantidadEnLaPresentacion = (float) visita [6];
-//			String unidadesDeMedida = (String) visita [7];
-//			String especificacionesDeEmpacado = (String) visita [8];
-//			float nivelDeReorden = (float) visita [9];
-//			long IDPedido = (long) visita [10];
-//			long IDSucursal = (long) visita [11];
-//			long IDBodega = (long) visita [12];
-//			resp += i++ + ". " + "[" + tipoProducto.toString() + ", nombre=" + nombre + "]\n";;
-//		}
-		
-
-		
-		
-		return resp;
+	return resp;
 	}
 
 	

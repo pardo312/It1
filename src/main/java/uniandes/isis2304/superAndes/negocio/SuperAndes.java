@@ -189,6 +189,17 @@ public class SuperAndes
 		log.info ("Generando los VO de Clientes: " + voTipos.size() + " existentes");
 		return voTipos;
 	}
+	
+	public List<Estante> darEstantes() {
+		log.info ("Generando los VO de Producto");        
+		List<Estante> voProd = new LinkedList<Estante> ();
+		for (Estante tb : pp.darEstantes ())
+		{
+			voProd.add (tb);
+		}
+		log.info ("Generando los VO de Productos: " + voProd.size() + " existentes");
+		return voProd;
+	}
 
 
 	public Cliente registrarCliente(int idCliente, int puntosDeCompra, String nitCliente, int cedulaCliente)
@@ -551,6 +562,15 @@ public class SuperAndes
 		log.info ("Eliminando el producto: " + codigoDeBarras);
 		long p = pp.eliminarProducto (codigoDeBarras);		
 		log.info ("Eliminando el producto ");
+		return p;	
+	}
+	
+	public long eliminarEstante(long id)
+	{
+		
+		log.info ("Eliminando el Estante: " + id);
+		long p = pp.eliminarEstante (id);		
+		log.info ("Eliminando el Estante ");
 		return p;	
 	}
 	

@@ -23,6 +23,14 @@
 				{
 					"label": "Registro Producto No Exitoso",
 					"event": "demoProductoNoExitoso"
+				},
+				{
+					"label": "Registro Estante Existoso",
+					"event": "demoEstanteExitoso"
+				},
+				{
+					"label": "Registro Estante No Exitoso",
+					"event": "demoEstanteNoExitoso"
 				}
 			]
 		}
