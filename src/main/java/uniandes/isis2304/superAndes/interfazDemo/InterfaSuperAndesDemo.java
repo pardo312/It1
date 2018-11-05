@@ -1336,7 +1336,7 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
 	{
 		try 
 		{
-			String numeroDeFactura = "6753";
+			String numeroDeFactura = nextvalIdFactura();
 			java.util.Date fecha = new Date( 0/1/0001);
 			int idCliente = 10;
 			long idCarrito = 0;
