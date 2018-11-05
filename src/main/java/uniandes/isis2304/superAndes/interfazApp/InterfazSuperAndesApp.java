@@ -1733,7 +1733,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 		try 
 		{
 			
-			String idSucursal = JOptionPane.showInputDialog (this, "id de la sucursal? ", "RFC8", JOptionPane.QUESTION_MESSAGE);
+			String idSucursal = JOptionPane.showInputDialog (this, "id de la sucursal? (ej : 17)", "RFC8", JOptionPane.QUESTION_MESSAGE);
 			
 			List <uniandes.isis2304.superAndes.negocio.Consulta8> lista = superAndes.consulta8(idSucursal);
 

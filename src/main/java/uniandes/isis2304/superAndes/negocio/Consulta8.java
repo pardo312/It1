@@ -1,5 +1,5 @@
 /**~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * Universidad	de	los	Andes	(Bogotá	- Colombia)
+ * UniversidClientead	de	los	Andes	(Bogotá	- Colombia)
  * Departamento	de	Ingeniería	de	Sistemas	y	Computación
  * Licenciado	bajo	el	esquema	Academic Free License versión 2.1
  * 		
@@ -30,13 +30,13 @@ public class Consulta8
 
 
 
-	private int id;
+	private int idCliente;
 
-	private String NIT;
+	private String NITCliente;
 
 	private int puntosDeCompra;
 
-	private int cedula;
+	private int cedulaCliente;
 
 	/* ****************************************************************
 	 * 			Métodos 
@@ -44,36 +44,36 @@ public class Consulta8
 
 	public Consulta8() 
 	{
-		this.id = 0;
-		this.NIT = "";
+		this.idCliente = 0;
+		this.NITCliente = "";
 		this.puntosDeCompra = 0;
-		this.cedula = 0;
+		this.cedulaCliente = 0;
 	}
 
 
 
 
-	public Consulta8(int id, String NIT, int puntosDeCompra, int cedula) {
-		this.id = id;
-		this.NIT = NIT;
+	public Consulta8(int idCliente, String NITCliente, int puntosDeCompra, int cedulaCliente) {
+		this.idCliente = idCliente;
+		this.NITCliente = NITCliente;
 		this.puntosDeCompra = puntosDeCompra;
-		this.cedula = cedula;
+		this.cedulaCliente = cedulaCliente;
 	}
 
-	public long getId() {
-		return id;
+	public long getIdCliente() {
+		return idCliente;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setIdCliente(int idCliente) {
+		this.idCliente = idCliente;
 	}
 
-	public String getNIT() {
-		return NIT;
+	public String getNITCliente() {
+		return NITCliente;
 	}
 
-	public void setNIT(String NIT) {
-		this.NIT = NIT;
+	public void setNITCliente(String NITCliente) {
+		this.NITCliente = NITCliente;
 	}
 
 	public int getPuntosDeCompra() {
@@ -84,12 +84,12 @@ public class Consulta8
 		this.puntosDeCompra = puntosDeCompra;
 	}
 
-	public int getCedula() {
-		return cedula;
+	public int getCedulaCliente() {
+		return cedulaCliente;
 	}
 
-	public void setCedula(int cedula) {
-		this.cedula = cedula;
+	public void setCedulaCliente(int cedulaCliente) {
+		this.cedulaCliente = cedulaCliente;
 	}
 
 
@@ -98,9 +98,9 @@ public class Consulta8
 	@Override
 	public String toString() 
 	{
-		String resp = "Consulta8 [id=" + id + ", NIT=" + NIT + 
+		String resp = "Consulta8 [idCliente=" + idCliente + ", NITCliente=" + NITCliente + 
 				", puntosDeCompra=" + puntosDeCompra +
-				", cedula=" + cedula  +
+				", cedulaCliente=" + cedulaCliente  +
 				"]";
 
 		return resp;
