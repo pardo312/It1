@@ -5488,3 +5488,185 @@ ORA-02291: restricción de integridad (ISIS2304B231820.SYS_C00461382) violada - 
 19:53:03,508 (main) INFO  [uniandes.isis2304.superAndes.interfazApp.InterfazSuperAndesApp] - Se encontró un archivo de configuración válido: Tablas BD
 19:53:11,182 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando consulta
 19:53:11,345 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando Consulta: 3 existentes
+19:55:11,668 (main) INFO  [uniandes.isis2304.superAndes.interfazDemo.InterfaSuperAndesDemo] - Se encontró un archivo de configuración válido: Interfaz
+19:55:11,669 (main) INFO  [uniandes.isis2304.superAndes.interfazDemo.InterfaSuperAndesDemo] - Se aplica configuración indicada en el archivo de configuración
+19:55:11,690 (main) INFO  [uniandes.isis2304.superAndes.interfazDemo.InterfaSuperAndesDemo] - Se encontró un archivo de configuración válido: Tablas BD
+19:55:19,677 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el proveedor: Juan Manuel
+19:55:21,903 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el proveedor: Proveedor [NIT=10044, nombre=Juan Manuel]
+19:55:21,904 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Proveedor
+19:55:21,979 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Proveedor: 22 existentes
+19:55:21,980 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando el proveedor: 10044
+19:55:56,731 (main) INFO  [uniandes.isis2304.superAndes.interfazDemo.InterfaSuperAndesDemo] - Se encontró un archivo de configuración válido: Interfaz
+19:55:56,732 (main) INFO  [uniandes.isis2304.superAndes.interfazDemo.InterfaSuperAndesDemo] - Se aplica configuración indicada en el archivo de configuración
+19:55:56,758 (main) INFO  [uniandes.isis2304.superAndes.interfazDemo.InterfaSuperAndesDemo] - Se encontró un archivo de configuración válido: Tablas BD
+19:56:09,680 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando consulta
+19:56:09,831 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando Consulta: 1 existentes
+19:56:09,831 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Producto
+19:56:09,901 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Productos: 15 existentes
+19:56:09,903 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el Producto: XBOX
+20:00:51,932 (main) INFO  [uniandes.isis2304.superAndes.interfazDemo.InterfaSuperAndesDemo] - Se encontró un archivo de configuración válido: Interfaz
+20:00:51,934 (main) INFO  [uniandes.isis2304.superAndes.interfazDemo.InterfaSuperAndesDemo] - Se aplica configuración indicada en el archivo de configuración
+20:00:51,952 (main) INFO  [uniandes.isis2304.superAndes.interfazDemo.InterfaSuperAndesDemo] - Se encontró un archivo de configuración válido: Tablas BD
+20:01:01,756 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el Producto: Producto [codigoDeBarras=000031, nombre=XBOX, marca=MICROSOFT, precioUnitario=1000000.0, presentacion=INDIVIDUAL, precioPorUnidad=1000000.0, cantidadEnLaPresentacion=1.0, unidadDeMedida=gr, especificacionesDeEmpacado=ESPECIAL, nivelDeReorden=1.0, IDPedido=8, IDSucursal=17, IDContenedor=11, EnStock=12, IDPromocion=1, IDCarrito=0, volumen=2]
+20:01:01,757 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - quitandoProdDeEstante con codigo de barras: 000008
+20:01:01,775 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - quitandoProdDeEstante:  1
+20:01:01,775 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Producto
+20:01:01,925 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Productos: 16 existentes
+20:01:01,928 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando consulta
+20:01:01,955 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando Consulta: 1 existentes
+20:01:01,955 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando consulta
+20:01:01,973 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando Consulta: 2 existentes
+20:01:01,974 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - quitandoProdDeEstante con codigo de barras: 000008
+20:01:01,991 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - quitandoProdDeEstante:  1
+20:01:01,991 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - quitandoProdDeEstante con codigo de barras: 000031
+20:01:02,009 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - quitandoProdDeEstante:  
+20:01:02,009 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Producto
+20:01:02,073 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Productos: 15 existentes
+20:02:53,270 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el proveedor: Juan Manuel
+20:02:54,499 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el proveedor: Proveedor [NIT=10055, nombre=Juan Manuel]
+20:02:54,499 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Proveedor
+20:02:54,557 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Proveedor: 22 existentes
+20:02:54,557 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando el proveedor: 10055
+20:02:54,572 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando el proveedor
+20:02:54,573 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Proveedor
+20:02:54,607 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Proveedor: 21 existentes
+20:03:04,403 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el cliente: 1031
+20:03:04,467 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el cliente: 1031
+20:03:04,468 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de cliente Natural
+20:03:04,513 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Clientes: 40 existentes
+20:03:04,513 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando el cliente: 0
+20:03:04,527 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando el cliente 
+20:03:04,528 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de cliente Natural
+20:03:04,571 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Clientes: 40 existentes
+20:03:08,176 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el cliente: 10030
+20:03:08,231 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el cliente: 10030
+20:03:08,231 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando consulta
+20:03:11,984 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el Estante: 53
+20:03:12,009 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el proveedor: 53
+20:03:12,009 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Producto
+20:03:12,040 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Productos: 20 existentes
+20:03:12,041 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando la promocion: 53
+20:03:12,056 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando la promocion 
+20:03:12,056 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Producto
+20:03:12,076 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Productos: 19 existentes
+20:03:14,084 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando la sucursal: TEST 
+20:03:14,128 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando la sucursal: TEST 
+20:03:14,128 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de sucursal
+20:03:14,170 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de sucursal: 25 existentes
+20:03:14,171 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando la sucursal: 50
+20:03:14,182 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando la sucursal 
+20:03:14,182 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de sucursal
+20:03:14,221 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de sucursal: 25 existentes
+20:03:16,428 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando la sucursal: TEST 
+20:03:16,442 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando la sucursal: TEST 
+20:03:16,442 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de sucursal
+20:03:16,477 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de cliente natural: 26 existentes
+20:03:16,477 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando la sucursal: 5
+20:03:16,490 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando la sucursal 
+20:03:16,490 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de sucursal
+20:03:16,527 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de cliente natural: 26 existentes
+20:03:19,304 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el contenedor: 30
+20:03:19,341 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el contenedor: 30
+20:03:19,342 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de contenedor
+20:03:19,390 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de sucursal: 32 existentes
+20:03:19,390 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando el contenedor: 30
+20:03:19,404 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando el contenedor  
+20:03:19,406 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de contenedor
+20:03:19,456 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de sucursal: 32 existentes
+20:03:26,036 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el contenedor: 30
+20:03:26,068 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el contenedor: 30
+20:03:26,068 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de contenedor
+20:03:26,111 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de contenedor : 33 existentes
+20:03:26,111 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando el contenedor: 10
+20:03:26,125 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando el contenedor  
+20:03:26,135 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de contenedor
+20:03:26,169 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de contenedor : 33 existentes
+20:03:33,412 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando consulta
+20:03:33,463 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando Consulta: 0 existentes
+20:03:33,463 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando la factura: 6753
+20:03:33,481 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando la factura:  null
+20:03:33,481 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - pagando el carrito con idCarrito: 4
+20:03:33,496 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - pagando el carrito con idCarrito  4
+20:04:49,958 (main) INFO  [uniandes.isis2304.superAndes.interfazDemo.InterfaSuperAndesDemo] - Se encontró un archivo de configuración válido: Interfaz
+20:04:49,960 (main) INFO  [uniandes.isis2304.superAndes.interfazDemo.InterfaSuperAndesDemo] - Se aplica configuración indicada en el archivo de configuración
+20:04:49,994 (main) INFO  [uniandes.isis2304.superAndes.interfazDemo.InterfaSuperAndesDemo] - Se encontró un archivo de configuración válido: Tablas BD
+20:04:59,907 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el proveedor: Juan Manuel
+20:05:00,112 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el proveedor: Proveedor [NIT=100113, nombre=Juan Manuel]
+20:05:00,112 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Proveedor
+20:05:00,165 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Proveedor: 22 existentes
+20:05:00,165 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando el proveedor: 100113
+20:05:00,183 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando el proveedor
+20:05:00,183 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Proveedor
+20:05:00,215 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Proveedor: 21 existentes
+20:05:03,448 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando la sucursal: TEST 
+20:05:03,492 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando la sucursal: TEST 
+20:05:03,492 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de sucursal
+20:05:03,541 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de sucursal: 27 existentes
+20:05:03,541 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando la sucursal: 50
+20:05:03,557 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando la sucursal 
+20:05:03,558 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de sucursal
+20:05:03,601 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de sucursal: 26 existentes
+20:05:09,343 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando consulta
+20:05:09,397 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando Consulta: 13 existentes
+20:05:09,398 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando la factura: 20113
+20:05:09,422 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando la factura:  Factura [numeroFactura=20113, fecha=Wed Dec 31 19:00:00 COT 1969, idCliente=10]
+20:05:09,423 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Producto
+20:05:09,653 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando las facturas: 323 existentes
+20:05:09,669 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando la factura: 2086
+20:05:09,709 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando la factura:  null
+20:05:09,709 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Producto
+20:05:09,887 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando las facturas: 323 existentes
+20:05:13,011 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando consulta
+20:05:13,024 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando Consulta: 0 existentes
+20:05:13,024 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando la factura: 2046
+20:05:13,041 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando la factura:  Factura [numeroFactura=2046, fecha=Wed Dec 31 19:00:00 COT 1969, idCliente=10]
+20:05:13,041 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - pagando el carrito con idCarrito: 4
+20:05:13,055 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - pagando el carrito con idCarrito  4
+20:05:13,056 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Producto
+20:05:13,286 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando las facturas: 324 existentes
+20:05:13,301 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando la factura: 2058
+20:05:13,317 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando la factura:  Factura [numeroFactura=2058, fecha=Wed Dec 31 19:00:00 COT 1969, idCliente=9]
+20:05:13,317 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Producto
+20:05:13,499 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando las facturas: 325 existentes
+20:05:13,508 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando el Factura: 2058
+20:05:13,522 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando el Factura 
+20:05:13,522 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Producto
+20:05:13,682 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando las facturas: 324 existentes
+20:05:32,137 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando consulta
+20:05:32,161 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando Consulta: 0 existentes
+20:05:32,161 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando la factura: 2087
+20:05:32,177 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando la factura:  Factura [numeroFactura=2087, fecha=Wed Dec 31 19:00:00 COT 1969, idCliente=10]
+20:05:32,177 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - pagando el carrito con idCarrito: 4
+20:05:32,190 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - pagando el carrito con idCarrito  4
+20:05:32,192 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Producto
+20:05:32,379 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando las facturas: 325 existentes
+20:05:32,383 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando la factura: 2049
+20:05:32,397 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando la factura:  Factura [numeroFactura=2049, fecha=Wed Dec 31 19:00:00 COT 1969, idCliente=9]
+20:05:32,397 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Producto
+20:05:32,557 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando las facturas: 326 existentes
+20:05:32,564 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando el Factura: 2049
+20:05:32,579 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando el Factura 
+20:05:32,579 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Producto
+20:05:32,751 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando las facturas: 325 existentes
+20:05:52,880 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el cliente: 0017
+20:05:52,938 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el cliente: 0017
+20:05:52,938 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de cliente Empresarial
+20:05:52,960 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Clientes Empresa: 24 existentes
+20:05:52,960 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando el cliente: 0017
+20:05:52,974 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando el cliente 
+20:05:52,975 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de cliente Empresarial
+20:05:53,005 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Clientes Empresa: 23 existentes
+20:06:00,196 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el cliente: 0015
+20:06:00,240 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el cliente: 0015
+20:06:00,241 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de cliente Empresarial
+20:06:00,263 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Clientes Empresa: 24 existentes
+20:06:00,263 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando el cliente: 0015
+20:06:00,278 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Eliminando el cliente 
+20:06:00,278 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de cliente Empresarial
+20:06:00,299 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Clientes Empresa: 23 existentes
+20:06:03,352 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el cliente: 00001
+20:06:03,391 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Adicionando el cliente: 00001
+20:06:03,391 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Cliente
+20:06:03,413 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de cliente empresa: 23 existentes
+20:06:03,413 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de Cliente
+20:06:03,434 (AWT-EventQueue-0) INFO  [uniandes.isis2304.superAndes.negocio.SuperAndes] - Generando los VO de cliente empresa: 23 existentes
