@@ -819,10 +819,6 @@ public class PersistenciaSuperAndes
 		{
 			PersistenceManager pm = pmf.getPersistenceManager();
 			Transaction tx=pm.currentTransaction();
-			int ido = (int)nextval ();
-			
-
-				long id = nextval ();
 				try
 				{
 					tx.begin();
@@ -861,7 +857,7 @@ public class PersistenciaSuperAndes
 				Transaction tx=pm.currentTransaction();
 
 				tx.begin();
-				long tuplasInsertadas = sqlCarritoDeCompras.registrarCarritoDeCompras(pm, 2, usado, NITCliente, cedula);
+				long tuplasInsertadas = sqlCarritoDeCompras.registrarCarritoDeCompras(pm, idCarrito, usado, NITCliente, cedula);
 				tx.commit();
 
 				log.trace ("Inserción de carrito: " + 2 + ": " + tuplasInsertadas + " tuplas insertadas");

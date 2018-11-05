@@ -119,7 +119,11 @@ public class SuperAndes
 		List<CarritoDeCompras> voProd = new LinkedList<CarritoDeCompras> ();
 		for (CarritoDeCompras tb : pp.darCarritos ())
 		{
-			voProd.add (tb);
+			if(tb!= null)
+			{
+				voProd.add (tb);
+			}
+			
 		}
 		log.info ("Generando los VO de Carritos: " + voProd.size() + "existentes");
 		return voProd;

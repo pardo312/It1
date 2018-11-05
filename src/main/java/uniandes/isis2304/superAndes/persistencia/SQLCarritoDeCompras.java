@@ -81,6 +81,7 @@ class SQLCarritoDeCompras
 		{
 			return 0;
 		}
+	
 	}
 
 	/**
@@ -91,7 +92,7 @@ class SQLCarritoDeCompras
 	public List<CarritoDeCompras> darCarritosDeCompra(PersistenceManager pm)
 	{
 
-		Query q = pm.newQuery(SQL, "SELECT IDCARRITO, USADO, NITCLIENTE, CEDULA FROM " + "CARRITODECOMPRA");
+		Query q = pm.newQuery(SQL, "SELECT IDCARRITO, USADO, NITCLIENTE FROM " + "CARRITODECOMPRA");
 		q.setResultClass(CarritoDeCompras.class);
 		List<CarritoDeCompras> w =  (List<CarritoDeCompras>) q.executeList();
 

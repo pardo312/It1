@@ -636,7 +636,7 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
 		{
 			// Ejecución de la demo y recolección de los resultados
 			// ATENCIÓN: En una aplicación real, los datos JAMÁS están en el código
-			int id = 50;
+			int id = nextvalID();
 			String nombre = "TEST ";
 			String ciudad = "TEST";
 			String direccion = "DIRECCION";
@@ -688,7 +688,7 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
 	{
 		try 
 		{
-			int id = 50;
+			int id = 7;
 			String nombre = "TEST ";
 			String ciudad = "TEST";
 			String direccion = "DIRECCION";
@@ -1027,15 +1027,14 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
 			// Ejecución de la demo y recolección de los resultados
 			// ATENCIÓN: En una aplicación real, los datos JAMÁS están en el código
 			String NITCliente = "0";
-			int cedula = 1008;
-			int idCarrito= 5; // mas adelante se pone uno autogenerado
+			int cedula = 1005;
+			int idCarrito= nextvalID(); // mas adelante se pone uno autogenerado
 			int usado = 1; // como se esta registrando se asigna a un cliente y esta en uso 
 			boolean errorCarrito = false;
 			VOCarritoDeCompras carrito = superAndes.registrarCarritoDeCompras(idCarrito, usado, NITCliente, cedula, 0) ;
 
 			if (carrito == null)
 			{
-				carrito = superAndes.darCarrito(idCarrito);
 				errorCarrito = true;
 			}
 			List <CarritoDeCompras> lista = superAndes.darCarritos();
@@ -1143,16 +1142,15 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
 		{
 			// Ejecución de la demo y recolección de los resultados
 			// ATENCIÓN: En una aplicación real, los datos JAMÁS están en el código
-			String NITCliente = "1000";
+			String NITCliente = "00007";
 			int cedula = 0;
-			int idCarrito= 5; // mas adelante se pone uno autogenerado
+			int idCarrito= nextvalID(); // mas adelante se pone uno autogenerado
 			int usado = 1; // como se esta registrando se asigna a un cliente y esta en uso 
 			boolean errorContenedor = false;
 
 			CarritoDeCompras carrito = superAndes.registrarCarritoDeCompras(idCarrito, usado, NITCliente, cedula, 1);
 			if (carrito == null)
 			{
-				carrito = superAndes.darCarrito(idCarrito);
 				errorContenedor = true;
 			}
 			List <VOCarritoDeCompras> lista = superAndes.darVOCarrito();
@@ -1598,7 +1596,7 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
 	{
 		try 
 		{
-			String codigoDeBarras = "000005"; // Codigo de barras que ya existe
+			String codigoDeBarras = "000016"; // Codigo de barras que ya existe
 			String nombre = "Parlantes";
 			String marca = "Omega";
 			float precioUnitario = 150000;
