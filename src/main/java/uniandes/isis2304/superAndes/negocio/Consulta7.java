@@ -40,7 +40,7 @@ public class Consulta7
 	
 	private Date fechaMenorDemanda;
 	
-	private float ingresos;
+	private int ingresos;
 	
 	
 	/* ****************************************************************
@@ -58,7 +58,7 @@ public class Consulta7
 
 
 
-	public Consulta7(String nombreCategoria, Date fechaMayorDemanda, Date fechaMenorDemanda, float ingresos) {
+	public Consulta7(String nombreCategoria, Date fechaMayorDemanda, Date fechaMenorDemanda, int ingresos) {
 		this.nombreCategoria = nombreCategoria;
 		this.fechaMayorDemanda = fechaMayorDemanda;
 		this.fechaMenorDemanda = fechaMenorDemanda;
@@ -82,15 +82,35 @@ public class Consulta7
 		this.fechaMayorDemanda = fechaMayorDemanda;
 	}
 
+	
 	public Date getFechaMenorDemanda() {
 		return fechaMenorDemanda;
 	}
 
-	public void setfechaMenorDemanda(Date fecha) {
-		this.fechaMenorDemanda = fecha;
+
+
+
+	public void setFechaMenorDemanda(Date fechaMenorDemanda) {
+		this.fechaMenorDemanda = fechaMenorDemanda;
 	}
 
-	
+
+
+
+	public int getIngresos() {
+		return ingresos;
+	}
+
+
+
+
+	public void setIngresos(int ingresos) {
+		this.ingresos = ingresos;
+	}
+
+
+
+
 	@Override
 	public String toString() 
 	{

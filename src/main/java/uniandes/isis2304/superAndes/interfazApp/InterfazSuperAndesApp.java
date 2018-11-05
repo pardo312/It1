@@ -1697,7 +1697,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 		try 
 		{
 			String unidadTiempo = JOptionPane.showInputDialog (this, "unidad de tiempo? (semana, mes, año)", "RFC7", JOptionPane.QUESTION_MESSAGE);
-			String tipoProducto = JOptionPane.showInputDialog (this, "tipo Producto? (organico, tecnologia, aseo)", "RFC7", JOptionPane.QUESTION_MESSAGE);
+			String tipoProducto = JOptionPane.showInputDialog (this, "tipo Producto? (ORGANICO, TECNOLOGIA, OTROS)", "RFC7", JOptionPane.QUESTION_MESSAGE);
 			
 			List <uniandes.isis2304.superAndes.negocio.Consulta7> lista = superAndes.consulta7(unidadTiempo, tipoProducto);
 
