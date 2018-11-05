@@ -497,6 +497,20 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
 			panelDatos.actualizarInterfaz(resultado);
 		}
 	}
+	
+	private String nextvalNITCliente ()
+	{
+		long resp =(int) (Math.random() * 19) + 1;;
+		if(resp < 21)
+		{
+			return "001"+resp;
+		}
+		else
+		{
+			return "000"+resp;
+		}
+
+	}
 
 	public void demoClienteEmpresarialExitoso( )
 	{
@@ -504,7 +518,7 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
 		{
 			// Ejecución de la demo y recolección de los resultados
 			// ATENCIÓN: En una aplicación real, los datos JAMÁS están en el código
-			String NIT = "10030";
+			String NIT = nextvalNITCliente();
 			String direccion = "direccion test";	
 			boolean errorCliente = false;
 			ClienteEmpresa cliente = superAndes.registrarClienteEmpresa(NIT, direccion, 1) ;
@@ -517,19 +531,19 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
 			long tbEliminados = superAndes.eliminarClienteEmpresa(cliente.getNIT());
 
 			// Generación de la cadena de caracteres con la traza de la ejecución de la demo
-			String resultado = "Demo de creación y listado de Clientes \n\n";
+			String resultado = "Demo de creación y listado de cliente empresarial \n\n";
 			resultado += "\n\n************ Generando datos de prueba ************ \n";
 			if (errorCliente)
 			{
-				resultado += "*** Exception creando cliente !!\n";
-				resultado += "*** Es probable que ese cliente ya existiera y hay restricción de UNICIDAD sobre el nit del cliente \n";
+				resultado += "*** Exception creando Cliente !!\n";
+				resultado += "*** Es probable que ese cliente ya existiera y hay restricción de UNICIDAD sobre el nit del cliente empresarial\n";
 				resultado += "*** Revise el log de superAndes para más detalles\n";
 			}
-			resultado += "Adicionado el cliente con nit: " + NIT + "\n";
+			resultado += "Adicionado el Cliente empresa con nit: " + NIT + "\n";
 			resultado += "\n\n************ Ejecutando la demo ************ \n";
 			resultado +=  "\n " + listarClienteEmpresa(lista);
 			resultado += "\n\n************ Limpiando la base de datos ************ \n";
-			resultado += tbEliminados + " cliente eliminados\n";
+			resultado += tbEliminados + " Cliente eliminados\n";
 
 			List <VOClienteEmpresa> listaDespues = superAndes.darVOClienteEmpresarial();
 			resultado += "\n\n************ Despues de eliminar la lista queda asi:************ \n";
@@ -1265,7 +1279,7 @@ public class InterfaSuperAndesDemo extends JFrame implements ActionListener
 		{
 			// Ejecución de la demo y recolección de los resultados
 			// ATENCIÓN: En una aplicación real, los datos JAMÁS están en el código
-			String numeroDeFactura = "6753";
+			String numeroDeFactura = nextvalIdFactura();
 			java.util.Date fecha = new Date( 0/1/0001);
 			int idCliente = 10;
 			long idCarrito = 4;

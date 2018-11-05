@@ -856,6 +856,7 @@ public class SuperAndes
 		log.info ("Generando Consulta: " + voProv.size() + " existentes");
 		return prov;	
 	}
+	
 	public long eliminarClienteEmpresa (String NIT)
 	{
 
