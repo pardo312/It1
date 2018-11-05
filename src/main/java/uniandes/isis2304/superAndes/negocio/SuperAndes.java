@@ -843,7 +843,7 @@ public class SuperAndes
 	{
 
 		log.info ("Eliminando el pedido: " + id);
-		long p = pp.eliminarContenedor (id);		
+		long p = pp.eliminarPedido (id);		
 		log.info ("Eliminando el pedido ");
 		return p;	
 	}

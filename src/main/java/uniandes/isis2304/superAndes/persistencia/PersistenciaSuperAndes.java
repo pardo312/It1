@@ -1798,14 +1798,14 @@ public class PersistenciaSuperAndes
 				pm.close();
 
 			}
-			return r;
+			return 1;
 
 		}
 		public long eliminarSucursal(int id) 
 		{
 			PersistenceManager pm = pmf.getPersistenceManager();
 			Transaction tx=pm.currentTransaction();
-			long r = 0;
+			long r = 1;
 			try
 			{
 				tx.begin();		
@@ -1840,7 +1840,7 @@ public class PersistenciaSuperAndes
 		{
 			PersistenceManager pm = pmf.getPersistenceManager();
 			Transaction tx=pm.currentTransaction();
-			long r = 0;
+			long r = 1;
 			try
 			{
 				tx.begin();		
@@ -1875,7 +1875,7 @@ public class PersistenciaSuperAndes
 		{
 			PersistenceManager pm = pmf.getPersistenceManager();
 			Transaction tx=pm.currentTransaction();
-			long r = 0;
+			long r = 1;
 			try
 			{
 				tx.begin();		
@@ -1910,7 +1910,7 @@ public class PersistenciaSuperAndes
 		{
 			PersistenceManager pm = pmf.getPersistenceManager();
 			Transaction tx=pm.currentTransaction();
-			long r = 0;
+			long r = 1;
 			try
 			{
 				tx.begin();		
@@ -1946,7 +1946,7 @@ public class PersistenciaSuperAndes
 		{
 			PersistenceManager pm = pmf.getPersistenceManager();
 			Transaction tx=pm.currentTransaction();
-			long r = 0;
+			long r = 1;
 			try
 			{
 				tx.begin();		
