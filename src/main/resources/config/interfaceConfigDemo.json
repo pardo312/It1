@@ -124,6 +124,46 @@
 					"label": "Abandonando un carrito No Exitoso",
 					"event": "demoAbandonarUnCarritoNoExitoso"
 				}
+				,
+				{
+					"label": "Asignacion de un carrito a cliente natural Exitoso",
+					"event": "demoRegistrarCarritoAClienteNaturalExitoso"
+				}
+				,
+				{
+					"label": "Asignacion de un carrito a cliente natural No Exitoso",
+					"event": "demoRegistrarCarritoAClienteNaturalNoExitoso"
+				}
+				,
+				{
+					"label": "Asignacion de un carrito a cliente Empresa Exitoso",
+					"event": "demoRegistrarCarritoAClienteEmpresaExitoso"
+				}
+				,
+				{
+					"label": "Asignacion de un carrito a cliente Empresa No Exitoso",
+					"event": "demoRegistrarCarritoAClienteEmpresaNoExitoso"
+				}
+				,
+				{
+					"label": "Pagar un carrito Exitoso",
+					"event": "demoPagarCarritoExitoso"
+				}
+				,
+				{
+					"label": "Pagar un carrito No Exitoso",
+					"event": "demoPagarCarritoNoExitoso"
+				}
+				,
+				{
+					"label": "Recoger productos Exitoso",
+					"event": "demoRecogerProductoExitoso"
+				}
+				,
+				{
+					"label": "Recoger productos No Exitoso",
+					"event": "demoRecogerProductoNoExitoso"
+				}
 			]
 		}
 	]

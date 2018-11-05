@@ -121,10 +121,12 @@ public class SuperAndes
 		{
 			voProd.add (tb);
 		}
-		log.info ("Generando los VO de Productos: " + voProd.size() + "existentes");
+		log.info ("Generando los VO de Carritos: " + voProd.size() + "existentes");
 		return voProd;
 	}
 
+	
+	
 	public List<Factura> darFacturas() {
 		log.info ("Generando los VO de Producto");        
 		List<Factura> voProd = new LinkedList<Factura> ();
@@ -305,6 +307,7 @@ public class SuperAndes
 		return voProd;
 
 	}
+
 	
 	public List<Pedido> darPedidios() {
 		log.info ("Generando los VO de pedido");        
@@ -354,6 +357,18 @@ public class SuperAndes
 		return voTipos;
 	}
 	
+	public List<VOCarritoDeCompras> darVOCarrito() {
+		log.info ("Generando los VO de carrito");        
+		List<VOCarritoDeCompras> voTipos = new LinkedList<VOCarritoDeCompras> ();
+		for (CarritoDeCompras tb : pp.darCarritoDeCompras ())
+		{
+			voTipos.add (tb);
+		}
+		log.info ("Generando los VO de carrito: " + voTipos.size() + " existentes");
+		return voTipos;
+	}
+	
+	
 	public List<VOPedido> darVOPedido() {
 		log.info ("Generando los VO de contenedor");        
 		List<VOPedido> voTipos = new LinkedList<VOPedido> ();
@@ -382,6 +397,17 @@ public class SuperAndes
 		log.info ("Generando Consulta: " + voProv.size() + " existentes");
 		return prov;	
 	}
+	
+	public CarritoDeCompras darCarrito(int idCarrito)
+	{
+
+		log.info ("Generando consulta");        
+		List<CarritoDeCompras> voProv = new LinkedList<CarritoDeCompras> ();
+		CarritoDeCompras prov = voProv.get(0);
+		log.info ("Generando Consulta: " + voProv.size() + " existentes");
+		return prov;	
+	}
+	
 	public Pedido darPedido(int id)
 	{
 
@@ -393,10 +419,11 @@ public class SuperAndes
 	}
 
 
-	public CarritoDeCompras registrarCarritoDeCompras(int idCarrito, int usado, String NIT, int cedula)
+	public CarritoDeCompras registrarCarritoDeCompras(int idCarrito, int usado, String NITCliente, int cedula, int a)
+
 	{
 		log.info ("Adicionando el carrito: " + idCarrito);
-		CarritoDeCompras carritoDeCompras = pp.registrarCarritoDeCompras(idCarrito, usado, NIT, cedula);		
+		CarritoDeCompras carritoDeCompras = pp.registrarCarritoDeCompras(idCarrito, usado, NITCliente, cedula ,a);		
 		log.info ("Adicionando el carrito: " + idCarrito);
 		return carritoDeCompras;
 	}
@@ -500,7 +527,7 @@ public class SuperAndes
 	}
 
 
-	public Factura registrarFactura(String numeroDeFactura, java.util.Date fecha, int idCliente) {
+	public Factura registrarFactura(String numeroDeFactura, java.util.Date fecha, int idCliente ) {
 		log.info ("Adicionando la factura: " + numeroDeFactura);
 		Factura factura = pp.registrarFactura (numeroDeFactura,fecha,idCliente);		
 		log.info ("Adicionando la factura:  " + factura);
@@ -802,12 +829,21 @@ public class SuperAndes
 		return p;	
 	}
 	
+	public long eliminarCarrito (int id)
+	{
+
+		log.info ("Eliminando el carrito: " + id);
+		long p = pp.eliminarCarrito (id);		
+		log.info ("Eliminando el carrito  ");
+		return p;	
+	}
+	
 
 	public long eliminarPedido (int id)
 	{
 
 		log.info ("Eliminando el pedido: " + id);
-		long p = pp.eliminarContenedor (id);		
+		long p = pp.eliminarPedido (id);		
 		log.info ("Eliminando el pedido ");
 		return p;	
 	}
@@ -820,6 +856,7 @@ public class SuperAndes
 		log.info ("Generando Consulta: " + voProv.size() + " existentes");
 		return prov;	
 	}
+	
 	public long eliminarClienteEmpresa (String NIT)
 	{
 

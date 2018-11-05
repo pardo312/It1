@@ -65,7 +65,7 @@ class SQLClienteEmpresa
 			 String direccion) 
 	{
        try {
-		Query q = pm.newQuery(SQL, "INSERT INTO " + "CLIENTEEMPRESA" + "(NIT,direccion) values ( ?, ?)");
+		Query q = pm.newQuery(SQL, "INSERT INTO " + "CLIENTEEMPRESA" + "(NIT,DIRECCION) values ( '"+NIT+"', '"+direccion+"')");
         q.setParameters( NIT,  direccion);
         return (long) q.executeUnique();
        }
