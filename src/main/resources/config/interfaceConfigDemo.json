@@ -154,6 +154,16 @@
 					"label": "Pagar un carrito No Exitoso",
 					"event": "demoPagarCarritoNoExitoso"
 				}
+				,
+				{
+					"label": "Recoger productos Exitoso",
+					"event": "demoRecogerProductoExitoso"
+				}
+				,
+				{
+					"label": "Recoger productos No Exitoso",
+					"event": "demoRecogerProductoNoExitoso"
+				}
 			]
 		}
 	]
