@@ -73,7 +73,8 @@ class SQLCarritoDeCompras
 		{
 			Query q = pm.newQuery(SQL, "INSERT INTO " + "CARRITODECOMPRA" + "(idCarrito,usado,nitcliente) values ("+idCarrito+ ", 1,'"+NITCLIENTE+"' )");
 	        q.setParameters( idCarrito, usado, NITCLIENTE);
-	        return (long) q.executeUnique();
+	        long w = (long) q.executeUnique();
+	        return w;
 		}
 		}
 		

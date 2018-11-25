@@ -1061,7 +1061,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 			JOptionPane.showMessageDialog(this, "Recuerda que para pedir un carrito debes ser un cliente registrado");
 			String NIT = JOptionPane.showInputDialog (this, "NIT del cliente si es empresarial? 0 de lo contrario", "Solicitar Carrito", JOptionPane.QUESTION_MESSAGE);
 			int cedula = Integer.parseInt(JOptionPane.showInputDialog (this, "cedula del cliente si es natural? 0 de lo contrario", "Solicitar Carrito", JOptionPane.QUESTION_MESSAGE));
-			int idCarrito= 0; // mas adelante se pone uno autogenerado
+			int idCarrito= nextvalID(); // mas adelante se pone uno autogenerado
 			int usado = 1; // como se esta registrando se asigna a un cliente y esta en uso 
 
 			if ( NIT != null ) {
