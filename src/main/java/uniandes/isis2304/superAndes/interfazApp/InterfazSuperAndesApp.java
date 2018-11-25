@@ -1219,7 +1219,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 	{
 		try 
 		{
-			String numeroDeFactura = JOptionPane.showInputDialog (this, "Numero de la factura(nuevo)?", "Pagar carrito", JOptionPane.QUESTION_MESSAGE);
+			String numeroDeFactura = ""+ nextvalNITProveedor();
 			java.util.Date fecha =  (java.util.Date) new SimpleDateFormat("dd/MM/yyyy").parse(JOptionPane.showInputDialog (this, "fecha de la factura? (DD/MM/YYYY)", "Pagar carrito", JOptionPane.QUESTION_MESSAGE));   		
 			int idCliente = Integer.parseInt(JOptionPane.showInputDialog (this, "ID del cliente asociado?", "Pagar Carrito", JOptionPane.QUESTION_MESSAGE));
 			long idCarrito = Long.parseLong(JOptionPane.showInputDialog (this, "id de tu carrito", "PagarCarrito", JOptionPane.QUESTION_MESSAGE));
