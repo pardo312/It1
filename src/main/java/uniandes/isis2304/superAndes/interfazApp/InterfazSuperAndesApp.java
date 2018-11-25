@@ -1761,6 +1761,25 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 		}
 		return resp;
 	}
+	/* ****************************************************************
+	 * 			Generar datos
+	 *****************************************************************/
+	public void generarDatos()
+	{
+		try 
+		{
+			
+			superAndes.generarDatos();
+			
+			
+		} 
+		catch (Exception e) 
+		{
+			//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+	}
 
 	/* ****************************************************************
 	 * 			Métodos administrativos

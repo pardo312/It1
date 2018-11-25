@@ -83,6 +83,82 @@ class SQLCategoria
 		q.setResultClass(Categoria.class);
 		return (List<Categoria>) q.executeList();
 	}
+	
+	public long generarDatos (PersistenceManager pm) 
+	{ 	
+		long w = 123123123;
+		for(int i= 0; i<8800;i++){
+			
+			String[] p = nextvalNITCliente ();
+			if(p[0] != null)
+			{
+			Query q = pm.newQuery(SQL, "INSERT INTO CARRITODECOMPRA (IDCARRITO,USADO,NITCLIENTE) values (" + nextval() + "," + nextvalUSADO() + ",'" + p[0]+"')");  
+			w = (long) q.executeUnique();
+			System.out.println(i);
+				
+			}
+			else{
+				Query q = pm.newQuery(SQL, "INSERT INTO CARRITODECOMPRA (IDCARRITO,USADO,CEDULA) values (" + nextval() + "," + nextvalUSADO() + "," +p[1]+")");  
+				w = (long) q.executeUnique();
+				System.out.println(i);
+			}
+			
+			
+		}
+                               
+		
+		return w;
+      
+	}
+	
+	private String nextval ()
+	{
+		long resp =(int) (Math.random() * 1000000000) + 20;
+		return ""+resp;
+		
+	}
+	
+	private int nextvalUSADO()
+	{
+		if(Math.random() < 0.5)
+		{
+			return 1;
+		}
+		else{
+			return 0;
+		}
+		
+	}
+	
+	private String[] nextvalNITCliente ()
+	{
+		String [] array = new String[2] ;
+		if(Math.random() < 0.5)
+		{
+			long resp =(int) (Math.random() * 19) + 1;;
+			if(resp < 10)
+			{
+				array[0] = "0000"+resp;
+			}
+			else
+			{
+				array[0] =  "000"+resp;
+			}
+		}
+		else{
+			long resp =(int) (Math.random() * 19) + 1;;
+			if(resp < 10)
+			{
+				array[1] = "100"+resp;
+			}
+			else
+			{
+				array[1] =  "10"+resp;
+			}
+		}
+		return array;
+		
+	}
 
 	
 	

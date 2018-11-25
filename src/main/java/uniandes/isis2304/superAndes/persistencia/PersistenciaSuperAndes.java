@@ -2008,6 +2008,34 @@ public class PersistenciaSuperAndes
 			}
 			return r;	
 		}
+		//GENERAR DATOS
+		public void generarDatos(){
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		try
+		{
+			tx.begin();
+			
+			sqlCategoria.generarDatos(pm);
+			tx.commit();
+
+			
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			
+		}
+		finally
+		{
+			if (tx.isActive())
+			{
+				tx.rollback();
+			}
+			pm.close();
+		}
+		}
 
 		/* ****************************************************************
 		 * 			Limpiar Super Andes

@@ -871,6 +871,13 @@ public class SuperAndes
 	}
 
 
+	public void generarDatos()
+
+	{
+		
+		pp.generarDatos();		
+	
+	}
 
 	/* ****************************************************************
 	 * 			Metodos Extra
