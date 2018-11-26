@@ -21,6 +21,7 @@ import java.util.Random;
 
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
+import javax.jdo.Transaction;
 
 import uniandes.isis2304.superAndes.negocio.Categoria;
 import uniandes.isis2304.superAndes.negocio.Proveedor;
@@ -88,17 +89,24 @@ class SQLCategoria
 	public long generarDatos (PersistenceManager pm) 
 	{ 	
 		long w = 123123123;
+		try{
+			
 		
-		
-		for(int i= 0; i<10000;i++){
+		for(int i= 0; i<5;i++){
 			
 			
 				Query q = pm.newQuery(SQL, "INSERT INTO Factura (NUMEROFACTURA,Fecha,idcliente) values ("+nextvalFac()+",TO_DATE('"+nextvalAño()+"-"+nextvalMes()+"-"+nextvalDia()+"', 'YYYY-MM-DD'),"+ nextvalCliente() +")");  
 				w = (long) q.executeUnique();
 				System.out.println(i);
 			
-		}	                    		
-		return w;      
+		}
+		return w; 
+		}
+		catch(Exception e){
+			generarDatos(pm);
+			return w;
+		}
+		 
 	}
 	
 	public long generarDatos2 (PersistenceManager pm) 

@@ -2014,18 +2014,20 @@ public class PersistenciaSuperAndes
 		Transaction tx=pm.currentTransaction();
 		try
 		{
-			
+
+			for(int i= 0; i<10000;i++){
+				
 			tx.begin();
 			
 			sqlCategoria.generarDatos(pm);
 			tx.commit();
-			
+			System.out.println("Fase numero: " + i + "-------------------------");
+			}
 			
 		}
 		catch (Exception e)
 		{
-			e.printStackTrace();
-			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			
 			
 		}
 		finally
