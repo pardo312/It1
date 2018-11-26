@@ -2014,11 +2014,12 @@ public class PersistenciaSuperAndes
 		Transaction tx=pm.currentTransaction();
 		try
 		{
+			
 			tx.begin();
 			
 			sqlCategoria.generarDatos(pm);
 			tx.commit();
-
+			
 			
 		}
 		catch (Exception e)
@@ -2036,6 +2037,9 @@ public class PersistenciaSuperAndes
 			pm.close();
 		}
 		}
+		
+
+
 
 		/* ****************************************************************
 		 * 			Limpiar Super Andes

@@ -87,33 +87,29 @@ class SQLCategoria
 	public long generarDatos (PersistenceManager pm) 
 	{ 	
 		long w = 123123123;
-		for(int i= 0; i<8800;i++){
-			
-			String[] p = nextvalNITCliente ();
-			if(p[0] != null)
+		
+			String[] z = nextvalNITCliente();
+		for(int i= 0; i<2500;i++){
+			if(z[0] != null)
 			{
-			Query q = pm.newQuery(SQL, "INSERT INTO CARRITODECOMPRA (IDCARRITO,USADO,NITCLIENTE) values (" + nextval() + "," + nextvalUSADO() + ",'" + p[0]+"')");  
+			Query q = pm.newQuery(SQL, "INSERT INTO CARRITODECOMPRA (IDCARRITO,USADO,NITCLIENTE) values (" + nextval2() + "," + nextvalUSADO() + ",'" + z[0]+"')");  
 			w = (long) q.executeUnique();
 			System.out.println(i);
 				
 			}
 			else{
-				Query q = pm.newQuery(SQL, "INSERT INTO CARRITODECOMPRA (IDCARRITO,USADO,CEDULA) values (" + nextval() + "," + nextvalUSADO() + "," +p[1]+")");  
+				Query q = pm.newQuery(SQL, "INSERT INTO CARRITODECOMPRA (IDCARRITO,USADO,CEDULA) values (" + nextval2()  + "," + nextvalUSADO() + "," + z[1]+")");  
 				w = (long) q.executeUnique();
 				System.out.println(i);
 			}
-			
-			
-		}
-                               
-		
-		return w;
-      
+		}	                    		
+		return w;      
 	}
+
 	
-	private String nextval ()
+	private String nextval2 ()
 	{
-		long resp =(int) (Math.random() * 1000000000) + 20;
+		long resp =(int) (Math.random() * 1000000000) + 1000000;
 		return ""+resp;
 		
 	}
@@ -159,7 +155,7 @@ class SQLCategoria
 		return array;
 		
 	}
-
+	
 	
 	
 }
