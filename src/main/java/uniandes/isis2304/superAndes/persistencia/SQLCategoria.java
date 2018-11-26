@@ -17,6 +17,7 @@ package uniandes.isis2304.superAndes.persistencia;
 
 import java.sql.Date;
 import java.util.List;
+import java.util.Random;
 
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
@@ -83,46 +84,108 @@ class SQLCategoria
 		q.setResultClass(Categoria.class);
 		return (List<Categoria>) q.executeList();
 	}
-	
+
 	public long generarDatos (PersistenceManager pm) 
 	{ 	
 		long w = 123123123;
 		
-			String[] z = nextvalNITCliente();
-		for(int i= 0; i<2500;i++){
-			if(z[0] != null)
-			{
-			Query q = pm.newQuery(SQL, "INSERT INTO CARRITODECOMPRA (IDCARRITO,USADO,NITCLIENTE) values (" + nextval2() + "," + nextvalUSADO() + ",'" + z[0]+"')");  
-			w = (long) q.executeUnique();
-			System.out.println(i);
-				
-			}
-			else{
-				Query q = pm.newQuery(SQL, "INSERT INTO CARRITODECOMPRA (IDCARRITO,USADO,CEDULA) values (" + nextval2()  + "," + nextvalUSADO() + "," + z[1]+")");  
+		
+		for(int i= 0; i<10000;i++){
+			
+			
+				Query q = pm.newQuery(SQL, "INSERT INTO Factura (NUMEROFACTURA,Fecha,idcliente) values ("+nextvalFac()+",TO_DATE('"+nextvalAño()+"-"+nextvalMes()+"-"+nextvalDia()+"', 'YYYY-MM-DD'),"+ nextvalCliente() +")");  
 				w = (long) q.executeUnique();
 				System.out.println(i);
-			}
+			
+		}	                    		
+		return w;      
+	}
+	
+	public long generarDatos2 (PersistenceManager pm) 
+	{ 	
+		long w = 123123123;
+		
+		
+		for(int i= 0; i<2500;i++){
+			
+			
+				Query q = pm.newQuery(SQL, "INSERT INTO FacturaProducto (NUMEROFACTURA,CODIGODEBARRASPRODUCTO) values (TO_DATE('"+nextvalAño()+"-"+nextvalMes()+"-"+nextvalDia()+"', 'YYYY-MM-DD'),"+ nextvalBarras() +")");  
+				w = (long) q.executeUnique();
+				System.out.println(i);
+			
 		}	                    		
 		return w;      
 	}
 
-	
-	private String nextval2 ()
+	//NumFact
+	private String nextvalFac()
 	{
-		long resp =(int) (Math.random() * 1000000000) + 1000000;
-		return ""+resp;
+		Random r = new Random();
+		int low = 13;
+		int high = 50000;
+		int resp = r.nextInt(high-low) + low;
+		
+		return"100"+ resp;
+		
 		
 	}
+	//IdCliente
 	
-	private int nextvalUSADO()
-	{
-		if(Math.random() < 0.5)
+		private String nextvalCliente()
 		{
-			return 1;
+			Random r = new Random();
+			int low = 1;
+			int high = 20;
+			int resp = r.nextInt(high-low) + low;
+			
+			return ""+resp;
+			
 		}
-		else{
-			return 0;
+	
+	//CodigoBarras
+	
+	private String nextvalBarras()
+	{
+		long resp =(int) (Math.random() * 19) + 1;;
+		if(resp < 10)
+		{
+			return "00000"+resp;
 		}
+		else
+		{
+			return"0000"+resp;
+		}
+		
+	}
+	//FEchas
+	private int nextvalAño()
+	{
+		Random r = new Random();
+		int low = 2010;
+		int high = 2018;
+		int resp = r.nextInt(high-low) + low;
+		
+		return resp;
+		
+	}
+
+	private int nextvalMes()
+	{
+		Random r = new Random();
+	int low = 1;
+	int high = 12;
+	int resp = r.nextInt(high-low) + low;
+		return resp;
+		
+	}
+
+	private int nextvalDia()
+	{
+		Random r = new Random();
+	int low = 1;
+	int high = 28;
+	int resp = r.nextInt(high-low) + low;
+		return resp;
 		
 	}
 	
