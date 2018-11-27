@@ -15,8 +15,6 @@
 
 package uniandes.isis2304.superAndes.negocio;
 
-import java.sql.Timestamp;
-
 /**
  * Interfaz para los métodos get de VISITAN.
  * Sirve para proteger la información del negocio de posibles manipulaciones desde la interfaz 

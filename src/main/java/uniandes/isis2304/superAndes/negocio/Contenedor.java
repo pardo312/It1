@@ -15,9 +15,6 @@
 
 package uniandes.isis2304.superAndes.negocio;
 
-import java.sql.Timestamp;
-import java.util.List;
-
 /**
  * Clase para modelar el concepto BAR del negocio de los Parranderos
  *
@@ -77,6 +74,7 @@ public class Contenedor implements VOContenedor
 	}
 
    
+	@Override
 	public long getId() 
 	{
 		return id;
@@ -88,6 +86,7 @@ public class Contenedor implements VOContenedor
 	}
 	
 
+	@Override
 	public float getCapacidadVolumen() 
 	{
 		return capacidadVolumen;
@@ -99,6 +98,7 @@ public class Contenedor implements VOContenedor
 	}
 	
 	
+	@Override
 	public float getCapacidadPeso() 
 	{
 		return capacidadPeso;
@@ -110,6 +110,7 @@ public class Contenedor implements VOContenedor
 	}
 	
 	
+	@Override
 	public String getUnidadesPeso() 
 	{
 		return unidadesPeso;
@@ -122,6 +123,7 @@ public class Contenedor implements VOContenedor
 	}
 	
 	
+	@Override
 	public String getUnidadesVolumen() 
 	{
 		return unidadesVolumen;
@@ -132,6 +134,7 @@ public class Contenedor implements VOContenedor
 		this.unidadesVolumen = unidadesVolumen;
 	}
 	
+	@Override
 	public long getIdBodegaSucursal() 
 	{
 		return idBodegaSucursal;

@@ -15,13 +15,8 @@
 
 package uniandes.isis2304.parranderos.test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import java.io.FileReader;
-import java.util.List;
 import javax.swing.JOptionPane;
 import org.apache.log4j.Logger;
 import org.junit.Test;
@@ -30,7 +25,6 @@ import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 
 import uniandes.isis2304.superAndes.negocio.SuperAndes;
-import uniandes.isis2304.superAndes.negocio.VOTipoProducto;
 
 /**
  * Clase con métodos de prueba de conexión a la base de datos

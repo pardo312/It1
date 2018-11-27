@@ -15,8 +15,6 @@
 
 package uniandes.isis2304.superAndes.negocio;
 
-import java.util.List;
-
 /**
  * Clase para modelar la relación GUSTAN del negocio de los Parranderos:
  * Cada objeto de esta clase representa el hecho que un bebedor gusta de una bebida y viceversa.
@@ -70,6 +68,7 @@ public class Estante implements VOEstante
 	}
 
 
+	@Override
 	public int getId() 
 	{
 		return id;
@@ -80,6 +79,7 @@ public class Estante implements VOEstante
 		this.id = id;
 	}
 
+	@Override
 	public int getNivelAbastecimiento() 
 	{
 		return nivelAbastecimiento;
@@ -91,6 +91,7 @@ public class Estante implements VOEstante
 	}
 
 
+	@Override
 	public int getIdSucursales() 
 	{
 		return idSucursales;

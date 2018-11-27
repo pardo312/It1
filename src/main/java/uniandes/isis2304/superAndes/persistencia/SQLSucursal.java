@@ -6,10 +6,6 @@ import java.util.List;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
-import uniandes.isis2304.superAndes.negocio.Cliente;
-import uniandes.isis2304.superAndes.negocio.ClienteNatural;
-import uniandes.isis2304.superAndes.negocio.Estante;
-import uniandes.isis2304.superAndes.negocio.Proveedor;
 import uniandes.isis2304.superAndes.negocio.Sucursal;
 
 /**
@@ -78,7 +74,7 @@ class SQLSucursal
 	{
 		Query q = pm.newQuery(SQL, "SELECT ID,NOMBRE,CIUDAD,DIRECCION,SEGMENTACIONDEMERCADO, TAMANIOINSTALACION, NITSUPERMERCADO FROM " + "SUCURSAL");
 		q.setResultClass(Sucursal.class);
-		List<Sucursal> w = (List<Sucursal>) q.executeList();
+		List<Sucursal> w = q.executeList();
 		return w ;
 	}
 

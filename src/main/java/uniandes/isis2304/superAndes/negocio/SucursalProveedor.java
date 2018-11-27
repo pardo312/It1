@@ -15,9 +15,6 @@
 
 package uniandes.isis2304.superAndes.negocio;
 
-import java.sql.Timestamp;
-import java.util.List;
-
 
 public class SucursalProveedor implements VOSucursalProveedor
 {
@@ -51,7 +48,8 @@ public class SucursalProveedor implements VOSucursalProveedor
 	}
 
    
-    public long getIDSucursal() 
+    @Override
+	public long getIDSucursal() 
 	{
 		return IDSucursal;
 	}
@@ -61,6 +59,7 @@ public class SucursalProveedor implements VOSucursalProveedor
 		this.IDSucursal = IDSucursal;
 	}
 	
+	@Override
 	public String getNITProveedor() 
 	{
 		return NITProveedor;

@@ -44,6 +44,7 @@ public class Cliente implements VOCliente
 		this.puntosDeCompra = puntosDeCompra;
 	}
 
+	@Override
 	public long getId() 
 	{
 		return idCliente;
@@ -55,6 +56,7 @@ public class Cliente implements VOCliente
 	}
 	
 
+	@Override
 	public String getNITCliente() 
 	{
 		return NITCliente;
@@ -66,6 +68,7 @@ public class Cliente implements VOCliente
 	}
 	
 	
+	@Override
 	public int getPuntosDeCompra() 
 	{
 		return puntosDeCompra;
@@ -77,6 +80,7 @@ public class Cliente implements VOCliente
 	}
 	
 	
+	@Override
 	public long getCedulaCliente() 
 	{
 		return cedulaCliente;

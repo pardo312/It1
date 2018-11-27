@@ -38,6 +38,7 @@ public class ClienteEmpresa implements VOClienteEmpresa
 		this.direccion = direccion;
 	}
 
+	@Override
 	public String getNIT() 
 	{
 		return NIT;
@@ -49,6 +50,7 @@ public class ClienteEmpresa implements VOClienteEmpresa
 	}
 	
 
+	@Override
 	public String getDireccion() 
 	{
 		return direccion;

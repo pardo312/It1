@@ -1,8 +1,6 @@
 
 package uniandes.isis2304.superAndes.negocio;
 
-import java.sql.Timestamp;
-
 /**
  * Clase para modelar la relación VISITAN del negocio de los Parranderos:
  * Cada objeto de esta clase representa el hecho que un bebedor visitó un bar y viceversa.

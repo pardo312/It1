@@ -20,14 +20,8 @@ import java.util.List;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
-import uniandes.isis2304.superAndes.negocio.Cliente;
-import uniandes.isis2304.superAndes.negocio.Consulta1;
-import uniandes.isis2304.superAndes.negocio.Consulta2;
-import uniandes.isis2304.superAndes.negocio.Consulta3;
 import uniandes.isis2304.superAndes.negocio.Consulta7;
 import uniandes.isis2304.superAndes.negocio.Producto;
-import uniandes.isis2304.superAndes.negocio.Proveedor;
-import uniandes.isis2304.superAndes.negocio.TipoProducto;
 
 /**
  * Clase que encapsula los métodos que hacen acceso a la base de datos para el concepto BEBIDA de Parranderos
@@ -79,7 +73,7 @@ class SQLRFC7
 					+ "ORDER BY INGRESOS DESC";
 			Query q = pm.newQuery(SQL,o );
 			q.setResultClass(Consulta7.class);
-			List<Consulta7> w = (List<Consulta7>) q.executeList();
+			List<Consulta7> w = q.executeList();
 			return w;
 
 
@@ -96,7 +90,7 @@ class SQLRFC7
 					+ "ORDER BY INGRESOS DESC";
 			Query q = pm.newQuery(SQL,o );
 			q.setResultClass(Producto.class);
-			List<Consulta7> w = (List<Consulta7>) q.executeList();
+			List<Consulta7> w = q.executeList();
 			return w;
 
 
@@ -110,7 +104,7 @@ class SQLRFC7
 					+ "ORDER BY INGRESOS DESC";
 			Query q = pm.newQuery(SQL,o );
 			q.setResultClass(Producto.class);
-			List<Consulta7> w = (List<Consulta7>) q.executeList();
+			List<Consulta7> w = q.executeList();
 			return w;
 
 

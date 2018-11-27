@@ -20,12 +20,7 @@ import java.util.List;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
-import uniandes.isis2304.superAndes.negocio.Cliente;
-import uniandes.isis2304.superAndes.negocio.Consulta1;
-import uniandes.isis2304.superAndes.negocio.Consulta2;
 import uniandes.isis2304.superAndes.negocio.Consulta5;
-import uniandes.isis2304.superAndes.negocio.Proveedor;
-import uniandes.isis2304.superAndes.negocio.TipoProducto;
 
 /**
  * Clase que encapsula los métodos que hacen acceso a la base de datos para el concepto BEBIDA de Parranderos
@@ -69,7 +64,7 @@ class SQLRFC5
 	{
 		Query q = pm.newQuery(SQL,"SELECT PROVE.NIT ,PROVE.NOMBRE, PROD.CODIGODEBARRAS AS CODIGOPRODUCTO, SUM(PROD.PRECIOUNITARIO) AS DINEROPROVEEDOR FROM PROVEEDOR PROVE, SUCURSALPROVEEDOR SUCUPRO, PRODUCTO PROD WHERE PROVE.NIT = SUCUPRO.NITPROVEEDOR AND PROD.IDSUCURSAL = SUCUPRO.IDSUCURSAL group by PROVE.NOMBRE, PROVE.NIT, PROD.CODIGODEBARRAS ORDER BY DINEROPROVEEDOR DESC");
 		q.setResultClass(Consulta5.class);
-		List<Consulta5> w = (List<Consulta5>) q.executeList();
+		List<Consulta5> w = q.executeList();
 		return w;
 	}
  

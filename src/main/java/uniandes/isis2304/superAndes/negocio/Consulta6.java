@@ -15,9 +15,6 @@
 
 package uniandes.isis2304.superAndes.negocio;
 
-import java.sql.Timestamp;
-import java.util.List;
-
 /**
  * Clase para modelar el concepto BAR del negocio de los Parranderos
  *

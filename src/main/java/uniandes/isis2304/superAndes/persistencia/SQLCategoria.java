@@ -23,6 +23,8 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 import javax.jdo.Transaction;
 
+import com.github.javafaker.Faker;
+
 import uniandes.isis2304.superAndes.negocio.Categoria;
 import uniandes.isis2304.superAndes.negocio.Proveedor;
 
@@ -86,20 +88,43 @@ class SQLCategoria
 		return (List<Categoria>) q.executeList();
 	}
 
-	public long generarDatos (PersistenceManager pm) 
+	public long generarDatosPromocionPague (PersistenceManager pm) 
+	{ 	
+		long w = 123123123;
+//		try{
+			
+		
+		for(int i= 0; i<1;i++){
+			
+			
+				Query q = pm.newQuery(SQL, "INSERT INTO paguexcantidadllevey (id,x,y) values ("+nextvalPromo()+","+ nextvalx() +","+nextvaly()+")");  
+				w = (long) q.executeUnique();
+//				System.out.println(i);
+			
+		}
+		return w; 
+//		}
+//		catch(Exception e){
+//			generarDatos(pm);
+//			return w;
+//		}
+		 
+	}
+	
+	public long generarDatos(PersistenceManager pm) 
 	{ 	
 		long w = 123123123;
 		try{
 			
 		
-		for(int i= 0; i<5;i++){
+//		for(int i= 0; i<1;i++){
+//			
 			
-			
-				Query q = pm.newQuery(SQL, "INSERT INTO Factura (NUMEROFACTURA,Fecha,idcliente) values ("+nextvalFac()+",TO_DATE('"+nextvalAño()+"-"+nextvalMes()+"-"+nextvalDia()+"', 'YYYY-MM-DD'),"+ nextvalCliente() +")");  
+				Query q = pm.newQuery(SQL, "INSERT INTO clienteNatural (CEDULA,NOMBRE,EMAIL) values ("+nextvalCedu()+",'"+ generarNombre() +"',"+generarEmail()+")");  
 				w = (long) q.executeUnique();
-				System.out.println(i);
+//				System.out.println(i);
 			
-		}
+//		}
 		return w; 
 		}
 		catch(Exception e){
@@ -117,7 +142,7 @@ class SQLCategoria
 		for(int i= 0; i<2500;i++){
 			
 			
-				Query q = pm.newQuery(SQL, "INSERT INTO FacturaProducto (NUMEROFACTURA,CODIGODEBARRASPRODUCTO) values (TO_DATE('"+nextvalAño()+"-"+nextvalMes()+"-"+nextvalDia()+"', 'YYYY-MM-DD'),"+ nextvalBarras() +")");  
+				Query q = pm.newQuery(SQL, "INSERT INTO FacturaProducto (NUMEROFACTURA,CODIGODEBARRASPRODUCTO) values (TO_DATE('"+nextvalAnio()+"-"+nextvalMes()+"-"+nextvalDia()+"', 'YYYY-MM-DD'),"+ nextvalBarras() +")");  
 				w = (long) q.executeUnique();
 				System.out.println(i);
 			
@@ -125,11 +150,27 @@ class SQLCategoria
 		return w;      
 	}
 
-	//NumFact
-	private String nextvalFac()
+	public String generarNombre()
+	{
+		Faker faker = new Faker();
+
+		String name = faker.name().fullName();
+		faker.lorem();
+		return name;
+	}
+public String generarEmail()
+{
+	Faker faker = new Faker();
+
+	String name = faker.name().firstName();
+	
+	return "'"+name + "@correo.com'";
+}
+	//Cedula
+	private String nextvalCedu()
 	{
 		Random r = new Random();
-		int low = 13;
+		int low = 1;
 		int high = 50000;
 		int resp = r.nextInt(high-low) + low;
 		
@@ -137,6 +178,50 @@ class SQLCategoria
 		
 		
 	}
+	//Super
+	
+	private String nextvalPromo()
+	{
+		Random r = new Random();
+		int low = 1;
+		int high = 60000;
+		int resp = r.nextInt(high-low) + low;
+		
+		return ""+resp;
+		
+	}
+	private String nextvalx()
+	{
+		Random r = new Random();
+		int low = 1;
+		int high = 60000;
+		int resp = r.nextInt(high-low) + low;
+		
+		return ""+resp;
+		
+	}
+	private String nextvaly()
+	{
+		Random r = new Random();
+		int low = 1;
+		int high = 60000;
+		int resp = r.nextInt(high-low) + low;
+		
+		return ""+resp;
+		
+	}
+	//Super
+	
+			private String nextvalSuper()
+			{
+				Random r = new Random();
+				int low = 1;
+				int high = 20;
+				int resp = r.nextInt(high-low) + low;
+				
+				return ""+resp;
+				
+			}
 	//IdCliente
 	
 		private String nextvalCliente()
@@ -166,7 +251,7 @@ class SQLCategoria
 		
 	}
 	//FEchas
-	private int nextvalAño()
+	private int nextvalAnio()
 	{
 		Random r = new Random();
 		int low = 2010;

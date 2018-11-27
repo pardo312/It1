@@ -68,6 +68,7 @@ public class Pedido implements VOPedido
 	}
 
 
+	@Override
 	public int getId() 
 	{
 		return id;
@@ -78,6 +79,7 @@ public class Pedido implements VOPedido
 		this.id = id;
 	}
 	
+	@Override
 	public Date getFechaEsperada() 
 	{
 		return fechaEsperada;
@@ -87,6 +89,7 @@ public class Pedido implements VOPedido
 	{
 		this.fechaEsperada = fechaEsperada;
 	}
+	@Override
 	public Date getFechaEntrega()
 	{
 		return fechaEntrega;
@@ -97,6 +100,7 @@ public class Pedido implements VOPedido
 		this.fechaEntrega = fechaEntrega;
 	}
 	
+	@Override
 	public String getEvaluacionCantidad()
 	{
 		return evaluacionCantidad;
@@ -107,6 +111,7 @@ public class Pedido implements VOPedido
 		this.evaluacionCantidad = evaluacionCantidad;
 	}
 	
+	@Override
 	public String getEvaluacionCalidad()
 	{
 		return evaluacionCalidad;
@@ -117,6 +122,7 @@ public class Pedido implements VOPedido
 		this.evaluacionCalidad = evaluacionCalidad;
 	}
 	
+	@Override
 	public int getCalificacion() 
 	{
 		return calificacion;
@@ -126,6 +132,7 @@ public class Pedido implements VOPedido
 	{
 		this.calificacion = calificacion;
 	}
+	@Override
 	public int getFinalizado() 
 	{
 		return finalizado;
@@ -136,6 +143,7 @@ public class Pedido implements VOPedido
 		this.finalizado = finalizado;
 	}
 	
+	@Override
 	public int getNITProveedor() 
 	{
 		return NITProveedor;

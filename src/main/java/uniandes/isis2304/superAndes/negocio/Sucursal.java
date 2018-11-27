@@ -15,9 +15,6 @@
 
 package uniandes.isis2304.superAndes.negocio;
 
-import java.sql.Timestamp;
-import java.util.List;
-
 /**
  * Clase para modelar el concepto BAR del negocio de los Parranderos
  *
@@ -88,7 +85,8 @@ public class Sucursal implements VOSucursal
 
 	}
     
-    public long getId() 
+    @Override
+	public long getId() 
 	{
 		return id;
 	}
@@ -98,6 +96,7 @@ public class Sucursal implements VOSucursal
 		this.id = id;
 	}
 
+	@Override
 	public String getNombre() 
 	{
 		return nombre;
@@ -108,6 +107,7 @@ public class Sucursal implements VOSucursal
 		this.nombre = nombre;
 	}
 	
+	@Override
 	public String getCiudad() 
 	{
 		return ciudad;
@@ -119,6 +119,7 @@ public class Sucursal implements VOSucursal
 		this.ciudad = ciudad;
 	}
 	
+	@Override
 	public String getDireccion() 
 	{
 		return direccion;
@@ -130,6 +131,7 @@ public class Sucursal implements VOSucursal
 		this.direccion = direccion;
 	}
 	
+	@Override
 	public String getSegmentacionDeMercado() 
 	{
 		return segmentacionDeMercado;
@@ -141,6 +143,7 @@ public class Sucursal implements VOSucursal
 		this.segmentacionDeMercado = segmentacionDeMercado;
 	}
 	
+	@Override
 	public String getTamanioInstalacion() 
 	{
 		return tamanioInstalacion;
@@ -152,6 +155,7 @@ public class Sucursal implements VOSucursal
 		this.tamanioInstalacion = tamanioInstalacion;
 	}
 	
+	@Override
 	public long getNITSupermercado() 
 	{
 		return NITSupermercado;

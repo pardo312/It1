@@ -15,9 +15,6 @@
 
 package uniandes.isis2304.superAndes.negocio;
 
-import java.sql.Timestamp;
-import java.util.List;
-
 
 public class SupermercadoClienteNatural implements VOSupermercadoClienteNatural
 {
@@ -51,7 +48,8 @@ public class SupermercadoClienteNatural implements VOSupermercadoClienteNatural
 	}
 
    
-    public long getNITSupermercado() 
+    @Override
+	public long getNITSupermercado() 
 	{
 		return NITSupermercado;
 	}
@@ -61,6 +59,7 @@ public class SupermercadoClienteNatural implements VOSupermercadoClienteNatural
 		this.NITSupermercado = NITSupermercado;
 	}
 	
+	@Override
 	public long getCedulaCliente() 
 	{
 		return cedulaCliente;

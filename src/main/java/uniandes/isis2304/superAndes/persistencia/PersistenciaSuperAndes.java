@@ -2015,20 +2015,21 @@ public class PersistenciaSuperAndes
 		try
 		{
 
-			for(int i= 0; i<10000;i++){
+			for(int i= 0; i<50000;i++){
 				
 			tx.begin();
 			
 			sqlCategoria.generarDatos(pm);
 			tx.commit();
-			System.out.println("Fase numero: " + i + "-------------------------");
+			System.out.println(i );
 			}
 			
 		}
 		catch (Exception e)
 		{
 			
-			
+//				e.printStackTrace();
+//				log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
 		}
 		finally
 		{

@@ -15,8 +15,6 @@
 
 package uniandes.isis2304.superAndes.negocio;
 
-import java.sql.Date;
-
 /**
  * Interfaz para los métodos get de SIRVEN.
  * Sirve para proteger la información del negocio de posibles manipulaciones desde la interfaz 

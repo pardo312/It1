@@ -20,9 +20,7 @@ import java.util.List;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
-import uniandes.isis2304.superAndes.negocio.Cliente;
 import uniandes.isis2304.superAndes.negocio.Proveedor;
-import uniandes.isis2304.superAndes.negocio.TipoProducto;
 
 /**
  * Clase que encapsula los métodos que hacen acceso a la base de datos para el concepto BEBIDA de Parranderos
@@ -80,7 +78,7 @@ class SQLProveedor
 		
 			Query q = pm.newQuery(SQL, "SELECT * FROM " + "PROVEEDOR");
 			q.setResultClass(Proveedor.class);
-			List<Proveedor> w = (List<Proveedor>) q.executeList();
+			List<Proveedor> w = q.executeList();
 			return w;
 		
 		
@@ -91,7 +89,7 @@ class SQLProveedor
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + "PROVEEDOR WHERE NOMBRE = " + nombre);
 		q.setResultClass(Proveedor.class);
-		List<Proveedor> w = (List<Proveedor>) q.executeList();
+		List<Proveedor> w = q.executeList();
 		return w;
 	}
 	public long eliminarProveedor(PersistenceManager pm, int NIT) {

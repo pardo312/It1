@@ -15,9 +15,6 @@
 
 package uniandes.isis2304.superAndes.negocio;
 
-import java.sql.Timestamp;
-import java.util.List;
-
 /**
  * Clase para modelar el concepto BAR del negocio de los Parranderos
  *
@@ -54,7 +51,8 @@ public class FacturaProducto implements VOFacturaProducto
 	}
 
    
-    public String getNumeroFactura() 
+    @Override
+	public String getNumeroFactura() 
 	{
 		return numeroFactura;
 	}
@@ -64,6 +62,7 @@ public class FacturaProducto implements VOFacturaProducto
 		this.numeroFactura = numeroFactura;
 	}
 	
+	@Override
 	public String getCodigoDeBarrasProducto() 
 	{
 		return codigoDeBarrasProducto;
