@@ -23,6 +23,7 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 import javax.jdo.Transaction;
 
+import com.github.javafaker.Address;
 import com.github.javafaker.Faker;
 
 import uniandes.isis2304.superAndes.negocio.Categoria;
@@ -120,7 +121,7 @@ class SQLCategoria
 //		for(int i= 0; i<1;i++){
 //			
 			
-				Query q = pm.newQuery(SQL, "INSERT INTO clienteNatural (CEDULA,NOMBRE,EMAIL) values ("+nextvalCedu()+",'"+ generarNombre() +"',"+generarEmail()+")");  
+				Query q = pm.newQuery(SQL, "INSERT INTO ClienteEmpresa (NIT,DIRECCION) values ('"+ nextvalCedu()+"','"+ generarDir() +"')");  
 				w = (long) q.executeUnique();
 //				System.out.println(i);
 			
@@ -150,6 +151,16 @@ class SQLCategoria
 		return w;      
 	}
 
+	
+	public String generarDir()
+	{
+		Faker faker = new Faker();
+
+		Address address = faker.address();
+		
+		return address.streetAddress();
+	}
+	
 	public String generarNombre()
 	{
 		Faker faker = new Faker();
@@ -170,11 +181,11 @@ public String generarEmail()
 	private String nextvalCedu()
 	{
 		Random r = new Random();
-		int low = 1;
-		int high = 50000;
+		int low = 50000;
+		int high = 60000;
 		int resp = r.nextInt(high-low) + low;
 		
-		return"100"+ resp;
+		return"0000"+ resp;
 		
 		
 	}
