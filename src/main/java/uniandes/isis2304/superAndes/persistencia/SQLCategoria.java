@@ -98,8 +98,7 @@ class SQLCategoria
 		for(int i= 0; i<1;i++){
 			
 			
-				Query q = pm.newQuery(SQL, "INSERT INTO paguexcantidadllevey (id,x,y) values ("+nextvalPromo()+","+ nextvalx() +","+nextvaly()+")");  
-				w = (long) q.executeUnique();
+				
 //				System.out.println(i);
 			
 		}
@@ -118,14 +117,13 @@ class SQLCategoria
 		try{
 			
 		
-//		for(int i= 0; i<1;i++){
-//			
-			
-				Query q = pm.newQuery(SQL, "INSERT INTO ClienteEmpresa (NIT,DIRECCION) values ('"+ nextvalCedu()+"','"+ generarDir() +"')");  
+	
+
+//				Query z = pm.newQuery(SQL, "INSERT INTO paguexcantidadllevey (id,x,y) values ("+nextvalPromo()+","+ nextvalx() +","+nextvaly()+")");  
+//				z.executeUnique();
+//				
+				Query q = pm.newQuery(SQL, "INSERT INTO Proveedor (NIT,NOMBRE) values ("+nextvalIdProve()+",'"+ generarNombreProveedor()+"')");  
 				w = (long) q.executeUnique();
-//				System.out.println(i);
-			
-//		}
 		return w; 
 		}
 		catch(Exception e){
@@ -150,8 +148,138 @@ class SQLCategoria
 		}	                    		
 		return w;      
 	}
-
+//PARA PEDIDO
 	
+	//IdPedido
+		private String nextvalIdPedido()
+		{
+			Random r = new Random();
+			int low = 21;
+			int high = 50000;
+			int resp = r.nextInt(high-low) + low;
+			
+			return"0000"+ resp;
+			
+			
+		}
+		//IdPedido
+				private String nextvalFechaesperada()
+				{
+					Random r = new Random();
+					int low = 21;
+					int high = 50000;
+					int resp = r.nextInt(high-low) + low;
+					
+					return"0000"+ resp;
+					
+					
+				}
+				//IdPedido
+				private String nextvalFechaEntrega()
+				{
+					Random r = new Random();
+					int low = 21;
+					int high = 50000;
+					int resp = r.nextInt(high-low) + low;
+					
+					return"0000"+ resp;
+					
+					
+				}
+				
+				//IdPedido
+				private String nextvalEvaluacionCantidad()
+				{
+					Random r = new Random();
+					int low = 21;
+					int high = 50000;
+					int resp = r.nextInt(high-low) + low;
+					
+					return"0000"+ resp;
+					
+					
+				}
+				//IdPedido
+				private String nextvalEvaluacionCalidad()
+				{
+					Random r = new Random();
+					int low = 21;
+					int high = 50000;
+					int resp = r.nextInt(high-low) + low;
+					
+					return"0000"+ resp;
+					
+					
+				}
+				//IdPedido
+				private String nextvalCalificacion()
+				{
+					Random r = new Random();
+					int low = 21;
+					int high = 50000;
+					int resp = r.nextInt(high-low) + low;
+					
+					return"0000"+ resp;
+					
+					
+				}
+				//IdPedido
+				private String nextvalFinalizado()
+				{
+					Random r = new Random();
+					int low = 21;
+					int high = 50000;
+					int resp = r.nextInt(high-low) + low;
+					
+					return"0000"+ resp;
+					
+					
+				}
+				//IdPedido
+				private String nextvalNitProveedor()
+				{
+					Random r = new Random();
+					int low = 21;
+					int high = 50000;
+					int resp = r.nextInt(high-low) + low;
+					
+					return"0000"+ resp;
+					
+					
+				}
+				
+	
+	
+	
+	//----------------------------------
+				
+				//Para Proveedor
+				
+				//Id
+				private String nextvalIdProve()
+				{
+					Random r = new Random();
+					int low = 22;
+					int high = 50000;
+					int resp = r.nextInt(high-low) + low;
+					
+					return"1000"+ resp;
+					
+					
+				}
+				
+				//Nombreproveedor
+				public String generarNombreProveedor()
+				{
+					Faker faker = new Faker();
+
+					String name = faker.name().fullName();
+
+					return name;
+				}
+				
+	//------------------------------------
+	//Direccion
 	public String generarDir()
 	{
 		Faker faker = new Faker();
@@ -160,15 +288,25 @@ class SQLCategoria
 		
 		return address.streetAddress();
 	}
-	
+	//Nombre
 	public String generarNombre()
 	{
 		Faker faker = new Faker();
 
 		String name = faker.name().fullName();
-		faker.lorem();
+
 		return name;
 	}
+	//Nombre
+		public String generarDescripcion()
+		{
+			Faker faker = new Faker();
+
+			String name = faker.lorem().fixedString(40);
+			
+			return name;
+		}
+	//Email
 public String generarEmail()
 {
 	Faker faker = new Faker();
@@ -177,18 +315,67 @@ public String generarEmail()
 	
 	return "'"+name + "@correo.com'";
 }
-	//Cedula
-	private String nextvalCedu()
+	//Idcliente	
+	private String nextvalClien()
 	{
 		Random r = new Random();
-		int low = 50000;
-		int high = 60000;
+		int low = 21;
+		int high = 50000;
 		int resp = r.nextInt(high-low) + low;
 		
 		return"0000"+ resp;
 		
 		
 	}
+	//IdPromo
+		private String nextvalpromo()
+		{
+			Random r = new Random();
+			int low = 50000;
+			int high = 60000;
+			int resp = r.nextInt(high-low) + low;
+			
+			return"0000"+ resp;
+			
+			
+		}
+	
+	//Cedula
+	private String nextvalCedu()
+	{
+		Random r = new Random();
+		int low = 1;
+		int high = 50000;
+		int resp = r.nextInt(high-low) + low;
+		
+		return"100"+ resp;
+		
+		
+	}
+	//NIT
+		private String nextvalNIT()
+		{
+			Random r = new Random();
+			int low = 1;
+			int high = 50000;
+			int resp = r.nextInt(high-low) + low;
+			
+			return"0000"+ resp;
+			
+			
+		}
+	//Ptos de compra
+		private String nextvalPtos()
+		{
+			Random r = new Random();
+			int low = 1;
+			int high = 50000;
+			int resp = r.nextInt(high-low) + low;
+			
+			return ""+resp;
+			
+			
+		}
 	//Super
 	
 	private String nextvalPromo()
@@ -201,6 +388,18 @@ public String generarEmail()
 		return ""+resp;
 		
 	}
+	//Precio	
+		private String nextvalPrecio()
+		{
+			Random r = new Random();
+			int low = 2000;
+			int high = 1000000;
+			int resp = r.nextInt(high-low) + low;
+			
+			return ""+resp;
+			
+			
+		}
 	private String nextvalx()
 	{
 		Random r = new Random();
@@ -233,18 +432,6 @@ public String generarEmail()
 				return ""+resp;
 				
 			}
-	//IdCliente
-	
-		private String nextvalCliente()
-		{
-			Random r = new Random();
-			int low = 1;
-			int high = 20;
-			int resp = r.nextInt(high-low) + low;
-			
-			return ""+resp;
-			
-		}
 	
 	//CodigoBarras
 	

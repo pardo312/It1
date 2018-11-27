@@ -2028,8 +2028,8 @@ public class PersistenciaSuperAndes
 		catch (Exception e)
 		{
 			
-//				e.printStackTrace();
-//				log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+				e.printStackTrace();
+				log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
 		}
 		finally
 		{
