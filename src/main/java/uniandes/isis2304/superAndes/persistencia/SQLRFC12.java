@@ -69,7 +69,7 @@ class SQLRFC12
 	}
 
 	
-	public List<Consulta12a> consulta12a(PersistenceManager pm, String masVendido,int i)throws ParseException
+	public List<Consulta12a> consulta12a(PersistenceManager pm, String masVendido)throws ParseException
 	{
 	
 		String p = "";
@@ -80,20 +80,20 @@ class SQLRFC12
 			p = "MIN";
 		}
 		
-		Query q = pm.newQuery(SQL, "Select PRODUCTO, Ventas From(select "+p+"(numeroDeVentas) as NMOMAX2 "
-				+ "from(select codigodebarras as Producto, TO_CHAR(fecha - 7/24,'IW') as semana, Count(fp.numerofactura) as "
-				+ "NumeroDeVentas from   factura f ,facturaproducto fp ,producto p  WHERE  f.numerofactura = fp.numerofactura"
-				+ " AND p.codigodebarras = fp.codigodebarrasproducto AND TO_CHAR(fecha - 7/24,'IW') = "+ i
-				+ " GROUP BY TO_CHAR(fecha - 7/24,'IW'), codigodebarras))t1, (select producto as producto, numeroDeVentas as "
-				+ "Ventas from(select codigodebarras as Producto, TO_CHAR(fecha - 7/24,'IW') as semana, Count(fp.numerofactura) "
-				+ "as NumeroDeVentas from   factura f ,facturaproducto fp ,producto p WHERE  f.numerofactura = fp.numerofactura "
-				+ "AND p.codigodebarras = fp.codigodebarrasproducto AND TO_CHAR(fecha - 7/24,'IW') = " + i
-				+ "GROUP BY TO_CHAR(fecha - 7/24,'IW'), codigodebarras) )t2 WHERE Ventas = NMOMAX2");
+		Query q = pm.newQuery(SQL, "Select Semana, producto, ventas "
+				+ "From(select MAX(numeroDeVentas) as NMOMAX2, semana "
+				+ "from(select codigodebarras as Producto, TO_CHAR(fecha - 7/24,'IW') as semana, Count(fp.numerofactura) as NumeroDeVentas"
+				+ " from   factura f ,facturaproducto fp ,producto p  WHERE  f.numerofactura = fp.numerofactura AND p.codigodebarras = fp.codigodebarrasproducto   "
+				+ "GROUP BY TO_CHAR(fecha - 7/24,'IW'), codigodebarras) group by semana)t1,  "
+				+ "(select producto as producto, numeroDeVentas as Ventas ,semana as sem "
+				+ "from(select codigodebarras as Producto, TO_CHAR(fecha - 7/24,'IW') as semana, Count(fp.numerofactura) as NumeroDeVentas  "
+				+ "from   factura f ,facturaproducto fp ,producto p WHERE  f.numerofactura = fp.numerofactura AND p.codigodebarras = fp.codigodebarrasproducto   "
+				+ "GROUP BY TO_CHAR(fecha - 7/24,'IW'), codigodebarras) )t2 WHERE Ventas = NMOMAX2 AND semana = sem ORDER BY Semana");
 		q.setResultClass(Consulta12a.class);
 		List<Consulta12a> w = (List<Consulta12a>) q.executeList();
 		return w;
 	}
-	public List<Consulta12b> consulta12b(PersistenceManager pm,String masSolicitado,int i)throws ParseException
+	public List<Consulta12b> consulta12b(PersistenceManager pm,String masSolicitado)throws ParseException
 	{
 		String p = "";
 		if(masSolicitado.contains("mas")){
@@ -103,14 +103,13 @@ class SQLRFC12
 			p = "MIN";
 		}
 		
-		Query q = pm.newQuery(SQL, "Select proveedor, NumeroDeSolicitudes from"
-				+ "((select  NIT as Proveedor, TO_CHAR(fechaentrega - 7/24,'IW') as semana,  count(ID) as "
-				+ "NumeroDeSolicitudes from Pedido ped ,proveedor prov  WHERE ped.NITPROVEEDOR = PROV.NIT "
-				+ "AND TO_CHAR(fechaentrega - 7/24,'IW') = "+i+" group by NIT, TO_CHAR(fechaentrega - 7/24,'IW'))) ,"
-				+ "(Select "+p+"(NumeroDeSolicitudes) as nmoMax From(select  NIT as Proveedor, TO_CHAR(fechaentrega - 7/24,'IW') as semana,"
-				+ " count(ID) as NumeroDeSolicitudes from Pedido ped ,proveedor prov  WHERE ped.NITPROVEEDOR = PROV.NIT "
-				+ "AND TO_CHAR(fechaentrega - 7/24,'IW') =  "+i+" group by NIT, TO_CHAR(fechaentrega - 7/24,'IW'))) "
-				+ "WHERE NumeroDeSolicitudes = nmoMax");
+		Query q = pm.newQuery(SQL, "Select semana , proveedor,numerodesolicitudes "
+				+ "from(select "+p+"(NumeroDeSolicitudes) as NMOMAX , semana "
+				+ "from(select  TO_CHAR(fechaentrega - 7/24,'IW') as semana, NIT as Proveedor, count(ID) as NumeroDeSolicitudes  "
+				+ "from Pedido ped ,proveedor prov  WHERE ped.NITPROVEEDOR = PROV.NIT   group by NIT, TO_CHAR(fechaentrega - 7/24,'IW')) group by semana), "
+				+ "(select  TO_CHAR(fechaentrega - 7/24,'IW') as sem, NIT as Proveedor, count(ID) as NumeroDeSolicitudes  "
+				+ "from Pedido ped ,proveedor prov  WHERE ped.NITPROVEEDOR = PROV.NIT   group by NIT, TO_CHAR(fechaentrega - 7/24,'IW'))  "
+				+ "WHERE NumeroDeSolicitudes = nmoMax AND semana = sem ORDER BY Semana");
 		q.setResultClass(Consulta12b.class);
 		List<Consulta12b> w = (List<Consulta12b>) q.executeList();
 		return w;

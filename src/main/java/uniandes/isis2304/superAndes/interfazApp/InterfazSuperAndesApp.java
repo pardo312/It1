@@ -1863,15 +1863,12 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 				if(opcion.equals("producto") )
 				{
 					String masVendido = JOptionPane.showInputDialog (this, "Desea saber el mas vendido o el menos vendido? (EJ: mas o menos)", "RFC10", JOptionPane.QUESTION_MESSAGE);
-					String resultado = "";
-					for(int i= 1; i<100;i++)
-					{
-					List <uniandes.isis2304.superAndes.negocio.Consulta12a> lista = superAndes.consulta12a(masVendido,i);
-
-					resultado +=  "\nSemana Numero:" + i + " -------------------------------------------------";
-					resultado +=  "\n \n" + listarConsulta12a(lista);
 					
-					}
+					
+					List <uniandes.isis2304.superAndes.negocio.Consulta12a> lista = superAndes.consulta12a(masVendido);
+
+					String resultado = "En Consulta 12";
+					resultado +=  "\n" + listarConsulta12a(lista);
 					panelDatos.actualizarInterfaz(resultado);
 					resultado += "\n Operación terminada";
 				}
@@ -1879,15 +1876,14 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 				{
 					String masSolicitado = JOptionPane.showInputDialog (this, "Desea saber el mas solicitado o el menos solicitado? (EJ:  mas o menos )", "RFC10", JOptionPane.QUESTION_MESSAGE);
 
-					for(int i= 0; i<100;i++)
-					{
-						List <uniandes.isis2304.superAndes.negocio.Consulta12b> lista = superAndes.consulta12b(masSolicitado,i);
+					
+						List <uniandes.isis2304.superAndes.negocio.Consulta12b> lista = superAndes.consulta12b(masSolicitado);
 						
-						String resultado = "Semana Numero:" + i + " -------------------------------------------------";
+						String resultado = "En Consulta 12";
 						resultado +=  "\n" + listarConsulta12b(lista);
 						panelDatos.actualizarInterfaz(resultado);
 						resultado += "\n Operación terminada";
-					}
+					
 					
 				}
 				
@@ -1908,7 +1904,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 	}
 	private String listarConsulta12a(List<uniandes.isis2304.superAndes.negocio.Consulta12a> lista) 
 	{
-		String resp = "";
+		String resp = "Resultado Consulta 12:\n";
 		int i = 1;
 		for (uniandes.isis2304.superAndes.negocio.Consulta12a tb : lista)
 		{
@@ -1918,7 +1914,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 	}
 	private String listarConsulta12b(List<uniandes.isis2304.superAndes.negocio.Consulta12b> lista) 
 	{
-		String resp = "";
+		String resp = "Resultado Consulta 12:\n";
 		int i = 1;
 		for (uniandes.isis2304.superAndes.negocio.Consulta12b tb : lista)
 		{

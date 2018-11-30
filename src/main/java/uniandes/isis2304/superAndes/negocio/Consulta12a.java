@@ -29,7 +29,8 @@ public class Consulta12a
 	 *****************************************************************/
 
 
-
+	private String semana;
+	
 	private String producto;
 
 	private int ventas;
@@ -41,11 +42,13 @@ public class Consulta12a
 
 	public Consulta12a() 
 	{
+		this.semana = "";
 		this.producto = "";
 		this.ventas = 0;
 	}
 
-	public Consulta12a(String producto, int ventas) {
+	public Consulta12a(String producto, int ventas,String semana) {
+		this.semana = semana;
 		this.producto = producto;
 		this.ventas = ventas;
 	}
@@ -65,7 +68,13 @@ public class Consulta12a
 	public void setVentas(int ventas) {
 		this.ventas = ventas;
 	}
+	public String getSemana() {
+		return semana;
+	}
 
+	public void setSemana(String semana) {
+		this.semana = semana;
+	}
 
 
 
@@ -74,7 +83,7 @@ public class Consulta12a
 	@Override
 	public String toString() 
 	{
-		String resp = "Consulta10 [producto=" + producto +
+		String resp = "Consulta12 [semana ="+semana +"producto=" + producto +
 				", ventas=" + ventas +
 				"]";
 

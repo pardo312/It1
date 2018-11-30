@@ -28,7 +28,7 @@ public class Consulta12b
 	 * 			Atributos
 	 *****************************************************************/
 
-
+	private String semana;
 
 	private int proveedor;
 
@@ -41,11 +41,13 @@ public class Consulta12b
 
 	public Consulta12b() 
 	{
+		this.semana = "";
 		this.proveedor = 0;
 		this.numeroDeSolicitudes = 0;
 	}
 
-	public Consulta12b(int proveedor, int numeroDeSolicitudes) {
+	public Consulta12b(int proveedor, int numeroDeSolicitudes,String semana) {
+		this.semana = semana;
 		this.proveedor = proveedor;
 		this.numeroDeSolicitudes = numeroDeSolicitudes;
 	}
@@ -66,15 +68,18 @@ public class Consulta12b
 		this.numeroDeSolicitudes = numeroDeSolicitudes;
 	}
 
+	public String getSemana() {
+		return semana;
+	}
 
-
-
-
+	public void setSemana(String semana) {
+		this.semana = semana;
+	}
 
 	@Override
 	public String toString() 
 	{
-		String resp = "Consulta10 [proveedor=" + proveedor +
+		String resp = "Consulta12 [semana ="+semana +" proveedor=" + proveedor +
 				", numeroDeSolicitudes=" + numeroDeSolicitudes +
 				"]";
 

@@ -1664,11 +1664,11 @@ public class PersistenciaSuperAndes
 			return sqlRFC10.consulta10b(pmf.getPersistenceManager(),fechaInicial, fechaFinal,fecha,productosComprados);
 		}
 		
-		public List<uniandes.isis2304.superAndes.negocio.Consulta12a> Consulta12a(String masVendido, int i) throws ParseException {
-			return sqlRFC12.consulta12a(pmf.getPersistenceManager(),masVendido,i);
+		public List<uniandes.isis2304.superAndes.negocio.Consulta12a> Consulta12a(String masVendido) throws ParseException {
+			return sqlRFC12.consulta12a(pmf.getPersistenceManager(),masVendido);
 		}
-		public List<uniandes.isis2304.superAndes.negocio.Consulta12b> Consulta12b(String masSolicitado, int i) throws ParseException {
-			return sqlRFC12.consulta12b(pmf.getPersistenceManager(),masSolicitado,i);
+		public List<uniandes.isis2304.superAndes.negocio.Consulta12b> Consulta12b(String masSolicitado) throws ParseException {
+			return sqlRFC12.consulta12b(pmf.getPersistenceManager(),masSolicitado);
 		}
 
 		public List<Proveedor> darProveedor(String nombre) {

@@ -759,10 +759,10 @@ public class SuperAndes
 		log.info ("Generando Consulta: " + voProd.size() + " existentes");
 		return voProd;
 	}
-	public List<uniandes.isis2304.superAndes.negocio.Consulta12a> consulta12a(String masVendido, int i ) throws ParseException {
+	public List<uniandes.isis2304.superAndes.negocio.Consulta12a> consulta12a(String masVendido ) throws ParseException {
 		log.info ("Generando consulta");        
 		List<Consulta12a> voProd = new LinkedList<Consulta12a> ();
-		for (Consulta12a tb : pp.Consulta12a(masVendido,i))
+		for (Consulta12a tb : pp.Consulta12a(masVendido))
 		{
 			if(tb == null)
 			{
@@ -773,10 +773,10 @@ public class SuperAndes
 		log.info ("Generando Consulta: " + voProd.size() + " existentes");
 		return voProd;
 	}
-	public List<uniandes.isis2304.superAndes.negocio.Consulta12b> consulta12b(String masSolicitado,int i ) throws ParseException {
+	public List<uniandes.isis2304.superAndes.negocio.Consulta12b> consulta12b(String masSolicitado) throws ParseException {
 		log.info ("Generando consulta");        
 		List<Consulta12b> voProd = new LinkedList<Consulta12b> ();
-		for (Consulta12b tb : pp.Consulta12b(masSolicitado,i))
+		for (Consulta12b tb : pp.Consulta12b(masSolicitado))
 		{
 			if(tb == null)
 			{
