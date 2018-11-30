@@ -172,7 +172,18 @@
 					"event": "finalizarPedidoConsolidado"
 				}
 			]
-		}		
+		}	,		
+		{ "menuTitle": "Iteracion 3",
+		  "options":
+			[
+				
+				{
+					"label": "Consultar Consumo",
+					"event": "Consulta10"
+				}
+				
+			]
+		}	
 				
 		
 	]

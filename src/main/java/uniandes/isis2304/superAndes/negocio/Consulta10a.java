@@ -22,7 +22,7 @@ import java.util.List;
  * Clase para modelar el concepto BAR del negocio de los Parranderos
  *
  */
-public class Consulta10 
+public class Consulta10a 
 {
 	/* ****************************************************************
 	 * 			Atributos
@@ -32,32 +32,28 @@ public class Consulta10
 
 	private int idCliente;
 
-	private String NITCliente;
-
 	private int puntosDeCompra;
 
-	private int numProductos;
+	private int productosComprados;
 
 	/* ****************************************************************
 	 * 			Métodos 
 	 *****************************************************************/
 
-	public Consulta10() 
+	public Consulta10a() 
 	{
 		this.idCliente = 0;
-		this.NITCliente = "";
 		this.puntosDeCompra = 0;
-		this.numProductos = 0;
+		this.productosComprados = 0;
 	}
 
 
 
 
-	public Consulta10(int idCliente, String NITCliente, int puntosDeCompra, int numProductos) {
+	public Consulta10a(int idCliente, int puntosDeCompra, int productosComprados) {
 		this.idCliente = idCliente;
-		this.NITCliente = NITCliente;
 		this.puntosDeCompra = puntosDeCompra;
-		this.numProductos = numProductos;
+		this.productosComprados = productosComprados;
 	}
 
 	public long getIdCliente() {
@@ -68,14 +64,6 @@ public class Consulta10
 		this.idCliente = idCliente;
 	}
 
-	public String getNITCliente() {
-		return NITCliente;
-	}
-
-	public void setNITCliente(String NITCliente) {
-		this.NITCliente = NITCliente;
-	}
-
 	public int getPuntosDeCompra() {
 		return puntosDeCompra;
 	}
@@ -84,12 +72,12 @@ public class Consulta10
 		this.puntosDeCompra = puntosDeCompra;
 	}
 
-	public int getNumProductos() {
-		return numProductos;
+	public int getProductosComprados() {
+		return productosComprados;
 	}
 
-	public void setNumProductos(int numProductos) {
-		this.numProductos = numProductos;
+	public void setProductosComprados(int productosComprados) {
+		this.productosComprados = productosComprados;
 	}
 
 
@@ -98,9 +86,9 @@ public class Consulta10
 	@Override
 	public String toString() 
 	{
-		String resp = "Consulta8 [idCliente=" + idCliente + ", NITCliente=" + NITCliente + 
+		String resp = "Consulta10 [idCliente=" + idCliente +
 				", puntosDeCompra=" + puntosDeCompra +
-				", numProductos=" + numProductos  +
+				", productosComprados=" + productosComprados  +
 				"]";
 
 		return resp;

@@ -1654,11 +1654,11 @@ public class PersistenciaSuperAndes
 		public List<uniandes.isis2304.superAndes.negocio.Consulta8> Consulta8(String idSucursal) {
 			return sqlRFC8.consulta8(pmf.getPersistenceManager(), idSucursal);
 		}
-		public List<uniandes.isis2304.superAndes.negocio.Consulta10> Consulta10a(String fechaInicial, String fechaFinal,String idcliente,String ptoscmpra,String productosComprados) throws ParseException {
+		public List<uniandes.isis2304.superAndes.negocio.Consulta10a> Consulta10a(String fechaInicial, String fechaFinal,String idcliente,String ptoscmpra,String productosComprados) throws ParseException {
 			return sqlRFC10.consulta10a(pmf.getPersistenceManager(),fechaInicial,fechaFinal,idcliente,ptoscmpra,productosComprados);
 		}
-		public List<uniandes.isis2304.superAndes.negocio.Consulta10> Consulta10b(String fechaInicial, String fechaFinal) throws ParseException {
-			return sqlRFC10.consulta10b(pmf.getPersistenceManager(), fechaInicial,fechaFinal);
+		public List<uniandes.isis2304.superAndes.negocio.Consulta10b> Consulta10b(String fechaInicial, String fechaFinal,String fecha,String productosComprados) throws ParseException {
+			return sqlRFC10.consulta10b(pmf.getPersistenceManager(),fechaInicial, fechaFinal,fecha,productosComprados);
 		}
 
 		public List<Proveedor> darProveedor(String nombre) {

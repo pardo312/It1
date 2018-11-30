@@ -739,20 +739,20 @@ public class SuperAndes
 		log.info ("Generando Consulta: " + voProd.size() + " existentes");
 		return voProd;
 	}
-	public List<uniandes.isis2304.superAndes.negocio.Consulta10> consulta10a(String fechaInicial, String fechaFinal,String idcliente,String ptoscmpra,String productosComprados) throws ParseException {
+	public List<uniandes.isis2304.superAndes.negocio.Consulta10a> consulta10a(String fechaInicial, String fechaFinal,String idcliente,String ptoscmpra,String productosComprados) throws ParseException {
 		log.info ("Generando consulta");        
-		List<Consulta10> voProd = new LinkedList<Consulta10> ();
-		for (Consulta10 tb : pp.Consulta10a(fechaInicial,fechaFinal,idcliente,ptoscmpra,productosComprados))
+		List<Consulta10a> voProd = new LinkedList<Consulta10a> ();
+		for (Consulta10a tb : pp.Consulta10a(fechaInicial,fechaFinal,idcliente,ptoscmpra,productosComprados))
 		{
 			voProd.add (tb);
 		}
 		log.info ("Generando Consulta: " + voProd.size() + " existentes");
 		return voProd;
 	}
-	public List<uniandes.isis2304.superAndes.negocio.Consulta10> consulta10b(String fechaInicial, String fechaFinal) throws ParseException {
+	public List<uniandes.isis2304.superAndes.negocio.Consulta10b> consulta10b(String fechaInicial, String fechaFinal,String fecha,String productosComprados) throws ParseException {
 		log.info ("Generando consulta");        
-		List<Consulta10> voProd = new LinkedList<Consulta10> ();
-		for (Consulta10 tb : pp.Consulta10b(fechaInicial, fechaFinal))
+		List<Consulta10b> voProd = new LinkedList<Consulta10b> ();
+		for (Consulta10b tb : pp.Consulta10b(fechaInicial, fechaFinal,fecha,productosComprados))
 		{
 			voProd.add (tb);
 		}

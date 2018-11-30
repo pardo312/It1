@@ -1777,9 +1777,8 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 			String fechaFinal = JOptionPane.showInputDialog (this, "fecha final? (DD/MM/YYYY)", "RFC10", JOptionPane.QUESTION_MESSAGE);
 			String AGRPidcliente = JOptionPane.showInputDialog (this, "Porque criterio quiere agrupar?(datosCliente,fecha)", "RFC10", JOptionPane.QUESTION_MESSAGE);
 			
-			List <uniandes.isis2304.superAndes.negocio.Consulta10> lista = new LinkedList<uniandes.isis2304.superAndes.negocio.Consulta10>();
 			
-			if(AGRPidcliente == "datosCliente" )
+			if(AGRPidcliente.equals("datosCliente") )
 			{
 				String idcliente = JOptionPane.showInputDialog (this, "Desea ordenarlo por idCliente?(si o no). Especifique como quiere ordenarlo(ASC, DESC) (EJ: si ASC)", "RFC10", JOptionPane.QUESTION_MESSAGE);		
 				
@@ -1788,27 +1787,30 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 				String productosComprados = JOptionPane.showInputDialog (this, "Desea ordenarlo por productos Comprados?(si o no). Especifique como quiere ordenarlo(ASC, DESC) (EJ: si ASC)", "RFC10", JOptionPane.QUESTION_MESSAGE);		
 				
 				
-				lista = superAndes.consulta10a(fechaInicial,fechaFinal,idcliente,ptoscmpra,productosComprados);
+				List <uniandes.isis2304.superAndes.negocio.Consulta10a> lista = superAndes.consulta10a(fechaInicial,fechaFinal,idcliente,ptoscmpra,productosComprados);
 
+				String resultado = "En Consulta 10";
+				resultado +=  "\n" + listarConsulta10a(lista);
+				panelDatos.actualizarInterfaz(resultado);
+				resultado += "\n Operación terminada";
 			}
-			else if(AGRPidcliente == "fecha" )
+			else if(AGRPidcliente.equals("fecha") )
 			{
-				String fecha = JOptionPane.showInputDialog (this, "Desea ordenarlo por fecha?(si o no)", "RFC10", JOptionPane.QUESTION_MESSAGE);		
+				String fecha = JOptionPane.showInputDialog (this, "Desea ordenarlo por fecha?(si o no). Especifique como quiere ordenarlo(ASC, DESC) (EJ: si ASC)", "RFC10", JOptionPane.QUESTION_MESSAGE);		
 				
-				String productosComprados = JOptionPane.showInputDialog (this, "Desea ordenarlo por productos Comprados?(si o no)", "RFC10", JOptionPane.QUESTION_MESSAGE);		
+				String productosComprados = JOptionPane.showInputDialog (this, "Desea ordenarlo por productos Comprados?(si o no). Especifique como quiere ordenarlo(ASC, DESC) (EJ: si ASC)", "RFC10", JOptionPane.QUESTION_MESSAGE);		
 
-				String tipoORD = JOptionPane.showInputDialog (this, "Como desea ordenarlo?(ASC para orden ascendente DESC para orden Descendente)", "RFC10", JOptionPane.QUESTION_MESSAGE);
+				List <uniandes.isis2304.superAndes.negocio.Consulta10b> lista = superAndes.consulta10b(fechaInicial,fechaFinal,fecha,productosComprados);
 				
-				lista = superAndes.consulta10b(fechaInicial,fechaFinal,fecha,productosComprados,tipoORD);
-
+				String resultado = "En Consulta 10";
+				resultado +=  "\n" + listarConsulta10b(lista);
+				panelDatos.actualizarInterfaz(resultado);
+				resultado += "\n Operación terminada";
 			}
 			
 					
 			
-			String resultado = "En listaProveedor";
-			resultado +=  "\n" + listarConsulta10(lista);
-			panelDatos.actualizarInterfaz(resultado);
-			resultado += "\n Operación terminada";
+			
 		} 
 		catch (Exception e) 
 		{
@@ -1819,11 +1821,21 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 	}
 	
 	
-	private String listarConsulta10(List<uniandes.isis2304.superAndes.negocio.Consulta10> lista) 
+	private String listarConsulta10a(List<uniandes.isis2304.superAndes.negocio.Consulta10a> lista) 
 	{
-		String resp = "Resultado Consulta 8:\n";
+		String resp = "Resultado Consulta 10:\n";
 		int i = 1;
-		for (uniandes.isis2304.superAndes.negocio.Consulta10 tb : lista)
+		for (uniandes.isis2304.superAndes.negocio.Consulta10a tb : lista)
+		{
+			resp += i++ + ". " + tb.toString() + "\n";
+		}
+		return resp;
+	}
+	private String listarConsulta10b(List<uniandes.isis2304.superAndes.negocio.Consulta10b> lista) 
+	{
+		String resp = "Resultado Consulta 10:\n";
+		int i = 1;
+		for (uniandes.isis2304.superAndes.negocio.Consulta10b tb : lista)
 		{
 			resp += i++ + ". " + tb.toString() + "\n";
 		}
