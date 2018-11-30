@@ -1766,7 +1766,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 	
 	
 	/* ****************************************************************
-	 * 			Consulta 8
+	 * 			Consulta 10
 	 *****************************************************************/
 	public void Consulta10( )
 	{
@@ -1842,6 +1842,85 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 		String resp = "Resultado Consulta 10:\n";
 		int i = 1;
 		for (uniandes.isis2304.superAndes.negocio.Consulta10b tb : lista)
+		{
+			resp += i++ + ". " + tb.toString() + "\n";
+		}
+		return resp;
+	}
+	/* ****************************************************************
+	 * 			Consulta 12
+	 *****************************************************************/
+	public void Consulta12( )
+	{
+		try 
+		{
+			String carnet = JOptionPane.showInputDialog (this, "Ingrese su carnet para poder acceder a esta funcionalidad ( Solo gerente general puede usarla).", "RFC10", JOptionPane.QUESTION_MESSAGE);			
+			
+			String opcion = JOptionPane.showInputDialog (this, "Desea saber el producto o el proveedor?(EJ: producto)", "RFC10", JOptionPane.QUESTION_MESSAGE);			
+
+			if(carnet.equals("12345"))
+			{
+				if(opcion.equals("producto") )
+				{
+					String masVendido = JOptionPane.showInputDialog (this, "Desea saber el mas vendido o el menos vendido? (EJ: mas o menos)", "RFC10", JOptionPane.QUESTION_MESSAGE);
+					String resultado = "";
+					for(int i= 1; i<100;i++)
+					{
+					List <uniandes.isis2304.superAndes.negocio.Consulta12a> lista = superAndes.consulta12a(masVendido,i);
+
+					resultado +=  "\nSemana Numero:" + i + " -------------------------------------------------";
+					resultado +=  "\n \n" + listarConsulta12a(lista);
+					
+					}
+					panelDatos.actualizarInterfaz(resultado);
+					resultado += "\n Operación terminada";
+				}
+				else if(opcion.equals("proveedor") )
+				{
+					String masSolicitado = JOptionPane.showInputDialog (this, "Desea saber el mas solicitado o el menos solicitado? (EJ:  mas o menos )", "RFC10", JOptionPane.QUESTION_MESSAGE);
+
+					for(int i= 0; i<100;i++)
+					{
+						List <uniandes.isis2304.superAndes.negocio.Consulta12b> lista = superAndes.consulta12b(masSolicitado,i);
+						
+						String resultado = "Semana Numero:" + i + " -------------------------------------------------";
+						resultado +=  "\n" + listarConsulta12b(lista);
+						panelDatos.actualizarInterfaz(resultado);
+						resultado += "\n Operación terminada";
+					}
+					
+				}
+				
+			}
+			else{
+				JOptionPane.showMessageDialog(this, "Este carnet no es de suficiente nivel jerarquico como para acceder a esta funcionalidad.");
+			}
+					
+			
+			
+		} 
+		catch (Exception e) 
+		{
+			//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+	}
+	private String listarConsulta12a(List<uniandes.isis2304.superAndes.negocio.Consulta12a> lista) 
+	{
+		String resp = "";
+		int i = 1;
+		for (uniandes.isis2304.superAndes.negocio.Consulta12a tb : lista)
+		{
+			resp += i++ + ". " + tb.toString() + "\n";
+		}
+		return resp;
+	}
+	private String listarConsulta12b(List<uniandes.isis2304.superAndes.negocio.Consulta12b> lista) 
+	{
+		String resp = "";
+		int i = 1;
+		for (uniandes.isis2304.superAndes.negocio.Consulta12b tb : lista)
 		{
 			resp += i++ + ". " + tb.toString() + "\n";
 		}

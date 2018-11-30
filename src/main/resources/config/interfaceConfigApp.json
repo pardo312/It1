@@ -180,6 +180,10 @@
 				{
 					"label": "Consultar Consumo",
 					"event": "Consulta10"
+				},
+				{
+					"label": "Consultar Funcionamiento",
+					"event": "Consulta12"
 				}
 				
 			]
