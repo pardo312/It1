@@ -739,6 +739,26 @@ public class SuperAndes
 		log.info ("Generando Consulta: " + voProd.size() + " existentes");
 		return voProd;
 	}
+	public List<uniandes.isis2304.superAndes.negocio.Consulta10> consulta10a(String fechaInicial, String fechaFinal,String idcliente,String ptoscmpra,String productosComprados) throws ParseException {
+		log.info ("Generando consulta");        
+		List<Consulta10> voProd = new LinkedList<Consulta10> ();
+		for (Consulta10 tb : pp.Consulta10a(fechaInicial,fechaFinal,idcliente,ptoscmpra,productosComprados))
+		{
+			voProd.add (tb);
+		}
+		log.info ("Generando Consulta: " + voProd.size() + " existentes");
+		return voProd;
+	}
+	public List<uniandes.isis2304.superAndes.negocio.Consulta10> consulta10b(String fechaInicial, String fechaFinal) throws ParseException {
+		log.info ("Generando consulta");        
+		List<Consulta10> voProd = new LinkedList<Consulta10> ();
+		for (Consulta10 tb : pp.Consulta10b(fechaInicial, fechaFinal))
+		{
+			voProd.add (tb);
+		}
+		log.info ("Generando Consulta: " + voProd.size() + " existentes");
+		return voProd;
+	}
 	/* ****************************************************************
 	 * 			Metodos Para las pruebas
 	 *****************************************************************/

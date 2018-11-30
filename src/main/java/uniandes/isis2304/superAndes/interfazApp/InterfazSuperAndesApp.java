@@ -1761,6 +1761,74 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 		}
 		return resp;
 	}
+	//--------------------------------------------------------------- IT 3-------------------------------------------------------//
+	
+	
+	
+	/* ****************************************************************
+	 * 			Consulta 8
+	 *****************************************************************/
+	public void Consulta10( )
+	{
+		try 
+		{
+			
+			String fechaInicial = JOptionPane.showInputDialog (this, "fecha inicial? (DD/MM/YYYY)", "RFC10", JOptionPane.QUESTION_MESSAGE);
+			String fechaFinal = JOptionPane.showInputDialog (this, "fecha final? (DD/MM/YYYY)", "RFC10", JOptionPane.QUESTION_MESSAGE);
+			String AGRPidcliente = JOptionPane.showInputDialog (this, "Porque criterio quiere agrupar?(datosCliente,fecha)", "RFC10", JOptionPane.QUESTION_MESSAGE);
+			
+			List <uniandes.isis2304.superAndes.negocio.Consulta10> lista = new LinkedList<uniandes.isis2304.superAndes.negocio.Consulta10>();
+			
+			if(AGRPidcliente == "datosCliente" )
+			{
+				String idcliente = JOptionPane.showInputDialog (this, "Desea ordenarlo por idCliente?(si o no). Especifique como quiere ordenarlo(ASC, DESC) (EJ: si ASC)", "RFC10", JOptionPane.QUESTION_MESSAGE);		
+				
+				String ptoscmpra = JOptionPane.showInputDialog (this, "Desea ordenarlo por puntos de compra?(si o no). Especifique como quiere ordenarlo(ASC, DESC) (EJ: si ASC)", "RFC10", JOptionPane.QUESTION_MESSAGE);		
+				
+				String productosComprados = JOptionPane.showInputDialog (this, "Desea ordenarlo por productos Comprados?(si o no). Especifique como quiere ordenarlo(ASC, DESC) (EJ: si ASC)", "RFC10", JOptionPane.QUESTION_MESSAGE);		
+				
+				
+				lista = superAndes.consulta10a(fechaInicial,fechaFinal,idcliente,ptoscmpra,productosComprados);
+
+			}
+			else if(AGRPidcliente == "fecha" )
+			{
+				String fecha = JOptionPane.showInputDialog (this, "Desea ordenarlo por fecha?(si o no)", "RFC10", JOptionPane.QUESTION_MESSAGE);		
+				
+				String productosComprados = JOptionPane.showInputDialog (this, "Desea ordenarlo por productos Comprados?(si o no)", "RFC10", JOptionPane.QUESTION_MESSAGE);		
+
+				String tipoORD = JOptionPane.showInputDialog (this, "Como desea ordenarlo?(ASC para orden ascendente DESC para orden Descendente)", "RFC10", JOptionPane.QUESTION_MESSAGE);
+				
+				lista = superAndes.consulta10b(fechaInicial,fechaFinal,fecha,productosComprados,tipoORD);
+
+			}
+			
+					
+			
+			String resultado = "En listaProveedor";
+			resultado +=  "\n" + listarConsulta10(lista);
+			panelDatos.actualizarInterfaz(resultado);
+			resultado += "\n Operación terminada";
+		} 
+		catch (Exception e) 
+		{
+			//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+	}
+	
+	
+	private String listarConsulta10(List<uniandes.isis2304.superAndes.negocio.Consulta10> lista) 
+	{
+		String resp = "Resultado Consulta 8:\n";
+		int i = 1;
+		for (uniandes.isis2304.superAndes.negocio.Consulta10 tb : lista)
+		{
+			resp += i++ + ". " + tb.toString() + "\n";
+		}
+		return resp;
+	}
 	/* ****************************************************************
 	 * 			Generar datos
 	 *****************************************************************/

@@ -77,7 +77,7 @@ class SQLCategoria
 			
 			 String codigoDeBarrasProducto) 
 	{
-        Query q = pm.newQuery(SQL, "INSERT INTO " + "CATEGORIA" + "( id,nombreCategoria,perecedero,codigoDeBarrasProducto) values ("+id+",'"+nombreCategoria+"',"+perecedero+",'"+ codigoDeBarrasProducto + "')");                          
+        Query q = pm.newQuery(SQL, "UPDATE " + "FACTURA" + " SET IDCLIENTE = "+nextvalClien()+"where NUMEROFACTURA = " +2 );                          
         
         return (long) q.executeUnique();
 	}
@@ -89,40 +89,16 @@ class SQLCategoria
 		return (List<Categoria>) q.executeList();
 	}
 
-	public long generarDatosPromocionPague (PersistenceManager pm) 
-	{ 	
-		long w = 123123123;
-//		try{
-			
-		
-		for(int i= 0; i<1;i++){
-			
-			
-				
-//				System.out.println(i);
-			
-		}
-		return w; 
-//		}
-//		catch(Exception e){
-//			generarDatos(pm);
-//			return w;
-//		}
-		 
-	}
+	
 	
 	public long generarDatos(PersistenceManager pm) 
 	{ 	
 		long w = 123123123;
 		try{
 			
-		
 	
-
-//				Query z = pm.newQuery(SQL, "INSERT INTO paguexcantidadllevey (id,x,y) values ("+nextvalPromo()+","+ nextvalx() +","+nextvaly()+")");  
-//				z.executeUnique();
-//				
-				Query q = pm.newQuery(SQL, "INSERT INTO Proveedor (NIT,NOMBRE) values ("+nextvalIdProve()+",'"+ generarNombreProveedor()+"')");  
+			
+				Query q = pm.newQuery(SQL, "UPDATE " + "FACTURA" + " SET IDCLIENTE = "+nextvalClien()+"where NUMEROFACTURA = " +nextvalCedu());  
 				w = (long) q.executeUnique();
 		return w; 
 		}
@@ -133,21 +109,7 @@ class SQLCategoria
 		 
 	}
 	
-	public long generarDatos2 (PersistenceManager pm) 
-	{ 	
-		long w = 123123123;
-		
-		
-		for(int i= 0; i<2500;i++){
-			
-			
-				Query q = pm.newQuery(SQL, "INSERT INTO FacturaProducto (NUMEROFACTURA,CODIGODEBARRASPRODUCTO) values (TO_DATE('"+nextvalAnio()+"-"+nextvalMes()+"-"+nextvalDia()+"', 'YYYY-MM-DD'),"+ nextvalBarras() +")");  
-				w = (long) q.executeUnique();
-				System.out.println(i);
-			
-		}	                    		
-		return w;      
-	}
+	
 //PARA PEDIDO
 	
 	//IdPedido
@@ -323,7 +285,7 @@ public String generarEmail()
 		int high = 50000;
 		int resp = r.nextInt(high-low) + low;
 		
-		return"0000"+ resp;
+		return""+ resp;
 		
 		
 	}
@@ -345,7 +307,7 @@ public String generarEmail()
 	{
 		Random r = new Random();
 		int low = 1;
-		int high = 50000;
+		int high = 30000;
 		int resp = r.nextInt(high-low) + low;
 		
 		return"100"+ resp;
@@ -357,10 +319,10 @@ public String generarEmail()
 		{
 			Random r = new Random();
 			int low = 1;
-			int high = 50000;
+			int high = 20;
 			int resp = r.nextInt(high-low) + low;
 			
-			return"0000"+ resp;
+			return""+ resp;
 			
 			
 		}
@@ -414,7 +376,7 @@ public String generarEmail()
 	{
 		Random r = new Random();
 		int low = 1;
-		int high = 60000;
+		int high = 100;
 		int resp = r.nextInt(high-low) + low;
 		
 		return ""+resp;

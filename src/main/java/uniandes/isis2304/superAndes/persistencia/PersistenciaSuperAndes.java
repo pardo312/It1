@@ -163,6 +163,8 @@ public class PersistenciaSuperAndes
 
 	private SQLRFC8 sqlRFC8;
 
+	private SQLRFC10 sqlRFC10;
+	
 	private SQLFactura sqlFactura;
 	/* ****************************************************************
 	 * 			Métodos del MANEJADOR DE PERSISTENCIA
@@ -300,6 +302,7 @@ public class PersistenciaSuperAndes
 		sqlRFC6 = new SQLRFC6(this);
 		sqlRFC7 = new SQLRFC7(this);
 		sqlRFC8 = new SQLRFC8(this);
+		sqlRFC10 = new SQLRFC10(this);
 		sqlUtil = new SQLUtil(this);
 
 	}
@@ -1651,7 +1654,12 @@ public class PersistenciaSuperAndes
 		public List<uniandes.isis2304.superAndes.negocio.Consulta8> Consulta8(String idSucursal) {
 			return sqlRFC8.consulta8(pmf.getPersistenceManager(), idSucursal);
 		}
-
+		public List<uniandes.isis2304.superAndes.negocio.Consulta10> Consulta10a(String fechaInicial, String fechaFinal,String idcliente,String ptoscmpra,String productosComprados) throws ParseException {
+			return sqlRFC10.consulta10a(pmf.getPersistenceManager(),fechaInicial,fechaFinal,idcliente,ptoscmpra,productosComprados);
+		}
+		public List<uniandes.isis2304.superAndes.negocio.Consulta10> Consulta10b(String fechaInicial, String fechaFinal) throws ParseException {
+			return sqlRFC10.consulta10b(pmf.getPersistenceManager(), fechaInicial,fechaFinal);
+		}
 
 		public List<Proveedor> darProveedor(String nombre) {
 			return sqlProveedor.darProveedor(pmf.getPersistenceManager(),nombre);
