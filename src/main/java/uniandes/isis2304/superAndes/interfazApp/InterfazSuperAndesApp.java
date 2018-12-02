@@ -1872,7 +1872,7 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 					
 					
 					List <uniandes.isis2304.superAndes.negocio.Consulta11a> lista = superAndes.consulta11a(fechaInicial,fechaFinal,idcliente,ptoscmpra);
-
+					System.out.println("me demoro imprimiendo pero ya terminé la consulta");
 					String resultado = "En Consulta 11";
 					resultado +=  "\n" + listarConsulta11a(lista);
 					panelDatos.actualizarInterfaz(resultado);
