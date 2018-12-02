@@ -189,6 +189,11 @@
 					"label": "Consultar Funcionamiento",
 					"event": "Consulta12"
 				}
+				,
+				{
+					"label": "Consultar Buenos Clientes",
+					"event": "Consulta13"
+				}
 				
 			]
 		}	

@@ -2003,6 +2003,71 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 		}
 		return resp;
 	}
+	
+	/* ****************************************************************
+	 * 			Consulta 13
+	 *****************************************************************/
+	public void Consulta13( )
+	{
+		try 
+		{
+			JOptionPane.showMessageDialog(this, "tres tipos de buenos clientes: 1) compran en SuperAndes al menos una vez al mes, 2) siempre compran por lo menos un producto costoso, 3) siempre compran productos de tecnología");
+			
+			String carnet = JOptionPane.showInputDialog (this, "Ingrese su carnet para poder acceder a esta funcionalidad ( Solo gerente general puede usarla).", "RFC13", JOptionPane.QUESTION_MESSAGE);			
+			
+			if(carnet.equals("12345"))
+			{
+				
+					
+					List <uniandes.isis2304.superAndes.negocio.Consulta13> listica = superAndes.consulta13();
+					List <uniandes.isis2304.superAndes.negocio.Consulta13> listota = superAndes.consulta13b();
+					List <uniandes.isis2304.superAndes.negocio.Consulta13> lista = superAndes.consulta13c();
+					
+					String resultado = "En Consulta 13";
+					resultado += "*************************************************** \n";
+					resultado += "*** Compra costoso \n";
+					resultado += "*************************************************** \n";
+					resultado +=  "\n COMPRA COSTOSO: " + listarConsulta13(lista);
+					resultado += "*************************************************** \n";
+					resultado += "*** Visita mensual \n";
+					resultado += "*************************************************** \n";
+					resultado +=  "\n VISITA MENSUAL: " + listarConsulta13(listica);
+					resultado += "*************************************************** \n";
+					resultado += "*** Compra Tecnolgía \n";
+					resultado += "*************************************************** \n";
+					resultado +=  "\n COMPRA TECNOLOGIA: " + listarConsulta13(listota);
+					panelDatos.actualizarInterfaz(resultado);
+					resultado += "\n Operación terminada";
+				
+				
+			}
+			else{
+				JOptionPane.showMessageDialog(this, "Este carnet no es de suficiente nivel jerarquico como para acceder a esta funcionalidad.");
+			}
+					
+			
+			
+		} 
+		catch (Exception e) 
+		{
+			//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+	}
+	private String listarConsulta13(List<uniandes.isis2304.superAndes.negocio.Consulta13> lista) 
+	{
+		String resp = "Resultado Consulta 13 Cliente Frecuente:\n";
+		int i = 1;
+		for (uniandes.isis2304.superAndes.negocio.Consulta13 tb : lista)
+		{
+			resp += i++ + ". " + tb.toString() + "\n";
+		}
+		return resp;
+	}
+
+	
+	
 	/* ****************************************************************
 	 * 			Generar datos
 	 *****************************************************************/

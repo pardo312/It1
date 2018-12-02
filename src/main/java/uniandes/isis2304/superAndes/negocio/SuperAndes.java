@@ -113,7 +113,7 @@ public class SuperAndes
 		log.info ("Generando los VO de Productos: " + voProd.size() + " existentes");
 		return voProd;
 	}
-	
+
 	public List<CarritoDeCompras> darCarritos() {
 		log.info ("Generando los VO de Carrito");        
 		List<CarritoDeCompras> voProd = new LinkedList<CarritoDeCompras> ();
@@ -123,14 +123,14 @@ public class SuperAndes
 			{
 				voProd.add (tb);
 			}
-			
+
 		}
 		log.info ("Generando los VO de Carritos: " + voProd.size() + "existentes");
 		return voProd;
 	}
 
-	
-	
+
+
 	public List<Factura> darFacturas() {
 		log.info ("Generando los VO de Producto");        
 		List<Factura> voProd = new LinkedList<Factura> ();
@@ -312,7 +312,7 @@ public class SuperAndes
 
 	}
 
-	
+
 	public List<Pedido> darPedidios() {
 		log.info ("Generando los VO de pedido");        
 		List<Pedido> voProd = new LinkedList<Pedido> ();
@@ -360,7 +360,7 @@ public class SuperAndes
 		log.info ("Generando los VO de sucursal: " + voTipos.size() + " existentes");
 		return voTipos;
 	}
-	
+
 	public List<VOCarritoDeCompras> darVOCarrito() {
 		log.info ("Generando los VO de carrito");        
 		List<VOCarritoDeCompras> voTipos = new LinkedList<VOCarritoDeCompras> ();
@@ -371,8 +371,8 @@ public class SuperAndes
 		log.info ("Generando los VO de carrito: " + voTipos.size() + " existentes");
 		return voTipos;
 	}
-	
-	
+
+
 	public List<VOPedido> darVOPedido() {
 		log.info ("Generando los VO de contenedor");        
 		List<VOPedido> voTipos = new LinkedList<VOPedido> ();
@@ -401,7 +401,7 @@ public class SuperAndes
 		log.info ("Generando Consulta: " + voProv.size() + " existentes");
 		return prov;	
 	}
-	
+
 	public CarritoDeCompras darCarrito(int idCarrito)
 	{
 
@@ -411,7 +411,7 @@ public class SuperAndes
 		log.info ("Generando Consulta: " + voProv.size() + " existentes");
 		return prov;	
 	}
-	
+
 	public Pedido darPedido(int id)
 	{
 
@@ -546,20 +546,20 @@ public class SuperAndes
 	}
 
 
-	
-	
+
+
 	public long quitarProductosDeEstante(int volumenNuevo ,String codigoDeBarras )
 	{
-		
-      
-        log.info ("quitandoProdDeEstante con codigo de barras: " + codigoDeBarras);
+
+
+		log.info ("quitandoProdDeEstante con codigo de barras: " + codigoDeBarras);
 		long estante = pp.quitarProductosDeEstante(volumenNuevo,codigoDeBarras);	
 		log.info ("quitandoProdDeEstante:  " + estante);
 		return estante;
 
 	}
-	
-	
+
+
 	public void devolverProducto(String codigoDeBarras)
 	{
 		log.info ("quitandoProdDeEstante con codigo de barras: " + codigoDeBarras);
@@ -567,7 +567,7 @@ public class SuperAndes
 		log.info ("quitandoProdDeEstante:  ");
 
 	}
-	
+
 	public List<Producto> busquedaProducto(String codigoDeBarras,String nombre,int opcion)
 	{
 
@@ -807,6 +807,53 @@ public class SuperAndes
 		log.info ("Generando Consulta: " + voProd.size() + " existentes");
 		return voProd;
 	}
+
+	public List<uniandes.isis2304.superAndes.negocio.Consulta13> consulta13() throws ParseException {
+		log.info ("Generando consulta");        
+		List<Consulta13> voProd = new LinkedList<Consulta13> ();
+
+		for (Consulta13 uno : pp.Consulta13a())
+		{
+			if(uno == null)
+			{
+				break;
+			}
+			voProd.add (uno);
+			
+		}
+		log.info ("Generando Consulta: " + voProd.size() + " existentes");
+		return voProd;
+	}
+	
+	public List<uniandes.isis2304.superAndes.negocio.Consulta13> consulta13b() throws ParseException {
+		log.info ("Generando consulta");        
+		List<Consulta13> voProd = new LinkedList<Consulta13> ();
+		for (Consulta13 tb : pp.Consulta13b())
+		{
+			if(tb == null)
+			{
+				break;
+			}
+			voProd.add (tb);
+		}
+		log.info ("Generando Consulta: " + voProd.size() + " existentes");
+		return voProd;
+	}
+	
+	public List<uniandes.isis2304.superAndes.negocio.Consulta13> consulta13c() throws ParseException {
+		log.info ("Generando consulta");        
+		List<Consulta13> voProd = new LinkedList<Consulta13> ();
+		for (Consulta13 tb : pp.Consulta13c())
+		{
+			if(tb == null)
+			{
+				break;
+			}
+			voProd.add (tb);
+		}
+		log.info ("Generando Consulta: " + voProd.size() + " existentes");
+		return voProd;
+	}
 	/* ****************************************************************
 	 * 			Metodos Para las pruebas
 	 *****************************************************************/
@@ -900,7 +947,7 @@ public class SuperAndes
 		log.info ("Eliminando el contenedor  ");
 		return p;	
 	}
-	
+
 	public long eliminarCarrito (int id)
 	{
 
@@ -909,7 +956,7 @@ public class SuperAndes
 		log.info ("Eliminando el carrito  ");
 		return p;	
 	}
-	
+
 
 	public long eliminarPedido (int id)
 	{
@@ -928,7 +975,7 @@ public class SuperAndes
 		log.info ("Generando Consulta: " + voProv.size() + " existentes");
 		return prov;	
 	}
-	
+
 	public long eliminarClienteEmpresa (String NIT)
 	{
 
@@ -942,9 +989,9 @@ public class SuperAndes
 	public void generarDatos()
 
 	{
-		
+
 		pp.generarDatos();		
-	
+
 	}
 
 	/* ****************************************************************
@@ -960,7 +1007,9 @@ public class SuperAndes
 		return borrrados;
 	}
 
-	
+
+
+
 
 
 
