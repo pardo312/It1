@@ -759,6 +759,26 @@ public class SuperAndes
 		log.info ("Generando Consulta: " + voProd.size() + " existentes");
 		return voProd;
 	}
+	public List<uniandes.isis2304.superAndes.negocio.Consulta11a> consulta11a(String fechaInicial, String fechaFinal,String idcliente,String ptoscmpra) throws ParseException {
+		log.info ("Generando consulta");        
+		List<Consulta11a> voProd = new LinkedList<Consulta11a> ();
+		for (Consulta11a tb : pp.Consulta11a(fechaInicial,fechaFinal,idcliente,ptoscmpra))
+		{
+			voProd.add (tb);
+		}
+		log.info ("Generando Consulta: " + voProd.size() + " existentes");
+		return voProd;
+	}
+	public List<uniandes.isis2304.superAndes.negocio.Consulta11b> consulta11b(String fechaInicial, String fechaFinal,String fecha) throws ParseException {
+		log.info ("Generando consulta");        
+		List<Consulta11b> voProd = new LinkedList<Consulta11b> ();
+		for (Consulta11b tb : pp.Consulta11b(fechaInicial, fechaFinal,fecha))
+		{
+			voProd.add (tb);
+		}
+		log.info ("Generando Consulta: " + voProd.size() + " existentes");
+		return voProd;
+	}
 	public List<uniandes.isis2304.superAndes.negocio.Consulta12a> consulta12a(String masVendido ) throws ParseException {
 		log.info ("Generando consulta");        
 		List<Consulta12a> voProd = new LinkedList<Consulta12a> ();
@@ -940,6 +960,7 @@ public class SuperAndes
 		return borrrados;
 	}
 
+	
 
 
 

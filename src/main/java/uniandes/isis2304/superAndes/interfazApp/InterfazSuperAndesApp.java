@@ -1847,6 +1847,87 @@ public class InterfazSuperAndesApp extends JFrame implements ActionListener
 		}
 		return resp;
 	}
+	
+	/* ****************************************************************
+	 * 			Consulta 11
+	 *****************************************************************/
+	public void Consulta11( )
+	{
+		try 
+		{
+			String carnet = JOptionPane.showInputDialog (this, "Ingrese su carnet para poder acceder a esta funcionalidad.", "RFC11", JOptionPane.QUESTION_MESSAGE);			
+			
+			String AGRPidcliente = JOptionPane.showInputDialog (this, "Porque criterio quiere agrupar?(datosCliente,fecha)", "RFC11", JOptionPane.QUESTION_MESSAGE);			
+			String fechaInicial = JOptionPane.showInputDialog (this, "fecha inicial? (DD/MM/YYYY)", "RFC11", JOptionPane.QUESTION_MESSAGE);
+			String fechaFinal = JOptionPane.showInputDialog (this, "fecha final? (DD/MM/YYYY)", "RFC11", JOptionPane.QUESTION_MESSAGE);
+			
+			if(carnet.equals("12345"))
+			{
+				if(AGRPidcliente.equals("datosCliente") )
+				{
+					String idcliente = JOptionPane.showInputDialog (this, "Desea ordenarlo por idCliente?(si o no). Especifique como quiere ordenarlo(ASC, DESC) (EJ: si ASC)", "RFC11", JOptionPane.QUESTION_MESSAGE);		
+					
+					String ptoscmpra = JOptionPane.showInputDialog (this, "Desea ordenarlo por puntos de compra?(si o no). Especifique como quiere ordenarlo(ASC, DESC) (EJ: si ASC)", "RFC11", JOptionPane.QUESTION_MESSAGE);		
+					
+					
+					
+					List <uniandes.isis2304.superAndes.negocio.Consulta11a> lista = superAndes.consulta11a(fechaInicial,fechaFinal,idcliente,ptoscmpra);
+
+					String resultado = "En Consulta 11";
+					resultado +=  "\n" + listarConsulta11a(lista);
+					panelDatos.actualizarInterfaz(resultado);
+					resultado += "\n Operación terminada";
+				}
+				else if(AGRPidcliente.equals("fecha") )
+				{
+					String fecha = JOptionPane.showInputDialog (this, "Desea ordenarlo por fecha?(si o no). Especifique como quiere ordenarlo(ASC, DESC) (EJ: si ASC)", "RFC11", JOptionPane.QUESTION_MESSAGE);		
+					
+				
+					List <uniandes.isis2304.superAndes.negocio.Consulta11b> lista = superAndes.consulta11b(fechaInicial,fechaFinal,fecha);
+					
+					String resultado = "En Consulta 11";
+					resultado +=  "\n" + listarConsulta11b(lista);
+					panelDatos.actualizarInterfaz(resultado);
+					resultado += "\n Operación terminada";
+				}
+				
+			}
+			else{
+				JOptionPane.showMessageDialog(this, "Este carnet no es de suficiente nivel jerarquico como para acceder a esta funcionalidad.");
+			}
+					
+			
+			
+		} 
+		catch (Exception e) 
+		{
+			//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+	}
+	
+	
+	private String listarConsulta11a(List<uniandes.isis2304.superAndes.negocio.Consulta11a> lista) 
+	{
+		String resp = "Resultado Consulta 11:\n";
+		int i = 1;
+		for (uniandes.isis2304.superAndes.negocio.Consulta11a tb : lista)
+		{
+			resp += i++ + ". " + tb.toString() + "\n";
+		}
+		return resp;
+	}
+	private String listarConsulta11b(List<uniandes.isis2304.superAndes.negocio.Consulta11b> lista) 
+	{
+		String resp = "Resultado Consulta 11:\n";
+		int i = 1;
+		for (uniandes.isis2304.superAndes.negocio.Consulta11b tb : lista)
+		{
+			resp += i++ + ". " + tb.toString() + "\n";
+		}
+		return resp;
+	}
 	/* ****************************************************************
 	 * 			Consulta 12
 	 *****************************************************************/

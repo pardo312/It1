@@ -98,8 +98,8 @@ class SQLCategoria
 			
 	
 			
-				Query q = pm.newQuery(SQL, "UPDATE " + "FACTURA" + " SET IDCLIENTE = "+nextvalClien()+"where NUMEROFACTURA = " +nextvalCedu());  
-				w = (long) q.executeUnique();
+				 // Query q = pm.newQuery(SQL, "INSERT INTO Categoria (ID,NOMBRECATEGORIA,PERECEDERO,CODIGODEBARRASPRODUCTO,FECHAVENCIMIENTO) values ("+nextvalIdInt()+",'"nextvalNombreCategoria() "',"(int)Math.random()",'"nextvalIdPedido()"',TO_DATE('"+nextvalAnio()+"-"+nextvalMes()+"-"+nextvalDia()+"', 'YYYY-MM-DD'))");  
+			//	w = (long) q.executeUnique();
 		return w; 
 		}
 		catch(Exception e){
@@ -108,6 +108,31 @@ class SQLCategoria
 		}
 		 
 	}
+	
+	// CATEGORIA 
+	private int nextvalIdInt()
+	{
+		Random r = new Random();
+		int low = 21;
+		int high = 50000;
+		int resp = r.nextInt(high-low) + low;
+		
+		return resp;
+			
+	}	
+	
+	private String nextvalNombreCategoria()
+	{
+	
+		String[ ] categoria = {"OTROS", "TECNOLOGIA","ASEO","ORGANICOS"}; 
+		String nombre = categoria[(int)Math.random() * 4];
+
+		return nombre;
+			
+	}	
+	
+	
+	
 	
 	
 //PARA PEDIDO

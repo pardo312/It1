@@ -165,6 +165,8 @@ public class PersistenciaSuperAndes
 
 	private SQLRFC10 sqlRFC10;
 	
+	private SQLRFC11 sqlRFC11;
+	
 	private SQLRFC12 sqlRFC12;
 	
 	private SQLFactura sqlFactura;
@@ -305,6 +307,7 @@ public class PersistenciaSuperAndes
 		sqlRFC7 = new SQLRFC7(this);
 		sqlRFC8 = new SQLRFC8(this);
 		sqlRFC10 = new SQLRFC10(this);
+		sqlRFC11 = new SQLRFC11(this);
 		sqlRFC12 = new SQLRFC12(this);
 		sqlUtil = new SQLUtil(this);
 
@@ -1662,6 +1665,12 @@ public class PersistenciaSuperAndes
 		}
 		public List<uniandes.isis2304.superAndes.negocio.Consulta10b> Consulta10b(String fechaInicial, String fechaFinal,String fecha,String productosComprados) throws ParseException {
 			return sqlRFC10.consulta10b(pmf.getPersistenceManager(),fechaInicial, fechaFinal,fecha,productosComprados);
+		}
+		public List<uniandes.isis2304.superAndes.negocio.Consulta11a> Consulta11a(String fechaInicial, String fechaFinal,String idcliente,String ptoscmpra) throws ParseException {
+			return sqlRFC11.consulta11a(pmf.getPersistenceManager(),fechaInicial,fechaFinal,idcliente,ptoscmpra);
+		}
+		public List<uniandes.isis2304.superAndes.negocio.Consulta11b> Consulta11b(String fechaInicial, String fechaFinal,String fecha) throws ParseException {
+			return sqlRFC11.consulta11b(pmf.getPersistenceManager(),fechaInicial, fechaFinal,fecha);
 		}
 		
 		public List<uniandes.isis2304.superAndes.negocio.Consulta12a> Consulta12a(String masVendido) throws ParseException {

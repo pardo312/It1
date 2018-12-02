@@ -182,6 +182,10 @@
 					"event": "Consulta10"
 				},
 				{
+					"label": "Consultar Consumo No Hicieron Compra",
+					"event": "Consulta11"
+				},
+				{
 					"label": "Consultar Funcionamiento",
 					"event": "Consulta12"
 				}
